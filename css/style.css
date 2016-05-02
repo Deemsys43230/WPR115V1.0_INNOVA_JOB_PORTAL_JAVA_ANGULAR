@@ -222,7 +222,7 @@
         margin-top: 5px;
     }
 
-    .follow-us a:hover{
+    .follow-us a:hover, .follow-us a:focus{
         color: #fff;
     }
 
@@ -1494,4 +1494,13 @@ h4{
     color: #fff;
     box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.8);
     -webkit-box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+.slogan{
+    color: #555;
+    font-family: EngraversGothic BT;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    margin-left:50px;
+    font-weight: bold;
 }
