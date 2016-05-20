@@ -27,8 +27,8 @@ $.contactButtons({
   effect  : 'slide-on-scroll',
   buttons : {
     'facebook':   { class: 'facebook', use: true, link: 'https://www.facebook.com/pages/mycompany', extras: 'target="_blank"' },
-    'linkedin':   { class: 'linkedin', use: true, link: 'https://www.linkedin.com/company/mycompany' },
-    'google':     { class: 'gplus',    use: true, link: 'https://plus.google.com/myidongoogle' },
-    'twitter':   { class: 'twitter',   use: true, link: 'http://twitter.com', icon: 'twitter' }
+    'linkedin':   { class: 'linkedin', use: true, link: 'https://www.linkedin.com/company/mycompany', extras: 'target="_blank"' },
+    'google':     { class: 'gplus',    use: true, link: 'https://plus.google.com/myidongoogle', extras: 'target="_blank"' },
+    'twitter':   { class: 'twitter',   use: true, link: 'http://twitter.com', icon: 'twitter', extras: 'target="_blank"' }
   }
 });
