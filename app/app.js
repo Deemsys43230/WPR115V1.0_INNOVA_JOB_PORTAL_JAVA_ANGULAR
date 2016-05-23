@@ -9,14 +9,14 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
         });
 
         //Do For Cross Orgin Login Management
-        $httpProvider.defaults.withCredentials = true;
+        //$httpProvider.defaults.withCredentials = false;
 
         $httpProvider.interceptors.push(['$q','$location','$injector','$cookies',function ($q, $location,$injector,$cookies) {
 
             return {
 
                 'request': function(request) {
-                    request.headers['X-CSRFToken']=$cookies.get('X-CSRFToken');
+                    request.headers['JSESSIONID']=$cookies.get('JSESSIONID');
                     return request;
                 },
                 'response': function (response) {
@@ -181,6 +181,20 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                     }]
                 }
                 controller:'CommonController'*/
+            }).
+            when('/login', {
+                templateUrl: 'views/login.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'innovaApp',
+                            files:[
+                                'app/controllers/loginController.js'
+                            ]
+                        })
+                    }]
+                },
+                controller:'LoginController'
             }).
 
             otherwise({
