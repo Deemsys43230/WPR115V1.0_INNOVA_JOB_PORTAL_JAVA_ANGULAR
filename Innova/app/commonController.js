@@ -1,1 +1,0 @@
-var innovaApp=angular.module("innovaApp");innovaApp.controller("CommonController",["$scope","$http","$document","$parse",function(a,b,c,d){console.log(a),console.log(b),console.log(c),console.log(c.context.URL),console.log(d)}]);

@@ -1,1 +1,0 @@
-var innovaApp=angular.module("innovaApp",["requestModule"]);innovaApp.controller("LoginController",["$scope","requestHandler",function(a,b){a.doLogin=function(){alert("hittttt"),b.postRequest("j_spring_security_check?username="+a.username+"&password="+a.password,"").then(function(a){alert(a)})}}]);
