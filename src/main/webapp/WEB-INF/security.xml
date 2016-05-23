@@ -28,8 +28,7 @@
 		access-decision-manager-ref="accessDecisionManager"
 		xmlns="http://www.springframework.org/schema/security">
 		<anonymous enabled="false" />
-		<intercept-url pattern="/Admin/**" access="hasAnyRole('ROLE_ADMIN')" method="GET" />
-		<intercept-url pattern="/Admin/**" access="hasAnyRole('ROLE_ADMIN')" method="POST" />
+		<intercept-url pattern="/Admin/**" access="hasAnyRole('ROLE_ADMIN')"/>
 		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
 		<session-management invalid-session-url="/logout" />
 		
@@ -90,7 +89,7 @@
 		credentials from DB -->
 	<authentication-manager alias="authenticationManager"
 		xmlns="http://www.springframework.org/schema/security">
-		<!-- <authentication-provider user-service-ref="loginDAO" /> -->
+		<authentication-provider user-service-ref="loginDAO" />
 	</authentication-manager>
 
 	<beans:bean id="clientDetailsUserService"
@@ -108,7 +107,7 @@
 		class="org.springframework.security.oauth2.provider.token.DefaultTokenServices">
 		<beans:property name="tokenStore" ref="tokenStore" />
 		<beans:property name="supportRefreshToken" value="true" />
-		<beans:property name="accessTokenValiditySeconds" value="0" />
+		<beans:property name="accessTokenValiditySeconds" value="30000" />
 		<beans:property name="clientDetailsService" ref="clientDetails" />
 	</beans:bean>
 
