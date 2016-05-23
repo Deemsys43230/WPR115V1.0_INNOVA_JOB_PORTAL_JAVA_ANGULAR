@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="com.deemsys.project.entity.Template" />
+        <mapping class="com.deemsys.project.entity.DocumentLocation" />
+        <mapping class="com.deemsys.project.entity.DocumentRevisionFormat" />
+        <mapping class="com.deemsys.project.entity.DocumentType" />
+        <mapping class="com.deemsys.project.entity.EmailRecepients" />
+        <mapping class="com.deemsys.project.entity.EmailRecepientsId" />
+        <mapping class="com.deemsys.project.entity.HrTrainees" />
+        <mapping class="com.deemsys.project.entity.Login" />
+        <mapping class="com.deemsys.project.entity.Modules" />
+        <mapping class="com.deemsys.project.entity.Process" />
+        <mapping class="com.deemsys.project.entity.Roles" />
+        <mapping class="com.deemsys.project.entity.Users" />
+    </session-factory>
+</hibernate-configuration>
