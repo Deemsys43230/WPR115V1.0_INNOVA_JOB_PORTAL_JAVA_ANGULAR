@@ -90,7 +90,7 @@
 		credentials from DB -->
 	<authentication-manager alias="authenticationManager"
 		xmlns="http://www.springframework.org/schema/security">
-		<authentication-provider user-service-ref="loginDAO" />
+		<!-- <authentication-provider user-service-ref="loginDAO" /> -->
 	</authentication-manager>
 
 	<beans:bean id="clientDetailsUserService"

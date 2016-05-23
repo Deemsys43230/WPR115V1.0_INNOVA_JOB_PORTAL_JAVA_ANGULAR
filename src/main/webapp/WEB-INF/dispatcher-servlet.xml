@@ -124,7 +124,7 @@
 	</bean>
 	
 	<!-- For Authentication -->
-	<bean id="loginDAO" class="com.deemsys.project.login.LoginDAOImpl">    
-     </bean>
+	<!-- <bean id="loginDAO" class="com.deemsys.project.login.LoginDAOImpl">    
+     </bean> -->
 
 </beans>
