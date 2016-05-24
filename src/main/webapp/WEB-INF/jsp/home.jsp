@@ -48,7 +48,7 @@
 
         <div class="admin-content-box">
             <div class="message-bar">
-                <div class="user-name">Hi, admin</div>
+                <div class="user-name">Hi, admin <a href="j_spring_security_logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></div>
                 <h3 class="admin-title" ng-bind="header"></h3>
             </div>
 

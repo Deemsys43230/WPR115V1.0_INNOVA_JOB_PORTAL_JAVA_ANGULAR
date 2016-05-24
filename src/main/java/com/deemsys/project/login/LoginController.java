@@ -37,6 +37,22 @@ public class LoginController {
 		return "/home";
 	}
 	
+	// Logout Page
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public String logout(ModelMap model)
+	{
+	    model.addAttribute("requestSuccess",true);
+		return "/login";
+	}
+	
+	// Login Failed
+	@RequestMapping(value="/login-failed",method=RequestMethod.GET)
+	public String getLogin(ModelMap model)
+	{
+    	model.addAttribute("failed",true);
+		return "/login";
+	}
+	
     @RequestMapping(value="/getLogin",method=RequestMethod.GET)
 	public String getLogin(@RequestParam("id") Integer id,ModelMap model)
 	{

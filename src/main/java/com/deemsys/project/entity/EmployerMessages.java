@@ -1,10 +1,15 @@
 package com.deemsys.project.entity;
 
-// Generated May 23, 2016 4:52:30 PM by Hibernate Tools 3.4.0.CR1
+// Generated May 24, 2016 3:57:03 PM by Hibernate Tools 3.4.0.CR1
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -22,18 +27,20 @@ public class EmployerMessages implements java.io.Serializable {
 	private String email;
 	private String subject;
 	private String message;
+	private Date messageDate;
 	private Integer status;
 
 	public EmployerMessages() {
 	}
 
 	public EmployerMessages(String firstName, String lastName, String email,
-			String subject, String message, Integer status) {
+			String subject, String message,Date messageDate, Integer status) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.subject = subject;
 		this.message = message;
+		this.messageDate = messageDate;
 		this.status = status;
 	}
 
@@ -91,6 +98,16 @@ public class EmployerMessages implements java.io.Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "message_date", length = 10)
+	public Date getMessageDate() {
+		return messageDate;
+	}
+
+	public void setMessageDate(Date messageDate) {
+		this.messageDate = messageDate;
 	}
 
 	@Column(name = "status")

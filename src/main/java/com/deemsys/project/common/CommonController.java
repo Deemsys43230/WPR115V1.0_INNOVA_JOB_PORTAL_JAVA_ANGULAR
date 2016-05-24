@@ -23,6 +23,13 @@ public class CommonController {
     	model.addAttribute("Success",true);
 		return "/index";
 	}
+    
+    @RequestMapping(value="/",method=RequestMethod.GET)
+   	public String getIndexWithSlash(ModelMap model)
+   	{
+       	model.addAttribute("Success",true);
+   		return "/index";
+   	}
 	
 	
 }

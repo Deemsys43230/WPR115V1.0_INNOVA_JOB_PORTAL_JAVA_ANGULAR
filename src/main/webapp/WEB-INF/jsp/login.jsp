@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 
 	<title>Innova Consulting Group</title>
-	
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="resources/styles/bootstrap.css" />
 	<link rel="stylesheet" href="resources/styles/font-awesome.css" />
@@ -33,11 +33,17 @@
             <div class="jumbotron clearfix">
                 <div class="text-center"><img src="resources/images/logo.png" alt=""></div>
                 <hr/>
+                 <c:if test="${not empty param['error']}">
+		                            <div style="color:#FF0000;"><i class="fa fa-exclamation-triangle"></i>&nbsp;${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}<br/><br/></div>
+		                             </c:if>
                  <form role="form" action="j_spring_security_check" method="post">
                 <div class="col-md-10 col-md-offset-1"><br/>
-                    <input class="form-control-login" placeholder="user name" name="username" id="username" >
-                    <input class="form-control-login" placeholder="password" name="password" id="password"><br/><br/>
-                    <button type="submit" class="btn-readmore">Login</button>
+                    <input class="form-control-login" placeholder="user name" name="username" id="username" autofocus>
+                    <span style="color:#FF0000" id="username_error"></span>
+                    <input type="password" class="form-control-login" placeholder="password" name="password" id="password">
+                    <span style="color:#FF0000" id="password_error"></span>
+                    <br/><br/>
+                    <button type="submit" onclick="return checkValidation()" class="btn-readmore">Login</button>
                 </div>
                 </form>
             </div>
@@ -47,5 +53,36 @@
 	<!-- JS -->
 	<script type="text/javascript" src="resources/js/jquery.min.js"></script><!-- jQuery -->
 	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script><!-- Bootstrap -->
+	<script>
+if(location.search=='?sessionout'){
+	document.getElementById('sessionout').style.display = 'inline';
+}else{
+	document.getElementById('sessionout').style.display = 'none';
+}
+
+function checkValidation(){
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+
+	document.getElementById("username_error").innerText="";
+	document.getElementById("password_error").innerText="";
+	
+	var error=false;
+	if(username==""){
+		error=true;
+		document.getElementById("username_error").innerText="Please Enter Username";
+	}
+	if(password==""){
+		error=true;
+		document.getElementById("password_error").innerText="Please Enter Password";
+	}
+	if(error){
+		return false;
+	}else{
+		return true;
+	}
+}
+
+</script>
 </body>
 </html>
