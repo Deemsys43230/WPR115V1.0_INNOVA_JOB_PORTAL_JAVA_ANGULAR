@@ -49,13 +49,13 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
 
         $routeProvider.
             when('/dashboard', {
-                templateUrl: 'dashboard.html',
+                templateUrl: 'admin/dashboard.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'adminApp',
                             files:[
-                                'resources/scripts/controllers/commonController.js'
+                               /* 'resources/scripts/controllers/commonController.js'*/
                             ]
                         })
                     }]
@@ -64,7 +64,7 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 /*controller:'CommonController'*/
             }).
             when('/jobManagement', {
-                templateUrl: 'job.html',
+                templateUrl: 'admin/job.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
@@ -79,7 +79,7 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 /*controller:'CommonController'*/
             }).
             when('/siteManagement', {
-                templateUrl: 'site.html',
+                templateUrl: 'admin/site.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({

@@ -37,7 +37,7 @@
                 <div class="col-md-10 col-md-offset-1"><br/>
                     <input class="form-control-login" placeholder="user name" name="username" id="username" >
                     <input class="form-control-login" placeholder="password" name="password" id="password"><br/><br/>
-                    <a href="home.html" class="btn-readmore">Login</a>
+                    <button type="submit" class="btn-readmore">Login</button>
                 </div>
                 </form>
             </div>

@@ -27,6 +27,7 @@
 	<mvc:resources mapping="/components/**" location="/WEB-INF/resources/components/" />
 	<mvc:resources mapping="/js/**" location="/WEB-INF/resources/js/" />
 	<mvc:resources mapping="/views/**" location="/WEB-INF/resources/views/" />
+	<mvc:resources mapping="/admin/**" location="/WEB-INF/resources/views/admin/" />
 	<!-- End Angular Configuration -->
 	
 	<context:component-scan base-package="com.deemsys.project" />
@@ -36,7 +37,7 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
@@ -95,7 +96,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
 		p:url="${jdbc.databaseurl}" p:username="${jdbc.username}" p:password="${jdbc.password}"
-		p:testWhileIdle="true" p:validationQuery="SELECT count(*) FROM users"
+		p:testWhileIdle="true" p:validationQuery="SELECT count(*) FROM login"
 		p:testOnBorrow="true" p:removeAbandoned="true"
 		p:removeAbandonedTimeout="300000" />
 

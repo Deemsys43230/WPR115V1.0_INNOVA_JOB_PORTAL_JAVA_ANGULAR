@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Innova Consulting Group</title>
+	
+	<!-- Main CSS file -->
+	<link rel="stylesheet" href="resources/styles/bootstrap.css" />
+	<link rel="stylesheet" href="resources/styles/owl-carousel.css" />
+	<link rel="stylesheet" href="resources/styles/magnific-popup.css" />
+	<link rel="stylesheet" href="resources/styles/font-awesome.css" />
+	<link rel="stylesheet" href="resources/styles/style.css" />
+	<link rel="stylesheet" href="resources/styles/responsive.css" />
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="resources/images/icon/favicon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/icon/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/icon/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/icon/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="resources/images/icon/apple-touch-icon-57-precomposed.png">
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+</head>
+<body ng-app="adminApp">
+    <div ng-controller="InitialController">
+        <div class="admin-side-bar">
+            <div class="admin-logo"><img src="resources/images/logo-slogan-white.png"/></div>
+            <ul class="admin-side-menu">
+                <li><a href="#dashboard" class="{{activeClass.dashboard}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
+                <li><a href="#jobManagement" class="{{activeClass.jobManagement}}"><i class="fa fa-suitcase"></i> Job Management</a></li>
+                <li><a href="#siteManagement" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
+                <li><a href="" class="{{activeClass.diff}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
+                <li><a href=""  class="{{activeClass.healthy}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
+            </ul>
+        </div>
+
+        <div class="admin-content-box">
+            <div class="message-bar">
+                <div class="user-name">Hi, admin</div>
+                <h3 class="admin-title">{{header}}</h3>
+            </div>
+
+            <div ng-view></div>
+            <div class="admin-footer">© 2016 Innova. All Rights Reserved.</div>
+        </div>
+    </div>
+
+
+	<!-- Scroll-up -->
+	<div class="scroll-up">
+		<ul><li><a href=""><i class="fa fa-angle-up"></i></a></li></ul>
+	</div>
+
+	
+	<!-- JS -->
+	<script type="text/javascript" src="resources/js/jquery.min.js"></script><!-- jQuery -->
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script><!-- Bootstrap -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="resources/scripts/adminApp.js"></script>
+    <script type="text/javascript" src="resources/angular/angular-route-1.4.5.js"></script>
+    <script type="text/javascript" src="resources/angular/ocLazyLoad.min.js"></script>
+    <script type="text/javascript" src="resources/angular/angular-cookies-1.4.5.js"></script>
+
+	<script type="text/javascript" src="resources/js/jquery.parallax.js"></script><!-- Parallax -->
+	<script type="text/javascript" src="resources/js/smoothscroll.js"></script><!-- Smooth Scroll -->
+	<script type="text/javascript" src="resources/js/masonry.pkgd.min.js"></script><!-- masonry -->
+	<script type="text/javascript" src="resources/js/jquery.fitvids.js"></script><!-- fitvids -->
+	<script type="text/javascript" src="resources/js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
+	<script type="text/javascript" src="resources/js/jquery.counterup.min.js"></script><!-- CounterUp -->
+	<script type="text/javascript" src="resources/js/waypoints.min.js"></script><!-- CounterUp -->
+	<script type="text/javascript" src="resources/js/jquery.isotope.min.js"></script><!-- isotope -->
+	<script type="text/javascript" src="resources/js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script><!-- google map -->
+	<script type="text/javascript" src="resources/js/scripts.js"></script><!-- Scripts -->
+
+    <script src="resources/js/jquery.contact-buttons.js"></script>
+</body>
+</html>

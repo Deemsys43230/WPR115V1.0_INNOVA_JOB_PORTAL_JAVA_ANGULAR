@@ -21,11 +21,20 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 
+	// Login Page
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(ModelMap model)
 	{
     	model.addAttribute("requestSuccess",true);
 		return "/login";
+	}
+	
+	// Dashboard Page
+	@RequestMapping(value="/dashboard",method=RequestMethod.GET)
+	public String adminDashboard(ModelMap model)
+	{
+    	model.addAttribute("requestSuccess",true);
+		return "/home";
 	}
 	
     @RequestMapping(value="/getLogin",method=RequestMethod.GET)
