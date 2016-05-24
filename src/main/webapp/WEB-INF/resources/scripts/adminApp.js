@@ -71,12 +71,13 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             name:'adminApp',
                             files:[
                                 'resources/js/easyResponsiveTabs.js',
-                                'resources/styles/easy-responsive-tabs.css'
+                                'resources/styles/easy-responsive-tabs.css',
+                                'resources/scripts/controllers/adminJobsController.js'
                             ]
                         })
                     }]
-                }
-                /*controller:'CommonController'*/
+                },
+                controller:'AdminJobsController'
             }).
             when('/siteManagement', {
                 templateUrl: 'admin/site.html',

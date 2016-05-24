@@ -713,7 +713,7 @@
 		transition: all 0.2s ease-in-out;
 	}
 
-	.btn-send:hover{
+	.btn-send:hover,.btn-send:focus{
 		background-color: #008200;
 		color: #fff;
 	}
@@ -724,7 +724,7 @@
 		border: 0;
 		color: #fff;
 		padding: 10px 20px;
-		margin-top: 20px;
+		margin-top: 15px;
 		text-transform: uppercase;
 		-webkit-transition: all 0.2s ease-in-out;
 		-moz-transition: all 0.2s ease-in-out;
@@ -733,7 +733,7 @@
 		transition: all 0.2s ease-in-out;
 	}
 
-	.btn-readmore:hover{
+	.btn-readmore:hover,.btn-readmore:focus{
 		background-color: #e50000;
 		color: #fff;	
 	}
@@ -753,7 +753,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-.btn-readmore-small:hover{
+.btn-readmore-small:hover,.btn-readmore-small:focus{
     background-color: #e50000;
     color: #fff;
 }
@@ -1522,14 +1522,12 @@
 		border: 1px solid #bbb;
 		padding: 8px 14px;
 		width: 100%;
-		margin-bottom: 20px;
 	}
 
     select{
         border: 1px solid #bbb;
         padding: 8px 14px;
         width: 100%;
-        margin-bottom: 20px;
     }
 
     .about-us-text{
@@ -2111,9 +2109,14 @@ h4{
 }
 
 .admin-main-content{
-    padding-top: 80px;
+    padding-top: 60px;
     min-height: 630px;
+    height:auto;
     z-index: 1;
+}
+
+.margin-top-20{
+	margin-top:20px;
 }
 
 .admin-logo{
@@ -2211,4 +2214,23 @@ ul.admin-side-menu li a.active:after{
 thead.high-light tr{
     background-color: #666;
     color: #fff;
+}
+
+.margin-bottom-5{
+	margin-bottom:5px
+}
+
+.margin-top-5{
+	margin-top:5px
+}
+
+.margin-bottom-10{
+	margin-bottom:10px
+}
+
+.error-container{
+	height:20px;
+	font-size:12px;
+	text-align:right;
+	color:red;
 }

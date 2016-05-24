@@ -8,7 +8,7 @@ ul.resp-tabs-list, p {
     font-weight: 600;
     font-size: 13px;
     display: inline-block;
-    padding: 13px 15px;
+    padding: 5px 15px;
     margin: 0 4px 0 0;
     list-style: none;
     cursor: pointer;
@@ -36,7 +36,7 @@ h2.resp-accordion {
 	border: 1px solid #c1c1c1 !important;
 	border-bottom: none;
 	margin-bottom: -1px !important;
-	padding: 12px 14px 14px 14px !important;
+	padding: 3px 14px 5px 14px !important;
 	border-top: 4px solid #e50000 !important;
 	border-bottom: 0px #fff solid !important;
 }
@@ -82,7 +82,7 @@ h2.resp-tab-title:last-child {
 
 .resp-vtabs .resp-tabs-list li {
     display: block;
-    padding: 15px 15px !important;
+    padding: 5px 15px !important;
     margin: 0 0 4px;
     cursor: pointer;
     float: none;
