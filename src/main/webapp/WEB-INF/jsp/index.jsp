@@ -54,12 +54,12 @@
                     <!--<div class="slogan">Talent x Innovation</div>-->
 				</div>
 
-				<div class="collapse navbar-collapse" id="st-navbar-collapse">
-                    <div class="follow-us">Follow Us :
-                        <a href="https://www.facebook.com/profile.php?id=100012233468958" target="_blank" class="ic ic-rounded ic-facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/Innova_Jobs" target="_blank" class="ic ic-rounded ic-twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="https://plus.google.com/u/0/102330801515270958217/posts" target="_blank" class="ic ic-rounded ic-google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="https://www.linkedin.com/in/innova-jobs-928275121" target="_blank" class="ic ic-rounded ic-linkedin"><i class="fa fa-linkedin"></i></a>
+				<div class="collapse navbar-collapse" id="st-navbar-collapse" ng-controller="CommonController">
+                    <div class="follow-us" >Follow Us :
+                        <a href="{{socialMediaDetails.facebookLink}}" target="_blank" class="ic ic-rounded ic-facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="{{socialMediaDetails.twitterLink}}" target="_blank" class="ic ic-rounded ic-twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="{{socialMediaDetails.googlePlusLink}}" target="_blank" class="ic ic-rounded ic-google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="{{socialMediaDetails.linkedInLink}}" target="_blank" class="ic ic-rounded ic-linkedin"><i class="fa fa-linkedin"></i></a>
                     </div>
 					<ul class="nav navbar-nav navbar-right">
 				    	<li class="first"><a class="active" href="#index">Home</a></li>

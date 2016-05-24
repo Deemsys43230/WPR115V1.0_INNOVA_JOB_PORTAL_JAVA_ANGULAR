@@ -1,4 +1,4 @@
-var adminApp= angular.module('adminApp', ['ngRoute','oc.lazyLoad','ngCookies']);
+var adminApp= angular.module('adminApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash']);
 
 adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
 
@@ -86,12 +86,13 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             name:'adminApp',
                             files:[
                                 'resources/js/easyResponsiveTabs.js',
-                                'resources/styles/easy-responsive-tabs.css'
+                                'resources/styles/easy-responsive-tabs.css',
+                                'resources/scripts/controllers/siteController.js'
                             ]
                         })
                     }]
-                }
-                /*controller:'CommonController'*/
+                },
+                controller:'SiteController'
             }).
 
             otherwise({
@@ -110,3 +111,104 @@ adminApp.controller("InitialController",['$scope','$location',function($scope,$l
     });
 
 }]);
+
+adminApp.directive(
+		'validateEmail',
+		function() {
+			var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,5})$/;
+			return {
+				require : 'ngModel',
+				restrict : '',
+				link : function(scope, elm, attrs, ctrl) {
+					// only apply the validator if ngModel is present
+					// and Angular has added the email validator
+					if (ctrl && ctrl.$validators.email) {
+
+						// this will overwrite the default Angular email
+						// validator
+						ctrl.$validators.email = function(modelValue) {
+							return ctrl.$isEmpty(modelValue)
+									|| EMAIL_REGEXP.test(modelValue);
+						};
+					}
+				}
+			};
+		});
+
+adminApp.directive('validateMobile', function() {
+var USA_MOB_EXPR = /^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
+var USA_MOB_EXPR_NOSPACE = /^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
+var USA_MOB_EXPR_NO = /^[0-9]{10}$/;
+return {
+require : 'ngModel',
+restrict : '',
+link : function(scope, elm, attrs, ngModel) {
+	ngModel.$validators.validateMobile = function(modelValue) {
+		if (modelValue == "" || modelValue == undefined) {
+			return true;
+		} else {
+			return USA_MOB_EXPR.test(modelValue)
+					|| USA_MOB_EXPR_NO.test(modelValue)
+					|| USA_MOB_EXPR_NOSPACE.test(modelValue);
+		}
+
+	};
+}
+};
+});
+
+adminApp.directive('validateName', function() {
+var NAME_EXPR = /^ *([a-zA-Z]+ ?)+ *$/;
+// var USA_MOB_EXPR_WITH_BR=/^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
+return {
+require : 'ngModel',
+restrict : '',
+link : function(scope, elm, attrs, ngModel) {
+	ngModel.$validators.validateName = function(modelValue) {
+		return NAME_EXPR.test(modelValue);// ||USA_MOB_EXPR_WITH_BR.test(modelValue);
+	};
+}
+};
+});
+
+adminApp.directive('validateNumber', function() {
+	var NUMBER_EXPR = /^[0-9]*$/;
+	// var USA_MOB_EXPR_WITH_BR=/^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
+	return {
+		require : 'ngModel',
+		restrict : '',
+		link : function(scope, elm, attrs, ngModel) {
+			ngModel.$validators.validateNumber = function(modelValue) {
+				return NUMBER_EXPR.test(modelValue);// ||USA_MOB_EXPR_WITH_BR.test(modelValue);
+			};
+		}
+	};
+});
+
+adminApp.directive('validateZipcode', function() {
+	var ZIPCODE_EXPR = /^[0-9]{5}$/;
+	// var USA_MOB_EXPR_WITH_BR=/^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
+	return {
+		require : 'ngModel',
+		restrict : '',
+		link : function(scope, elm, attrs, ngModel) {
+			ngModel.$validators.validateZipcode = function(modelValue) {
+				return ZIPCODE_EXPR.test(modelValue);// ||USA_MOB_EXPR_WITH_BR.test(modelValue);
+			};
+		}
+	};
+});
+
+adminApp.directive('validateUrl', function () {
+	  var URL_REGEXP = /^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+	  return {
+	    require: 'ngModel',
+	    restrict: '',
+	    link: function (scope, elm, attrs, ngModel) {
+	      // only apply the validator if ngModel is present and Angular has added the email validator
+	      ngModel.$validators.validateUrl = function (modelValue) {
+	        return URL_REGEXP.test(modelValue);
+	      };
+	    }
+	  };
+	});

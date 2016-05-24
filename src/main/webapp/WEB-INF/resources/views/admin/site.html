@@ -5,60 +5,110 @@
         <div id="parentHorizontalTab">
             <ul class="resp-tabs-list hor_1">
                 <li><h5><i class="fa fa-phone text-red"></i> &nbsp;CONTACT DETAILS</h5></li>
-                <li><h5><i class="fa fa-share-alt text-red"></i> &nbsp;SOCIAL MEDIA</h5></li>
+               <li><h5><i class="fa fa-share-alt text-red"></i> &nbsp;SOCIAL MEDIA</h5></li>
             </ul>
+            <div flash-message="2000" class="col-md-5 pull-right"></div>
             <div class="resp-tabs-container hor_1">
                 <div>
                     <br/>
-                    <form action="php/send-contact.php" class="contact-form" name="contact-form" method="post">
+                    <form class="contact-form" name="contactForm">
                         <div class="row">
                             <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="First Name*">
+                                <input type="text" name="street" ng-model="contactDetails.street" required validate-name placeholder="Street*">
+                                <span class="error-container" ng-show="contactForm.street.$dirty && contactForm.street.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="contactForm.street.$error.required">Please Enter Street</span>
+                                    <span ng-cloak style="color:red" ng-show="!contactForm.street.$error.required&&contactForm.street.$error.validateName">Enter Valid Street</span>
+                                </span>
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="Last Name*">
+                                <input type="text" name="city" ng-model="contactDetails.city" required validate-name placeholder="City*">
+                            	 <span class="error-container" ng-show="contactForm.city.$dirty && contactForm.city.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="contactForm.city.$error.required">Please Enter City</span>
+                                    <span ng-cloak style="color:red" ng-show="!contactForm.city.$error.required&&contactForm.city.$error.validateName">Enter Valid City</span>
+                                </span>
                             </div>
                             <div class="col-sm-4">
-                                <input type="email" name="email" required="required" placeholder="Email*">
+                                <input type="text" name="state" ng-model="contactDetails.state" required validate-name placeholder="State*">
+                                 <span class="error-container" ng-show="contactForm.state.$dirty && contactForm.state.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="contactForm.state.$error.required">Please Enter State</span>
+                                    <span ng-cloak style="color:red" ng-show="!contactForm.state.$error.required&&contactForm.state.$error.validateName">Enter Valid State</span>
+                                </span>
+                            </div>
+                             <div class="col-sm-4">
+                                <input type="text" name="country" ng-model="contactDetails.country" required validate-name placeholder="Country*">
+                                 <span class="error-container" ng-show="contactForm.country.$dirty && contactForm.country.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="contactForm.country.$error.required">Please Enter Country</span>
+                                    <span ng-cloak style="color:red" ng-show="!contactForm.country.$error.required&&contactForm.country.$error.validateName">Enter Valid Country</span>
+                                </span>
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" name="subject" placeholder="Phone Number*">
+                                <input type="text" name="zipcode" ng-model="contactDetails.zipCode" required validate-zipcode placeholder="Zipcode*">
+                                 <span class="error-container" ng-show="contactForm.zipcode.$dirty && contactForm.zipcode.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="contactForm.zipcode.$error.required">Please Enter Zipcode</span>
+                                    <span ng-cloak style="color:red" ng-show="!contactForm.zipcode.$error.required&&contactForm.zipcode.$error.validateZipcode">Enter Valid Zipcode</span>
+                                </span>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="email" name="email" ng-model="contactDetails.email" required validate-email placeholder="Email*">
+                                <span class="error-container" ng-show="contactForm.email.$dirty && contactForm.email.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="contactForm.email.$error.required">Please Enter Email ID</span>
+                                    <span ng-cloak style="color:red" ng-show="!contactForm.email.$error.required&&contactForm.email.$error.email">Enter Valid Email ID</span>
+                                </span>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" name="phoneNumber" ng-model="contactDetails.phoneNumber" required validate-mobile placeholder="Phone Number*">
+                                 <span class="error-container" ng-show="contactForm.phoneNumber.$dirty && contactForm.phoneNumber.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="contactForm.phoneNumber.$error.required">Please Enter Phone Number</span>
+                                    <span ng-cloak style="color:red" ng-show="!contactForm.phoneNumber.$error.required&&contactForm.phoneNumber.$error.validateMobile">Enter Valid Phone Number</span>
+                                </span>
                             </div>
                             <div class="col-sm-12">
-                                <input type="submit" name="submit" value="SUBMIT YOUR RESUME" class="btn btn-readmore">
+                                <input type="submit" name="submit" value="SAVE" class="btn btn-send" ng-click="saveUpdateContactDetails()">
                                 <br/><br/>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.
                     <br>
-                    <br>
-                    <form action="php/send-contact.php" class="contact-form" name="contact-form" method="post">
+                    <form class="contact-form" name="socialMediaForm" >
                         <div class="row">
                             <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="First Name*">
+                                <input type="text" name="facebookLink" ng-model="socialMediaDetails.facebookLink" required validate-url placeholder="Facebook URL*">
+                                <span class="error-container" ng-show="socialMediaForm.facebookLink.$dirty && socialMediaForm.facebookLink.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="socialMediaForm.facebookLink.$error.required">Please Enter Facebook URL</span>
+                                    <span ng-cloak style="color:red" ng-show="!socialMediaForm.facebookLink.$error.required&&socialMediaForm.facebookLink.$error.validateUrl">Enter Valid URL</span>
+                                </span>
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="Last Name*">
+                                <input type="text" name="twitterLink" ng-model="socialMediaDetails.twitterLink" required validate-url placeholder="Twitter URL*">
+                                <span class="error-container" ng-show="socialMediaForm.twitterLink.$dirty && socialMediaForm.twitterLink.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="socialMediaForm.twitterLink.$error.required">Please Enter Twitter URL</span>
+                                    <span ng-cloak style="color:red" ng-show="!socialMediaForm.twitterLink.$error.required&&socialMediaForm.twitterLink.$error.validateUrl">Enter Valid URL</span>
+                                </span>
                             </div>
                             <div class="col-sm-4">
-                                <input type="email" name="email" required="required" placeholder="Email*">
+                                <input type="text" name="googlePlusLink" ng-model="socialMediaDetails.googlePlusLink" required validate-url placeholder="Google Plus URL*">
+                                <span class="error-container" ng-show="socialMediaForm.googlePlusLink.$dirty && socialMediaForm.googlePlusLink.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="socialMediaForm.googlePlusLink.$error.required">Please Enter Google Plus URL</span>
+                                    <span ng-cloak style="color:red" ng-show="!socialMediaForm.googlePlusLink.$error.required&&socialMediaForm.googlePlusLink.$error.validateUrl">Enter Valid URL</span>
+                                </span>
                             </div>
-                            <div class="col-sm-12">
-                                <input type="text" name="subject" placeholder="Subject*">
+                            <div class="col-sm-4">
+                                <input type="text" name="linkedInLink" ng-model="socialMediaDetails.linkedInLink" required validate-url placeholder="LinkedIn URL*">
+                                <span class="error-container" ng-show="socialMediaForm.linkedInLink.$dirty && socialMediaForm.linkedInLink.$invalid">
+                                    <span ng-cloak style="color:red" ng-show="socialMediaForm.linkedInLink.$error.required">Please Enter LinkedIn URL</span>
+                                    <span ng-cloak style="color:red" ng-show="!socialMediaForm.linkedInLink.$error.required&&socialMediaForm.linkedInLink.$error.validateUrl">Enter Valid URL</span>
+                                </span>
                             </div>
-                            <div class="col-sm-12">
-                                <textarea name="message" required="required" cols="30" rows="3" placeholder="Message*"></textarea>
-                            </div>
+                           
                             <!--<div class="col-sm-12">
                                 <h6>CAPTCHA</h6>
                                 <img src="images/puzzle-2.png">
                                 <input type="text" name="website" placeholder="Type the letter">
                             </div>-->
                             <div class="col-sm-12">
-                                <input type="submit" name="submit" value="Send Message" class="btn btn-send"><br/><br/>
+                                <input type="submit" name="submit" value="Save" ng-click="saveUpdateSocialMediaDetails()" class="btn btn-send"><br/><br/>
                             </div>
                         </div>
                     </form>

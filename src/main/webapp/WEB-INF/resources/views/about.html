@@ -189,19 +189,19 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.
                                 <br>
                                 <br>
-                                <form action="php/send-contact.php" class="contact-form" name="contact-form" method="post">
+                                <form  class="contact-form" name="jobseeker-form" >
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="name" required="required" placeholder="First Name*">
+                                            <input type="text" name="firstname" ng-model="jobSeekersForm.firstname" required="required" placeholder="First Name*">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" name="name" required="required" placeholder="Last Name*">
+                                            <input type="text" name="lastname" ng-model="jobSeekersForm.lastname" required="required" placeholder="Last Name*">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="email" name="email" required="required" placeholder="Email*">
+                                            <input type="email" name="email" ng-model="jobSeekersForm.email" required="required" placeholder="Email*">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" name="subject" placeholder="Phone Number*">
+                                            <input type="text" name="subject" ng-model="jobSeekersForm.subject" placeholder="Phone Number*">
                                         </div>
                                         <div class="col-sm-8" style="margin-top: 8px">
                                             <a href="" class="choose-file override">Upload Resume*</a><br/>
@@ -214,7 +214,7 @@
                                             <input type="text" name="website" placeholder="Type the letter">
                                         </div>-->
                                         <div class="col-sm-12">
-                                            <input type="submit" name="submit" value="SUBMIT YOUR RESUME" class="btn btn-send">
+                                            <input type="submit" name="submit" value="SUBMIT YOUR RESUME" ng-click="saveJobSeekers()" class="btn btn-send">
                                             <br/><br/>
                                         </div>
                                     </div>
@@ -224,22 +224,22 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.
                                 <br>
                                 <br>
-                                <form action="php/send-contact.php" class="contact-form" name="contact-form" method="post">
+                                <form  class="contact-form" name="contact-form" >
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="name" required="required" placeholder="First Name*">
+                                            <input type="text" name="firstname" ng-model="employersContactForm.firstname" required="required" placeholder="First Name*">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" name="name" required="required" placeholder="Last Name*">
+                                            <input type="text" name="lastname" ng-model="employersContactForm.lastname" required="required" placeholder="Last Name*">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="email" name="email" required="required" placeholder="Email*">
+                                            <input type="email" name="email" ng-model="employersContactForm.email" required="required" placeholder="Email*">
                                         </div>
                                         <div class="col-sm-12">
-                                            <input type="text" name="subject" placeholder="Subject*">
+                                            <input type="text" name="subject" ng-model="employersContactForm.subject" placeholder="Subject*">
                                         </div>
                                         <div class="col-sm-12">
-                                            <textarea name="message" required="required" cols="30" rows="3" placeholder="Message*"></textarea>
+                                            <textarea name="message" required="required" ng-model="employersContactForm.message" cols="30" rows="3" placeholder="Message*"></textarea>
                                         </div>
                                         <!--<div class="col-sm-12">
                                             <h6>CAPTCHA</h6>
@@ -247,7 +247,7 @@
                                             <input type="text" name="website" placeholder="Type the letter">
                                         </div>-->
                                         <div class="col-sm-12">
-                                            <input type="submit" name="submit" value="Send Message" class="btn btn-send"><br/><br/>
+                                            <input type="submit" name="submit" value="Send Message" ng-click="saveEmployersContact()" class="btn btn-send"><br/><br/>
                                         </div>
                                     </div>
                                 </form>

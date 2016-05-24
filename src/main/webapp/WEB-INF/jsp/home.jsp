@@ -68,6 +68,7 @@
     <script type="text/javascript" src="resources/angular/angular-route-1.4.5.js"></script>
     <script type="text/javascript" src="resources/angular/ocLazyLoad.min.js"></script>
     <script type="text/javascript" src="resources/angular/angular-cookies-1.4.5.js"></script>
+    <script type="text/javascript" src="scripts/services/requestHandler.js"></script>
 
 	<script type="text/javascript" src="resources/js/jquery.parallax.js"></script><!-- Parallax -->
 	<script type="text/javascript" src="resources/js/smoothscroll.js"></script><!-- Smooth Scroll -->
@@ -82,5 +83,7 @@
 	<script type="text/javascript" src="resources/js/scripts.js"></script><!-- Scripts -->
 
     <script src="resources/js/jquery.contact-buttons.js"></script>
+    <script src="resources/angular/angular-flash/angular-flash.min.js"></script>
+	<link rel="stylesheet" href="resources/angular/angular-flash/angular-flash.css">
 </body>
 </html>
