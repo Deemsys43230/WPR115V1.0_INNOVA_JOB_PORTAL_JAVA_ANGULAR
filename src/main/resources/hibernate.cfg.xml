@@ -9,5 +9,8 @@
         <mapping class="com.deemsys.project.entity.SocialMedia" />
          <mapping class="com.deemsys.project.entity.Login" />
           <mapping class="com.deemsys.project.entity.Roles" />
+          <mapping class="com.deemsys.project.entity.JobCategory" />
+          <mapping class="com.deemsys.project.entity.Job" />
+          <mapping class="com.deemsys.project.entity.JobTag" />
     </session-factory>
 </hibernate-configuration>
