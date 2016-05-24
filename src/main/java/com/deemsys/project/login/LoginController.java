@@ -21,6 +21,13 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login(ModelMap model)
+	{
+    	model.addAttribute("requestSuccess",true);
+		return "/login";
+	}
+	
     @RequestMapping(value="/getLogin",method=RequestMethod.GET)
 	public String getLogin(@RequestParam("id") Integer id,ModelMap model)
 	{
