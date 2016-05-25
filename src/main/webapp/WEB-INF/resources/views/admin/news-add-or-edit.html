@@ -1,0 +1,17 @@
+<div class="clearfix contact-form row">
+	<div class="col-md-12">
+		<h5>News tile<span class="text-red"><sup>*</sup></span></h5>
+		<input type="text" name="name" required="required" placeholder="News title">
+	</div>
+	
+	<div class="col-md-12">
+		<h5>News description</h5>
+		<div summernote config="options" name="content"  ng-model="instructions.content" required></div>
+	</div>
+	
+	<div class="col-md-12">
+		<a href="" class="btn btn-success">Add News</a>
+		<a href="" ng-click="cancelAddNews()" class="btn btn-danger">Cancel</a>
+	</div>
+
+</div>

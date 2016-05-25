@@ -3,9 +3,13 @@
 <div class="admin-main-content">
     <div class="col-md-12 margin-top-20">
         <div id="parentHorizontalTab">
+        	<a href="" ng-show="isNews" ng-click="addNews()" class="btn btn btn-send pull-right"><i class="fa fa-plus-circle"></i> ADD NEWS</a>
+        	<a href="" ng-show="isTestimonial" ng-click="addTestimonial()" class="btn btn btn-send pull-right"><i class="fa fa-plus-circle"></i> ADD TESTIMONIAL</a>
             <ul class="resp-tabs-list hor_1">
-                <li><h5><i class="fa fa-phone text-red"></i> &nbsp;CONTACT DETAILS</h5></li>
-               <li><h5><i class="fa fa-share-alt text-red"></i> &nbsp;SOCIAL MEDIA</h5></li>
+                <li ng-click="(isNews=false);(isTestimonial=false)"><h5><i class="fa fa-phone text-red"></i> &nbsp;CONTACT DETAILS</h5></li>
+               	<li ng-click="(isNews=false);(isTestimonial=false)"><h5><i class="fa fa-share-alt text-red"></i> &nbsp;SOCIAL MEDIA</h5></li>
+               	<li ng-click="(isNews=true);(isTestimonial=false)"><h5><i class="fa fa-newspaper-o text-red"></i> &nbsp;NEWS</h5></li>
+               	<li ng-click="(isNews=false);(isTestimonial=true)"><h5><i class="fa fa-comments text-red"></i> &nbsp;TESTIMONIAL</h5></li>
             </ul>
             <div flash-message="2000" class="col-md-5 pull-right"></div>
             <div class="resp-tabs-container hor_1">
@@ -145,6 +149,12 @@
                             </div>
                         </div>
                     </form>
+                </div>
+                <div>
+                	<div ng-include="newsTemplate"></div>
+                </div>
+                <div>
+                	<div ng-include="testimonialTemplate"></div>
                 </div>
             </div>
         </div>

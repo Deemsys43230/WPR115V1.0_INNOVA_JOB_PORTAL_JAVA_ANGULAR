@@ -39,9 +39,9 @@
             <div class="admin-logo"><img src="resources/images/logo-slogan-white.png"/></div>
             <ul class="admin-side-menu">
                 <li><a href="#dashboard" class="{{activeClass.dashboard}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
-                <li><a href="#jobManagement" class="{{activeClass.jobManagement}}"><i class="fa fa-suitcase"></i> Job Management</a></li>
+                <li><a href="#jobManagement-jobList" class="{{activeClass.jobManagement}}"><i class="fa fa-suitcase"></i> Job Management</a></li>
                 <li><a href="#siteManagement" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
-                <li><a href="" class="{{activeClass.diff}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
+                <li><a href="#test" class="{{activeClass.test}}"><i class="fa fa-dashboard"></i> test</a></li>
                 <li><a href=""  class="{{activeClass.healthy}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
             </ul>
         </div>
@@ -75,6 +75,7 @@
     <script type="text/javascript" src="resources/angular/angular-cookies-1.4.5.js"></script>
     <script type="text/javascript" src="scripts/services/requestHandler.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+    <script src="resources/angular/angular-summer.js"></script>
 
 	<script type="text/javascript" src="resources/js/jquery.parallax.js"></script><!-- Parallax -->
 	<script type="text/javascript" src="resources/js/smoothscroll.js"></script><!-- Smooth Scroll -->

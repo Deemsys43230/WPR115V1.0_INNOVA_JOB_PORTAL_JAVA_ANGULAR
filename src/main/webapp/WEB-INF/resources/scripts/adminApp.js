@@ -63,7 +63,7 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 }
                 /*controller:'CommonController'*/
             }).
-            when('/jobManagement', {
+            when('/jobManagement-jobList', {
                 templateUrl: 'admin/job.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
@@ -72,12 +72,28 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             files:[
                                 'resources/js/easyResponsiveTabs.js',
                                 'resources/styles/easy-responsive-tabs.css',
-                                'resources/scripts/controllers/adminJobsController.js'
+                                'resources/scripts/controllers/adminJobListController.js'
                             ]
                         })
                     }]
                 },
-                controller:'AdminJobsController'
+                controller:'AdminJobListController'
+            }).
+            when('/jobManagement-jobCategory', {
+                templateUrl: 'admin/job.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/js/easyResponsiveTabs.js',
+                                'resources/styles/easy-responsive-tabs.css',
+                                'resources/scripts/controllers/adminJobCategoryController.js'
+                            ]
+                        })
+                    }]
+                },
+                controller:'AdminJobCategoryController'
             }).
             when('/siteManagement', {
                 templateUrl: 'admin/site.html',
@@ -88,6 +104,8 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             files:[
                                 'resources/js/easyResponsiveTabs.js',
                                 'resources/styles/easy-responsive-tabs.css',
+                                'resources/js/summernote.js',
+                                'resources/styles/summernote.css',
                                 'resources/scripts/controllers/siteController.js'
                             ]
                         })
@@ -95,6 +113,7 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'SiteController'
             }).
+            
 
             otherwise({
                 redirectTo: '/dashboard'
@@ -106,9 +125,12 @@ adminApp.controller("InitialController",['$scope','$location',function($scope,$l
 
     $scope.$on('$routeChangeStart', function(next, current) {
         $scope.activeClass={};
+        $scope.submenuActive={};
         var currentPage = $location.url().substr(1);
-        $scope.activeClass[currentPage]='active';
-        $scope.header = currentPage.replace(/([a-z])([A-Z])/g, '$1 $2');
+        var activePage=currentPage.split('-');
+        $scope.activeClass[activePage[0]]='active';
+        $scope.submenuActive[activePage[1]]=true;
+        $scope.header = activePage[0].replace(/([a-z])([A-Z])/g, '$1 $2');
     });
 
 }]);

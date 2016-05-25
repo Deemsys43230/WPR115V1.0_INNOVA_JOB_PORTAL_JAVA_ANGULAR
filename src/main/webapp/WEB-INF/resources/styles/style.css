@@ -2234,3 +2234,41 @@ thead.high-light tr{
 	text-align:right;
 	color:red;
 }
+
+ul.admin-sub-menu{
+	padding:0;
+	margin:0;
+}
+
+ul.admin-sub-menu li{
+    display: inline-block;
+    list-style: none;
+    margin: 0 4px 0 0;
+    float: left;
+}
+
+ul.admin-sub-menu li a{
+	background-color:#efefef;
+	font-weight: 600;
+    font-size: 15px;
+    padding: 12px 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+ul.admin-sub-menu li.active a{
+	background-color:#e50000!important;
+	color:#fff;
+}
+
+ul.admin-sub-menu li:hover a{
+	background-color:#666!important;
+	color:#fff;
+}
+
+.sub-menu-content{
+	margin-top:45px;
+	padding:10px;
+	border:1px solid #ccc;
+	min-height:400px;
+}

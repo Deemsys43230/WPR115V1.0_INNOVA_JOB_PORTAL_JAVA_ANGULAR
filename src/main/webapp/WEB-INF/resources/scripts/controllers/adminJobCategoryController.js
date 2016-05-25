@@ -4,24 +4,13 @@
 
 var adminApp = angular.module('adminApp',['ngSanitize', 'ui.select']);
 
-adminApp.controller('AdminJobsController',['$scope','$location','requestHandler','Flash',function($scope, $location, requestHandler,Flash){
-    $scope.isJobList=true;
-    $scope.jobListTemplate='resources/views/admin/job-list.html';
+adminApp.controller('AdminJobCategoryController',['$scope','$location','requestHandler','Flash',function($scope, $location, requestHandler,Flash){
     
-    $scope.addNewJob=function(){
-    	$scope.jobListTemplate='resources/views/admin/job-add-or-edit.html';
-    };
-    
-    $scope.cancelAddJob=function(){
-    	$scope.jobListTemplate='resources/views/admin/job-list.html';
-    };
-    
-    $scope.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
-
-    $scope.multipleDemo = {};
-    $scope.multipleDemo.colors = ['Blue','Red'];
-    
-    //Get Contact Details
+	$scope.isJobCateogry=true;
+	
+	$scope.jobListTemplate='resources/views/admin/job-category.html';
+	
+	//Get Contact Details
     $scope.getJobCategory = function(){
            requestHandler.getRequest("Admin/getAllJobCategorys.json","").then(function(response){
            $scope.jobCategoryList = response.data.jobCategoryForms;

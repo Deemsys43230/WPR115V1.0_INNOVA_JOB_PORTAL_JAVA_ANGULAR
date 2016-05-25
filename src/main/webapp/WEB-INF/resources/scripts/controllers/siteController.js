@@ -1,7 +1,37 @@
-var adminApp = angular.module('adminApp', [ 'requestModule','flash']);
+var adminApp = angular.module('adminApp', [ 'requestModule','flash','summernote']);
 
 adminApp.controller('SiteController', ['$scope','$location','requestHandler','Flash',
 		function($scope, $location, requestHandler,Flash) {
+
+	$scope.isNews=false;
+	$scope.isTestimonial=false;
+    $scope.newsTemplate='resources/views/admin/news-list.html';
+    $scope.testimonialTemplate='resources/views/admin/testimonial-list.html';
+    
+    $scope.addNews=function(){
+    	$scope.newsTemplate='resources/views/admin/news-add-or-edit.html';
+    	alert($scope.newsTemplate);
+    };
+    
+    
+    $scope.addTestimonial=function(){
+    	$scope.jobListTemplate='resources/views/admin/testimonial-add-or-edit.html';
+    };
+    
+    $scope.cancelAddNews=function(){
+    	$scope.newsTemplate='resources/views/admin/news-list.html';
+    };
+    
+    $scope.cancelAddTestimonial=function(){
+    	$scope.jobListTemplate='resources/views/admin/testimonial-list.html';
+    };
+    
+    
+    //summer note
+    $scope.options = {
+        height: 250
+    };
+	
 	
 	//Get Contact Details
 	$scope.getContactDetails = function(){
