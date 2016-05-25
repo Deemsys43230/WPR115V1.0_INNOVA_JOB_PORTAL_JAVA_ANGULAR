@@ -113,6 +113,20 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'SiteController'
             }).
+            when('/capabilitySheet', {
+                templateUrl: 'admin/capability-sheet.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/scripts/controllers/adminCapabilitySheetController.js'
+                            ]
+                        })
+                    }]
+                },
+                controller:'CapabilitySheetController'
+            }).
             
 
             otherwise({

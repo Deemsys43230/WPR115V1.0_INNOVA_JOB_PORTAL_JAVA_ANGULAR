@@ -2078,30 +2078,32 @@ h4{
     margin-left: 250px;
 }
 
-
-
 .admin-content-box .message-bar{
     width: 100%;
     position: fixed;
     background-color: #eee;
-    height: 60px;
+    height: 50px;
     z-index: 5;
 }
 
 .admin-title{
     font-weight: normal;
-    font-size: 30px;
+    font-size: 22px;
     margin: 10px 20px;
 }
 
 .user-name{
-    margin-top: 15px;
+    margin-top: 10px;
     margin-right: 300px;
     float: right;
 }
 
 .admin-footer{
+	margin-left: 250px;
+	position:block;
+	display:block;
     height: 40px;
+    bottom:0;
     background-color: #333;
     text-align: center;
     padding: 7px 0;
@@ -2109,7 +2111,7 @@ h4{
 }
 
 .admin-main-content{
-    padding-top: 60px;
+    padding-top: 50px;
     min-height: 630px;
     height:auto;
     z-index: 1;
@@ -2271,4 +2273,49 @@ ul.admin-sub-menu li:hover a{
 	padding:10px;
 	border:1px solid #ccc;
 	min-height:400px;
+}
+
+
+div.browse-wrap {
+	top:0;
+	left:0;
+	width:300px;
+	cursor:pointer;
+	overflow:hidden;
+	padding:7px 20px;
+	text-align:center;
+	position:relative;
+	border:solid 3px #ccc;
+}
+
+div.browse-wrap:hover {
+	color:#e50000;
+	border-color:#e50000;
+}
+
+div.title {
+	font-weight:bold;
+}
+
+input.upload {
+	right:0;
+	margin:0;
+	bottom:0;
+	padding:0;
+	opacity:0;
+	height:300px;
+	outline:none;
+	cursor:inherit;
+	position:absolute;
+	font-size:1000px !important;
+}
+
+span.upload-path {
+	text-align: center;
+	margin-top:30px;
+}
+
+.doc {
+    width: 100%;
+    height: 1000px;
 }

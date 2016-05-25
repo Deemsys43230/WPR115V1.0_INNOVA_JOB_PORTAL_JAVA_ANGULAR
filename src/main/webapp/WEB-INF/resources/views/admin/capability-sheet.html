@@ -1,0 +1,65 @@
+
+
+<div class="admin-main-content">
+    <div class="col-md-12 margin-top-20">
+    	<div class="col-md-4 browse-wrap">
+			<div class="title">Choose a file to upload</div>
+			<input type="file" name="upload" class="upload" title="Choose a file to upload">
+		</div>
+		
+		<div class="col-md-5">
+			<span class="upload-path"></span>
+		</div>
+		
+		<div class="col-md-3 browse-wrap">
+			<div class="title">Upload File</div>
+			<input type="submit" name="upload" class="upload" title="Upload file">
+		</div>
+    </div>
+    
+    <div class="col-md-12 margin-top-20">
+		<iframe class="doc" src="http://kmmc.in/wp-content/uploads/2014/01/lesson2.pdf"></iframe>
+		<br/><br/>
+    </div>
+</div>
+
+<script>
+	//Span
+	var span = document.getElementsByClassName('upload-path');
+	// Button
+	var uploader = document.getElementsByName('upload');
+	// On change
+	for( item in uploader ) {
+	  // Detect changes
+	  uploader[item].onchange = function() {
+	    // Echo filename in span
+	    span[0].innerHTML = this.files[0].name;
+	  }
+	}
+	
+	
+</script>
+
+<script>
+   $("form").submit(function(evt){	 
+   evt.preventDefault();
+
+   var formData = new FormData($(this)[0]); 
+
+   $.ajax({
+     url: 'fileUpload',
+     type: 'POST',
+     data: formData,
+     async: false,
+     cache: false,
+     contentType: false,
+     enctype: 'multipart/form-data',
+     processData: false,
+     success: function (response) {
+       alert(response);
+     }
+   });
+
+   return false;
+ });
+</script>

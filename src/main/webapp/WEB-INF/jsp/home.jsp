@@ -38,23 +38,24 @@
         <div class="admin-side-bar">
             <div class="admin-logo"><img src="resources/images/logo-slogan-white.png"/></div>
             <ul class="admin-side-menu">
-                <li><a href="#dashboard" class="{{activeClass.dashboard}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
+                <li><a href="#dashboard" class="{{activeClass.dashboard}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                 <li><a href="#jobManagement-jobList" class="{{activeClass.jobManagement}}"><i class="fa fa-suitcase"></i> Job Management</a></li>
                 <li><a href="#siteManagement" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
-                <li><a href="#test" class="{{activeClass.test}}"><i class="fa fa-dashboard"></i> test</a></li>
-                <li><a href=""  class="{{activeClass.healthy}}"><i class="fa fa-dashboard"></i> dashboard</a></li>
+                <li><a href="#capabilitySheet" class="{{activeClass.capabilitySheet}}"><i class="fa fa-files-o"></i> Capability Sheet</a></li>
+                <li><a href=""  class="{{activeClass.healthy}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             </ul>
         </div>
 
-        <div class="admin-content-box">
+        <div class="admin-content-box clearfix">
             <div class="message-bar">
                 <div class="user-name">Hi, admin <a href="j_spring_security_logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></div>
                 <h3 class="admin-title" ng-bind="header"></h3>
             </div>
 
             <div ng-view></div>
-            <div class="admin-footer">&copy; 2016 Innova. All Rights Reserved.</div>
+            
         </div>
+        <div class="admin-footer">&copy; 2016 Innova. All Rights Reserved.</div>
     </div>
 
 
