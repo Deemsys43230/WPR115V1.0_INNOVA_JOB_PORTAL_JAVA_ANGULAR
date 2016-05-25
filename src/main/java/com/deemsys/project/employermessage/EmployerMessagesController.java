@@ -25,7 +25,7 @@ public class EmployerMessagesController {
 	@Autowired
 	EmployerMessagesService employerMessagesService;
 
-    @RequestMapping(value="/getEmployerMessages",method=RequestMethod.GET)
+    @RequestMapping(value="Admin/getEmployerMessages",method=RequestMethod.GET)
 	public String getEmployerMessages(@RequestParam("id") Integer id,ModelMap model)
 	{
     	model.addAttribute("employerMessagesForm",employerMessagesService.getEmployerMessages(id));
@@ -54,7 +54,7 @@ public class EmployerMessagesController {
    	}
    
     
-    @RequestMapping(value="/deleteEmployerMessages",method=RequestMethod.POST)
+    @RequestMapping(value="Admin/deleteEmployerMessages",method=RequestMethod.POST)
    	public String deleteEmployerMessages(@RequestParam("id") Integer id,ModelMap model)
    	{
     	
@@ -63,7 +63,7 @@ public class EmployerMessagesController {
    		return "/returnPage";
    	}
     
-    @RequestMapping(value="/getAllEmployerMessagess",method=RequestMethod.GET)
+    @RequestMapping(value="Admin/getAllEmployerMessagess",method=RequestMethod.GET)
    	public String getAllEmployerMessagess(ModelMap model)
    	{
     	model.addAttribute("employerMessagesForms",employerMessagesService.getEmployerMessagesList());

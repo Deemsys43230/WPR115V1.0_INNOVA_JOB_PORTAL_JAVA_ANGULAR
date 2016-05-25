@@ -17,6 +17,7 @@ public class EmployerMessagesForm {
 	private String lastName;
 	private String email;
 	private String subject;
+	private String website;
 	private String message;
 	private String messageDate;
 	private Integer status;
@@ -85,14 +86,23 @@ public class EmployerMessagesForm {
 		this.status = status;
 	}
 
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
 	public EmployerMessagesForm(Integer id, String firstName, String lastName,
-			String email, String subject, String message, String messageDate, Integer status) {
+			String email, String subject,String website, String message, String messageDate, Integer status) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.subject = subject;
+		this.website= website;
 		this.message = message;
 		this.messageDate = messageDate;
 		this.status = status;

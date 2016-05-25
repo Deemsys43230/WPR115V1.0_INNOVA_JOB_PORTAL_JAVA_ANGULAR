@@ -26,6 +26,7 @@ public class EmployerMessages implements java.io.Serializable {
 	private String lastName;
 	private String email;
 	private String subject;
+	private String website;
 	private String message;
 	private Date messageDate;
 	private Integer status;
@@ -34,11 +35,12 @@ public class EmployerMessages implements java.io.Serializable {
 	}
 
 	public EmployerMessages(String firstName, String lastName, String email,
-			String subject, String message,Date messageDate, Integer status) {
+			String subject,String website, String message,Date messageDate, Integer status) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.subject = subject;
+		this.website=website;
 		this.message = message;
 		this.messageDate = messageDate;
 		this.status = status;
@@ -90,7 +92,13 @@ public class EmployerMessages implements java.io.Serializable {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-
+	@Column(name = "website", length = 300)
+	public String getWebsite() {
+		return this.website;
+	}
+	public void setWebsite(String website) {
+		this.website = website;
+	}	
 	@Column(name = "message", length = 800)
 	public String getMessage() {
 		return this.message;

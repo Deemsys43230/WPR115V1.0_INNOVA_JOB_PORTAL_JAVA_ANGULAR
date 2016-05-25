@@ -40,7 +40,7 @@ public class EmployerMessagesService {
 		
 		for (EmployerMessages employerMessages : employerMessagess) {
 			//TODO: Fill the List
-			EmployerMessagesForm employerMessagesForm=new EmployerMessagesForm(employerMessages.getId(), employerMessages.getFirstName(),employerMessages.getLastName(), employerMessages.getEmail(), employerMessages.getSubject(), employerMessages.getMessage(), JobPortalConstants.convertMonthFormat(employerMessages.getMessageDate()), employerMessages.getStatus());
+			EmployerMessagesForm employerMessagesForm=new EmployerMessagesForm(employerMessages.getId(), employerMessages.getFirstName(),employerMessages.getLastName(), employerMessages.getEmail(), employerMessages.getSubject(),employerMessages.getWebsite(), employerMessages.getMessage(), JobPortalConstants.convertMonthFormat(employerMessages.getMessageDate()), employerMessages.getStatus());
 			employerMessagesForms.add(employerMessagesForm);
 		}
 		
@@ -57,7 +57,7 @@ public class EmployerMessagesService {
 		//TODO: Convert Entity to Form
 		//Start
 		
-		EmployerMessagesForm employerMessagesForm=new EmployerMessagesForm(employerMessages.getId(), employerMessages.getFirstName(),employerMessages.getLastName(), employerMessages.getEmail(), employerMessages.getSubject(), employerMessages.getMessage(), JobPortalConstants.convertMonthFormat(employerMessages.getMessageDate()), employerMessages.getStatus());
+		EmployerMessagesForm employerMessagesForm=new EmployerMessagesForm(employerMessages.getId(), employerMessages.getFirstName(),employerMessages.getLastName(), employerMessages.getEmail(), employerMessages.getSubject(),employerMessages.getWebsite(), employerMessages.getMessage(), JobPortalConstants.convertMonthFormat(employerMessages.getMessageDate()), employerMessages.getStatus());
 		
 		//End
 		
@@ -71,7 +71,7 @@ public class EmployerMessagesService {
 		
 		//Logic Starts
 		
-		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(), employerMessagesForm.getMessage(), JobPortalConstants.convertYearFormat(employerMessagesForm.getMessageDate()), 1);
+		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(),employerMessagesForm.getWebsite(), employerMessagesForm.getMessage(), JobPortalConstants.convertYearFormat(employerMessagesForm.getMessageDate()), 1);
 		employerMessages.setId(employerMessagesForm.getId());
 		
 		//Logic Ends
@@ -88,7 +88,7 @@ public class EmployerMessagesService {
 		
 		//Logic Starts
 		
-		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(), employerMessagesForm.getMessage(), new Date(), 1);
+		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(),employerMessagesForm.getWebsite(), employerMessagesForm.getMessage(), new Date(), 1);
 		
 		//Logic Ends
 		
@@ -102,7 +102,7 @@ public class EmployerMessagesService {
 		//TODO: Convert Form to Entity Here	
 		
 		//Logic Starts
-		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(), employerMessagesForm.getMessage(), new Date(), 1);
+		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(),employerMessagesForm.getWebsite(), employerMessagesForm.getMessage(), new Date(), 1);
 		employerMessages.setId(employerMessagesForm.getId());
 		//Logic Ends
 		
