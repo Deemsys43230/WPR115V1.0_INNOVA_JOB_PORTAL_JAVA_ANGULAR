@@ -1,7 +1,7 @@
-var adminApp = angular.module('innovaApp', [ 'requestModule']);
+var adminApp = angular.module('innovaApp', [ 'requestModule','flash','employeeMessageServiceModule']);
 
-adminApp.controller('ContactController', ['$scope','$location','requestHandler',
-		function($scope, $location, requestHandler) {
+adminApp.controller('ContactController', ['$scope','$location','requestHandler','Flash','employeeMessageService',
+		function($scope, $location, requestHandler,Flash,employeeMessageService) {
 	
 	
 	//Get Contact Details
@@ -13,6 +13,16 @@ adminApp.controller('ContactController', ['$scope','$location','requestHandler',
 		});
 	};
 	
+	//Save Update Method
+	$scope.saveEmployersMessage = function() {
+		
+		employeeMessageService.doSendMessage($scope.employersMessageForm);
+		Flash.create('successs', "Thanks for contacting us!!!");
+		 $scope.employersMessageForm={};
+	     $scope.messageForm.$setPristine();
+	     $scope.submitted=false;
+			
+	};
 
 	$scope.init=function(){
 		$scope.contactid = 1;

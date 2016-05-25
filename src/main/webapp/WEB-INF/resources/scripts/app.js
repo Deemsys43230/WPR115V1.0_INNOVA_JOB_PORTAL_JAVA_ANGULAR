@@ -70,15 +70,16 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
+                                'resources/scripts/services/employeeMessageService.js',
+                                'resources/scripts/controllers/aboutController.js',
                                 'resources/js/easyResponsiveTabs.js',
                                 'resources/styles/easy-responsive-tabs.css',
-                                'resources/scripts/controllers/aboutController.js'
                                 
-                            ]
+                              ]
                         })
                     }]
                 },
-                controller:'JobSeekerAndEmployersContactController'
+                controller:'AboutController'
             }).
             when('/jobs', {
                 templateUrl: 'views/jobs.html',
@@ -111,19 +112,20 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 controller:'CommonController'*/
             }).
             when('/solutions', {
-                templateUrl: 'views/solutions.html'
-                /*resolve: {
-                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
-                        return $ocLazyLoad.load({
-                            name:'innovaApp',
-                            files:[
-                                'js/jquery.contact-buttons.js',
-                                'js/demo.js'
-                            ]
-                        })
-                    }]
-                }
-                controller:'CommonController'*/
+                templateUrl: 'views/solutions.html',
+                	 resolve: {
+                         loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                             return $ocLazyLoad.load({
+                                 name:'innovaApp',
+                                 files:[
+                                     'resources/scripts/services/employeeMessageService.js',
+                                     'resources/scripts/controllers/aboutController.js',
+                                     
+                                   ]
+                             })
+                         }]
+                     },
+                     controller:'AboutController'
             }).
             when('/mbe', {
                 templateUrl: 'views/mbe.html'
@@ -178,6 +180,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             name:'innovaApp',
                             files:[
                                 /*'http://maps.googleapis.com/maps/api/js',*/
+                                'resources/scripts/services/employeeMessageService.js',
                                 'resources/scripts/controllers/contactController.js'
                             ]
                         })
@@ -299,4 +302,19 @@ innovaApp.directive('validateZipcode', function() {
 		}
 	};
 });
+
+innovaApp.directive('validateUrl', function () {
+	  var URL_REGEXP = /^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+	  return {
+	    require: 'ngModel',
+	    restrict: '',
+	    link: function (scope, elm, attrs, ngModel) {
+	      // only apply the validator if ngModel is present and Angular has added the email validator
+	      ngModel.$validators.validateUrl = function (modelValue) {
+	        return URL_REGEXP.test(modelValue);
+	      };
+	    }
+	  };
+	});
+
 

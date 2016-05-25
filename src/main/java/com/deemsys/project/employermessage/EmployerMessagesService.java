@@ -70,7 +70,8 @@ public class EmployerMessagesService {
 		//TODO: Convert Form to Entity Here
 		
 		//Logic Starts
-		
+		if(employerMessagesForm.getMessageDate()==null)
+			employerMessagesForm.setMessageDate(new Date().toString());
 		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(),employerMessagesForm.getWebsite(), employerMessagesForm.getMessage(), JobPortalConstants.convertYearFormat(employerMessagesForm.getMessageDate()), 1);
 		employerMessages.setId(employerMessagesForm.getId());
 		

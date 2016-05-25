@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="resources/styles/font-awesome.css" />
 	<link rel="stylesheet" href="resources/styles/style.css" />
 	<link rel="stylesheet" href="resources/styles/responsive.css" />
+	
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="resources/images/icon/favicon.png">
@@ -139,5 +140,7 @@
 	<script type="text/javascript" src="resources/js/scripts.js"></script><!-- Scripts -->
 
     <script src="resources/js/jquery.contact-buttons.js"></script>
+    <script src="resources/angular/angular-flash/angular-flash.min.js"></script>
+    <link rel="stylesheet" href="resources/angular/angular-flash/angular-flash.css">
 </body>
 </html>

@@ -284,28 +284,76 @@
                         <h4>LET’S GET TOGETHER, LET US KNOW YOUR DETAILS</h4>
                         <h6>* Denotes Mandatory Information</h6><br/>
                     </div>
-                    <form action="php/send-contact.php" class="contact-form" name="contact-form" method="post">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="First Name*">
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="Last Name*">
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="text" name="email" required="required" placeholder="Email*">
-                            </div>
-                            <div class="col-sm-12">
-                                <input type="email" name="subject" required="required" placeholder="Subject*">
-                            </div>
-                            <div class="col-sm-12">
-                                <textarea name="message" required="required" cols="30" rows="7" placeholder="Message*"></textarea>
-                            </div>
-                            <div class="col-sm-12">
-                                <input type="submit" name="submit" value="Send Message" class="btn btn-send">
-                            </div>
-                        </div>
-                    </form>
+                    <div flash-message="2000" class="col-md-12"></div>
+                    <form  class="contact-form" name="messageForm" ng-submit="messageForm.$valid && saveEmployersMessage()" novalidate >
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                        	<h5>First Name<span class="text-red"><sup>*</sup></span></h5>
+                                            <input type="text" name="firstName" ng-model="employersMessageForm.firstName" required validate-name placeholder="First Name*">
+                                            <div class="error-container">
+                                            <div ng-show="submitted">
+	                                   			 <span ng-cloak ng-show="messageForm.firstName.$error.required">Please Enter First Name</span>
+	                                    		 <span ng-cloak ng-show="!messageForm.firstName.$error.required&&messageForm.firstName.$error.validateName">Enter Valid First Name</span>
+                                			</div>
+                                			</div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                       		 <h5>Last Name<span class="text-red"><sup>*</sup></span></h5>
+                                            <input type="text" name="lastName" ng-model="employersMessageForm.lastName" required validate-name placeholder="Last Name*">
+                                            <div class="error-container">
+                                            <div ng-show="submitted">
+	                                   			 <span ng-cloak ng-show="messageForm.lastName.$error.required">Please Enter Last Name</span>
+	                                    		 <span ng-cloak ng-show="!messageForm.lastName.$error.required&&messageForm.lastName.$error.validateName">Enter Valid Last Name</span>
+                                			</div>
+                                			</div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                        <h5>Email<span class="text-red"><sup>*</sup></span></h5>
+                                            <input type="email" name="email" ng-model="employersMessageForm.email" required validate-email placeholder="Email*">
+                                            <div class="error-container" >
+                                            <div ng-show="submitted">
+	                                   			 <span ng-cloak ng-show="messageForm.email.$error.required">Please Enter Email ID</span>
+	                                    		 <span ng-cloak ng-show="!messageForm.email.$error.required&&messageForm.email.$error.email">Enter Valid Email ID</span>
+                                			</div>
+                                			</div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                        <h5>Subject<span class="text-red"><sup>*</sup></span></h5>
+                                            <input type="text" name="subject" ng-model="employersMessageForm.subject" required placeholder="Subject*">
+                                             <div class="error-container">
+                                             <div ng-show="submitted">
+	                                   			 <span ng-cloak ng-show="messageForm.subject.$error.required">Please Enter Subject</span>
+	                                    	</div>
+	                                    	</div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                        <h5>Website<span class="text-red"><sup>*</sup></span></h5>
+                                            <input type="text" name="website" ng-model="employersMessageForm.website" required  placeholder="Website*">
+                                            <div class="error-container" >
+                                            <div ng-show="submitted">
+	                                   			 <span ng-cloak ng-show="messageForm.website.$error.required">Please Enter Website</span>
+	                                    	</div>
+                                			</div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                        <h5>Message<span class="text-red"><sup>*</sup></span></h5>
+                                            <textarea name="message"  ng-model="employersMessageForm.message" required cols="30" rows="3" placeholder="Message*"></textarea>
+                                            <div class="error-container">
+                                            <div ng-show="submitted">
+	                                   			 <span ng-cloak ng-show="messageForm.message.$error.required">Please Enter Message</span>
+	                                    	</div>
+	                                    	</div>
+                                        </div>
+                                        <!--<div class="col-sm-12">
+                                            <h6>CAPTCHA</h6>
+                                            <img src="resources/images/puzzle-2.png">
+                                            <input type="text" name="website" placeholder="Type the letter">
+                                        </div>-->
+                                        <div class="col-sm-12">
+                                            <input type="submit" name="submit" value="Send Message" ng-click="submitted=true" class="btn btn-send"><br/><br/>
+                                        </div>
+                                    </div>
+                                </form>
                 </div>
 				
 			</div>
