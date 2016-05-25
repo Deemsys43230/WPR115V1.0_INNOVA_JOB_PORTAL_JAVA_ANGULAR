@@ -1,38 +1,48 @@
 <div class="clearfix contact-form row">
-	<div class="col-md-6">
-		<h5>Job tile</h5>
-		<input type="text" name="name" required="required" placeholder="Job title*">
+	<div class="col-md-9 no-padding">
+		<div class="col-md-12">
+			<h5>User name</h5>
+			<input type="text" name="name" required="required" placeholder="User Name">
+		</div>
+		<div class="col-md-12">
+			<h5>Testimonial Title</h5>
+			<input type="text" name="name" required="required" placeholder="Testimonial Title">
+		</div>
+		<div class="col-md-12">
+			<h5>Testimonial Description</h5>
+			<textarea type="text" rows="4" name="name" required="required"></textarea>
+		</div>
 	</div>
 	
-	<div class="col-md-6">
-		<h5>Job Category</h5>
-		<select type="text" name="name" required="required" placeholder="Job category*">
-			<option>option1</option>
-			<option>option2</option>
-			<option>option3</option>
-			<option>option4</option>
-			<option>option5</option>
-		</select>
+	<div class="col-md-3">
+		<div class="col-md-12 image-editor">
+
+                                <h5>User Image</h5>
+                                     <span ng-show="inputContainsFile">
+                                     <span class="error-message textarea-errormessage20" ng-show="testimonialForm.image.$error.required"><span>Required.</span></span>
+                                </span>
+                                <div class="cropit-image-preview"></div>
+                                <p class="image-size-label">
+                                    Resize image
+                                </p>
+                                <div class="col-md-10 no-padding">
+                                    <input type="range" class="cropit-image-zoom-input">
+                                </div>
+
+                                <div class="margin-top-20 col-md-12 no-padding">
+                                    <div class="fileUpload btn btn-xs btn-primary">
+                                        <span>Choose File</span>
+                                        <input type="file" name="image" class="upload cropit-image-input" valid-file required  ng-model="testimonials.imageurl" onblur="angular.element(this).scope().fileNameChanged(this)"/>
+
+                                    </div>
+                                </div>
+                            </div>
 	</div>
+	
 	
 	<div class="col-md-12">
-		<h5>Job tags</h5>
-		<ui-select multiple ng-model="multipleDemo.colors" theme="select2" ng-disabled="disabled" style="width: 100%;">
-		    <ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
-		    <ui-select-choices repeat="color in availableColors | filter:$select.search">
-		      {{color}}
-		    </ui-select-choices>
-		  </ui-select>
-	</div>
-	
-	<div class="col-md-12">
-		<h5>Job Description</h5>
-		<textarea type="text" rows="4" name="name" required="required"></textarea>
-	</div>
-	
-	<div class="col-md-12">
-		<a href="" class="btn btn-success">Add Job</a>
-		<a href="" ng-click="cancelAddJob()" class="btn btn-danger">Cancel</a>
+		<a href="" class="btn btn-success">Add Testimonial</a>
+		<a href="" ng-click="cancelAddTestimonial()" class="btn btn-danger">Cancel</a>
 	</div>
 
 </div>

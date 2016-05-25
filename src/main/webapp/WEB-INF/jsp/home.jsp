@@ -40,7 +40,7 @@
             <ul class="admin-side-menu">
                 <li><a href="#dashboard" class="{{activeClass.dashboard}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                 <li><a href="#jobManagement-jobList" class="{{activeClass.jobManagement}}"><i class="fa fa-suitcase"></i> Job Management</a></li>
-                <li><a href="#siteManagement" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
+                <li><a href="#siteManagement-contactDetails" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
                 <li><a href="#capabilitySheet" class="{{activeClass.capabilitySheet}}"><i class="fa fa-files-o"></i> Capability Sheet</a></li>
                 <li><a href=""  class="{{activeClass.healthy}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             </ul>

@@ -1,0 +1,89 @@
+<form class="contact-form" name="socialMediaForm">
+	<div class="row">
+		<div class="col-sm-6">
+			<h5>
+				Facebook URL<span class="text-red"><sup>*</sup></span>
+			</h5>
+			<input type="text" name="facebookLink"
+				ng-model="socialMediaDetails.facebookLink" required validate-url
+				placeholder="Facebook URL">
+			<div class="error-container">
+				<div
+					ng-show="socialMediaForm.facebookLink.$dirty && socialMediaForm.facebookLink.$invalid">
+					<span ng-cloak
+						ng-show="socialMediaForm.facebookLink.$error.required">Please
+						Enter Facebook URL</span> <span ng-cloak
+						ng-show="!socialMediaForm.facebookLink.$error.required&&socialMediaForm.facebookLink.$error.validateUrl">Enter
+						Valid URL</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<h5>
+				Twitter URL<span class="text-red"><sup>*</sup></span>
+			</h5>
+			<input type="text" name="twitterLink"
+				ng-model="socialMediaDetails.twitterLink" required validate-url
+				placeholder="Twitter URL">
+			<div class="error-container">
+				<div
+					ng-show="socialMediaForm.twitterLink.$dirty && socialMediaForm.twitterLink.$invalid">
+					<span ng-cloak
+						ng-show="socialMediaForm.twitterLink.$error.required">Please
+						Enter Twitter URL</span> <span ng-cloak
+						ng-show="!socialMediaForm.twitterLink.$error.required&&socialMediaForm.twitterLink.$error.validateUrl">Enter
+						Valid URL</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<h5>
+				Google Plus URL<span class="text-red"><sup>*</sup></span>
+			</h5>
+			<input type="text" name="googlePlusLink"
+				ng-model="socialMediaDetails.googlePlusLink" required validate-url
+				placeholder="Google Plus URL">
+			<div class="error-container">
+				<div
+					ng-show="socialMediaForm.googlePlusLink.$dirty && socialMediaForm.googlePlusLink.$invalid">
+					<span ng-cloak
+						ng-show="socialMediaForm.googlePlusLink.$error.required">Please
+						Enter Google Plus URL</span> <span ng-cloak
+						ng-show="!socialMediaForm.googlePlusLink.$error.required&&socialMediaForm.googlePlusLink.$error.validateUrl">Enter
+						Valid URL</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<h5>
+				LinkedIn URL<span class="text-red"><sup>*</sup></span>
+			</h5>
+			<input type="text" name="linkedInLink"
+				ng-model="socialMediaDetails.linkedInLink" required validate-url
+				placeholder="LinkedIn URL">
+			<div class="error-container">
+				<div
+					ng-show="socialMediaForm.linkedInLink.$dirty && socialMediaForm.linkedInLink.$invalid">
+					<span ng-cloak
+						ng-show="socialMediaForm.linkedInLink.$error.required">Please
+						Enter LinkedIn URL</span> <span ng-cloak
+						ng-show="!socialMediaForm.linkedInLink.$error.required&&socialMediaForm.linkedInLink.$error.validateUrl">Enter
+						Valid URL</span>
+				</div>
+			</div>
+		</div>
+
+		<!--<div class="col-sm-12">
+                                <h6>CAPTCHA</h6>
+                                <img src="images/puzzle-2.png">
+                                <input type="text" name="website" placeholder="Type the letter">
+                            </div>-->
+		<div class="col-sm-12">
+			<a href=""
+				ng-disabled="socialMediaForm.$invalid || doSocialMediaDetails_isClean()"
+				ng-click="saveUpdateSocialMediaDetails()" class="btn btn-readmore">Save
+				Details</a><br />
+			<br />
+		</div>
+	</div>
+</form>

@@ -95,23 +95,65 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'AdminJobCategoryController'
             }).
-            when('/siteManagement', {
+            when('/siteManagement-contactDetails', {
                 templateUrl: 'admin/site.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'adminApp',
                             files:[
-                                'resources/js/easyResponsiveTabs.js',
-                                'resources/styles/easy-responsive-tabs.css',
-                                'resources/js/summernote.js',
-                                'resources/styles/summernote.css',
-                                'resources/scripts/controllers/siteController.js'
+                                'resources/scripts/controllers/adminContactDetailsController.js'
                             ]
                         })
                     }]
                 },
-                controller:'SiteController'
+                controller:'ContactDetailsController'
+            }).
+            when('/siteManagement-socialMedia', {
+                templateUrl: 'admin/site.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/scripts/controllers/adminSocialMediaController.js'
+                            ]
+                        })
+                    }]
+                },
+                controller:'SocialMediaController'
+            }).
+            when('/siteManagement-news', {
+                templateUrl: 'admin/site.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/js/summernote.js',
+                                'resources/styles/summernote.css',
+                                'resources/scripts/controllers/adminNewsController.js'
+                            ]
+                        })
+                    }]
+                },
+                controller:'NewsController'
+            }).
+            when('/siteManagement-testimonial', {
+                templateUrl: 'admin/site.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/styles/testimonial-image-upload.css',
+                                'resources/js/image-upload.js',
+                                'resources/scripts/controllers/adminTestimonialController.js'
+                            ]
+                        })
+                    }]
+                },
+                controller:'TestimonialController'
             }).
             when('/capabilitySheet', {
                 templateUrl: 'admin/capability-sheet.html',
