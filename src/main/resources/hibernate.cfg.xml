@@ -13,5 +13,7 @@
           <mapping class="com.deemsys.project.entity.Job" />
           <mapping class="com.deemsys.project.entity.JobTag" />
           <mapping class="com.deemsys.project.entity.EmployerMessages" />
+          <mapping class="com.deemsys.project.entity.ResumeDetail" />
+          <mapping class="com.deemsys.project.entity.JobSeeker" />
     </session-factory>
 </hibernate-configuration>
