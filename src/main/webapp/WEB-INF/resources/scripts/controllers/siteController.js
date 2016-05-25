@@ -9,6 +9,7 @@ adminApp.controller('SiteController', ['$scope','$location','requestHandler','Fl
 	
 		requestHandler.getRequest("getContactDetail.json?id="+$scope.contactid,"").then(function(response){
 			$scope.contactDetails = response.data.contactDetailForm;
+			originalContactDetails = angular.copy($scope.contactDetails);
 		});
 	};
 	
@@ -25,6 +26,7 @@ adminApp.controller('SiteController', ['$scope','$location','requestHandler','Fl
 		
 		requestHandler.getRequest("getSocialMedia.json?id="+$scope.socialMediaid,"").then(function(response){
 			$scope.socialMediaDetails = response.data.socialMediaForm;
+			originalsocialMediaDetails = angular.copy($scope.socialMediaDetails);
 		});
 	};
 	
@@ -35,11 +37,21 @@ adminApp.controller('SiteController', ['$scope','$location','requestHandler','Fl
 		});
 	};
 	
+	 $scope.doSocialMediaDetails_isClean=function(){
+	        return angular.equals(originalsocialMediaDetails, $scope.socialMediaDetails);
+	    };
+	    
+	 $scope.doContactDetails_isClean=function(){
+	        return angular.equals(originalContactDetails, $scope.contactDetails);
+	    };
+	
 	$scope.init=function(){
 		$scope.contactid = 1;
 		$scope.socialMediaid = 1;
 		$scope.getContactDetails();
 		$scope.getSocialMediaDetails();
+		var originalsocialMediaDetails="";
+		var originalContactDetails="";
 	};
 	
 	$scope.init();

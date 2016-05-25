@@ -5,6 +5,7 @@
         <div id="parentHorizontalTab">
         	<a href="" ng-show="isJobList" ng-click="addNewJob()" class="btn btn btn-send pull-right"><i class="fa fa-plus-circle"></i> ADD NEW JOB</a>
         	<a href="" ng-hide="isJobList" class="btn btn btn-send pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> ADD NEW CATEGORY</a>
+            <div flash-message="2000" class="col-md-4 pull-right"></div>
             <ul class="resp-tabs-list  hor_1">
                 <li ng-click="isJobList = true"><h5><i class="fa fa-suitcase text-red"></i> &nbsp;Jobs List</h5></li>
                 <li ng-click="isJobList = fasle"><h5><i class="fa fa-share-alt text-red"></i> &nbsp;job category</h5></li>
@@ -15,42 +16,31 @@
                 </div>
                 <div>
                     
-<table class="table table-bordered table-striped">
+		<table class="table table-bordered table-striped">
             <thead class="high-light">
                 <tr>
                     <td>Sl.no</td>
                     <td>Category name</td>
+                    <td>Description</td>
                     <td>Options</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Web Development</td>
+           		 <tr ng-show="jobCategoryList.length>0"  ng-repeat="jobCategory in jobCategoryList">
+                	<td>{{jobCategory.jobCategoryId}}</td>
+                    <td>{{jobCategory.categoryName}}</td>
+                    <td>{{jobCategory.description}}</td>
                     <td>
-                        <a href="" class="btn-xs btn-warning" data-toggle="modal" data-target="#myModal">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
+                        <a href="" class="btn-xs btn-warning" data-toggle="modal" data-target="#myModal" ng-click="editJobCategory(jobCategory.jobCategoryId)">Edit</a>
+                        <a href="" ng-cloak ng-show="jobCategory.status==1" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-danger">Disable</a>
+                        <a href="" ng-cloak ng-show="jobCategory.status==0" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-success">Enable</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Web Development</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Web Development</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
+               <tr ng-show="!jobCategoryList.length">
+				<td colspan="4" align="center">No Records Found</td>
+				</tr>
             </tbody>
-        </table>
-                    
+        </table>        
                 </div>
             </div>
         </div>
@@ -68,13 +58,26 @@
         <h4 class="modal-title">Category Detail</h4>
       </div>
       <div class="modal-body">
-        <form class="contact-form">
+        <form class="contact-form" name="jobCategoryForm">
         	<h5>Category name</h5>
-        	<input type="text" placeholder="Enter Category Name">
+        	<input type="text" name="categoryName" ng-model="jobCategory.categoryName" placeholder="Enter Category Name" required validate-name>
+        	<div class="error-container">
+                <div  ng-show="jobCategoryForm.categoryName.$dirty && jobCategoryForm.categoryName.$invalid">
+	              <span ng-cloak ng-show="jobCategoryForm.categoryName.$error.required">Please Enter Category Name</span>
+	              <span ng-cloak ng-show="!jobCategoryForm.categoryName.$error.required&&jobCategoryForm.categoryName.$error.validateName">Enter Valid Category Name</span>
+                </div>
+             </div>
+        	<h5>Description</h5>
+        	<textarea name="description" ng-model="jobCategory.description" placeholder="Enter Description" required></textarea>
+        	<div class="error-container">
+                <div  ng-show="jobCategoryForm.description.$dirty && jobCategoryForm.description.$invalid">
+	              <span ng-cloak ng-show="jobCategoryForm.description.$error.required">Please Enter Description</span>
+	             </div>
+	        </div>
         </form>
       </div>
       <div class="modal-footer">
-      	<a class="btn btn-success">Save</a>
+      	<a class="btn btn-success" ng-click="saveUpdateJobCategory()" data-dismiss="modal" ng-disabled="jobCategoryForm.$invalid || dojobCatgeoryDetails_isClean()">Save</a>
         <a class="btn btn-danger" data-dismiss="modal">Cancel</a>
       </div>
     </div>

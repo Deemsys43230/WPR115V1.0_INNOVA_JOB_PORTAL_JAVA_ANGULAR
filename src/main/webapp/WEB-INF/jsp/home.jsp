@@ -90,5 +90,6 @@
 	<script src="resources/js/multi-select.js"></script>
     <script src="resources/js/jquery.contact-buttons.js"></script>
     <script src="resources/angular/angular-flash/angular-flash.min.js"></script>
+    <script src="resources/angular/angular-utils-pagination/dirPagination.js"></script> 
 </body>
 </html>

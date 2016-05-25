@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-12">
-                                <a href="" class="btn btn-readmore" ng-disabled="contactForm.$invalid" ng-click="saveUpdateContactDetails()">SAVE DETAILS</a>
+                                <a href="" class="btn btn-readmore" ng-disabled="contactForm.$invalid || doContactDetails_isClean()" ng-click="saveUpdateContactDetails()">SAVE DETAILS</a>
                                 <br/><br/>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                 <input type="text" name="website" placeholder="Type the letter">
                             </div>-->
                             <div class="col-sm-12">
-                                <a href="" ng-disabled="socialMediaForm.$invalid" ng-click="saveUpdateSocialMediaDetails()" class="btn btn-readmore">Save Details</a><br/><br/>
+                                <a href="" ng-disabled="socialMediaForm.$invalid || doSocialMediaDetails_isClean()" ng-click="saveUpdateSocialMediaDetails()" class="btn btn-readmore">Save Details</a><br/><br/>
                             </div>
                         </div>
                     </form>
