@@ -210,7 +210,7 @@
     }
 
     function dirPaginationControlsTemplateInstaller($templateCache) {
-        $templateCache.put('angularUtils.directives.dirPagination.template', '<div class="col-md-5"><ul class="pagination" ng-if="1 < pages.length || !autoHide"><li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }"><a href="" ng-click="setCurrent(1)">&laquo;</a></li><li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }"><a href="" ng-click="setCurrent(pagination.current - 1)">&lsaquo;</a></li><li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == \'...\' || ( ! autoHide && pages.length === 1 ) }"><a href="" ng-click="setCurrent(pageNumber)">{{ pageNumber }}</a></li><li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }"><a href="" ng-click="setCurrent(pagination.current + 1)">&rsaquo;</a></li><li ng-if="boundaryLinks"  ng-class="{ disabled : pagination.current == pagination.last }"><a href="" ng-click="setCurrent(pagination.last)">&raquo;</a></li></ul></div><div class="col-md-4 margin-top-30">Showing {{pagination.startRecord}} - {{pagination.endRecord}} of {{total}} records</div>');
+        $templateCache.put('angularUtils.directives.dirPagination.template', '<div class="col-md-5 margin-top-5">Showing {{pagination.startRecord}} - {{pagination.endRecord}} of {{total}} records</div><div class="col-md-7="><div class="pull-right"><ul class="pagination" ng-if="1 < pages.length || !autoHide"><li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }"><a href="" ng-click="setCurrent(1)">First</a></li><li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }"><a href="" ng-click="setCurrent(pagination.current - 1)">Previous</a></li><li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == \'...\' || ( ! autoHide && pages.length === 1 ) }"><a href="" ng-click="setCurrent(pageNumber)">{{ pageNumber }}</a></li><li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }"><a href="" ng-click="setCurrent(pagination.current + 1)">Next</a></li><li ng-if="boundaryLinks"  ng-class="{ disabled : pagination.current == pagination.last }"><a href="" ng-click="setCurrent(pagination.last)">Last</a></li></ul></div></div>');
     }
 
     function dirPaginationControlsDirective(paginationService, paginationTemplate) {
@@ -291,10 +291,11 @@
                     paginationService.setCurrentPage(paginationId, num);
                 }
 
-                	 setTimeout(function(){
+              	
+                	/* setTimeout(function(){
             			 $('html,body').animate({scrollTop: $('#noOfRows').offset().top},'slow');
             		 },1000);
-                	 
+                	 */
         };
 
             function goToPage(num) {
@@ -425,6 +426,7 @@
      * @returns {Function}
      */
     function itemsPerPageFilter(paginationService) {
+
         return function(collection, itemsPerPage, paginationId) {
             if (typeof (paginationId) === 'undefined') {
                 paginationId = DEFAULT_ID;

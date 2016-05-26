@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-           		 <tr ng-show="jobCategoryList.length>0"  ng-repeat="jobCategory in jobCategoryList">
+           		 <tr ng-show="jobCategoryList.length>0"  dir-paginate="jobCategory in jobCategoryList|itemsPerPage:5">
                 	<td>{{jobCategory.jobCategoryId}}</td>
                     <td>{{jobCategory.categoryName}}</td>
                     <td>{{jobCategory.description}}</td>
@@ -25,7 +25,7 @@
 				</tr>
             </tbody>
         </table>    
-
+<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -36,12 +36,13 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Category Detail</h4>
       </div>
+       <form class="contact-form" name="jobCategoryForm" ng-submit="jobCategoryForm.$valid && saveUpdateJobCategory()" no-validate>
       <div class="modal-body">
-        <form class="contact-form" name="jobCategoryForm">
+       
         	<h5>Category name</h5>
         	<input type="text" name="categoryName" ng-model="jobCategory.categoryName" placeholder="Enter Category Name" required validate-name>
         	<div class="error-container">
-                <div  ng-show="jobCategoryForm.categoryName.$dirty && jobCategoryForm.categoryName.$invalid">
+                <div ng-show="submitted">
 	              <span ng-cloak ng-show="jobCategoryForm.categoryName.$error.required">Please Enter Category Name</span>
 	              <span ng-cloak ng-show="!jobCategoryForm.categoryName.$error.required&&jobCategoryForm.categoryName.$error.validateName">Enter Valid Category Name</span>
                 </div>
@@ -49,16 +50,17 @@
         	<h5>Description</h5>
         	<textarea name="description" ng-model="jobCategory.description" placeholder="Enter Description" required></textarea>
         	<div class="error-container">
-                <div  ng-show="jobCategoryForm.description.$dirty && jobCategoryForm.description.$invalid">
+                <div ng-show="submitted">
 	              <span ng-cloak ng-show="jobCategoryForm.description.$error.required">Please Enter Description</span>
 	             </div>
 	        </div>
-        </form>
+       
       </div>
       <div class="modal-footer">
-      	<a class="btn btn-success" ng-click="saveUpdateJobCategory()" data-dismiss="modal" ng-disabled="jobCategoryForm.$invalid || dojobCatgeoryDetails_isClean()">Save</a>
+      	<input type="submit" name="submit" value="Save" class="btn btn-success" ng-click="submitted=true" ng-disabled="dojobCatgeoryDetails_isClean()">
         <a class="btn btn-danger" data-dismiss="modal">Cancel</a>
       </div>
+       </form>
     </div>
 
   </div>

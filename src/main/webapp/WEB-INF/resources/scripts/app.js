@@ -1,4 +1,4 @@
-var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule']);
+var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash','angularUtils.directives.dirPagination']);
 
 innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
 
@@ -133,19 +133,20 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                      controller:'AboutController'
             }).
             when('/mbe', {
-                templateUrl: 'views/mbe.html'
-                /*resolve: {
+                templateUrl: 'views/mbe.html',
+                resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                'js/jquery.contact-buttons.js',
-                                'js/demo.js'
+                                   'resources/scripts/services/employeeMessageService.js',
+                                   'resources/scripts/controllers/aboutController.js',
+
                             ]
                         })
                     }]
-                }
-                controller:'CommonController'*/
+                },
+                controller:'AboutController'
             }).
             when('/news', {
                 templateUrl: 'views/news.html'

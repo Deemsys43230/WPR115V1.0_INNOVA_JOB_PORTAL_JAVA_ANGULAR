@@ -2,11 +2,12 @@
  * Created by user on 18/5/16.
  */
 
-var adminApp = angular.module('adminApp',['ngSanitize', 'ui.select']);
+var adminApp = angular.module('adminApp',['ngSanitize', 'ui.select','angularUtils.directives.dirPagination','requestModule','flash']);
 
 adminApp.controller('AdminJobCategoryController',['$scope','$location','requestHandler','Flash',function($scope, $location, requestHandler,Flash){
     
 	$scope.isJobCateogry=true;
+	var originalJobcategory = "";
 	
 	$scope.jobListTemplate='resources/views/admin/job-category.html';
 	
@@ -18,11 +19,14 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
     };
                                    	
                                    
-   $scope.saveUpdateJobCategory=function(){
-                                   		
+   $scope.saveUpdateJobCategory=function(){                		
          requestHandler.postRequest("Admin/saveUpdateJobCategory.json",$scope.jobCategory).then(function(response){
-          Flash.create('success', "Saved Successfully!");
+          $(".modal-dialog").hide();
+          $("#myModal").hide();
+          $(".modal-backdrop").hide();
           $scope.getJobCategory();
+          Flash.create('success', "Saved Successfully!");
+         
     });
     };
     
@@ -53,7 +57,7 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
         $scope.jobCategory.isJobAvailable = 1;
         $scope.jobCategory.status =1;
         $scope.getJobCategory();
-        var originalJobcategory = "";
+        
     	};
                                    	
 	$scope.init();
