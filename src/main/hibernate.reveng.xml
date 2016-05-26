@@ -9,10 +9,10 @@
 	<table-filter match-name="job" match-catalog="innova"></table-filter>
 	<table-filter match-name="job_category" match-catalog="innova"></table-filter>
 	<table-filter match-name="job_seeker" match-catalog="innova"></table-filter>
-	<table-filter match-name="job_tag" match-catalog="innova"></table-filter>
+	<table-filter match-name="job_tag_map" match-catalog="innova"></table-filter>
+	<table-filter match-name="job_tags" match-catalog="innova"></table-filter>
 	<table-filter match-name="latest_news" match-catalog="innova"></table-filter>
 	<table-filter match-name="login" match-catalog="innova"></table-filter>
-	<table-filter match-name="resume_detail" match-catalog="innova"></table-filter>
 	<table-filter match-name="roles" match-catalog="innova"></table-filter>
 	<table-filter match-name="social_media" match-catalog="innova"></table-filter>
 	<table-filter match-name="testimonial" match-catalog="innova"></table-filter>

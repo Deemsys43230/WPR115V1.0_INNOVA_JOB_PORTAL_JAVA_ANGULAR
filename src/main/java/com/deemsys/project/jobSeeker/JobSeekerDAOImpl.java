@@ -1,14 +1,15 @@
-package com.deemsys.project.resumedetail;
+package com.deemsys.project.jobSeeker;
 
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.deemsys.project.common.BasicQuery;
-import com.deemsys.project.entity.ResumeDetail;
+import com.deemsys.project.entity.JobSeeker;
 
 /**
  * 
@@ -16,32 +17,38 @@ import com.deemsys.project.entity.ResumeDetail;
  *
  */
 @Repository
-public class ResumeDetailDAOImpl implements ResumeDetailDAO{
+public class JobSeekerDAOImpl implements JobSeekerDAO{
 	
 	
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Override
-	public void save(ResumeDetail entity) {
+	public void save(JobSeeker entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().save(entity);
 	}
 
 	@Override
-	public void merge(ResumeDetail entity) {
+	public void merge(JobSeeker entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().merge(entity);
 	}	
 	
 	@Override
-	public ResumeDetail get(Integer id) {
+	public JobSeeker get(Integer id) {
 		// TODO Auto-generated method stub
-		return (ResumeDetail) this.sessionFactory.getCurrentSession().get(ResumeDetail.class, id);
+		return (JobSeeker) this.sessionFactory.getCurrentSession().get(JobSeeker.class, id);
+	}
+	
+	@Override
+	public JobSeeker get(String id) {
+		// TODO Auto-generated method stub
+		return (JobSeeker) this.sessionFactory.getCurrentSession().get(JobSeeker.class, id);
 	}
 
 	@Override
-	public ResumeDetail update(ResumeDetail entity) {
+	public JobSeeker update(JobSeeker entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().merge(entity);
 		return null;
@@ -53,53 +60,60 @@ public class ResumeDetailDAOImpl implements ResumeDetailDAO{
 		this.sessionFactory.getCurrentSession().delete(this.get(id));
 		
 	}
+	
+	@Override
+	public void delete(String id) {
+		// TODO Auto-generated method stub
+		this.sessionFactory.getCurrentSession().delete(this.get(id));
+		
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ResumeDetail> getAll() {
+	public List<JobSeeker> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(ResumeDetail.class).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(JobSeeker.class).list();
 	}
 
 	@Override
-	public List<ResumeDetail> find(String paramName, String paramValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ResumeDetail> find(String paramName, Long paramValue) {
+	public List<JobSeeker> find(String paramName, String paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ResumeDetail> find(String paramName, Integer paramValue) {
+	public List<JobSeeker> find(String paramName, Long paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ResumeDetail> find(BasicQuery query) {
+	public List<JobSeeker> find(String paramName, Integer paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ResumeDetail> find(String queryString, String[] paramNames,
+	public List<JobSeeker> find(BasicQuery query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<JobSeeker> find(String queryString, String[] paramNames,
 			String[] paramValues) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ResumeDetail> find(String ParamName, Date date1, Date date2) {
+	public List<JobSeeker> find(String ParamName, Date date1, Date date2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ResumeDetail> find(String ParamName, Date date) {
+	public List<JobSeeker> find(String ParamName, Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -129,22 +143,11 @@ public class ResumeDetailDAOImpl implements ResumeDetailDAO{
 	}
 
 	@Override
-	public List<ResumeDetail> getActiveList() {
+	public List<JobSeeker> getActiveList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public ResumeDetail get(String id) {
-		// TODO Auto-generated method stub
-		return (ResumeDetail) this.sessionFactory.getCurrentSession().get(ResumeDetail.class, id);
-	}
 	
-	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
-		this.sessionFactory.getCurrentSession().delete(this.get(id));
-		
-	}
 
 }

@@ -1,13 +1,10 @@
 package com.deemsys.project.entity;
 
-// Generated May 25, 2016 11:36:39 AM by Hibernate Tools 3.4.0.CR1
+// Generated May 26, 2016 2:42:36 PM by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,12 +15,13 @@ import javax.persistence.Table;
 public class JobSeeker implements java.io.Serializable {
 
 	private String jobSeekerId;
-	private ResumeDetail resumeDetail;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phoneNumber;
 	private Integer status;
+	private String resumeName;
+	private String resumeType;
 
 	public JobSeeker() {
 	}
@@ -32,16 +30,17 @@ public class JobSeeker implements java.io.Serializable {
 		this.jobSeekerId = jobSeekerId;
 	}
 
-	public JobSeeker(String jobSeekerId, ResumeDetail resumeDetail,
-			String firstName, String lastName, String email,
-			String phoneNumber, Integer status) {
+	public JobSeeker(String jobSeekerId, String firstName, String lastName,
+			String email, String phoneNumber, Integer status,
+			String resumeName, String resumeType) {
 		this.jobSeekerId = jobSeekerId;
-		this.resumeDetail = resumeDetail;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.status = status;
+		this.resumeName = resumeName;
+		this.resumeType = resumeType;
 	}
 
 	@Id
@@ -52,16 +51,6 @@ public class JobSeeker implements java.io.Serializable {
 
 	public void setJobSeekerId(String jobSeekerId) {
 		this.jobSeekerId = jobSeekerId;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "resume_detail_id")
-	public ResumeDetail getResumeDetail() {
-		return this.resumeDetail;
-	}
-
-	public void setResumeDetail(ResumeDetail resumeDetail) {
-		this.resumeDetail = resumeDetail;
 	}
 
 	@Column(name = "first_name", length = 45)
@@ -107,6 +96,24 @@ public class JobSeeker implements java.io.Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	@Column(name = "resume_name", length = 200)
+	public String getResumeName() {
+		return this.resumeName;
+	}
+
+	public void setResumeName(String resumeName) {
+		this.resumeName = resumeName;
+	}
+
+	@Column(name = "resume_type", length = 100)
+	public String getResumeType() {
+		return this.resumeType;
+	}
+
+	public void setResumeType(String resumeType) {
+		this.resumeType = resumeType;
 	}
 
 }
