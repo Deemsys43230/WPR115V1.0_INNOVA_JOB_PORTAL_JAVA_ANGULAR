@@ -1,4 +1,4 @@
-var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash','angularUtils.directives.dirPagination']);
+var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash']);
 
 innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
 
@@ -55,9 +55,11 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                'resources/scripts/controllers/commonController.js'
+                                 'resources/scripts/services/jobServices.js',
+                                'resources/scripts/controllers/commonController.js',
+                                'resources/scripts/directives/fileUpload.js',
                             ]
-                        })
+                        });
                     }]
 
                 },
@@ -200,7 +202,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
             });
     }]);
 
-innovaApp.controller('CommonController', ['$scope','$location','requestHandler',
+innovaApp.controller('SocialMediaController', ['$scope','$location','requestHandler',
 		function($scope, $location, requestHandler) {
 	
 	

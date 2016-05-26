@@ -284,26 +284,64 @@
                     <div class="text-white text-center">
                         <h4>LOOKING FOR A JOB? SUBMIT YOUR RESUME.</h4><br/>
                     </div>
-                    <form action="php/send-contact.php" class="contact-form" name="contact-form" method="post">
+                    <form class="contact-form" name="indexjobForm" ng-submit="indexjobForm.$valid && saveJobSeeker()" novalidate>
                         <div class="row">
                             <div class="col-sm-6">
-                                <input type="text" name="name" required="required" placeholder="First Name*">
+                                <input type="text" name="firstName" ng-model="indexJobSeekerForm.firstName" required validate-name placeholder="First Name*">
+                                <div class="error-container" >
+                                 <div ng-show="submitted">
+	                          			<span ng-cloak ng-show="indexjobForm.firstName.$error.required">Please Enter First Name</span>
+	                          			<span ng-cloak ng-show="!indexjobForm.firstName.$error.required&&indexjobForm.firstName.$error.validateName">Please Enter Valid Name</span>
+	                              </div>
+                              	</div>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" name="name" required="required" placeholder="Last Name*">
+                                <input type="text" name="lastName" ng-model="indexJobSeekerForm.lastName" required validate-name placeholder="Last Name*">
+                                <div class="error-container" >
+                                 <div ng-show="submitted">
+	                          			<span ng-cloak ng-show="indexjobForm.lastName.$error.required">Please Enter Last Name</span>
+	                          			<span ng-cloak ng-show="!indexjobForm.lastName.$error.required&&indexjobForm.lastName.$error.validateName">Please Enter Valid Name</span>
+	                              </div>
+                              	</div>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" name="name" required="required" placeholder="Contact Number*">
+                                <input type="text" name="contactNumber" ng-model="indexJobSeekerForm.phoneNumber" required validate-mobile  placeholder="Contact Number*">
+                                <div class="error-container" >
+                                 <div ng-show="submitted">
+	                          			<span ng-cloak ng-show="indexjobForm.contactNumber.$error.required">Please Enter Conatct Number</span>
+	                          			<span ng-cloak ng-show="!indexjobForm.contactNumber.$error.required&&indexjobForm.contactNumber.$error.validateMobile">Please Enter Valid Number</span>
+	                              </div>
+                              	</div>
                             </div>
                             <div class="col-sm-6">
-                                <input type="email" name="email" required="required" placeholder="Email*">
+                                <input type="email" name="email" ng-model="indexJobSeekerForm.email" required validate-email placeholder="Email*">
+                                <div class="error-container" >
+                                 <div ng-show="submitted">
+	                          			<span ng-cloak ng-show="indexjobForm.email.$error.required">Please Enter Email</span>
+	                          			<span ng-cloak ng-show="!indexjobForm.email.$error.required&&indexjobForm.email.$error.email">Please Enter Valid Email ID</span>
+	                              </div>
+                              	</div>
                             </div>
                             <div class="col-sm-6">
-                                <input type="email" name="email" required="required" placeholder="Job Interested In*">
+                                <input type="text" name="interestedIn" ng-model="interestedIn" required placeholder="Job Interested In*">
+                                <div class="error-container" >
+                                 <div ng-show="submitted">
+	                          			<span ng-cloak ng-show="indexjobForm.interestedIn.$error.required">Please Enter Interested In</span>
+	                              </div>
+                              	</div>
                             </div>
                             <div class="col-sm-6" style="margin-top: 8px">
-                                <a href="" class="choose-file">Upload Resume*</a><br/>
-                                <div class="padding-top-10 text-white"><small>Accepted file types: pdf, doc, docx, txt, ppt, pptx.</small><br/></div>
+                                 <div class="browse-wrap text-white">
+                               <div class="title">Upload Resume</div>
+								<input type="file" file-model="indexresume" name="indexresume" ng-model="indexresume" class="upload" title="Upload Resume" required>
+							</div>
+							<span class="upload-path text-white"></span>
+                                <div class="text-white"><small>Accepted file types: pdf, doc, docx, txt, ppt, pptx.</small><br/></div>
+                                <div class="error-container" >
+                                 <div ng-show="submitted">
+	                          			<span ng-cloak ng-show="indexjobForm.indexresume.$error.required">Please Upload Resume</span>
+	                              </div>
+                              	</div>
                             </div>
                             <!--<div class="col-sm-4">
                                 <input type="text" name="website" placeholder="Website">
@@ -312,7 +350,8 @@
                                 <textarea name="message" required="required" cols="30" rows="7" placeholder="Message*"></textarea>
                             </div>-->
                             <div class="col-sm-12">
-                                <input type="submit" name="submit" value="Submit Resume" class="btn btn-send">
+                                <input type="submit" name="submit" ng-disabled="saveData" ng-click="submitted=true" value="{{saveButtonText}}" class="btn btn-send">
+                            	<div flash-message="2000" class="col-md-8 pull-right no-padding"></div>
                             </div>
                         </div>
                     </form>
@@ -388,3 +427,18 @@
 		</div>
 	</section>
 	<!-- /OUR TEAM -->
+	<script>
+	//Span
+	var span = document.getElementsByClassName('upload-path');
+	// Button
+	var uploader = document.getElementsByName('indexresume');
+	// On change
+	for( item in uploader ) {
+	  // Detect changes
+	  uploader[item].onchange = function() {
+	    // Echo filename in span
+	    span[0].innerHTML = this.files[0].name;
+	  }
+	}
+	
+	</script>

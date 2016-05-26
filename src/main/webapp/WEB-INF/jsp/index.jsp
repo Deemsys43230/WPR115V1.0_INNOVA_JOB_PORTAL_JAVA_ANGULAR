@@ -55,7 +55,7 @@
                     <!--<div class="slogan">Talent x Innovation</div>-->
 				</div>
 
-				<div class="collapse navbar-collapse" id="st-navbar-collapse" ng-controller="CommonController">
+				<div class="collapse navbar-collapse" id="st-navbar-collapse" ng-controller="SocialMediaController">
                     <div class="follow-us" >Follow Us :
                         <a href="{{socialMediaDetails.facebookLink}}" target="_blank" class="ic ic-rounded ic-facebook"><i class="fa fa-facebook"></i></a>
                         <a href="{{socialMediaDetails.twitterLink}}" target="_blank" class="ic ic-rounded ic-twitter"><i class="fa fa-twitter"></i></a>

@@ -4,13 +4,13 @@ innovaApp.service('jobService',['requestHandler', function(requestHandler){
 	
 	
 	this.uploadResume=function(file){
-		return requestHandler.postFileUpload("saveUpdateResumeDetail.json",file,"uploadFile").then(function(response){
+		return requestHandler.postFileUpload("saveResume.json",file,"resume").then(function(response){
 			return response;
 		});
 	};
 	
-	this.saveJobSeeker=function(){
-		requestHandler.postRequest("",params).then(function(response){
+	this.saveJobSeeker=function(params){
+		return requestHandler.postRequest("updateJobSeeker.json",params).then(function(response){
 			return response;
 		});
 	};
