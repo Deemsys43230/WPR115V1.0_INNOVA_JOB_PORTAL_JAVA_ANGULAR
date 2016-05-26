@@ -1,6 +1,6 @@
 package com.deemsys.project.entity;
 
-// Generated May 24, 2016 3:57:03 PM by Hibernate Tools 3.4.0.CR1
+// Generated May 25, 2016 11:36:39 AM by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -32,21 +32,21 @@ public class Job implements java.io.Serializable {
 	private Date addedDate;
 	private Integer isEnable;
 	private Integer status;
-	private Set<JobTag> jobTags = new HashSet<JobTag>(0);
+	private Set<JobTagMap> jobTagMaps = new HashSet<JobTagMap>(0);
 
 	public Job() {
 	}
 
 	public Job(JobCategory jobCategory, String name, String description,
 			Date addedDate, Integer isEnable, Integer status,
-			Set<JobTag> jobTags) {
+			Set<JobTagMap> jobTagMaps) {
 		this.jobCategory = jobCategory;
 		this.name = name;
 		this.description = description;
 		this.addedDate = addedDate;
 		this.isEnable = isEnable;
 		this.status = status;
-		this.jobTags = jobTags;
+		this.jobTagMaps = jobTagMaps;
 	}
 
 	@Id
@@ -117,12 +117,12 @@ public class Job implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
-	public Set<JobTag> getJobTags() {
-		return this.jobTags;
+	public Set<JobTagMap> getJobTagMaps() {
+		return this.jobTagMaps;
 	}
 
-	public void setJobTags(Set<JobTag> jobTags) {
-		this.jobTags = jobTags;
+	public void setJobTagMaps(Set<JobTagMap> jobTagMaps) {
+		this.jobTagMaps = jobTagMaps;
 	}
 
 }

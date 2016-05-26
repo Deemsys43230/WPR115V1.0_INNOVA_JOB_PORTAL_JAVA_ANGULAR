@@ -59,7 +59,7 @@ public class TestimonialDAOImpl implements TestimonialDAO{
 	@Override
 	public List<Testimonial> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).add(Restrictions.eq("status", 1)).list();
 	}
 
 	@Override

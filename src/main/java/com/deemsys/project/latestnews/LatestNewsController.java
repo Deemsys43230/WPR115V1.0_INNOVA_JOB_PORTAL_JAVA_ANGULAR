@@ -24,7 +24,7 @@ public class LatestNewsController {
 	@Autowired
 	LatestNewsService latestNewsService;
 
-    @RequestMapping(value="/Admin/getLatestNews",method=RequestMethod.GET)
+    @RequestMapping(value="/getLatestNews",method=RequestMethod.GET)
 	public String getLatestNews(@RequestParam("latestNewsId") Long latestNewsId,ModelMap model)
 	{
     	model.addAttribute("latestNewsForm",latestNewsService.getLatestNews(latestNewsId));
@@ -44,7 +44,7 @@ public class LatestNewsController {
     @RequestMapping(value="/Admin/saveUpdateLatestNews",method=RequestMethod.POST)
    	public String saveLatestNews(@RequestBody LatestNewsForm latestNewsForm,ModelMap model)
    	{
-    	if(latestNewsForm.getLatestNewsId().equals(""))
+    	if(latestNewsForm.getLatestNewsId()==null)
     		latestNewsService.saveLatestNews(latestNewsForm);
     	else
     		latestNewsService.updateLatestNews(latestNewsForm);
@@ -62,7 +62,7 @@ public class LatestNewsController {
    		return "/returnPage";
    	}
     
-    @RequestMapping(value="/Admin/getAllLatestNewss",method=RequestMethod.GET)
+    @RequestMapping(value="/getAllLatestNewss",method=RequestMethod.GET)
    	public String getAllLatestNewss(ModelMap model)
    	{
     	model.addAttribute("latestNewsForms",latestNewsService.getLatestNewsList());
@@ -71,9 +71,9 @@ public class LatestNewsController {
    	}	
     
     @RequestMapping(value="/Admin/enableDisableNews",method=RequestMethod.POST)
-   	public String enableDisableNews(@RequestParam("newsId") Long newsId,ModelMap model)
+   	public String enableDisableNews(@RequestParam("latestNewsId") Long latestNewsId,ModelMap model)
    	{
-    	latestNewsService.enableOrDisbaleNews(newsId);
+    	latestNewsService.enableOrDisbaleNews(latestNewsId);
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
    	}	

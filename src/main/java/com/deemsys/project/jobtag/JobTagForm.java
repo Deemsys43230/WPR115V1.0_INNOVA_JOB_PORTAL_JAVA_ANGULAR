@@ -14,24 +14,34 @@ import com.deemsys.project.entity.Job;
  */
 public class JobTagForm {
 
-	private Long jobId;
-	private String tags;
+	private Long tagId;
+	private String tagName;
+	private Date addedDate;
 	private Integer status;
+	private Integer isNew;
 	
-	public Long getJobId() {
-		return jobId;
+	public Long getTagId() {
+		return tagId;
 	}
 
-	public void setJobId(Long jobId) {
-		this.jobId = jobId;
+	public void setTagId(Long tagId) {
+		this.tagId = tagId;
 	}
 
-	public String getTags() {
-		return tags;
+	public String getTagName() {
+		return tagName;
 	}
 
-	public void setTags(String tags) {
-		this.tags = tags;
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+
+	public Date getAddedDate() {
+		return addedDate;
+	}
+
+	public void setAddedDate(Date addedDate) {
+		this.addedDate = addedDate;
 	}
 
 	public Integer getStatus() {
@@ -42,10 +52,19 @@ public class JobTagForm {
 		this.status = status;
 	}
 
-	public JobTagForm(Long jobId, String tags, Integer status) {
+	public Integer getIsNew() {
+		return isNew;
+	}
+
+	public void setIsNew(Integer isNew) {
+		this.isNew = isNew;
+	}
+
+	public JobTagForm(Long tagId, String tagName, Date addedDate, Integer status) {
 		super();
-		this.jobId = jobId;
-		this.tags = tags;
+		this.tagId = tagId;
+		this.tagName = tagName;
+		this.addedDate = addedDate;
 		this.status = status;
 	}
 

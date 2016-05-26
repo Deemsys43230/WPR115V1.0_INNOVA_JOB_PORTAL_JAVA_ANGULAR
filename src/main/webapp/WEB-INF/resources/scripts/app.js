@@ -55,7 +55,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                /*'scripts/controllers/commonController.js'*/
+                                'resources/scripts/controllers/commonController.js'
                             ]
                         })
                     }]
@@ -71,7 +71,9 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             name:'innovaApp',
                             files:[
                                 'resources/scripts/services/employeeMessageService.js',
+                                'resources/scripts/services/jobServices.js',
                                 'resources/scripts/controllers/aboutController.js',
+                                'resources/scripts/directives/fileUpload.js',
                                 'resources/js/easyResponsiveTabs.js',
                                 'resources/styles/easy-responsive-tabs.css',
                                 
@@ -83,18 +85,21 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
             }).
             when('/jobs', {
                 templateUrl: 'views/jobs.html',
-                /*resolve: {
+                resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                'js/easyResponsiveTabs.js',
-                                'css/easy-responsive-tabs.css'
+                                'resources/js/easyResponsiveTabs.js',
+                                'resources/styles/easy-responsive-tabs.css',
+                                'resources/scripts/services/jobServices.js',
+                                'resources/scripts/controllers/jobController.js',
+                                'resources/scripts/directives/fileUpload.js',
                             ]
-                        })
+                        });
                     }]
-                }
-                controller:'CommonController'*/
+                },
+                controller:'JobController'
             }).
             when('/job-details/:id', {
                 templateUrl: 'views/job-details.html'

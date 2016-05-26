@@ -41,27 +41,31 @@
                 <div class="col-sm-12">
                     <br/>
                     <h4 class="text-white text-center">FIND JOB FOR ME!</h4><br/>
-                    <form action="php/send-contact.php" class="contact-form" name="contact-form" method="post">
+                    <form class="contact-form" name="jobform" ng-submit="uploadResume()" novalidate>
                         <div class="row">
                             <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="First Name*">
+                                <input type="text" name="name" placeholder="First Name*">
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="Last Name*">
+                                <input type="text" name="name" placeholder="Last Name*">
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" name="name" required="required" placeholder="Contact Number*">
+                                <input type="text" name="name" placeholder="Contact Number*">
                             </div>
                             <div class="col-sm-4">
-                                <input type="email" name="email" required="required" placeholder="Email*">
+                                <input type="email" name="email" placeholder="Email*">
                             </div>
                             <div class="col-sm-4">
-                                <input type="email" name="email" required="required" placeholder="Job Interested In*">
+                                <input type="email" name="email" placeholder="Job Interested In*">
                             </div>
                             <div class="col-sm-4" style="margin-top: 8px">
-                                <a href="" class="choose-file">Upload Resume*</a><br/>
-                                <div class="text-white padding-top-10"><small>Accepted file types: pdf, doc, docx, txt, ppt, pptx.</small><br/></div>
-                            </div>
+                            <div class="browse-wrap text-white">
+                               <div class="title">Upload Resume</div>
+								<input type="file" file-model="resume" name="resume" ng-model="resume" class="upload" title="Upload Resume">
+							</div>
+							<span class="upload-path text-white"></span>
+                                <div class="text-white"><small>Accepted file types: pdf, doc, docx, txt, ppt, pptx.</small><br/></div>
+							</div>
                             <!--<div class="col-sm-4">
                                 <input type="text" name="website" placeholder="Website">
                             </div>-->
@@ -102,3 +106,19 @@
 		</div>
 	</section>
 	<!-- /OUR TEAM -->
+	
+	<script>
+	//Span
+	var span = document.getElementsByClassName('upload-path');
+	// Button
+	var uploader = document.getElementsByName('resume');
+	// On change
+	for( item in uploader ) {
+	  // Detect changes
+	  uploader[item].onchange = function() {
+	    // Echo filename in span
+	    span[0].innerHTML = this.files[0].name;
+	  }
+	}
+	
+	</script>

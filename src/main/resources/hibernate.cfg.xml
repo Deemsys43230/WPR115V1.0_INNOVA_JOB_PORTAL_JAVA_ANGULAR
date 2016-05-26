@@ -11,8 +11,11 @@
           <mapping class="com.deemsys.project.entity.Roles" />
           <mapping class="com.deemsys.project.entity.JobCategory" />
           <mapping class="com.deemsys.project.entity.Job" />
-          <mapping class="com.deemsys.project.entity.JobTag" />
+          <mapping class="com.deemsys.project.entity.JobTags" />
+          <mapping class="com.deemsys.project.entity.JobTagMap" />
           <mapping class="com.deemsys.project.entity.EmployerMessages" />
+          <mapping class="com.deemsys.project.entity.Testimonial" />
+          <mapping class="com.deemsys.project.entity.LatestNews" />
           <mapping class="com.deemsys.project.entity.ResumeDetail" />
           <mapping class="com.deemsys.project.entity.JobSeeker" />
     </session-factory>

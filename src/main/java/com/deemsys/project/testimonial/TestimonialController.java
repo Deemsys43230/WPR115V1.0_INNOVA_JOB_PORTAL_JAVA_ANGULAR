@@ -45,7 +45,7 @@ public class TestimonialController {
     @RequestMapping(value="/Admin/saveUpdateTestimonial",method=RequestMethod.POST)
    	public String saveTestimonial(@RequestBody TestimonialForm testimonialForm,ModelMap model)
    	{
-    	if(testimonialForm.getTestimonialId().equals(""))
+    	if(testimonialForm.getTestimonialId()==null)
     		testimonialService.saveTestimonial(testimonialForm);
     	else
     		testimonialService.updateTestimonial(testimonialForm);
@@ -63,7 +63,7 @@ public class TestimonialController {
    		return "/returnPage";
    	}
     
-    @RequestMapping(value="/Admin/getAllTestimonials",method=RequestMethod.GET)
+    @RequestMapping(value="/getAllTestimonials",method=RequestMethod.GET)
    	public String getAllTestimonials(ModelMap model)
    	{
     	model.addAttribute("testimonialForms",testimonialService.getTestimonialList());

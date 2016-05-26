@@ -3,7 +3,7 @@ var myApp=angular.module("requestModule",[]);
 myApp.factory("requestHandler",['$http',function($http){
     
     var requestObj={};
-    var appURL="http://192.168.1.39:8080";
+    var appURL="http://192.168.1.123:8084";
     
     
     requestObj.getURL=function(){
@@ -22,13 +22,13 @@ myApp.factory("requestHandler",['$http',function($http){
     
     requestObj.postFileUpload=function(requestURL,data,params){      
         
-        requestURL=appURL+"/jobs/"+requestURL;
-        transformRequest: angular.identity,
-        headers={'Content-Type': undefined},
-        data= data;
+        var fd = new FormData();
+        fd.append(params, data);
         
-
-        return $http.post(requestURL,data,params).then(function (results) {
+         return $http.post(requestURL,fd,{
+             transformRequest: angular.identity,
+             headers: {'Content-Type': undefined}
+         }).then(function (results) {
                 return results;
          });
     };

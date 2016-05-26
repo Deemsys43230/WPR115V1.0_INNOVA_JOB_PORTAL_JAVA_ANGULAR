@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.deemsys.project.common.BasicQuery;
-import com.deemsys.project.entity.JobTag;
+import com.deemsys.project.entity.JobTags;
 
 /**
  * 
@@ -24,25 +24,25 @@ public class JobTagDAOImpl implements JobTagDAO{
 	SessionFactory sessionFactory;
 
 	@Override
-	public void save(JobTag entity) {
+	public void save(JobTags entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().save(entity);
 	}
 
 	@Override
-	public void merge(JobTag entity) {
+	public void merge(JobTags entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().merge(entity);
 	}	
 	
 	@Override
-	public JobTag get(Integer id) {
+	public JobTags get(Integer id) {
 		// TODO Auto-generated method stub
-		return (JobTag) this.sessionFactory.getCurrentSession().get(JobTag.class, id);
+		return (JobTags) this.sessionFactory.getCurrentSession().get(JobTags.class, id);
 	}
 
 	@Override
-	public JobTag update(JobTag entity) {
+	public JobTags update(JobTags entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().merge(entity);
 		return null;
@@ -57,50 +57,50 @@ public class JobTagDAOImpl implements JobTagDAO{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<JobTag> getAll() {
+	public List<JobTags> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(JobTag.class).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(JobTags.class).add(Restrictions.eq("status", 1)).list();
 	}
 
 	@Override
-	public List<JobTag> find(String paramName, String paramValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<JobTag> find(String paramName, Long paramValue) {
+	public List<JobTags> find(String paramName, String paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JobTag> find(String paramName, Integer paramValue) {
+	public List<JobTags> find(String paramName, Long paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JobTag> find(BasicQuery query) {
+	public List<JobTags> find(String paramName, Integer paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JobTag> find(String queryString, String[] paramNames,
+	public List<JobTags> find(BasicQuery query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<JobTags> find(String queryString, String[] paramNames,
 			String[] paramValues) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JobTag> find(String ParamName, Date date1, Date date2) {
+	public List<JobTags> find(String ParamName, Date date1, Date date2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JobTag> find(String ParamName, Date date) {
+	public List<JobTags> find(String ParamName, Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -130,27 +130,10 @@ public class JobTagDAOImpl implements JobTagDAO{
 	}
 
 	@Override
-	public List<JobTag> getActiveList() {
+	public List<JobTags> getActiveList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<JobTag> getJobTagByJobId(Long jobId) {
-		// TODO Auto-generated method stub
-		List<JobTag> jobTags=this.sessionFactory.getCurrentSession().createCriteria(JobTag.class).add(Restrictions.eq("job.jobId", jobId)).list();
-		return jobTags;
-	}
-
-	@Override
-	public void deleteJobTagByJobId(Long jobId) {
-		// TODO Auto-generated method stub
-		List<JobTag> jobTags=this.getJobTagByJobId(jobId);
-		for (JobTag jobTag : jobTags) {
-			this.sessionFactory.getCurrentSession().delete(jobTag);
-		}
-	}
-
-	
 
 }

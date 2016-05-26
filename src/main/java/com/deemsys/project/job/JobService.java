@@ -11,10 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.deemsys.project.common.JobPortalConstants;
 import com.deemsys.project.entity.Job;
 import com.deemsys.project.entity.JobCategory;
-import com.deemsys.project.entity.JobTag;
-import com.deemsys.project.entity.JobTagId;
+import com.deemsys.project.entity.JobTagMap;
+import com.deemsys.project.entity.JobTagMapId;
+import com.deemsys.project.entity.JobTags;
 import com.deemsys.project.jobtag.JobTagDAO;
-import com.deemsys.project.jobtag.JobTagService;
+import com.deemsys.project.jobtagmap.JobTagMapDAO;
+import com.deemsys.project.jobtagmap.JobTagMapForm;
+import com.deemsys.project.jobtagmap.JobTagMapService;
 /**
  * 
  * @author Deemsys
@@ -35,10 +38,10 @@ public class JobService {
 	JobDAO jobDAO;
 	
 	@Autowired
-	JobTagService jobTagService;
+	JobTagMapDAO jobTagMapDAO;
 	
 	@Autowired
-	JobTagDAO jobTagDAO;
+	JobTagMapService jobTagMapService;
 	
 	//Get All Entries
 	public List<JobForm> getJobList()
@@ -52,7 +55,7 @@ public class JobService {
 		for (Job job : jobs) {
 			//TODO: Fill the List
 			JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
-			jobForm.setJobTags(jobTagService.getJobTag(job.getJobId()));
+			jobForm.setJobTagId(jobTagMapService.getJobTagMappedListId(job.getJobId()));
 			jobForms.add(jobForm);
 		}
 		
@@ -69,7 +72,7 @@ public class JobService {
 		//TODO: Convert Entity to Form
 		//Start
 		JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
-		jobForm.setJobTags(jobTagService.getJobTag(jobId));
+		jobForm.setJobTagId(jobTagMapService.getJobTagMappedListId(jobId));
 		//End
 		
 		return jobForm;
@@ -107,12 +110,12 @@ public class JobService {
 		//Logic Ends
 		jobDAO.save(job);
 		
-		
-		
-		for (String tag : jobForm.getJobTags()) {
-			JobTagId jobTagId=new JobTagId(job.getJobId(), tag, 1);
-			JobTag jobTag=new JobTag(jobTagId, job);
-			jobTagDAO.save(jobTag);
+		for (Long tagId : jobForm.getJobTagId()) {
+			JobTagMapId jobTagMapId=new JobTagMapId(job.getJobId(), tagId, 1);
+			JobTags jobTags=new JobTags();
+			jobTags.setTagId(tagId);
+			JobTagMap jobTagMap=new JobTagMap(jobTagMapId, jobTags, job);
+			jobTagMapDAO.save(jobTagMap);
 		}
 		return 1;
 	}
@@ -132,13 +135,15 @@ public class JobService {
 		jobDAO.update(job);
 		
 		// Delete Job Tag By Job Id
-		 jobTagService.deleteJobTagByJobId(jobForm.getJobId());
+		 jobTagMapDAO.deleteJobTagMapByJobId(jobForm.getJobId());
 		 
 		// Insert Job Tags
-		 for (String tag : jobForm.getJobTags()) {
-			JobTagId jobTagId=new JobTagId(job.getJobId(), tag, 1);
-			JobTag jobTag=new JobTag(jobTagId, job);
-			jobTagDAO.save(jobTag);
+		 for (Long tagId : jobForm.getJobTagId()) {
+				JobTagMapId jobTagMapId=new JobTagMapId(job.getJobId(), tagId, 1);
+				JobTags jobTags=new JobTags();
+				jobTags.setTagId(tagId);
+				JobTagMap jobTagMap=new JobTagMap(jobTagMapId, jobTags, job);
+				jobTagMapDAO.save(jobTagMap);
 		}
 		//Logic Ends
 		return 1;

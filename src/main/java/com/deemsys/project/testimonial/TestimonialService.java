@@ -69,7 +69,7 @@ public class TestimonialService {
 		
 		//Logic Starts
 		
-		Testimonial testimonial=new Testimonial(testimonialForm.getDescription(), testimonialForm.getSaidBy(), testimonialForm.getDestination(), 1);
+		Testimonial testimonial=new Testimonial(testimonialForm.getDescription(), testimonialForm.getSaidBy(), testimonialForm.getDestination(), testimonialForm.getStatus());
 		testimonial.setTestimonialId(testimonialForm.getTestimonialId());
 		//Logic Ends
 		
@@ -85,7 +85,7 @@ public class TestimonialService {
 		
 		//Logic Starts
 		
-		Testimonial testimonial=new Testimonial(testimonialForm.getDescription(), testimonialForm.getSaidBy(), testimonialForm.getDestination(), 1);
+		Testimonial testimonial=new Testimonial(testimonialForm.getDescription(), testimonialForm.getSaidBy(), testimonialForm.getDestination(), testimonialForm.getStatus());
 		//Logic Ends
 		
 		testimonialDAO.save(testimonial);
@@ -99,7 +99,7 @@ public class TestimonialService {
 		
 		//Logic Starts
 		
-		Testimonial testimonial=new Testimonial(testimonialForm.getDescription(), testimonialForm.getSaidBy(), testimonialForm.getDestination(), 1);
+		Testimonial testimonial=new Testimonial(testimonialForm.getDescription(), testimonialForm.getSaidBy(), testimonialForm.getDestination(), testimonialForm.getStatus());
 		testimonial.setTestimonialId(testimonialForm.getTestimonialId());
 		
 		//Logic Ends

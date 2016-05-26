@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.transaction.JOnASTransactionManagerLookup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.oxm.jibx.JibxMarshaller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.deemsys.project.entity.JobTag;
+import com.deemsys.project.entity.JobTags;
+import com.deemsys.project.entity.Template;
+import com.deemsys.project.template.TemplateForm;
 /**
  * 
  * @author Deemsys
@@ -31,20 +35,35 @@ public class JobTagService {
 	
 	
 	//Get Job Tags
-	public List<String> getJobTag(Long jobId)
+	public List<JobTagForm> getJobTagList()
 	{
 		
-		List<String> tags=new ArrayList<String>();
-		List<JobTag> jobTags=jobTagDAO.getJobTagByJobId(jobId);
+List<JobTagForm> jobTagForms=new ArrayList<JobTagForm>();
+		
+		List<JobTags> jobTags = new ArrayList<JobTags>();
+		jobTags=jobTagDAO.getAll();
+		for (JobTags jobTags2 : jobTags) {
+			JobTagForm jobTagForm=new JobTagForm(jobTags2.getTagId(), jobTags2.getTagName(), jobTags2.getAddedDate(), jobTags2.getStatus());
+			jobTagForms.add(jobTagForm);
+		}
+		return jobTagForms;
+	}
+	
+	//Get Particular Entry
+	public JobTagForm getJobTag(Long getId)
+	{
+		JobTags jobTags=new JobTags();
+			
+		//jobTags=jobTagDAO.get(getId);
+			
 		//TODO: Convert Entity to Form
 		//Start
-		for (JobTag jobTag : jobTags) {
-			tags.add(jobTag.getId().getTags());
-		}
-		
+			
+		JobTagForm jobTagForm=new JobTagForm();
+			
 		//End
-		
-		return tags;
+			
+		return jobTagForm;
 	}
 	
 	//Merge an Entry (Save or Update)
@@ -54,28 +73,27 @@ public class JobTagService {
 		
 		//Logic Starts
 		
-		JobTag jobTag=new JobTag();
+		JobTags jobTag=new JobTags(jobTagForm.getTagName(), new Date(), 1, null);
+		jobTagDAO.merge(jobTag);
+		
 		
 		//Logic Ends
 		
-		
-		jobTagDAO.merge(jobTag);
 		return 1;
 	}
 	
 	//Save an Entry
-	public int saveJobTag(JobTagForm jobTagForm)
+	public Long saveJobTag(JobTagForm jobTagForm)
 	{
 		//TODO: Convert Form to Entity Here	
-		
 		//Logic Starts
 		
-		JobTag jobTag=new JobTag();
+		JobTags jobTag=new JobTags(jobTagForm.getTagName(), new Date(), 1, null);
+		jobTagDAO.save(jobTag);
 		
 		//Logic Ends
 		
-		jobTagDAO.save(jobTag);
-		return 1;
+		return jobTag.getTagId();
 	}
 	
 	//Update an Entry
@@ -84,12 +102,11 @@ public class JobTagService {
 		//TODO: Convert Form to Entity Here	
 		
 		//Logic Starts
-		
-		JobTag jobTag=new JobTag();
+		JobTags jobTag=new JobTags(jobTagForm.getTagName(), new Date(), 1, null);
+		jobTagDAO.update(jobTag);
 		
 		//Logic Ends
 		
-		jobTagDAO.update(jobTag);
 		return 1;
 	}
 	
@@ -101,10 +118,11 @@ public class JobTagService {
 	}
 	
 	//Delete an Entry
-	public int deleteJobTagByJobId(Long jobId)
+	public int deleteJobTagByJobId(Integer jobId)
 	{
-		jobTagDAO.deleteJobTagByJobId(jobId);
+		jobTagDAO.delete(jobId);
 		return 1;
 	}
+	
 	
 }

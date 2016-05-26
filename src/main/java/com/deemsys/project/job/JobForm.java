@@ -15,7 +15,7 @@ public class JobForm {
 	private String name;
 	private String description;
 	private String addedDate;
-	private List<String> jobTags;
+	private List<Long> jobTagId;
 	private Integer isEnable;
 	private Integer status;
 	
@@ -59,12 +59,12 @@ public class JobForm {
 		this.addedDate = addedDate;
 	}
 
-	public List<String> getJobTags() {
-		return jobTags;
+	public List<Long> getJobTagId() {
+		return jobTagId;
 	}
 
-	public void setJobTags(List<String> jobTags) {
-		this.jobTags = jobTags;
+	public void setJobTagId(List<Long> jobTagId) {
+		this.jobTagId = jobTagId;
 	}
 
 	public Integer getIsEnable() {

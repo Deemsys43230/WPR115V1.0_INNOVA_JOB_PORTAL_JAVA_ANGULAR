@@ -1,4 +1,4 @@
-package com.deemsys.project.latestnews;
+package com.deemsys.project.jobtagmap;
 
 import java.util.Date;
 import java.util.List;
@@ -8,10 +8,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import sun.rmi.server.UnicastRef;
-
 import com.deemsys.project.common.BasicQuery;
-import com.deemsys.project.entity.LatestNews;
+import com.deemsys.project.entity.JobTagMap;
 
 /**
  * 
@@ -19,32 +17,32 @@ import com.deemsys.project.entity.LatestNews;
  *
  */
 @Repository
-public class LatestNewsDAOImpl implements LatestNewsDAO{
+public class JobTagMapDAOImpl implements JobTagMapDAO{
 	
 	
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Override
-	public void save(LatestNews entity) {
+	public void save(JobTagMap entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().save(entity);
 	}
 
 	@Override
-	public void merge(LatestNews entity) {
+	public void merge(JobTagMap entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().merge(entity);
 	}	
 	
 	@Override
-	public LatestNews get(Integer id) {
+	public JobTagMap get(Integer id) {
 		// TODO Auto-generated method stub
-		return (LatestNews) this.sessionFactory.getCurrentSession().get(LatestNews.class, id);
+		return (JobTagMap) this.sessionFactory.getCurrentSession().get(JobTagMap.class, id);
 	}
 
 	@Override
-	public LatestNews update(LatestNews entity) {
+	public JobTagMap update(JobTagMap entity) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().merge(entity);
 		return null;
@@ -59,50 +57,50 @@ public class LatestNewsDAOImpl implements LatestNewsDAO{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<LatestNews> getAll() {
+	public List<JobTagMap> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).add(Restrictions.eq("status", 1)).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(JobTagMap.class).list();
 	}
 
 	@Override
-	public List<LatestNews> find(String paramName, String paramValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<LatestNews> find(String paramName, Long paramValue) {
+	public List<JobTagMap> find(String paramName, String paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<LatestNews> find(String paramName, Integer paramValue) {
+	public List<JobTagMap> find(String paramName, Long paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<LatestNews> find(BasicQuery query) {
+	public List<JobTagMap> find(String paramName, Integer paramValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<LatestNews> find(String queryString, String[] paramNames,
+	public List<JobTagMap> find(BasicQuery query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<JobTagMap> find(String queryString, String[] paramNames,
 			String[] paramValues) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<LatestNews> find(String ParamName, Date date1, Date date2) {
+	public List<JobTagMap> find(String ParamName, Date date1, Date date2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<LatestNews> find(String ParamName, Date date) {
+	public List<JobTagMap> find(String ParamName, Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -132,16 +130,26 @@ public class LatestNewsDAOImpl implements LatestNewsDAO{
 	}
 
 	@Override
-	public List<LatestNews> getActiveList() {
+	public List<JobTagMap> getActiveList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public LatestNews getLatestNewsById(Long latestNewsId) {
+	public void deleteJobTagMapByJobId(Long jobId) {
 		// TODO Auto-generated method stub
-		LatestNews latestNews=(LatestNews) this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).add(Restrictions.eq("latestNewsId", latestNewsId)).uniqueResult();
-		return null;
+		List<JobTagMap> jobTagMaps=this.getJobTagMapByJobId(jobId);
+		for (JobTagMap jobTagMap : jobTagMaps) {
+			this.sessionFactory.getCurrentSession().delete(jobTagMap);
+		}
+		
+	}
+
+	@Override
+	public List<JobTagMap> getJobTagMapByJobId(Long jobId) {
+		// TODO Auto-generated method stub
+		List<JobTagMap> jobTagMaps=this.sessionFactory.getCurrentSession().createCriteria(JobTagMap.class).add(Restrictions.eq("id.jobId", jobId)).list();
+		return jobTagMaps;
 	}
 
 	
