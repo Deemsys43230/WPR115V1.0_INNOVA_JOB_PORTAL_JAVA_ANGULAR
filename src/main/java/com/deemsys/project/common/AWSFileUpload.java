@@ -23,7 +23,7 @@ public class AWSFileUpload {
 	@Resource(name="appProperties")
 	private Properties appProperties;
 
-	public void uploadFileToAWSS3(MultipartFile file, String fileName)
+	public void uploadFileToAWSS3(MultipartFile file,String folderName, String fileName)
 			throws IOException {
 
 		try {
@@ -33,7 +33,6 @@ public class AWSFileUpload {
 					appProperties.getProperty("accessKey"),
 					appProperties.getProperty("secretKey"));
 			String bucketName = appProperties.getProperty("bucketName");
-			String folderName = appProperties.getProperty("folderName");
 			// create a client connection based on credentials
 			AmazonS3 s3client = new AmazonS3Client(credentials);
 			System.out.println("Create Connection..........................");

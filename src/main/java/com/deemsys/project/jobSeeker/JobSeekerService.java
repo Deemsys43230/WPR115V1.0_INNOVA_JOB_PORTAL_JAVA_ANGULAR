@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.UUID;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +37,9 @@ public class JobSeekerService {
 	
 	@Autowired
 	AWSFileUpload awsFileUpload;
+	
+	@Resource(name="appProperties")
+	private Properties appProperties;
 	
 	//Get All Entries
 	public List<JobSeekerForm> getJobSeekerList()
@@ -94,7 +100,7 @@ public class JobSeekerService {
 		String uuidString=UUID.randomUUID().toString().replaceAll("-", "");
 		//File Upload
 		try {
-			awsFileUpload.uploadFileToAWSS3(resume, uuidString+getExtension(resume.getOriginalFilename()));
+			awsFileUpload.uploadFileToAWSS3(resume,appProperties.getProperty("resumeFolder"),uuidString+getExtension(resume.getOriginalFilename()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
