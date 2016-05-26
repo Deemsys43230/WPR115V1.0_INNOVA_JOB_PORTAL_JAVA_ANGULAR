@@ -44,6 +44,7 @@
                     <span style="color:#FF0000" id="password_error"></span>
                     <br/><br/>
                     <button type="submit" onclick="return checkValidation()" class="btn-readmore">Login</button>
+                    <a href="index" class="pull-right margin-top-25"><i class="fa fa-arrow-circle-left">&nbsp;&nbsp;</i>Go To Site Main Page</a>
                 </div>
                 </form>
             </div>
@@ -51,6 +52,7 @@
     </div>
 
 	<!-- JS -->
+	 <script type="text/javascript" src="resources/scripts/app.js"></script>
 	<script type="text/javascript" src="resources/js/jquery.min.js"></script><!-- jQuery -->
 	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script><!-- Bootstrap -->
 	<script>

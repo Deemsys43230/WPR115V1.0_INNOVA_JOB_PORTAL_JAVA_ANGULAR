@@ -17,7 +17,7 @@ adminApp.controller('ContactController', ['$scope','$location','requestHandler',
 	$scope.saveEmployersMessage = function() {
 		
 		employeeMessageService.doSendMessage($scope.employersMessageForm);
-		Flash.create('successs', "Thanks for contacting us!!!");
+		Flash.create('success', "Thanks for contacting us!!!");
 		 $scope.employersMessageForm={};
 	     $scope.messageForm.$setPristine();
 	     $scope.submitted=false;

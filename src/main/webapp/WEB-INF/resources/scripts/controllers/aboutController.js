@@ -2,7 +2,7 @@ var adminApp = angular.module('innovaApp', [ 'requestModule','flash','employeeMe
 
 adminApp.controller('AboutController', ['$scope','$location','requestHandler','Flash','employeeMessageService','jobService',
 		function($scope, $location, requestHandler,Flash,employeeMessageService,jobService) {
-			
+		$scope.submitted=true;
 			$scope.init=function(){
 				 $scope.jobSeekerForm={
 						 "status":1
@@ -16,7 +16,7 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 			$scope.saveEmployersMessage = function() {
 				
 				employeeMessageService.doSendMessage($scope.employersMessageForm);
-				Flash.create('successs', "Thanks for contacting us!!!");
+				Flash.create('success', "Thanks for contacting us!!!");
 				 $scope.employersMessageForm={};
 			     $scope.messageForm.$setPristine();
 			     $scope.submitted=false;
@@ -45,5 +45,21 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 			};
 			
 			$scope.init();
+			
+			//Get Capability sheet
+			$scope.getCapabilitySheet = function(){
+				requestHandler.getRequest("getCapabilitySheetLink.json","").then(function(response){
+					console.log(response);
+					$scope.capabilitySheet = response.data.sheetLink;
+				});
+			};
+			
+			$scope.getCapabilitySheet();
+			
 } ]);
 
+adminApp.filter('trustUrl', function ($sce) {
+	  return function(url) {
+	    return $sce.trustAsResourceUrl(url);
+	  };
+	});

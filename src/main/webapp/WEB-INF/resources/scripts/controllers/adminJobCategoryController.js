@@ -24,10 +24,9 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
           $(".modal-dialog").hide();
           $("#myModal").hide();
           $(".modal-backdrop").hide();
-          $scope.getJobCategory();
           Flash.create('success', "Saved Successfully!");
-         
-    });
+          $scope.getJobCategory();
+      });
     };
     
     $scope.editJobCategory = function(jobCategoryId){
