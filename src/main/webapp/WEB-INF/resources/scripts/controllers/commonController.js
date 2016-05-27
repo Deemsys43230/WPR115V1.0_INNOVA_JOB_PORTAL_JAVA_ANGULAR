@@ -24,7 +24,7 @@ innovaApp.controller('CommonController',['$scope','$http','$document','$parse','
 					 $scope.indexJobSeekerForm={};
 					 $scope.indexresume="";
 					 document.getElementsByClassName('upload-path')[0].innerHTML="";
-				     $scope.indexJobSeekerForm.$setPristine();
+				     $scope.indexjobForm.$setPristine();
 				     $scope.submitted=false;
 					 $scope.saveData=false;
 					 $scope.saveButtonText="Submit Resume";

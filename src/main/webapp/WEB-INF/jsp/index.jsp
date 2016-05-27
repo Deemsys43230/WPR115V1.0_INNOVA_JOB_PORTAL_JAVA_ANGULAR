@@ -138,7 +138,9 @@
 	<script type="text/javascript" src="resources/js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script><!-- google map -->
 	<script type="text/javascript" src="resources/js/scripts.js"></script><!-- Scripts -->
-
+	
+	<!-- Directive -->
+	<script type="text/javascript" src="resources/scripts/directives/fileUpload.js"></script>
     <script src="resources/js/jquery.contact-buttons.js"></script>
     <script src="resources/angular/angular-flash/angular-flash.min.js"></script>
     <link rel="stylesheet" href="resources/angular/angular-flash/angular-flash.css">

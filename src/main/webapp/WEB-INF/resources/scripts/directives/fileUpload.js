@@ -8,7 +8,6 @@ angular.module('innovaApp').directive('fileModel', ['$parse', function ($parse) 
             var modelSetter = model.assign;
             element.bind('change', function(){
                 scope.$apply(function(){
-                	alert("sdas");
                     modelSetter(scope, element[0].files[0]);
                 });
             });

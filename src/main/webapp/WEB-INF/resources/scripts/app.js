@@ -56,8 +56,9 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             name:'innovaApp',
                             files:[
                                  'resources/scripts/services/jobServices.js',
+                                 'resources/scripts/directives/fileUpload.js',
                                 'resources/scripts/controllers/commonController.js',
-                                'resources/scripts/directives/fileUpload.js',
+                                
                             ]
                         });
                     }]

@@ -17,7 +17,7 @@ innovaApp.controller('JobController',['$scope','jobService','Flash', function($s
 	    	$scope.jobSeekerForm.jobSeekerId=response.data.jobSeekerId;
 	    	jobService.saveJobSeeker($scope.jobSeekerForm).then(function(response){
 	    		if(response.data.requestSuccess){
-	    			Flash.create('success', "Thanks!!!");
+	    			Flash.create('success', "Thanks for submiyting!!!");
 					 $scope.jobSeekerForm={};
 					 $scope.jobresume="";
 					 document.getElementsByClassName('upload-path')[0].innerHTML="";
