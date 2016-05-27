@@ -70,6 +70,7 @@
 	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script><!-- Bootstrap -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.min.js"></script>
     <script type="text/javascript" src="resources/scripts/adminApp.js"></script>
     <script type="text/javascript" src="resources/angular/angular-route-1.4.5.js"></script>
     <script type="text/javascript" src="resources/angular/ocLazyLoad.min.js"></script>

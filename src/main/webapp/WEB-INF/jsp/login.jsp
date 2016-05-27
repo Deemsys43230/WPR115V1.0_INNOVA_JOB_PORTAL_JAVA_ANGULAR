@@ -38,9 +38,9 @@
 		                             </c:if>
                  <form role="form" action="j_spring_security_check" method="post">
                 <div class="col-md-10 col-md-offset-1"><br/>
-                    <input class="form-control-login" placeholder="user name" name="username" id="username" autofocus>
+                    <input class="form-control-login" placeholder="Username" name="username" id="username" autofocus>
                     <span style="color:#FF0000" id="username_error"></span>
-                    <input type="password" class="form-control-login" placeholder="password" name="password" id="password">
+                    <input type="password" class="form-control-login" placeholder="Password" name="password" id="password">
                     <span style="color:#FF0000" id="password_error"></span>
                     <br/><br/>
                     <button type="submit" onclick="return checkValidation()" class="btn-readmore">Login</button>

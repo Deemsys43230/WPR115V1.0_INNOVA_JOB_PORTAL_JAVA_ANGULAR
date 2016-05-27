@@ -1,4 +1,4 @@
-var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash']);
+var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash','ngAnimate']);
 
 innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
 

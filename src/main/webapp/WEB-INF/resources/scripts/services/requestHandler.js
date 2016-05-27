@@ -3,7 +3,7 @@ var myApp=angular.module("requestModule",[]);
 myApp.factory("requestHandler",['$http',function($http){
     
     var requestObj={};
-    var appURL="http://192.168.1.123:8084";
+    var appURL="http://192.168.1.236:8090";
     
     
     requestObj.getURL=function(){
