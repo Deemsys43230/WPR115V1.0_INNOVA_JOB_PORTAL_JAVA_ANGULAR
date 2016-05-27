@@ -50,10 +50,10 @@ public class JobSeekerService {
 		List<JobSeeker> jobSeekers=new ArrayList<JobSeeker>();
 		
 		jobSeekers=jobSeekerDAO.getAll();
-		
+		String resumeUrl=appProperties.getProperty("bucketUrl")+appProperties.getProperty("bucketName")+"/"+appProperties.getProperty("resumeFolder");
 		for (JobSeeker jobSeeker : jobSeekers) {
 			//TODO: Fill the List
-			jobSeekerForms.add(new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType()));
+			jobSeekerForms.add(new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType(),resumeUrl+jobSeeker.getJobSeekerId()+getExtension(jobSeeker.getResumeName())));
 		}
 		
 		return jobSeekerForms;
@@ -68,8 +68,8 @@ public class JobSeekerService {
 		
 		//TODO: Convert Entity to Form
 		//Start
-		
-		JobSeekerForm jobSeekerForm=new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType());
+		String resumeUrl=appProperties.getProperty("bucketUrl")+appProperties.getProperty("bucketName")+"/"+appProperties.getProperty("resumeFolder");
+		JobSeekerForm jobSeekerForm=new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType(),resumeUrl+jobSeeker.getJobSeekerId()+getExtension(jobSeeker.getResumeName()));
 		
 		//End
 		

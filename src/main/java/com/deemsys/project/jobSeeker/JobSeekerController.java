@@ -59,7 +59,7 @@ public class JobSeekerController {
    		return "/returnPage";
    	}
        
-    @RequestMapping(value="/deleteJobSeeker",method=RequestMethod.POST)
+    @RequestMapping(value="Admin/deleteJobSeeker",method=RequestMethod.POST)
    	public String deleteJobSeeker(@RequestParam("id") String id,ModelMap model)
    	{
     	

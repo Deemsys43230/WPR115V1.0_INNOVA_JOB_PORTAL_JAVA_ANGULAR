@@ -72,7 +72,7 @@ public class JobService {
 		//TODO: Convert Entity to Form
 		//Start
 		JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
-		jobForm.setJobTagId(jobTagMapService.getJobTagMappedListId(jobId));
+		jobForm.setJobTagForms(jobTagMapService.getJobTagMapListByJobId(jobId));
 		//End
 		
 		return jobForm;

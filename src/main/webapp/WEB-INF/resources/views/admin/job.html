@@ -1,7 +1,7 @@
 <div class="admin-main-content">
     <div class="col-md-12 margin-top-20">
     
-    	<a href="" ng-show="isJobList" ng-click="addNewJob()" class="btn btn btn-send pull-right"><i class="fa fa-plus-circle"></i> ADD NEW JOB</a>
+    	<a href="#jobManagement-jobList-addJob" ng-show="isJobList" class="btn btn btn-send pull-right"><i class="fa fa-plus-circle"></i> ADD NEW JOB</a>
         <a href="" ng-show="isJobCateogry" class="btn btn btn-send pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> ADD NEW CATEGORY</a>
          <div flash-message="2000" class="col-md-4 pull-right"></div>   
     	<div ng-include="'resources/views/admin/job-menu.html'"></div>

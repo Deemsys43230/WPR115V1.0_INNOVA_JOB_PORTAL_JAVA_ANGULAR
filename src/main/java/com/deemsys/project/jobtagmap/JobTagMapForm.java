@@ -14,7 +14,7 @@ public class JobTagMapForm {
 
 	private Long jobId;
 	private Long tagId;
-	private String tag;
+	private String tagName;
 	private Integer status;
 	
 	public Long getJobId() {
@@ -33,12 +33,12 @@ public class JobTagMapForm {
 		this.tagId = tagId;
 	}
 
-	public String getTag() {
-		return tag;
+	public String getTagName() {
+		return tagName;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setTag(String tagName) {
+		this.tagName = tagName;
 	}
 
 	public Integer getStatus() {
@@ -49,14 +49,22 @@ public class JobTagMapForm {
 		this.status = status;
 	}
 
-	public JobTagMapForm(Long jobId, Long tagId, String tag, Integer status) {
+	public JobTagMapForm(Long jobId, Long tagId, String tagName, Integer status) {
 		super();
 		this.jobId = jobId;
 		this.tagId = tagId;
-		this.tag = tag;
+		this.tagName = tagName;
 		this.status = status;
 	}
 
+	public JobTagMapForm(Long tagId, String tagName, Integer status) {
+		super();
+		this.tagId = tagId;
+		this.tagName = tagName;
+		this.status = status;
+	}
+
+	
 	public JobTagMapForm() {
 		super();
 		// TODO Auto-generated constructor stub

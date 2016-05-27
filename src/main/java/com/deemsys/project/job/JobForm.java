@@ -2,6 +2,9 @@ package com.deemsys.project.job;
 
 import java.util.List;
 
+import com.deemsys.project.jobtag.JobTagForm;
+import com.deemsys.project.jobtagmap.JobTagMapForm;
+
 
 /**
  * 
@@ -16,6 +19,7 @@ public class JobForm {
 	private String description;
 	private String addedDate;
 	private List<Long> jobTagId;
+	private List<JobTagMapForm> jobTagMapForms;
 	private Integer isEnable;
 	private Integer status;
 	
@@ -81,6 +85,14 @@ public class JobForm {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public List<JobTagMapForm> getJobTagMapForms() {
+		return jobTagMapForms;
+	}
+
+	public void setJobTagForms(List<JobTagMapForm> jobTagMapForms) {
+		this.jobTagMapForms = jobTagMapForms;
 	}
 
 	public JobForm(Long jobId, Integer jobCategoryId, String name,

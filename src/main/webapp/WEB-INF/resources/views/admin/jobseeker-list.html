@@ -1,0 +1,26 @@
+<table class="table table-bordered table-striped">
+            <thead class="high-light">
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td>Phone Number</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+           		 <tr ng-show="jobSeekerList.length>0"  dir-paginate="jobSeeker in jobSeekerList|itemsPerPage:10">
+                	<td>{{jobSeeker.firstName}}</td>
+                    <td>{{jobSeeker.lastName}}</td>
+                    <td>{{jobSeeker.email}}</td>
+                    <td>{{jobSeeker.phoneNumber}}</td>
+                    <td>
+                         <a href="{{jobSeeker.resumeUrl}}" download ng-cloak ng-show="jobSeeker.status==1" ng-click="" class="btn-xs btn-info" title="Download Resume"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+               <tr ng-show="!jobSeekerList.length">
+				<td colspan="4" align="center">No Records Found</td>
+				</tr>
+            </tbody>
+        </table>    
+<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>

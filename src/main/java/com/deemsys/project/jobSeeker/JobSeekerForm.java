@@ -20,6 +20,7 @@ public class JobSeekerForm {
 	private Integer status;
 	private String resumeName;
 	private String resumeType;
+	private String resumeUrl;
 	public String getJobSeekerId() {
 		return jobSeekerId;
 	}
@@ -68,9 +69,15 @@ public class JobSeekerForm {
 	public void setResumeType(String resumeType) {
 		this.resumeType = resumeType;
 	}
+	public String getResumeUrl() {
+		return resumeUrl;
+	}
+	public void setResumeUrl(String resumeUrl) {
+		this.resumeUrl = resumeUrl;
+	}
 	public JobSeekerForm(String jobSeekerId, String firstName, String lastName,
 			String email, String phoneNumber, Integer status,
-			String resumeName, String resumeType) {
+			String resumeName, String resumeType,String resumeUrl) {
 		super();
 		this.jobSeekerId = jobSeekerId;
 		this.firstName = firstName;
@@ -80,6 +87,7 @@ public class JobSeekerForm {
 		this.status = status;
 		this.resumeName = resumeName;
 		this.resumeType = resumeType;
+		this.resumeUrl = resumeUrl;
 	}
 	public JobSeekerForm() {
 		super();

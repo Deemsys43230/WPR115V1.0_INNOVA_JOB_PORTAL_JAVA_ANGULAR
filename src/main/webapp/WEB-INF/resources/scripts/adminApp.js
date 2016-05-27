@@ -74,10 +74,42 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                                 'resources/styles/easy-responsive-tabs.css',
                                 'resources/scripts/controllers/adminJobListController.js'
                             ]
-                        })
+                        });
                     }]
                 },
                 controller:'AdminJobListController'
+            }).
+            when('/jobManagement-jobList-addJob', {
+                templateUrl: 'admin/job.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/js/easyResponsiveTabs.js',
+                                'resources/styles/easy-responsive-tabs.css',
+                                'resources/scripts/controllers/adminJobListController.js'
+                            ]
+                        });
+                    }]
+                },
+                controller:'AdminJobAddController'
+            })
+            . when('/jobManagement-jobList-editJob/:id', {
+                templateUrl: 'admin/job.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/js/easyResponsiveTabs.js',
+                                'resources/styles/easy-responsive-tabs.css',
+                                'resources/scripts/controllers/adminJobListController.js'
+                            ]
+                        });
+                    }]
+                },
+                controller:'AdminJobEditController'
             }).
             when('/jobManagement-jobCategory', {
                 templateUrl: 'admin/job.html',
@@ -169,8 +201,20 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'CapabilitySheetController'
             }).
-            
-
+            when('/jobSeekers-List', {
+                templateUrl: 'admin/jobseeker.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/scripts/controllers/adminJobSeekerListController.js'
+                            ]
+                        });
+                    }]
+                },
+                controller:'AdminJobSeekerListController'
+            }).
             otherwise({
                 redirectTo: '/dashboard'
             });

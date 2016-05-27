@@ -2,43 +2,25 @@
 <table class="table table-bordered table-striped">
             <thead class="high-light">
                 <tr>
-                    <td>Sl.no</td>
                     <td>Job Title</td>
-                    <td>Uploaded Date</td>
-                    <td>Upto Date</td>
-                    <td>Options</td>
+                    <td>Description</td>
+                    <td>Updated Date</td>
+                    <td>Actions</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Web Development</td>
-                    <td>03/12/2016</td>
-                    <td>03/20/2016</td>
+               <tr ng-show="jobsList.length>0"  dir-paginate="job in jobsList|itemsPerPage:10">
+                	<td>{{job.name}}</td>
+                    <td>{{job.description}}</td>
+                    <td>{{job.addedDate}}</td>
                     <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
+                         <a href="#jobManagement-jobList-editJob/{{job.jobId}}" ng-cloak ng-click="" class="btn-xs btn-warning" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success" title="Enabled"><i class="fa fa-unlock"></i> Disable</a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger" title="Diabled"><i class="fa fa-lock"></i> Enable</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Web Development</td>
-                    <td>03/12/2016</td>
-                    <td>03/20/2016</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Web Development</td>
-                    <td>03/12/2016</td>
-                    <td>03/20/2016</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
+               <tr ng-show="!jobsList.length">
+				<td colspan="4" align="center">No Records Found</td>
+				</tr>
             </tbody>
         </table>

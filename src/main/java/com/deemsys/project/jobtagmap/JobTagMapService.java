@@ -1,5 +1,6 @@
 package com.deemsys.project.jobtagmap;
 
+import java.awt.JobAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.deemsys.project.entity.JobTagMap;
+import com.deemsys.project.jobtag.JobTagForm;
 /**
  * 
  * @author Deemsys
@@ -38,6 +40,24 @@ public class JobTagMapService {
 		}
 		
 		return tagId;
+	}
+	
+	//Get All Entries
+	public List<JobTagMapForm> getJobTagMapListByJobId(Long jobId)
+	{
+		List<JobTagMapForm> jobTagMapForms=new ArrayList<JobTagMapForm>();
+			
+		List<JobTagMap> jobTagMaps=new ArrayList<JobTagMap>();
+			
+		jobTagMaps=jobTagMapDAO.getJobTagMapByJobId(jobId);
+			
+		for (JobTagMap jobTagMap : jobTagMaps) {
+				//TODO: Fill the List
+			JobTagMapForm jobTagMapForm = new JobTagMapForm(jobTagMap.getId().getTagId(), jobTagMap.getJobTags().getTagName(), jobTagMap.getJobTags().getStatus());
+			jobTagMapForms.add(jobTagMapForm);
+		}
+			
+		return jobTagMapForms;
 	}
 	
 	//Get All Entries
