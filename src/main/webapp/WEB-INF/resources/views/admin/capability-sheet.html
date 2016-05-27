@@ -1,24 +1,31 @@
 
 
 <div class="admin-main-content">
+<form name="uploadForm" ng-submit="uploadForm.$valid && uploadSheet()" novalidate>
     <div class="col-md-12 margin-top-20">
-    	<div class="col-md-4 browse-wrap">
+    <div class="col-md-4">
+    	<div class="btn btn-readmore">
 			<div class="title">Choose a file to upload</div>
-			<input type="file" name="upload" class="upload" title="Choose a file to upload">
+			<input type="file" valid-file required  name="uploadsheet" file-model="capabilityUploadSheet" accept="application/pdf" ng-model="capabilityUploadSheet" class="upload" title="Choose a file to upload">
 		</div>
-		
-		<div class="col-md-5">
+		<div class="error-container" >
+           <div ng-show="submitted">
+	           <span ng-cloak ng-show="uploadForm.uploadsheet.$error.required">Please Upload Capability Sheet</span>
+	       </div>
+       </div>
+</div>                              	
+		<div class="col-md-4">
 			<span class="upload-path"></span>
 		</div>
 		
-		<div class="col-md-3 browse-wrap">
+		<div class="col-md-4 browse-wrap margin-top-15">
 			<div class="title">Upload File</div>
-			<input type="submit" name="upload" class="upload" title="Upload file">
+			<input type="submit" name="upload" class="upload" ng-click="submitted=true" title="Upload file">
 		</div>
-    </div>
-    
+    </div> 
+    </form>
     <div class="col-md-12 margin-top-20">
-		<iframe class="doc" src="http://kmmc.in/wp-content/uploads/2014/01/lesson2.pdf"></iframe>
+		<iframe class="doc" ng-src="{{content}}"></iframe>
 		<br/><br/>
     </div>
 </div>
@@ -27,7 +34,7 @@
 	//Span
 	var span = document.getElementsByClassName('upload-path');
 	// Button
-	var uploader = document.getElementsByName('upload');
+	var uploader = document.getElementsByName('uploadsheet');
 	// On change
 	for( item in uploader ) {
 	  // Detect changes
@@ -40,7 +47,7 @@
 	
 </script>
 
-<script>
+<!-- <script>
    $("form").submit(function(evt){	 
    evt.preventDefault();
 
@@ -62,4 +69,4 @@
 
    return false;
  });
-</script>
+</script> -->
