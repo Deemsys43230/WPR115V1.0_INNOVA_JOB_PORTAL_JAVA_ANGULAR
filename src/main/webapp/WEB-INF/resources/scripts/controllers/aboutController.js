@@ -2,7 +2,7 @@ var adminApp = angular.module('innovaApp', [ 'requestModule','flash','employeeMe
 
 adminApp.controller('AboutController', ['$scope','$location','requestHandler','Flash','employeeMessageService','jobService',
 		function($scope, $location, requestHandler,Flash,employeeMessageService,jobService) {
-		$scope.submitted=true;
+		
 			$scope.init=function(){
 				 $scope.jobSeekerForm={
 						 "status":1

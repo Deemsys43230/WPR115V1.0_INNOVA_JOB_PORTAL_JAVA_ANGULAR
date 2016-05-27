@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-           		 <tr ng-show="jobCategoryList.length>0"  dir-paginate="jobCategory in jobCategoryList|itemsPerPage:5">
+           		 <tr ng-show="jobCategoryList.length>0"  dir-paginate="jobCategory in jobCategoryList|itemsPerPage:10">
                 	<td>{{jobCategory.jobCategoryId}}</td>
                     <td>{{jobCategory.categoryName}}</td>
                     <td>{{jobCategory.description}}</td>
@@ -20,7 +20,7 @@
                         <a href="" ng-cloak ng-show="jobCategory.status==0" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-success">Enable</a>
                     </td>
                 </tr>
-               <tr ng-show="!jobCategoryList.length">
+               <tr ng-cloak ng-show="!jobCategoryList.length">
 				<td colspan="4" align="center">No Records Found</td>
 				</tr>
             </tbody>

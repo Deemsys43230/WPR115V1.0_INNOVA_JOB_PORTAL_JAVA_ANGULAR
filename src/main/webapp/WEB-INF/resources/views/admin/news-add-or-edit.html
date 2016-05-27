@@ -1,18 +1,32 @@
 <div class="clearfix contact-form row">
+<form class="contact-form" name="newsForm" ng-submit="newsForm.$valid && saveUpdateNews()" no-validate>
 	<div class="col-md-12">
 		<h5>News tile<span class="text-red"><sup>*</sup></span></h5>
-		<input type="text" name="name" required="required" placeholder="News title">
+		<input type="text" name="title" ng-model="news.title" required placeholder="News title">
+		<div class="error-container">
+                <div ng-show="submitted">
+	              <span ng-cloak ng-show="newsForm.title.$error.required">Please Enter News Title</span>
+	             
+                </div>
+         </div>
 	</div>
 	
 	<div class="col-md-12">
 		<h5>News description</h5>
-		<div summernote config="options" name="content"  ng-model="instructions.content" required></div>
+		<div summernote config="options" name="description"  ng-model="news.description" required></div>
+		<div class="error-container">
+                <div ng-show="submitted">
+	              <span ng-cloak ng-show="newsForm.description.$error.required">Please Enter News Description</span>
+	             
+                </div>
+         </div>
 	</div>
 	
 	<div class="col-md-12"><br/><br/>
 		<a href="" class="btn btn-success">Add News</a>
+		<input type="submit" name="submit" value="Save" class="btn btn-success" ng-click="submitted=true" ng-disabled="doNews_isClean()">
 		<a href="" ng-click="cancelAddNews()" class="btn btn-danger">Cancel</a>
 		<br/><br/>
 	</div>
-
+</form>
 </div>

@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-show="newsList.length>0"  dir-paginate="news in newsList|itemsPerPage:5">
                     <td>1</td>
                     <td>title</td>
                     <td>description</td>
@@ -20,25 +20,9 @@
                         <a href="" class="btn-xs btn-danger">Inactive</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>title</td>
-                    <td>description</td>
-                    <td>03/20/2016</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>title</td>
-                    <td>description</td>
-                    <td>03/20/2016</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
+               <tr ng-cloak ng-show="!newsList.length">
+				<td colspan="5" align="center">No Records Found</td>
+				</tr>
             </tbody>
         </table>
+<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
