@@ -1,5 +1,6 @@
 package com.deemsys.project.jobSeeker;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,7 +101,9 @@ public class JobSeekerService {
 		String uuidString=UUID.randomUUID().toString().replaceAll("-", "");
 		//File Upload
 		try {
-			awsFileUpload.uploadFileToAWSS3(resume,appProperties.getProperty("resumeFolder"),uuidString+getExtension(resume.getOriginalFilename()));
+			File file=awsFileUpload.saveTemporaryFile(resume);
+			awsFileUpload.uploadFileToAWSS3(file,appProperties.getProperty("resumeFolder"),uuidString+getExtension(resume.getOriginalFilename()));
+			file.delete();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

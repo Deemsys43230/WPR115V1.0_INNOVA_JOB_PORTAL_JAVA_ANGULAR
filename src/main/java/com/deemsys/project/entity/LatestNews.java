@@ -1,6 +1,6 @@
 package com.deemsys.project.entity;
 
-// Generated May 26, 2016 2:42:36 PM by Hibernate Tools 3.4.0.CR1
+// Generated May 27, 2016 7:55:43 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -24,16 +24,18 @@ public class LatestNews implements java.io.Serializable {
 	private String description;
 	private Date addedDate;
 	private Integer status;
+	private String fileReferenceName;
 
 	public LatestNews() {
 	}
 
 	public LatestNews(String title, String description, Date addedDate,
-			Integer status) {
+			Integer status, String fileReferenceName) {
 		this.title = title;
 		this.description = description;
 		this.addedDate = addedDate;
 		this.status = status;
+		this.fileReferenceName = fileReferenceName;
 	}
 
 	@Id
@@ -82,6 +84,15 @@ public class LatestNews implements java.io.Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	@Column(name = "file_reference_name", length = 100)
+	public String getFileReferenceName() {
+		return this.fileReferenceName;
+	}
+
+	public void setFileReferenceName(String fileReferenceName) {
+		this.fileReferenceName = fileReferenceName;
 	}
 
 }

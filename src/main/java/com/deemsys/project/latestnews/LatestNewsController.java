@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.deemsys.project.latestnews.LatestNewsForm;
 import com.deemsys.project.latestnews.LatestNewsService;
@@ -44,14 +45,18 @@ public class LatestNewsController {
     @RequestMapping(value="/Admin/saveUpdateLatestNews",method=RequestMethod.POST)
    	public String saveLatestNews(@RequestBody LatestNewsForm latestNewsForm,ModelMap model)
    	{
-    	if(latestNewsForm.getLatestNewsId()==null)
-    		latestNewsService.saveLatestNews(latestNewsForm);
-    	else
-    		latestNewsService.updateLatestNews(latestNewsForm);
+    	latestNewsService.updateLatestNews(latestNewsForm);
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
    	}
    
+    @RequestMapping(value="/Admin/saveTitleImage",method=RequestMethod.POST)
+   	public String saveTitleImage(@RequestParam MultipartFile titleImage,ModelMap model)
+   	{
+    	model.addAttribute("newsId",latestNewsService.saveLatestNews(titleImage));
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
     
     @RequestMapping(value="/Admin/deleteLatestNews",method=RequestMethod.POST)
    	public String deleteLatestNews(@RequestParam("id") Integer id,ModelMap model)

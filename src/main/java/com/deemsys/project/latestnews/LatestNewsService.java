@@ -1,13 +1,23 @@
 package com.deemsys.project.latestnews;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+import java.util.UUID;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.deemsys.project.common.AWSFileUpload;
+import com.deemsys.project.common.ImageResizeService;
 import com.deemsys.project.common.JobPortalConstants;
 import com.deemsys.project.entity.LatestNews;
 /**
@@ -29,6 +39,15 @@ public class LatestNewsService {
 	@Autowired
 	LatestNewsDAO latestNewsDAO;
 	
+	@Autowired
+	AWSFileUpload awsFileUpload;
+	
+	@Resource(name="appProperties")
+	private Properties appProperties;
+	
+	@Autowired
+	private ImageResizeService imageResizeService;
+	
 	//Get All Entries
 	public List<LatestNewsForm> getLatestNewsList()
 	{
@@ -40,7 +59,7 @@ public class LatestNewsService {
 		
 		for (LatestNews latestNews : latestNewss) {
 			//TODO: Fill the List
-			LatestNewsForm latestNewsForm = new LatestNewsForm(latestNews.getLatestNewsId(), latestNews.getTitle(), latestNews.getDescription(), JobPortalConstants.convertMonthFormat(latestNews.getAddedDate()), latestNews.getStatus());
+			LatestNewsForm latestNewsForm = new LatestNewsForm(latestNews.getLatestNewsId(), latestNews.getTitle(), latestNews.getDescription(), JobPortalConstants.convertMonthFormat(latestNews.getAddedDate()), latestNews.getStatus(),getTitleImageUrl(latestNews));
 			latestNewsForms.add(latestNewsForm);
 		}
 		
@@ -57,7 +76,7 @@ public class LatestNewsService {
 		//TODO: Convert Entity to Form
 		//Start
 		
-		LatestNewsForm latestNewsForm = new LatestNewsForm(latestNews.getLatestNewsId(), latestNews.getTitle(), latestNews.getDescription(), JobPortalConstants.convertMonthFormat(latestNews.getAddedDate()), latestNews.getStatus());
+		LatestNewsForm latestNewsForm = new LatestNewsForm(latestNews.getLatestNewsId(), latestNews.getTitle(), latestNews.getDescription(), JobPortalConstants.convertMonthFormat(latestNews.getAddedDate()), latestNews.getStatus(),getTitleImageUrl(latestNews));
 		
 		//End
 		
@@ -71,7 +90,7 @@ public class LatestNewsService {
 		
 		//Logic Starts
 		
-		LatestNews latestNews=new LatestNews(latestNewsForm.getTitle(), latestNewsForm.getDescription(), new Date(), 1);
+		LatestNews latestNews=new LatestNews(latestNewsForm.getTitle(), latestNewsForm.getDescription(), new Date(), 1,null);
 		latestNews.setLatestNewsId(latestNewsForm.getLatestNewsId());
 		
 		//Logic Ends
@@ -82,18 +101,25 @@ public class LatestNewsService {
 	}
 	
 	//Save an Entry
-	public int saveLatestNews(LatestNewsForm latestNewsForm)
+	public Long saveLatestNews(MultipartFile titleImage)
 	{
 		//TODO: Convert Form to Entity Here	
+		UUID uuid=UUID.randomUUID();
+		String newsFileName=uuid.toString().replace("-", "")+getExtension(titleImage.getOriginalFilename());
+		try {
+			File file=awsFileUpload.saveTemporaryFile(titleImage);			
+			awsFileUpload.uploadFileToAWSS3(file, appProperties.getProperty("newsFolder"),newsFileName);
+			file.delete();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 		//Logic Starts
-		
-		LatestNews latestNews=new LatestNews(latestNewsForm.getTitle(), latestNewsForm.getDescription(), new Date(), 1);
-		
-		//Logic Ends
-		
+		LatestNews latestNews=new LatestNews(null, null, new Date(), 1,newsFileName);
 		latestNewsDAO.save(latestNews);
-		return 1;
+		//Logic Ends
+		return latestNews.getLatestNewsId();
 	}
 	
 	//Update an Entry
@@ -102,9 +128,9 @@ public class LatestNewsService {
 		//TODO: Convert Form to Entity Here	
 		
 		//Logic Starts
-		
-		LatestNews latestNews=new LatestNews(latestNewsForm.getTitle(), latestNewsForm.getDescription(), new Date(), 1);
-		latestNews.setLatestNewsId(latestNewsForm.getLatestNewsId());
+		LatestNews latestNews=latestNewsDAO.getLatestNewsById(latestNewsForm.getLatestNewsId());
+		latestNews.setTitle(latestNewsForm.getTitle());
+		latestNews.setDescription(latestNewsForm.getDescription());
 		//Logic Ends
 		
 		latestNewsDAO.update(latestNews);
@@ -130,5 +156,15 @@ public class LatestNewsService {
 		latestNewsDAO.merge(latestNews);
 	}
 	
+	//Get Extension
+	public String getExtension(String fileName){
+		String ext=fileName.substring(fileName.lastIndexOf("."));
+		return ext;
+	}
+	
+	//Get URL
+	public String getTitleImageUrl(LatestNews latestNews){
+		return appProperties.getProperty("bucketUrl")+appProperties.getProperty("bucketName")+"/"+appProperties.getProperty("newsFolder")+latestNews.getFileReferenceName();
+	}
 	
 }

@@ -1,5 +1,6 @@
 package com.deemsys.project.capabilitysheet;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -24,7 +25,9 @@ public class CapabilitySheetService {
 	
 	public boolean uploadCapabilitySheet(MultipartFile sheet){
 		try {
-			awsFileUpload.uploadFileToAWSS3(sheet,appProperties.getProperty("capabilitySheetFolder"),appProperties.getProperty("capabilitySheetName"));
+			File file=awsFileUpload.saveTemporaryFile(sheet);
+			awsFileUpload.uploadFileToAWSS3(file,appProperties.getProperty("capabilitySheetFolder"),appProperties.getProperty("capabilitySheetName"));
+			file.delete();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

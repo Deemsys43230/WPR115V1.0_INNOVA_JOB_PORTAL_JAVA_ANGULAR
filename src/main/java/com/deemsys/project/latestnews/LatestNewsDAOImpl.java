@@ -141,7 +141,7 @@ public class LatestNewsDAOImpl implements LatestNewsDAO{
 	public LatestNews getLatestNewsById(Long latestNewsId) {
 		// TODO Auto-generated method stub
 		LatestNews latestNews=(LatestNews) this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).add(Restrictions.eq("latestNewsId", latestNewsId)).uniqueResult();
-		return null;
+		return latestNews;
 	}
 
 	

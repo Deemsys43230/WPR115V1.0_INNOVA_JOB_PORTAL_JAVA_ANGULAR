@@ -1,13 +1,19 @@
 package com.deemsys.project.common;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import antlr.InputBuffer;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -23,7 +29,7 @@ public class AWSFileUpload {
 	@Resource(name="appProperties")
 	private Properties appProperties;
 
-	public void uploadFileToAWSS3(MultipartFile file,String folderName, String fileName)
+	public void uploadFileToAWSS3(File file,String folderName, String fileName)
 			throws IOException {
 
 		try {
@@ -39,7 +45,7 @@ public class AWSFileUpload {
 
 			// Upload file to folder and set it to public
 			s3client.putObject(new PutObjectRequest(bucketName, folderName
-					+ fileName, file.getInputStream(), null)
+					+ fileName,file)
 					.withCannedAcl(CannedAccessControlList.PublicRead));
 			System.out.println("File uploaded..........................");
 		} catch (AmazonServiceException ase) {
@@ -98,6 +104,14 @@ public class AWSFileUpload {
 					+ "such as not being able to access the network.");
 			System.out.println("Error Message: " + ace.getMessage());
 		}
+	}
+	
+	public File saveTemporaryFile(MultipartFile file) throws IllegalStateException, IOException{
+		//create a temp file
+		File convFile = new File(appProperties.getProperty("tempFolder")+file.getOriginalFilename());
+		file.transferTo(convFile);
+        return convFile;
+		
 	}
 	
 }

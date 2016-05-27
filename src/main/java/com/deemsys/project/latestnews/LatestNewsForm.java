@@ -17,6 +17,7 @@ public class LatestNewsForm {
 	private String description;
 	private String addedDate;
 	private Integer status;
+	private String titleImageUrl;
 	
 	public Long getLatestNewsId() {
 		return latestNewsId;
@@ -58,14 +59,24 @@ public class LatestNewsForm {
 		this.status = status;
 	}
 
+	
+	public String getTitleImageUrl() {
+		return titleImageUrl;
+	}
+
+	public void setTitleImageUrl(String titleImageUrl) {
+		this.titleImageUrl = titleImageUrl;
+	}
+
 	public LatestNewsForm(Long latestNewsId, String title, String description,
-			String addedDate, Integer status) {
+			String addedDate, Integer status,String titleImageUrl) {
 		super();
 		this.latestNewsId = latestNewsId;
 		this.title = title;
 		this.description = description;
 		this.addedDate = addedDate;
 		this.status = status;
+		this.titleImageUrl=titleImageUrl;
 	}
 
 	public LatestNewsForm() {
