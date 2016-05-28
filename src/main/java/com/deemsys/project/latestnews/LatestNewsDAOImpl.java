@@ -61,7 +61,7 @@ public class LatestNewsDAOImpl implements LatestNewsDAO{
 	@Override
 	public List<LatestNews> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).add(Restrictions.eq("status", 1)).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).list();
 	}
 
 	@Override
@@ -144,6 +144,14 @@ public class LatestNewsDAOImpl implements LatestNewsDAO{
 		return latestNews;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LatestNews> getAllLatestNewsForUser() {
+		// TODO Auto-generated method stub
+		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).add(Restrictions.eq("status", 1)).list();
 	
+	}
+
+
 
 }

@@ -70,10 +70,18 @@ public class LatestNewsController {
     @RequestMapping(value="/getAllLatestNewss",method=RequestMethod.GET)
    	public String getAllLatestNewss(ModelMap model)
    	{
-    	model.addAttribute("latestNewsForms",latestNewsService.getLatestNewsList());
+    	model.addAttribute("latestNewsForms",latestNewsService.getAllLatestNewsForUser());
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
    	}	
+    
+    @RequestMapping(value="/Admin/getAllLatestNewssAdmin",method=RequestMethod.GET)
+   	public String getAllLatestNewssForAdmin(ModelMap model)
+   	{
+    	model.addAttribute("latestNewsForms",latestNewsService.getLatestNewsList());
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
     
     @RequestMapping(value="/Admin/enableDisableNews",method=RequestMethod.POST)
    	public String enableDisableNews(@RequestParam("latestNewsId") Long latestNewsId,ModelMap model)

@@ -127,4 +127,21 @@ public class TestimonialService {
 		testimonialDAO.merge(testimonial);
 	}
 	
+	//Get All Entries For User
+	public List<TestimonialForm> getAllTestimonialForUser()
+	{
+		List<TestimonialForm> testimonialForms=new ArrayList<TestimonialForm>();
+			
+		List<Testimonial> testimonials=new ArrayList<Testimonial>();
+			
+		testimonials=testimonialDAO.getAllTestimonialForUser();
+			
+		for (Testimonial testimonial : testimonials) {
+				//TODO: Fill the List
+			TestimonialForm testimonialForm=new TestimonialForm(testimonial.getTestimonialId(), testimonial.getDescription(), testimonial.getSaidBy(), testimonial.getDestination(), testimonial.getStatus());
+			testimonialForms.add(testimonialForm);
+		}
+			
+		return testimonialForms;
+	}
 }

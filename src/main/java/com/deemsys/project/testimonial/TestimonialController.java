@@ -66,6 +66,14 @@ public class TestimonialController {
     @RequestMapping(value="/getAllTestimonials",method=RequestMethod.GET)
    	public String getAllTestimonials(ModelMap model)
    	{
+    	model.addAttribute("testimonialForms",testimonialService.getAllTestimonialForUser());
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
+    
+    @RequestMapping(value="/Admin/getAllTestimonialsAdmin",method=RequestMethod.GET)
+   	public String getAllTestimonialsForAdmin(ModelMap model)
+   	{
     	model.addAttribute("testimonialForms",testimonialService.getTestimonialList());
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";

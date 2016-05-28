@@ -142,6 +142,14 @@ public class JobDAOImpl implements JobDAO{
 		return job;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Job> getAllJobsForUser() {
+		// TODO Auto-generated method stub
+		List<Job> jobs=this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.eq("isEnable", 1)).list();
+		return jobs;
+	}
+
 	
 
 }

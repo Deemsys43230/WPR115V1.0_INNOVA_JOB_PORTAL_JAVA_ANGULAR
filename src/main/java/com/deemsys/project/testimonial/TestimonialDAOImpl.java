@@ -59,7 +59,7 @@ public class TestimonialDAOImpl implements TestimonialDAO{
 	@Override
 	public List<Testimonial> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).add(Restrictions.eq("status", 1)).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).list();
 	}
 
 	@Override
@@ -140,6 +140,13 @@ public class TestimonialDAOImpl implements TestimonialDAO{
 		// TODO Auto-generated method stub
 		Testimonial testimonial =(Testimonial) this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).add(Restrictions.eq("testimonialId", testimonialId)).uniqueResult();
 		return testimonial;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Testimonial> getAllTestimonialForUser() {
+		// TODO Auto-generated method stub
+		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).add(Restrictions.eq("status", 1)).list();
 	}
 
 	

@@ -167,4 +167,21 @@ public class LatestNewsService {
 		return appProperties.getProperty("bucketUrl")+appProperties.getProperty("bucketName")+"/"+appProperties.getProperty("newsFolder")+latestNews.getFileReferenceName();
 	}
 	
+	//Get Enabled Entries For User
+	public List<LatestNewsForm> getAllLatestNewsForUser()
+	{
+		List<LatestNewsForm> latestNewsForms=new ArrayList<LatestNewsForm>();
+			
+		List<LatestNews> latestNewss=new ArrayList<LatestNews>();
+			
+		latestNewss=latestNewsDAO.getAllLatestNewsForUser();
+			
+		for (LatestNews latestNews : latestNewss) {
+			//TODO: Fill the List
+			LatestNewsForm latestNewsForm = new LatestNewsForm(latestNews.getLatestNewsId(), latestNews.getTitle(), latestNews.getDescription(), JobPortalConstants.convertMonthFormat(latestNews.getAddedDate()), latestNews.getStatus(),getTitleImageUrl(latestNews));
+			latestNewsForms.add(latestNewsForm);
+		}
+			
+		return latestNewsForms;
+	}
 }
