@@ -8,6 +8,10 @@ innovaApp.controller('JobController',['$scope','jobService','Flash', function($s
 		$scope.jobSeekerForm={
 				"status":1
 		};
+		
+		$scope.jobSearchList=[{"name":"job1"},{"name":"job2"},{"name":"job3"},{"name":"job4"},{"name":"job5"},
+		                      {"name":"job6"},{"name":"job7"},{"name":"job8"},{"name":"job9"},{"name":"job10"},
+		                      {"name":"job11"},{"name":"job12"},{"name":"job13"},{"name":"job14"},{"name":"job15"}];
 	};
 	
 	$scope.uploadResume=function(){

@@ -118,6 +118,9 @@ public class EmployerMessagesService {
 		return 1;
 	}
 	
-	
+	// Get Employer Count
+	public Integer getEmployerCount(){
+		return employerMessagesDAO.getAll().size();
+	}
 	
 }

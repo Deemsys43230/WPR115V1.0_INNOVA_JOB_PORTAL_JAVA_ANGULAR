@@ -55,13 +55,13 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'adminApp',
                             files:[
-                               /* 'resources/scripts/controllers/commonController.js'*/
+                                'resources/scripts/controllers/adminDashboardController.js'
                             ]
                         })
                     }]
 
-                }
-                /*controller:'CommonController'*/
+                },
+                controller:'AdminDashboardController'
             }).
             when('/jobManagement-jobList', {
                 templateUrl: 'admin/job.html',

@@ -145,10 +145,8 @@
     <script src="resources/js/jquery.contact-buttons.js"></script>
     <script src="resources/angular/angular-flash/angular-flash.min.js"></script>
     <link rel="stylesheet" href="resources/angular/angular-flash/angular-flash.css">
-    
-    
-    
-    
+     <!-- dirPagination -->
+    <script src="resources/angular/angular-utils-pagination/dirPagination.js"></script> 
     
      <script>document.write('<base href="' + document.location + '" />');</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" />

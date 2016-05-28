@@ -74,5 +74,13 @@ public class JobSeekerController {
     	model.addAttribute("jobSeekerForms",jobSeekerService.getJobSeekerList());
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
+   	}
+    
+    @RequestMapping(value="Admin/getJobSeekerCount",method=RequestMethod.GET)
+   	public String getJobSeekerCount(ModelMap model)
+   	{
+    	model.addAttribute("jobSeekerCount",jobSeekerService.getJobSeekerCount());
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
    	}	
 }

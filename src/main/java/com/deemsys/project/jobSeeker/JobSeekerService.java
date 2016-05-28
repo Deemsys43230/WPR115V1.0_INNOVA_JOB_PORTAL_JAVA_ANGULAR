@@ -158,4 +158,8 @@ public class JobSeekerService {
 		return ext;
 	}
 	
+	// Get Job Seeker Count
+	public Integer getJobSeekerCount(){
+		return jobSeekerDAO.getAll().size();
+	}
 }

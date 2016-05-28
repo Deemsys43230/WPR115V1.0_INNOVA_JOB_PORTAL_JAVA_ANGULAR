@@ -1,4 +1,4 @@
-var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash','ngAnimate']);
+var innovaApp= angular.module('innovaApp', ['ngRoute','oc.lazyLoad','ngCookies','requestModule','flash','ngAnimate','angularUtils.directives.dirPagination']);
 
 innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
 
@@ -120,19 +120,20 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 controller:'CommonController'*/
             }).
             when('/submit-resume/:id', {
-                templateUrl: 'views/submit.html'
-                /*resolve: {
+                templateUrl: 'views/submit.html',
+                resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                'js/jquery.contact-buttons.js',
-                                'js/demo.js'
+                                   'resources/scripts/services/jobServices.js',
+                                   'resources/scripts/controllers/applyJobController.js',
+                                   'resources/scripts/directives/fileUpload.js',
                             ]
-                        })
+                        });
                     }]
-                }
-                controller:'CommonController'*/
+                },
+                controller:'ApplyJobController'
             }).
             when('/solutions', {
                 templateUrl: 'views/solutions.html',

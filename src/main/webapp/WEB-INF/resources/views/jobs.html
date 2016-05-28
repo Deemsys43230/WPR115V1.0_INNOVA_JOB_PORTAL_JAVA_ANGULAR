@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-
+<!-- 
                 <div class="col-sm-12">
                     <br/>
                     <h4 class="text-white text-center">FIND JOB FOR ME!</h4><br/>
@@ -100,19 +100,19 @@
 	                          			<span ng-cloak ng-show="jobForm.jobresume.$error.required">Please Upload Resume</span>
 	                              </div>
                               	</div>
-                            <!--<div class="col-sm-4">
+                            <div class="col-sm-4">
                                 <input type="text" name="website" placeholder="Website">
-                            </div>-->
-                            <!--<div class="col-sm-12">
+                            </div>
+                            <div class="col-sm-12">
                                 <textarea name="message" required="required" cols="30" rows="7" placeholder="Message*"></textarea>
-                            </div>-->
+                            </div>
                             <div class="col-sm-12">
                             	<input type="submit" name="submit" ng-click="submitted=true" ng-disabled="saveData" value="{{saveButtonText}}" class="btn btn-send pull-left">
                              	<span class="pull-left padding-right-span">&nbsp;</span><div flash-message="2000" class="col-md-4 pull-left"></div>
                              </div>
                         </div>
                     </form>
-                </div>
+                </div> -->
 
 			</div>
 		</div>
@@ -130,13 +130,17 @@
 						<span class="st-border"></span>
 					</div>
 				</div>
-
+		<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
 				<div class="col-sm-12">
+				
 					<ul>
-                        <li><a href="#job-details/1">CNC Operators/Machinist</a></li>
-                        <li><a href="#job-details/2">Managing director</a></li>
-					</ul>
+                        <li dir-paginate="searchJob in jobSearchList|itemsPerPage:10">
+                        <a href="#job-details/1">{{searchJob.name}}</a>
+                        </li>
+                     </ul>
+                    
 				</div>
+				 <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
 			</div>
 		</div>
 	</section>

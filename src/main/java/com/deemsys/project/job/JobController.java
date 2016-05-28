@@ -59,6 +59,14 @@ public class JobController {
    		return "/returnPage";
    	}
     
+    @RequestMapping(value="/Admin/getJobCount",method=RequestMethod.GET)
+   	public String getJobCount(ModelMap model)
+   	{
+    	model.addAttribute("jobCount",jobService.getJobCount());
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
+    
     @RequestMapping(value="/Admin/getAllJobs",method=RequestMethod.GET)
    	public String getAllJobs(ModelMap model)
    	{

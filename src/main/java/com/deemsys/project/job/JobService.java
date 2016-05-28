@@ -190,4 +190,9 @@ public class JobService {
 		return jobForms;
 	}
 	
+	// get Jobs Count
+	public Integer getJobCount(){
+		return jobDAO.getAll().size();
+	}
+	
 }

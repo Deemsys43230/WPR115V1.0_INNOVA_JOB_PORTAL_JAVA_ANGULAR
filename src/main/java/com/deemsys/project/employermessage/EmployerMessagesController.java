@@ -69,5 +69,13 @@ public class EmployerMessagesController {
     	model.addAttribute("employerMessagesForms",employerMessagesService.getEmployerMessagesList());
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
-   	}	
+   	}
+    
+    @RequestMapping(value="Admin/getEmployerCount",method=RequestMethod.GET)
+   	public String getEmployerCount(ModelMap model)
+   	{
+    	model.addAttribute("employerCount",employerMessagesService.getEmployerCount());
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
 }
