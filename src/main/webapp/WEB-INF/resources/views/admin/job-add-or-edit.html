@@ -1,36 +1,48 @@
 
 <div class="clearfix contact-form row">
-<form ng-submit="saveJob()">
+<form name="adminSideJobForm" novalidate>
 	<div class="col-md-6">
-		<h5>Job tile</h5>
+		<h5>Job tile <span class="text-red"><sup>*</sup></span></h5>
 		<input type="text" name="title" ng-model="adminJobForm.name" required placeholder="Job title*">
+		 <div class="error-container" ng-show="adminSideJobForm.title.$dirty && adminSideJobForm.title.$invalid">
+	      <span ng-cloak ng-show="adminSideJobForm.title.$error.required">Please Enter Title</span>
+      </div>
 	</div>
 	
 	<div class="col-md-6">
-		<h5>Job Category</h5>
+		<h5>Job Category <span class="text-red"><sup>*</sup></span></h5>
 		<select type="text" name="category" ng-model="adminJobForm.jobCategoryId" required placeholder="Job category*">
 			<option value="">-- Select --</option>
 			<option ng-repeat="jobCategory in jobCategoryList" value="{{jobCategory.jobCategoryId}}"ng-selected="{{jobCategory.jobCategoryId==adminJobForm.jobCategoryId}}">{{jobCategory.categoryName}}</option>
 		</select>
+		<div class="error-container" ng-show="adminSideJobForm.category.$dirty && adminSideJobForm.category.$invalid">
+	      <span ng-cloak ng-show="adminSideJobForm.category.$error.required">Please Select Category</span>
+      </div>
 	</div>
 	
 	<div class="col-md-12">
-		<h5>Job tags </h5>
-		<ui-select multiple tagging="tagTransform" tagging-label="(custom 'new' label)" name="tagid"  ng-model="adminTagForm.tagId" theme="select2" sortable="true" ng-disabled="disabled" ui-select-required style="width: 100%;">
+		<h5>Job tags <span class="text-red"><sup>*</sup></span></h5>
+		<ui-select multiple tagging="tagTransform" tagging-label="(custom 'new' label)" name="tagid"  ng-model="adminTagForm.tagId" theme="select2" sortable="true" ng-disabled="disabled" require-multiple style="width: 100%;">
                             <ui-select-match placeholder="Type/Select tags">{{$item.tagName}}</ui-select-match>
                             <ui-select-choices repeat="tag in availableTags | filter:$select.search">
                                 {{tag.tagName}}
                             </ui-select-choices>
                         </ui-select>
+          <div class="error-container" ng-show="adminSideJobForm.tagid.$dirty && adminSideJobForm.tagid.$invalid">
+	      <span ng-cloak ng-show="adminSideJobForm.tagid.$error.required">Please Add Tags</span>
+      </div>
 	</div>
 	
 	<div class="col-md-12">
-		<h5>Job Description</h5>
+		<h5>Job Description <span class="text-red"><sup>*</sup></span></h5>
 		<textarea type="text" rows="4" name="description" ng-model="adminJobForm.description" required></textarea>
+	 <div class="error-container" ng-show="adminSideJobForm.description.$dirty && adminSideJobForm.description.$invalid">
+	      <span ng-cloak ng-show="adminSideJobForm.description.$error.required">Please Enter Description</span>
+      </div>	
 	</div>
 	
 	<div class="col-md-12">
-		<a href="" class="btn btn-success" ng-click="saveJob();">Add Job</a>
+		<a href="" class="btn btn-success" ng-click="saveJob();" ng-disabled='adminSideJobForm.$invalid'>{{submitButtonText}}</a>
 		<a href="" ng-click="cancelAddJob()" class="btn btn-danger">Cancel</a>
 	</div>
 	</form>

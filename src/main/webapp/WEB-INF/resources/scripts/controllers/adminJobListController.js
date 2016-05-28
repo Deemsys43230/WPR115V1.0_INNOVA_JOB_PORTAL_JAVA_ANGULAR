@@ -33,6 +33,7 @@ adminApp.controller('AdminJobListController',['$scope','$location','$q','request
 adminApp.controller('AdminJobAddController',['$scope','$location','$q','requestHandler','Flash',function($scope, $location, $q, requestHandler,Flash){
 	$scope.init=function(){
 		$scope.getJobCategoryList();
+		$scope.submitButtonText="Save Job";
 		$scope.adminTagForm={};
     	$scope.adminJobForm={
     			"jobCategoryId":"",
@@ -122,6 +123,7 @@ adminApp.controller('AdminJobAddController',['$scope','$location','$q','requestH
 
 adminApp.controller('AdminJobEditController',['$scope','$location','$q','$routeParams','requestHandler','Flash',function($scope, $location, $q, $routeParams, requestHandler,Flash){
 	$scope.init=function(){
+		$scope.submitButtonText="Update Job";
 		$scope.getJob();
 		$scope.getJobCategoryList();
 		$scope.jobListTemplate='resources/views/admin/job-add-or-edit.html';
@@ -219,3 +221,14 @@ adminApp.controller('AdminJobEditController',['$scope','$location','$q','$routeP
 	
 	$scope.init();
 }]);
+
+adminApp.directive('requireMultiple', function () {
+    return {
+        require: 'ngModel',
+        link: function postLink(scope, element, attrs, ngModel) {
+            ngModel.$validators.required = function (value) {
+                return angular.isArray(value) && value.length > 0;
+            };
+        }
+    };
+});

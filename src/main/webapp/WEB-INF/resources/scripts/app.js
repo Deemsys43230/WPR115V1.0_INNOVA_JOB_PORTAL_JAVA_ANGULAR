@@ -119,6 +119,21 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 }
                 controller:'CommonController'*/
             }).
+            when('/submit-resume/:id', {
+                templateUrl: 'views/submit.html'
+                /*resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'innovaApp',
+                            files:[
+                                'js/jquery.contact-buttons.js',
+                                'js/demo.js'
+                            ]
+                        })
+                    }]
+                }
+                controller:'CommonController'*/
+            }).
             when('/solutions', {
                 templateUrl: 'views/solutions.html',
                 	 resolve: {
@@ -222,6 +237,13 @@ innovaApp.controller('SocialMediaController', ['$scope','$location','requestHand
 	};
 	
 	$scope.init();
+	
+	 $scope.$on('$routeChangeStart', function(next, current) {
+	        $scope.activeClass={};
+	        $scope.submenuActive={};
+	        var currentPage = $location.url().substr(1);
+	        $scope.activeClass[currentPage]='active';
+	    });
 	
 }]);
 

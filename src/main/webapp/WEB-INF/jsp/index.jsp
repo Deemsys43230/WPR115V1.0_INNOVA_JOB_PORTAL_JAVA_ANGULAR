@@ -63,12 +63,12 @@
                         <a href="{{socialMediaDetails.linkedInLink}}" target="_blank" class="ic ic-rounded ic-linkedin"><i class="fa fa-linkedin"></i></a>
                     </div>
 					<ul class="nav navbar-nav navbar-right">
-				    	<li class="first"><a class="active" href="#index">Home</a></li>
-				    	<li><a href="#about">About</a></li>
-				    	<li><a href="#jobs">jobs</a></li>
-				    	<li><a href="#solutions">Solutions</a></li>
-				    	<li><a href="#news">News</a></li>
-				    	<li><a href="#contact">Contact</a></li>
+				    	<li class="first"><a class="{{activeClass.index}}" href="#index">Home</a></li>
+				    	<li><a href="#about" class="{{activeClass.about}}">About</a></li>
+				    	<li><a href="#jobs" class="{{activeClass.jobs}}">jobs</a></li>
+				    	<li><a href="#solutions"class="{{activeClass.solutions}}">Solutions</a></li>
+				    	<li><a href="#news" class="{{activeClass.news}}">News</a></li>
+				    	<li><a href="#contact" class="{{activeClass.contact}}">Contact</a></li>
                         <!--<li>
                             <div class="input-group" style="width: 250px;margin-top: 7px">
                                 <input type="text" style="border-radius: 0" class="form-control" placeholder="Search for...">

@@ -181,7 +181,7 @@
                 <div class="col-md-12">
                     <div id="parentHorizontalTab">
                         <ul class="resp-tabs-list hor_1">
-                            <li><h5><i class="fa fa-user text-red"></i> &nbsp;JOB SEEKER CONTACT FORM</h5></li>
+                            <li ng-click="clearJobSeekerData()"><h5><i class="fa fa-user text-red"></i> &nbsp;JOB SEEKER CONTACT FORM</h5></li>
                             <li><h5><i class="fa fa-file-text text-red"></i> &nbsp;EMPLOYERS CONTACT FORM</h5></li>
                         </ul>
                         <div class="resp-tabs-container hor_1">
@@ -194,7 +194,7 @@
                                         <div class="col-sm-4">
                                             <input type="text" name="firstName" ng-model="jobSeekerForm.firstName" required validate-name placeholder="First Name*">
                                          <div class="error-container" >
-                                 <div ng-show="submitted">
+                                 <div ng-show="jobSeekerSubmitted">
 	                          			<span ng-cloak ng-show="jobseekerForm.firstName.$error.required">Please Enter First Name</span>
 	                          			<span ng-cloak ng-show="!jobseekerForm.firstName.$error.required&&jobseekerForm.firstName.$error.validateName">Enter Valid First Name</span>
 	                              </div>
@@ -203,24 +203,25 @@
                                         <div class="col-sm-4">
                                             <input type="text" name="lastName" ng-model="jobSeekerForm.lastName" required validate-name placeholder="Last Name*">
                                        <div class="error-container" >
-                                        <div ng-show="submitted">
+                                        <div ng-show="jobSeekerSubmitted">
 	                          			<span ng-cloak ng-show="jobseekerForm.lastName.$error.required">Please Enter Last Name</span>
 	                          			<span ng-cloak ng-show="!jobseekerForm.lastName.$error.required&&jobseekerForm.lastName.$error.validateName">Enter Valid Last Name</span>
 	                             		 </div>
 	                             		 </div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="email" name="email" ng-model="jobSeekerForm.email" required placeholder="Email*">
+                                            <input type="email" name="email" ng-model="jobSeekerForm.email" required validate-email placeholder="Email*">
                                         <div class="error-container" >
-                                 		<div ng-show="submitted">
+                                 		<div ng-show="jobSeekerSubmitted">
 	                          			<span ng-cloak ng-show="jobseekerForm.email.$error.required">Please Enter Email</span>
+	                          			<span ng-cloak ng-show="!jobseekerForm.email.$error.required&&jobseekerForm.email.$error.email">Please Enter Valid Email</span>
                                         </div>
                                         </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <input type="text" name="contactNumber" ng-model="jobSeekerForm.phoneNumber" placeholder="Phone Number*" required validate-mobile>
                                             <div class="error-container" >
-                                 <div ng-show="submitted">
+                                 <div ng-show="jobSeekerSubmitted">
 	                          			<span ng-cloak ng-show="jobseekerForm.contactNumber.$error.required">Please Enter Contact Number</span>
 	                          			<span ng-cloak ng-show="!jobseekerForm.contactNumber.$error.required&&jobseekerForm.contactNumber.$error.validateMobile">Enter Valid Number</span>
 	                              </div>
@@ -235,7 +236,7 @@
 							<span class="upload-path"></span>
                                 <div><small>Accepted file types: pdf, doc, docx, txt, ppt, pptx.</small><br/></div>
                                 <div class="error-container" >
-                                 <div ng-show="submitted">
+                                 <div ng-show="jobSeekerSubmitted">
 	                          			<span ng-cloak ng-show="jobseekerForm.resume.$error.required">Please Upload Resume</span>
 	                              </div>
                               	</div>
@@ -247,7 +248,7 @@
                                             <input type="text" name="website" placeholder="Type the letter">
                                         </div>-->
                                         <div class="col-sm-12">
-                                        	<input type="submit" name="submit" ng-disabled="saveData" value="{{saveButtonText}}" ng-click="submitted=true" class="btn btn-send pull-left">
+                                        	<input type="submit" name="submit" ng-disabled="saveData" value="{{saveButtonText}}" ng-click="jobSeekerSubmitted=true" class="btn btn-send pull-left">
                                             <span class="pull-left padding-right-span">&nbsp;</span><div flash-message="2000" class="col-md-5 pull-left"></div>
                                             <br/><br/>
                                         </div>

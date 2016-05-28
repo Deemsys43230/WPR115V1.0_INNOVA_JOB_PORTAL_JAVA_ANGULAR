@@ -35,7 +35,7 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 							 $scope.resume="";
 							 document.getElementsByClassName('upload-path')[0].innerHTML="";
 						     $scope.jobseekerForm.$setPristine();
-						     $scope.submitted=false;
+						     $scope.jobSeekerSubmitted=false;
 						 }
 			    		 $scope.saveData=false;
 						 $scope.saveButtonText="SUBMIT YOUR RESUME";
@@ -45,6 +45,16 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 			};
 			
 			$scope.init();
+			
+			// Clear JobSeeker Data
+			$scope.clearJobSeekerData=function(){
+				 $scope.jobSeekerForm={
+						 "status":1
+				 };
+				 $scope.saveData=false;
+				 $scope.jobSeekerSubmitted=false;
+				 $scope.saveButtonText="SUBMIT YOUR RESUME";
+			};
 			
 			//Get Capability sheet
 			$scope.getCapabilitySheet = function(){
