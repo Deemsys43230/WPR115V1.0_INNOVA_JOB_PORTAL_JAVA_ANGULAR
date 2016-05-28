@@ -2,26 +2,40 @@
 <table class="table table-bordered table-striped">
             <thead class="high-light">
                 <tr>
-                    <td>Sl.no</td>
                     <td>News Title</td>
                     <td>News Description</td>
                     <td>Date</td>
                     <td>Options</td>
                 </tr>
+                <tr>
+                 <th>
+				<div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.title" placeholder="Job Title"></div></th>
+				  <th>
+				<div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.description" placeholder="Category Name"></div></th>
+				 <th>
+				<div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.addedDate" placeholder="Date"></div></th>
+				 <th></th>
+                </tr>
             </thead>
             <tbody>
-                <tr ng-show="newsList.length>0"  dir-paginate="news in newsList|itemsPerPage:5">
-                    <td>1</td>
-                    <td>title</td>
-                    <td>description</td>
-                    <td>03/20/2016</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
+                <tr ng-show="newsList.length>0"  dir-paginate="news in newsFilter=(newsList|filter:search|itemsPerPage:10)">
+                    <td>{{news.title}}</td>
+                    <td>{{news.description}}</td>
+                    <td class="col-md-2">{{news.addedDate}}</td>
+                    <td class="col-md-2">
+                         <a href="" ng-cloak class="btn-xs btn-warning" ng-click="editNews(news.latestNewsId)">Edit</a>
+                        <a href="" ng-cloak ng-show="news.status==1" ng-click="enableOrDisbaleNews(news.latestNewsId)" class="btn-xs btn-danger">Disable</a>
+                        <a href="" ng-cloak ng-show="news.status==0" ng-click="enableOrDisbaleNews(news.latestNewsId)" class="btn-xs btn-success">Enable</a>
                     </td>
                 </tr>
-               <tr ng-cloak ng-show="!newsList.length">
-				<td colspan="5" align="center">No Records Found</td>
+               <tr ng-cloak ng-show="!newsList.length || !newsFilter.length">
+				<td colspan="4" align="center">No Records Found</td>
 				</tr>
             </tbody>
         </table>

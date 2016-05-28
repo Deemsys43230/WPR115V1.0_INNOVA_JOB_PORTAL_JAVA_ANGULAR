@@ -67,7 +67,7 @@
 				    	<li><a href="#about" class="{{activeClass.about}}">About</a></li>
 				    	<li><a href="#jobs" class="{{activeClass.jobs}}">jobs</a></li>
 				    	<li><a href="#solutions"class="{{activeClass.solutions}}">Solutions</a></li>
-				    	<li><a href="#news" class="{{activeClass.news}}">News</a></li>
+				    	<li><a href="#news-details" class="{{activeClass.news-details}}">News</a></li>
 				    	<li><a href="#contact" class="{{activeClass.contact}}">Contact</a></li>
                         <!--<li>
                             <div class="input-group" style="width: 250px;margin-top: 7px">

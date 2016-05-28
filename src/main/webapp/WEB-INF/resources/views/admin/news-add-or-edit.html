@@ -1,7 +1,10 @@
 <div class="clearfix contact-form row">
 <form class="contact-form" name="newsForm" ng-submit="newsForm.$valid && saveUpdateNews()" no-validate>
+	
+	<div class="col-md-9 no-padding">
+	
 	<div class="col-md-12">
-		<h5>News tile<span class="text-red"><sup>*</sup></span></h5>
+		<h5>News title<span class="text-red"><sup>*</sup></span></h5>
 		<input type="text" name="title" ng-model="news.title" required placeholder="News title">
 		<div class="error-container">
                 <div ng-show="submitted">
@@ -21,9 +24,35 @@
                 </div>
          </div>
 	</div>
+	</div>
+	<div class="col-md-3">
+	
+		 <div class="col-md-12 image-editor">
+
+                                <h5>User Image</h5>
+                                     <span ng-show="inputContainsFile">
+                                     <span class="error-message textarea-errormessage20" ng-show="testimonialForm.image.$error.required"><span>Required.</span></span>
+                                </span>
+                                <div class="cropit-image-preview"></div>
+                                <p class="image-size-label">
+                                    Resize image
+                                </p>
+                                <div class="col-md-10 no-padding">
+                                    <input type="range" class="cropit-image-zoom-input">
+                                </div>
+
+                                <div class="margin-top-20 col-md-12 no-padding">
+                                    <div class="fileUpload btn btn-xs btn-primary">
+                                        <span>Choose File</span>
+                                        <input type="file" name="titleImage"  file-model="titleImage" class="upload cropit-image-input" valid-file required  ng-model="news.titleImage" onblur="angular.element(this).scope().fileNameChanged(this)"/>
+
+                                    </div>
+                                </div>
+                            </div> 
+		
+	</div>
 	
 	<div class="col-md-12"><br/><br/>
-		<a href="" class="btn btn-success">Add News</a>
 		<input type="submit" name="submit" value="Save" class="btn btn-success" ng-click="submitted=true" ng-disabled="doNews_isClean()">
 		<a href="" ng-click="cancelAddNews()" class="btn btn-danger">Cancel</a>
 		<br/><br/>

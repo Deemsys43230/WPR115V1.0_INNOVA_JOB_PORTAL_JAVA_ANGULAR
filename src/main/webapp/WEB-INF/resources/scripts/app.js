@@ -181,20 +181,21 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 }
                 controller:'CommonController'*/
             }).
-            when('/news-details/:id', {
-                templateUrl: 'views/news-details.html'
-                /*resolve: {
+            when('/news-details', {
+                templateUrl: 'views/news-details.html',
+                resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
                                 'js/jquery.contact-buttons.js',
-                                'js/demo.js'
+                                'js/demo.js',
+                                'resources/scripts/controllers/adminNewsController.js'
                             ]
                         })
                     }]
-                }
-                controller:'CommonController'*/
+                },
+                controller:'NewsUserController'
             }).
             when('/contact', {
                 templateUrl: 'views/contact.html',

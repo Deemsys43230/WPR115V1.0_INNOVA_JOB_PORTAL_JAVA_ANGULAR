@@ -162,6 +162,8 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'adminApp',
                             files:[
+                                'resources/styles/testimonial-image-upload.css',
+                                'resources/js/image-upload.js',
                                 'resources/js/summernote.js',
                                 'resources/styles/summernote.css',
                                 'resources/scripts/controllers/adminNewsController.js'
