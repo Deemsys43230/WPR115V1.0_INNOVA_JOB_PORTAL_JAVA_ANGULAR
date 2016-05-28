@@ -12,4 +12,5 @@ import com.deemsys.project.entity.Job;
 public interface JobDAO extends IGenericDAO<Job>{
   public Job getJobById(Long jobId);
   public List<Job> getAllJobsForUser();
+  public List<Job> searchJobs(JobSearchForm jobSearchForm);
 }

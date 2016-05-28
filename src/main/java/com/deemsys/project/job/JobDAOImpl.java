@@ -3,7 +3,14 @@ package com.deemsys.project.job;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -147,6 +154,44 @@ public class JobDAOImpl implements JobDAO{
 	public List<Job> getAllJobsForUser() {
 		// TODO Auto-generated method stub
 		List<Job> jobs=this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.eq("isEnable", 1)).list();
+		return jobs;
+	}
+
+	@Override
+	public List<Job> searchJobs(JobSearchForm jobSearchForm) {
+		// TODO Auto-generated method stub
+		Session session=this.sessionFactory.getCurrentSession();
+		
+		Criteria criteria=session.createCriteria(Job.class,"j1");
+		criteria.createAlias("jobCategory", "jc1");
+		criteria.createAlias("jobTagMaps", "jt1");
+		criteria.createAlias("jt1.jobTags", "t1");
+		
+		//Check With Job Keyword
+		Criterion tagNameLikeCriterion=Restrictions.like("t1.tagName",jobSearchForm.getJobKeyword(),MatchMode.ANYWHERE);
+		
+		//Check with Job title
+		Criterion jobTitleLikeCriterion=Restrictions.like("j1.name",jobSearchForm.getJobKeyword(),MatchMode.ANYWHERE);
+				
+		criteria.add(Restrictions.or(tagNameLikeCriterion, jobTitleLikeCriterion));
+		
+		
+		if(jobSearchForm.getJobCategoryId()!=0){
+			Criterion jobCategoryCriterion=Restrictions.eq("jc1.jobCategoryId", jobSearchForm.getJobCategoryId());
+			criteria.add(jobCategoryCriterion);
+		}
+		
+		/*ProjectionList projectionList=Projections.projectionList();
+		projectionList.add(Projections.property("j1.jobId"));
+		projectionList.add(Projections.property("j1.name"));
+		projectionList.add(Projections.property("j1.addedDate"));
+		projectionList.add(Projections.groupProperty("j1.jobId"));
+		
+		criteria.setProjection(projectionList);
+		
+		*/
+		@SuppressWarnings("unchecked")
+		List<Job> jobs=criteria.list();
 		return jobs;
 	}
 

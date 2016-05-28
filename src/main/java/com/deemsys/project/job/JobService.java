@@ -172,21 +172,26 @@ public class JobService {
 	}
 	
 	//Get All Enabled Entries For User
-	public List<JobForm> getAllJobsForUser()
+	public List<JobForm> searchJobs(JobSearchForm jobSearchForm)
 	{
 		List<JobForm> jobForms=new ArrayList<JobForm>();
-			
+		List<Long> jobIds=new ArrayList<Long>();	
+		
+		
 		List<Job> jobs=new ArrayList<Job>();
 			
-		jobs=jobDAO.getAllJobsForUser();
+		jobs=jobDAO.searchJobs(jobSearchForm);
 			
 		for (Job job : jobs) {
 			//TODO: Fill the List
 			JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getJobCategory().getCategoryName(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
 			jobForm.setJobTagId(jobTagMapService.getJobTagMappedListId(job.getJobId()));
-			jobForms.add(jobForm);
+			if(!jobIds.contains(jobForm.getJobId())){
+				jobForms.add(jobForm);
+				jobIds.add(jobForm.getJobId());
+			}
+					
 		}
-			
 		return jobForms;
 	}
 	

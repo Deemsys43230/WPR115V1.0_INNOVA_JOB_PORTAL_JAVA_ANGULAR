@@ -74,15 +74,7 @@ public class JobController {
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
    	}	
-    
-    @RequestMapping(value="/getAllJobsForUser",method=RequestMethod.GET)
-   	public String getAllJobsForUser(ModelMap model)
-   	{
-    	model.addAttribute("jobForms",jobService.getAllJobsForUser());
-    	model.addAttribute("requestSuccess",true);
-   		return "/returnPage";
-   	}
-    
+        
     @RequestMapping(value="/Admin/enableDisableJob",method=RequestMethod.POST)
    	public String enableDisableJob(@RequestParam("jobId") Long jobId,ModelMap model)
    	{
@@ -90,4 +82,12 @@ public class JobController {
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
    	}	
+    
+    @RequestMapping(value="/searchJobs",method=RequestMethod.POST)
+   	public String searchJobs(@RequestBody JobSearchForm jobSearchForm,ModelMap model)
+   	{
+    	model.addAttribute("jobForms",jobService.searchJobs(jobSearchForm));
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
 }
