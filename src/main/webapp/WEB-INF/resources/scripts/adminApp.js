@@ -215,6 +215,20 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'AdminJobSeekerListController'
             }).
+            when('/employers-List', {
+                templateUrl: 'admin/employers.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/scripts/controllers/adminEmployersListController.js'
+                            ]
+                        });
+                    }]
+                },
+                controller:'AdminEmployersListController'
+            }).
             otherwise({
                 redirectTo: '/dashboard'
             });

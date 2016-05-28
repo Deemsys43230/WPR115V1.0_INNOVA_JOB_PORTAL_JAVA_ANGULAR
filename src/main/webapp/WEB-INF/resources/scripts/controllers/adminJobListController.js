@@ -26,6 +26,14 @@ adminApp.controller('AdminJobListController',['$scope','$location','$q','request
 		});
     };
     
+    // get Job Details
+    $scope.getJobDetails=function(jobId){
+    	 requestHandler.getRequest("Admin/getJob.json?jobId="+jobId,"").then(function(response){
+ 			$scope.jobDetails=response.data.jobForm;
+ 			$("#jobDetailsModal").modal('show');
+ 		});
+    };
+    
     $scope.init();
     
 }]);

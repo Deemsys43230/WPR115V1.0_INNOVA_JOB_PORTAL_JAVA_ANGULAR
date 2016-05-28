@@ -15,6 +15,7 @@ public class JobForm {
 
 	private Long jobId;
 	private Integer jobCategoryId;
+	private String jobCategoryName;
 	private String name;
 	private String description;
 	private String addedDate;
@@ -37,6 +38,14 @@ public class JobForm {
 
 	public void setJobCategoryId(Integer jobCategoryId) {
 		this.jobCategoryId = jobCategoryId;
+	}
+
+	public String getJobCategoryName() {
+		return jobCategoryName;
+	}
+
+	public void setJobCategoryName(String jobCategoryName) {
+		this.jobCategoryName = jobCategoryName;
 	}
 
 	public String getName() {
@@ -91,16 +100,17 @@ public class JobForm {
 		return jobTagMapForms;
 	}
 
-	public void setJobTagForms(List<JobTagMapForm> jobTagMapForms) {
+	public void setJobTagMapForms(List<JobTagMapForm> jobTagMapForms) {
 		this.jobTagMapForms = jobTagMapForms;
 	}
 
-	public JobForm(Long jobId, Integer jobCategoryId, String name,
+	public JobForm(Long jobId, Integer jobCategoryId, String jobCategoryName,String name,
 			String description, String addedDate, Integer isEnable,
 			Integer status) {
 		super();
 		this.jobId = jobId;
 		this.jobCategoryId = jobCategoryId;
+		this.jobCategoryName = jobCategoryName;
 		this.name = name;
 		this.description = description;
 		this.addedDate = addedDate;

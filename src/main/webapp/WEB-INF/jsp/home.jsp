@@ -42,7 +42,8 @@
                 <li><a href="#jobManagement-jobList" class="{{activeClass.jobManagement}}"><i class="fa fa-suitcase"></i> Job Management</a></li>
                 <li><a href="#siteManagement-contactDetails" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
                 <li><a href="#capabilitySheet" class="{{activeClass.capabilitySheet}}"><i class="fa fa-files-o"></i> Capability Sheet</a></li>
-                <li><a href="#jobSeekers-List"  class="{{activeClass.jobSeekers}}"><i class="fa fa-dashboard"></i> Job Seekers</a></li>
+                <li><a href="#jobSeekers-List"  class="{{activeClass.jobSeekers}}"><i class="fa fa-user"></i> Job Seekers</a></li>
+                <li><a href="#employers-List"  class="{{activeClass.employers}}"><i class="fa fa-users"></i> Employers</a></li>
             </ul>
         </div>
 

@@ -54,7 +54,7 @@ public class JobService {
 		
 		for (Job job : jobs) {
 			//TODO: Fill the List
-			JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
+			JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getJobCategory().getCategoryName(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
 			jobForm.setJobTagId(jobTagMapService.getJobTagMappedListId(job.getJobId()));
 			jobForms.add(jobForm);
 		}
@@ -71,8 +71,8 @@ public class JobService {
 		
 		//TODO: Convert Entity to Form
 		//Start
-		JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
-		jobForm.setJobTagForms(jobTagMapService.getJobTagMapListByJobId(jobId));
+		JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getJobCategory().getCategoryName(),job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
+		jobForm.setJobTagMapForms(jobTagMapService.getJobTagMapListByJobId(jobId));
 		//End
 		
 		return jobForm;
@@ -182,7 +182,7 @@ public class JobService {
 			
 		for (Job job : jobs) {
 			//TODO: Fill the List
-			JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
+			JobForm jobForm=new JobForm(job.getJobId(), job.getJobCategory().getJobCategoryId(), job.getJobCategory().getCategoryName(), job.getName(), job.getDescription(),JobPortalConstants.convertMonthFormat(job.getAddedDate()), job.getIsEnable(), job.getStatus());
 			jobForm.setJobTagId(jobTagMapService.getJobTagMappedListId(job.getJobId()));
 			jobForms.add(jobForm);
 		}

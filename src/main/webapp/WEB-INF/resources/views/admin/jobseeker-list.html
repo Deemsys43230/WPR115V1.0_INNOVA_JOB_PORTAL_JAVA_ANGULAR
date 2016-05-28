@@ -3,23 +3,44 @@
                 <tr>
                     <td>First Name</td>
                     <td>Last Name</td>
+                    <td>Interested In</td>
                     <td>Email</td>
                     <td>Phone Number</td>
                     <td>Actions</td>
                 </tr>
+                <tr>
+                <th>
+				<div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.firstName" placeholder="First Name"></div></th>
+				 <th><div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.lastName" placeholder="Last Name"></div></th>
+				  <th><div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.interestedIn" placeholder="Interested In"></div></th>
+				 <th><div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.email" placeholder="Email"></div></th>
+				 <th><div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.phoneNumber" placeholder="Phone Number"></div></th>
+				 <th></th>
+                </tr>
             </thead>
             <tbody>
-           		 <tr ng-show="jobSeekerList.length>0"  dir-paginate="jobSeeker in jobSeekerList|itemsPerPage:10">
+           		 <tr ng-show="jobSeekerList.length>0"  dir-paginate="jobSeeker in jobFilter=(jobSeekerList|filter:search|itemsPerPage:10)">
                 	<td>{{jobSeeker.firstName}}</td>
                     <td>{{jobSeeker.lastName}}</td>
+                    <td>{{jobSeeker.interestedIn}}</td>
                     <td>{{jobSeeker.email}}</td>
                     <td>{{jobSeeker.phoneNumber}}</td>
                     <td>
                          <a href="{{jobSeeker.resumeUrl}}" download ng-cloak ng-show="jobSeeker.status==1" ng-click="" class="btn-xs btn-info" title="Download Resume"><i class="fa fa-download"></i></a>
                     </td>
                 </tr>
-               <tr ng-show="!jobSeekerList.length">
-				<td colspan="4" align="center">No Records Found</td>
+               <tr ng-show="!jobSeekerList.length || !jobFilter.length">
+				<td colspan="6" align="center">No Records Found</td>
 				</tr>
             </tbody>
         </table>    

@@ -19,9 +19,11 @@ public class JobSeeker implements java.io.Serializable {
 	private String lastName;
 	private String email;
 	private String phoneNumber;
-	private Integer status;
+	private String interestedIn;
 	private String resumeName;
 	private String resumeType;
+	private Integer status;
+	
 
 	public JobSeeker() {
 	}
@@ -31,16 +33,18 @@ public class JobSeeker implements java.io.Serializable {
 	}
 
 	public JobSeeker(String jobSeekerId, String firstName, String lastName,
-			String email, String phoneNumber, Integer status,
-			String resumeName, String resumeType) {
+			String email, String phoneNumber, String interestedIn, String resumeName, 
+			String resumeType, Integer status) {
 		this.jobSeekerId = jobSeekerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.status = status;
+		this.interestedIn = interestedIn;
 		this.resumeName = resumeName;
 		this.resumeType = resumeType;
+		this.status = status;
+		
 	}
 
 	@Id
@@ -89,13 +93,13 @@ public class JobSeeker implements java.io.Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	@Column(name = "status")
-	public Integer getStatus() {
-		return this.status;
+	@Column(name = "interested_in", length = 100)
+	public String getInterestedIn() {
+		return interestedIn;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setInterestedIn(String interestedIn) {
+		this.interestedIn = interestedIn;
 	}
 
 	@Column(name = "resume_name", length = 200)
@@ -116,4 +120,15 @@ public class JobSeeker implements java.io.Serializable {
 		this.resumeType = resumeType;
 	}
 
+	
+	@Column(name = "status")
+	public Integer getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	
 }

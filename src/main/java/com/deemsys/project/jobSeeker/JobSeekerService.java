@@ -53,7 +53,7 @@ public class JobSeekerService {
 		String resumeUrl=appProperties.getProperty("bucketUrl")+appProperties.getProperty("bucketName")+"/"+appProperties.getProperty("resumeFolder");
 		for (JobSeeker jobSeeker : jobSeekers) {
 			//TODO: Fill the List
-			jobSeekerForms.add(new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType(),resumeUrl+jobSeeker.getJobSeekerId()+getExtension(jobSeeker.getResumeName())));
+			jobSeekerForms.add(new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType(),resumeUrl+jobSeeker.getJobSeekerId()+getExtension(jobSeeker.getResumeName()),jobSeeker.getInterestedIn()));
 		}
 		
 		return jobSeekerForms;
@@ -69,7 +69,7 @@ public class JobSeekerService {
 		//TODO: Convert Entity to Form
 		//Start
 		String resumeUrl=appProperties.getProperty("bucketUrl")+appProperties.getProperty("bucketName")+"/"+appProperties.getProperty("resumeFolder");
-		JobSeekerForm jobSeekerForm=new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType(),resumeUrl+jobSeeker.getJobSeekerId()+getExtension(jobSeeker.getResumeName()));
+		JobSeekerForm jobSeekerForm=new JobSeekerForm(jobSeeker.getJobSeekerId(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getEmail(), jobSeeker.getPhoneNumber(), jobSeeker.getStatus(), jobSeeker.getResumeName(), jobSeeker.getResumeType(),resumeUrl+jobSeeker.getJobSeekerId()+getExtension(jobSeeker.getResumeName()),jobSeeker.getInterestedIn());
 		
 		//End
 		
@@ -109,7 +109,7 @@ public class JobSeekerService {
 			e.printStackTrace();
 		}
 		
-		JobSeeker jobSeeker=new JobSeeker(uuidString, null, null, null, null, null, resume.getOriginalFilename(), resume.getContentType());
+		JobSeeker jobSeeker=new JobSeeker(uuidString, null, null, null, null, null, resume.getOriginalFilename(), resume.getContentType(), null);
 		
 		//Logic Ends
 		
@@ -130,6 +130,7 @@ public class JobSeekerService {
 		jobSeeker.setLastName(jobSeekerForm.getLastName());
 		jobSeeker.setEmail(jobSeekerForm.getEmail());
 		jobSeeker.setPhoneNumber(jobSeekerForm.getPhoneNumber());
+		jobSeeker.setInterestedIn(jobSeekerForm.getInterestedIn());
 		jobSeeker.setStatus(jobSeekerForm.getStatus());
 		//Logic Ends
 		

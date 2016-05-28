@@ -3,24 +3,82 @@
             <thead class="high-light">
                 <tr>
                     <td>Job Title</td>
-                    <td>Description</td>
+                    <td>Category Name</td>
                     <td>Updated Date</td>
                     <td>Actions</td>
                 </tr>
+                <tr>
+                 <th>
+				<div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.name" placeholder="Job Title"></div></th>
+				  <th>
+				<div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.jobCategoryName" placeholder="Category Name"></div></th>
+				 <th>
+				<div class="input-group">
+  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+				 <input class="form-control" type="text" ng-model="search.addedDate" placeholder="Date"></div></th>
+				 <th></th>
+                </tr>
             </thead>
             <tbody>
-               <tr ng-show="jobsList.length>0"  dir-paginate="job in jobsList|itemsPerPage:10">
+               <tr ng-show="jobsList.length>0"  dir-paginate="job in jobFilter=(jobsList|filter:search|itemsPerPage:10)">
                 	<td>{{job.name}}</td>
-                    <td>{{job.description}}</td>
-                    <td>{{job.addedDate}}</td>
-                    <td>
-                         <a href="#jobManagement-jobList-editJob/{{job.jobId}}" ng-cloak ng-click="" class="btn-xs btn-warning" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
-                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success" title="Enabled"><i class="fa fa-unlock"></i> Disable</a>
-                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger" title="Diabled"><i class="fa fa-lock"></i> Enable</a>
+                    <td>{{job.jobCategoryName}}</td>
+                    <td class="col-md-2">{{job.addedDate}}</td>
+                    <td class="col-md-2">
+                         <a href="#jobManagement-jobList-editJob/{{job.jobId}}" ng-cloak ng-click="" class="btn-xs btn-warning" title="Edit"><i class="fa fa-pencil"></i></a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success" title="Enabled"><i class="fa fa-unlock"></i></a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger" title="Disabled"><i class="fa fa-lock"></i></a>
+                         <a href="" ng-cloak ng-click="getJobDetails(job.jobId)" class="btn-xs btn-primary" title="View"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
-               <tr ng-show="!jobsList.length">
+               <tr ng-show="!jobsList.length || !jobFilter.length">
 				<td colspan="4" align="center">No Records Found</td>
 				</tr>
             </tbody>
         </table>
+<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
+
+<!-- Job Details Modal -->
+<div id="jobDetailsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Job Details</h4>
+      </div>
+      <div class="modal-body">
+	<table class="table table-striped table-bordered" >
+			<tr>
+				<td class="col-md-3" ><b>Job Title</b></td>
+				<td class="col-md-6">{{jobDetails.name}}</td>
+			</tr>
+			<tr>
+				<td class="col-md-3" ><b>Category Name</b></td>
+				<td class="col-md-6">{{jobDetails.jobCategoryName}}</td>
+			</tr>
+			<tr>
+				<td class="col-md-3" ><b>Updated Date</b></td>
+				<td class="col-md-6">{{jobDetails.addedDate}}</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="col-md-3"><b>Description</b></td>
+			</tr>
+			<tr>
+				<td colspan="2">{{jobDetails.description}}</td>
+			</tr>
+			
+		</table>
+	</div>
+	<div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+         </div>
+    </div>
+
+  </div>
+</div>

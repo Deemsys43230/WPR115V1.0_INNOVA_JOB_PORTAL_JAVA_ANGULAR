@@ -70,7 +70,7 @@ public class Job implements java.io.Serializable {
 		this.jobCategory = jobCategory;
 	}
 
-	@Column(name = "name", length = 45)
+	@Column(name = "name", length = 100)
 	public String getName() {
 		return this.name;
 	}
@@ -79,7 +79,7 @@ public class Job implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "description", length = 600)
+	@Column(name = "description", length = 65535)
 	public String getDescription() {
 		return this.description;
 	}

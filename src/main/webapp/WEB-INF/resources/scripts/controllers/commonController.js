@@ -35,5 +35,7 @@ innovaApp.controller('CommonController',['$scope','$http','$document','$parse','
 	    });
     };
     
+    
+    
     $scope.init();
 }]);
