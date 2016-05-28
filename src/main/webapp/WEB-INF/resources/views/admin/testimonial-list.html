@@ -2,43 +2,28 @@
 <table class="table table-bordered table-striped">
             <thead class="high-light">
                 <tr>
-                    <td>Sl.no</td>
-                    <td>Job Title</td>
-                    <td>Uploaded Date</td>
-                    <td>Upto Date</td>
+                    <td>ID</td>
+                    <td>Said By</td>
+                    <td>Destination</td>
+                    <td>Description</td>
                     <td>Options</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Web Development</td>
-                    <td>03/12/2016</td>
-                    <td>03/20/2016</td>
+           		 <tr ng-show="jobTestimonialList.length>0"  dir-paginate="testimonial in jobTestimonialList|itemsPerPage:10">
+                	<td>{{testimonial.testimonialId}}</td>
+                    <td>{{testimonial.saidBy}}</td>
+                    <td>{{testimonial.destination}}</td>
+                    <td>{{testimonial.description}}</td>
                     <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
+                        <a href="" class="btn-xs btn-warning"  ng-click="editTestimonial(testimonial.testimonialId)">Edit</a>
+                        <a href="" ng-cloak ng-show="testimonial.status==1" ng-click="enableOrDisbaleTestimonial(testimonial.testimonialId)" class="btn-xs btn-danger">Disable</a>
+                        <a href="" ng-cloak ng-show="testimonial.status==0" ng-click="enableOrDisbaleTestimonial(testimonial.testimonialId)" class="btn-xs btn-success">Enable</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Web Development</td>
-                    <td>03/12/2016</td>
-                    <td>03/20/2016</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Web Development</td>
-                    <td>03/12/2016</td>
-                    <td>03/20/2016</td>
-                    <td>
-                        <a href="" class="btn-xs btn-warning">Edit</a>
-                        <a href="" class="btn-xs btn-danger">Inactive</a>
-                    </td>
-                </tr>
+               <tr ng-show="!jobTestimonialList.length">
+				<td colspan="4" align="center">No Records Found</td>
+				</tr>
             </tbody>
         </table>
+<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>

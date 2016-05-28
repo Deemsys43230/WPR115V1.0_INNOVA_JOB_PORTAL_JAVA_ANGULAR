@@ -1,37 +1,96 @@
-var adminApp = angular.module('adminApp', [ 'requestModule','flash']);
+var adminApp = angular.module('adminApp', [ 'ngSanitize', 'ui.select',
+		'angularUtils.directives.dirPagination', 'requestModule', 'flash' ]);
 
-adminApp.controller('TestimonialController', ['$scope','$location','requestHandler','Flash',
-		function($scope, $location, requestHandler,Flash) {
+adminApp
+		.controller(
+				'TestimonialController',
+				[
+						'$scope',
+						'$location',
+						'requestHandler',
+						'Flash',
+						function($scope, $location, requestHandler, Flash) {
 
-	$scope.isTestimonial=true;
+							$scope.isTestimonial = true;
 
-    $scope.siteTemplate='resources/views/admin/testimonial-list.html';
-    
-    $scope.addTestimonial=function(){
-    	$scope.siteTemplate='resources/views/admin/testimonial-add-or-edit.html';
-    };
-    
-    $scope.cancelAddTestimonial=function(){
-    	$scope.siteTemplate='resources/views/admin/testimonial-list.html';
-    };
-    
-    $scope.imageAdded=false;
+							$scope.siteTemplate = 'resources/views/admin/testimonial-list.html';
 
-    $scope.fileNameChanged = function(element)
-   {
-       if(!$scope.imageAdded){
-           if(element.files.length > 0){
-               $scope.inputContainsFile = false;
-               $scope.imageAdded=true;
-           }
-           else{
-               $scope.inputContainsFile = true;
-               $scope.imageAdded=false;
-           }
-       }
-   };
-   
-    //For image upload
-    $('.image-editor').cropit();
-    
-}]);
+							$scope.getTestimonial = function() {
+								requestHandler
+										.getRequest(
+												"Admin/getAllTestimonials.json",
+												"")
+										.then(
+												function(response) {
+													$scope.jobTestimonialList = response.data.testimonialForms;
+												});
+							};
+
+							$scope.editTestimonial = function(testimonialId) {
+
+								requestHandler
+										.getRequest(
+												"Admin/getTestimonial.json?testimonialId="
+														+ testimonialId, "")
+										.then(
+												function(response) {
+
+													$scope.testimonial = response.data.testimonialForm;
+
+												});
+								$scope.getTestimonial();
+								$scope.siteTemplate = 'resources/views/admin/testimonial-add-or-edit.html';
+							};
+							$scope.saveUpdateTestimonial = function() {
+								if ($scope.testimonial.testimonialId == null) {
+									$scope.testimonial.status = 1;
+									console.log($scope.testimonial);
+								}
+								requestHandler
+										.postRequest(
+												"Admin/saveUpdateTestimonial.json",
+												$scope.testimonial)
+										.then(
+												function(response) {
+													$scope.getTestimonial();
+													$scope.siteTemplate = 'resources/views/admin/testimonial-list.html';
+													Flash
+															.create('success',
+																	"Saved Successfully!");
+
+												});
+							};
+							$scope.enableOrDisbaleTestimonial = function(
+									testimonialId) {
+								requestHandler
+										.postRequest(
+												"Admin/enableDisableTestimonial.json?testimonialId="
+														+ testimonialId, "")
+										.then(
+												function(response) {
+													$scope.response = response.data.requestSuccess;
+													if ($scope.response == true) {
+														Flash
+																.create(
+																		'success',
+																		"You have Successfully Updated!");
+														$scope.getTestimonial();
+													}
+												});
+							};
+							$scope.addTestimonial = function() {
+								$scope.siteTemplate = 'resources/views/admin/testimonial-add-or-edit.html';
+								$scope.testimonial = {};
+							};
+
+							$scope.cancelAddTestimonial = function() {
+								$scope.siteTemplate = 'resources/views/admin/testimonial-list.html';
+							};
+
+							$scope.init = function() {
+
+								$scope.getTestimonial();
+
+							};
+							$scope.init();
+						} ]);

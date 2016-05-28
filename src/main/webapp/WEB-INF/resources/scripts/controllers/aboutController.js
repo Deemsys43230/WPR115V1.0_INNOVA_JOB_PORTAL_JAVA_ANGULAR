@@ -2,7 +2,7 @@ var adminApp = angular.module('innovaApp', [ 'requestModule','flash','employeeMe
 
 adminApp.controller('AboutController', ['$scope','$location','requestHandler','Flash','employeeMessageService','jobService',
 		function($scope, $location, requestHandler,Flash,employeeMessageService,jobService) {
-		
+	
 			$scope.init=function(){
 				 $scope.jobSeekerForm={
 						 "status":1
@@ -66,7 +66,46 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 			
 			$scope.getCapabilitySheet();
 			
-} ]);
+			 $scope.getTestimonial = function(){
+			        requestHandler.getRequest("Admin/getAllTestimonials.json","").then(function(response){
+			        $scope.jobTestimonialList = response.data.testimonialForms;
+			       
+			  });
+			 };
+			 $scope.getTestimonial();
+			 
+}]).directive("owlCarousel", function() {
+	return {
+		restrict: 'E',
+		transclude: false,
+		link: function (scope) {
+			scope.initCarousel = function(element) {
+			  // provide any default options you want
+				var defaultOptions = {
+				};
+				var customOptions = scope.$eval($(element).attr('data-options'));
+				// combine the two options objects
+				for(var key in customOptions) {
+					defaultOptions[key] = customOptions[key];
+				}
+				// init carousel
+				$(element).owlCarousel(defaultOptions);
+			};
+		}
+	};
+})
+.directive('owlCarouselItem', [function() {
+	return {
+		restrict: 'A',
+		transclude: false,
+		link: function(scope, element) {
+		  // wait for the last item in the ng-repeat then call init
+			if(scope.$last) {
+				scope.initCarousel(element.parent());
+			}
+		}
+	};
+}]);
 
 adminApp.filter('trustUrl', function ($sce) {
 	  return function(url) {
