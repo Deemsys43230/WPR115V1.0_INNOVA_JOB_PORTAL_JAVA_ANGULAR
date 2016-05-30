@@ -1,10 +1,10 @@
 <div class="clearfix contact-form row">
- <form class="contact-form" name="testimonialForm" ng-submit="testimonialForm.$valid && saveUpdateTestimonial()" no-validate>
+ <form class="contact-form" name="testimonialForm" ng-submit="testimonialForm.$valid && saveUpdateTestimonial()" novalidate>
 	<div class="col-md-9 no-padding">
 	
 		<div class="col-md-12">
 			<h5>Said By</h5>
-			<input type="text" name="saidBy" ng-model="testimonial.saidBy"    placeholder="User Name" required  validate-name maxlength="25">
+			<input type="text" name="saidBy"  ng-model="testimonial.saidBy"    placeholder="User Name" required=""  validate-name >
 			<div class="error-container">
                 <div ng-show="submitted">
 	              <span ng-cloak ng-show="testimonialForm.saidBy.$error.required">Please Enter Said By Name</span>
@@ -14,17 +14,17 @@
 		</div>
 		<div class="col-md-12">
 			<h5>Destination</h5>
-			<input type="text" name="destination" ng-model="testimonial.destination"  placeholder="Testimonial Title" required  validate-name maxlength="25">
+			<input type="text" name="destination" ng-model="testimonial.destination"  placeholder="Testimonial Title" required=""  validate-name>
 			<div class="error-container">
                 <div ng-show="submitted">
-	              <span ng-cloak ng-show="testimonialForm.destination.$error.required">Please Enter Said By Name</span>
-	              <span ng-cloak ng-show="!testimonialForm.destination.$error.required&&testimonialForm.destination.$error.validateName">Enter Valid Said By Name</span>
+	              <span  ng-show="testimonialForm.destination.$error.required">Please Enter Said By Name</span>
+	              <span  ng-show="!testimonialForm.destination.$error.required&&testimonialForm.destination.$error.validateName">Enter Valid Said By Name</span>
                 </div>
              </div>
 		</div>
 		<div class="col-md-12">
 			<h5>Testimonial</h5>
-			<textarea type="text" row="4" name="description" ng-model="testimonial.description" placeholder="Enter Description" required maxlength="300"  ></textarea>
+			<textarea type="text" row="4" name="description" ng-model="testimonial.description" placeholder="Enter Description" required="" ></textarea>
 			<div class="error-container">
                 <div ng-show="submitted">
 	              <span ng-cloak ng-show="testimonialForm.description.$error.required">Please Enter Description</span>
