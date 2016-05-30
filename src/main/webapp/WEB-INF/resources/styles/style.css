@@ -2542,3 +2542,8 @@ padding-right:50px !important;
     background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 45%, white);
     background: linear-gradient(to right, rgba(255, 255, 255, 0), white 45%, white);
 }
+
+#gmaps {
+    width: 100%;
+    height: 400px;
+}
