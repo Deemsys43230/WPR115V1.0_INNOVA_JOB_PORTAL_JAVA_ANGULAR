@@ -36,7 +36,7 @@
                     <td>{{employer.subject}}</td>
                     <td>{{employer.messageDate}}</td>
                     <td>
-                         <a href="" ng-cloak ng-click="getEmployerMessage(employer.id)" class="btn-xs btn-success" title=""><i class="fa fa-eye"></i></a>
+                         <a href="" ng-cloak ng-click="getEmployerMessage(employer.id)" class="btn-xs btn-success hint--top" data-hint="View Employer"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!employersList.length || !employersFilter.length">
@@ -45,7 +45,7 @@
             </tbody>
         </table>    
 <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
-
+<br/><br/>
 
 <!-- Employer Details Modal -->
 <div id="employerDetailsModal" class="modal fade" role="dialog">

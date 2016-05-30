@@ -52,38 +52,40 @@
     </div>
 
 	<!-- JS -->
-	 <script type="text/javascript" src="resources/scripts/app.js"></script>
 	<script type="text/javascript" src="resources/js/jquery.min.js"></script><!-- jQuery -->
 	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script><!-- Bootstrap -->
-	<script>
-if(location.search=='?sessionout'){
-	document.getElementById('sessionout').style.display = 'inline';
-}else{
-	document.getElementById('sessionout').style.display = 'none';
-}
-
-function checkValidation(){
-	var username=document.getElementById("username").value;
-	var password=document.getElementById("password").value;
-
-	document.getElementById("username_error").innerText="";
-	document.getElementById("password_error").innerText="";
 	
-	var error=false;
-	if(username==""){
-		error=true;
-		document.getElementById("username_error").innerText="Please Enter Username";
+	<script>
+	
+		/* if(location.search=='?sessionout'){
+			document.getElementById('sessionout').style.display = 'inline';
+		}else{
+			document.getElementById('sessionout').style.display = 'none';
+		} */
+		
+		
+		function checkValidation(){
+		var username=document.getElementById("username").value;
+		var password=document.getElementById("password").value;
+	
+		document.getElementById("username_error").innerText="";
+		document.getElementById("password_error").innerText="";
+		
+		var error=false;
+		if(username==""){
+			error=true;
+			document.getElementById("username_error").innerText="Please Enter Username";
+		}
+		if(password==""){
+			error=true;
+			document.getElementById("password_error").innerText="Please Enter Password";
+		}
+		if(error){
+			return false;
+		}else{
+			return true;
+		}
 	}
-	if(password==""){
-		error=true;
-		document.getElementById("password_error").innerText="Please Enter Password";
-	}
-	if(error){
-		return false;
-	}else{
-		return true;
-	}
-}
 
 </script>
 </body>

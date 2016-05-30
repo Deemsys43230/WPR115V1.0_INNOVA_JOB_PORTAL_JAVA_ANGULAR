@@ -36,7 +36,7 @@
                     <td>{{jobSeeker.email}}</td>
                     <td>{{jobSeeker.phoneNumber}}</td>
                     <td>
-                         <a href="{{jobSeeker.resumeUrl}}" download ng-cloak ng-show="jobSeeker.status==1" ng-click="" class="btn-xs btn-info" title="Download Resume"><i class="fa fa-download"></i></a>
+                         <a href="{{jobSeeker.resumeUrl}}" download ng-cloak ng-show="jobSeeker.status==1" ng-click="" class="btn-xs btn-info hint--top" data-hint="Download Resume"><i class="fa fa-download"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!jobSeekerList.length || !jobFilter.length">

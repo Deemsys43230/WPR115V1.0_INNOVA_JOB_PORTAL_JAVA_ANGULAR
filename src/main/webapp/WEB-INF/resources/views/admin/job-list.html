@@ -29,14 +29,14 @@
                     <td>{{job.jobCategoryName}}</td>
                     <td class="col-md-2">{{job.addedDate}}</td>
                     <td class="col-md-2">
-                         <a href="#jobManagement-jobList-editJob/{{job.jobId}}" ng-cloak ng-click="" class="btn-xs btn-warning" title="Edit"><i class="fa fa-pencil"></i></a>
-                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success" title="Enabled"><i class="fa fa-unlock"></i></a>
-                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger" title="Disabled"><i class="fa fa-lock"></i></a>
-                         <a href="" ng-cloak ng-click="getJobDetails(job.jobId)" class="btn-xs btn-primary" title="View"><i class="fa fa-eye"></i></a>
+                         <a href="#jobManagement-jobList-editJob/{{job.jobId}}" ng-cloak ng-click="" class="btn-xs btn-warning hint--top" data-hint="Edit Job"><i class="fa fa-pencil"></i></a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success hint--top" data-hint="Disable Job"><i class="fa fa-unlock"></i></a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger hint--top" data-hint="Enable Job"><i class="fa fa-lock"></i></a>
+                         <a href="" ng-cloak ng-click="getJobDetails(job.jobId)" class="btn-xs btn-primary hint--top" data-hint="View Job"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!jobsList.length || !jobFilter.length">
-				<td colspan="4" align="center">No Records Found</td>
+					<td colspan="4" align="center">No Records Found</td>
 				</tr>
             </tbody>
         </table>
