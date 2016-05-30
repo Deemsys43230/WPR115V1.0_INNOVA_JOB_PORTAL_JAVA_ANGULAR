@@ -18,7 +18,7 @@ adminApp
 							$scope.getTestimonial = function() {
 								requestHandler
 										.getRequest(
-												"Admin/getAllTestimonials.json",
+												"Admin/getAllTestimonialsAdmin.json",
 												"")
 										.then(
 												function(response) {

@@ -67,7 +67,7 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 			$scope.getCapabilitySheet();
 			
 			 $scope.getTestimonial = function(){
-			        requestHandler.getRequest("Admin/getAllTestimonials.json","").then(function(response){
+			        requestHandler.getRequest("getAllTestimonials.json","").then(function(response){
 			        $scope.jobTestimonialList = response.data.testimonialForms;
 			       
 			  });
