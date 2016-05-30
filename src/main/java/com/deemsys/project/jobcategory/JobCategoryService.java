@@ -127,4 +127,21 @@ public class JobCategoryService {
 		jobCategoryDAO.merge(jobCategory);
 	}
 	
+	
+	//Get All Entries
+	public List<JobCategoryForm> getJobCategoryListForUser()
+	{
+		List<JobCategoryForm> jobCategoryForms=new ArrayList<JobCategoryForm>();
+		
+		List<JobCategory> jobCategorys=new ArrayList<JobCategory>();
+			
+		jobCategorys=jobCategoryDAO.getJobCategoryListForUser();
+			
+		for (JobCategory jobCategory : jobCategorys) {
+			//TODO: Fill the List
+			jobCategoryForms.add(new JobCategoryForm(jobCategory.getJobCategoryId(), jobCategory.getCategoryName(), jobCategory.getDescription(), jobCategory.getIsJobAvailable(), jobCategory.getStatus()));
+		}
+			
+		return jobCategoryForms;
+	}
 }

@@ -1,39 +1,30 @@
-var innovaApp=angular.module('innovaApp',['JobServiceModule','flash']);
+var innovaApp=angular.module('innovaApp',['JobServiceModule','flash','requestModule']);
 
-innovaApp.controller('JobController',['$scope','jobService','Flash', function($scope,jobService,Flash){
+innovaApp.controller('JobController',['$scope','jobService','Flash','requestHandler', function($scope,jobService,Flash,requestHandler){
 	
 	$scope.init=function(){
-		$scope.saveData=false;
-		$scope.saveButtonText="SEARCH JOB";
-		$scope.jobSeekerForm={
-				"status":1
+		$scope.jobSearchForm={
+				"jobKeyword":"",
+				"jobCategoryId":"0"
 		};
-		
-		$scope.jobSearchList=[{"name":"job1"},{"name":"job2"},{"name":"job3"},{"name":"job4"},{"name":"job5"},
-		                      {"name":"job6"},{"name":"job7"},{"name":"job8"},{"name":"job9"},{"name":"job10"},
-		                      {"name":"job11"},{"name":"job12"},{"name":"job13"},{"name":"job14"},{"name":"job15"}];
+		$scope.getJobCategoryList();
+		$scope.searchJob();
+	
 	};
 	
-	$scope.uploadResume=function(){
-		$scope.saveData=true;
-		$scope.saveButtonText="Saving...";
-		jobService.uploadResume($scope.jobresume).then(function(response){
-	    	$scope.jobSeekerForm.jobSeekerId=response.data.jobSeekerId;
-	    	jobService.saveJobSeeker($scope.jobSeekerForm).then(function(response){
-	    		if(response.data.requestSuccess){
-	    			Flash.create('success', "Thanks for submiyting!!!");
-					 $scope.jobSeekerForm={};
-					 $scope.jobresume="";
-					 document.getElementsByClassName('upload-path')[0].innerHTML="";
-				     $scope.jobForm.$setPristine();
-				     $scope.submitted=false;
-				 }
-	    		 $scope.saveData=false;
-				 $scope.saveButtonText="SEARCH JOB";
-	    		
-	    	});
-	    });
+	$scope.searchJob=function(){
+		requestHandler.postRequest("searchJobs.json",$scope.jobSearchForm).then(function(response){
+			$scope.jobSearchList=response.data.jobForms;
+		});
 	};
+	
+	// Get JobCategory
+	$scope.getJobCategoryList=function(){
+   	 requestHandler.getRequest("/getAllJobCategorysForUser.json","").then(function(response){
+            $scope.jobCategoryList = response.data.jobCategoryForms;
+          });
+   	};
+	
 	
 	$scope.init();
 }]);

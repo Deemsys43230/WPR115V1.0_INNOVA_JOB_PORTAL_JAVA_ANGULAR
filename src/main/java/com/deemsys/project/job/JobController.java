@@ -83,6 +83,7 @@ public class JobController {
    		return "/returnPage";
    	}	
     
+    // User Side Search Job
     @RequestMapping(value="/searchJobs",method=RequestMethod.POST)
    	public String searchJobs(@RequestBody JobSearchForm jobSearchForm,ModelMap model)
    	{
@@ -90,4 +91,14 @@ public class JobController {
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
    	}
+    
+    // User Side Get Job Details
+    @RequestMapping(value="/getJobDetailsForUser",method=RequestMethod.GET)
+	public String getJobDetailsForUser(@RequestParam("jobId") Long jobId,ModelMap model)
+	{
+    	model.addAttribute("jobForm",jobService.getJob(jobId));
+    	model.addAttribute("requestSuccess",true);
+		return "/returnPage";
+	}
+	
 }

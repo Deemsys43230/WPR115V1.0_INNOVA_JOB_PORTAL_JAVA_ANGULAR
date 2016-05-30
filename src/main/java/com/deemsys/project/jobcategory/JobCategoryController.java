@@ -65,6 +65,14 @@ public class JobCategoryController {
    		return "/returnPage";
    	}
     
+    @RequestMapping(value="/getAllJobCategorysForUser",method=RequestMethod.GET)
+   	public String getAllJobCategorysForUser(ModelMap model)
+   	{
+    	model.addAttribute("jobCategoryForms",jobCategoryService.getJobCategoryListForUser());
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
+    
     @RequestMapping(value="/Admin/enableDisableJobCategory",method=RequestMethod.POST)
    	public String enableDisableJobCategory(@RequestParam("id") Integer jobCategoryId,ModelMap model)
    	{

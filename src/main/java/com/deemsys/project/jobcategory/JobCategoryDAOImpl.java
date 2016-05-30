@@ -135,6 +135,13 @@ public class JobCategoryDAOImpl implements JobCategoryDAO{
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<JobCategory> getJobCategoryListForUser() {
+		// TODO Auto-generated method stub
+		return this.sessionFactory.getCurrentSession().createCriteria(JobCategory.class).add(Restrictions.eq("status", 1)).list();
+	}
+
 	
 
 }

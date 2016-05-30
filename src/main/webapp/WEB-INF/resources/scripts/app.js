@@ -105,19 +105,19 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 controller:'JobController'
             }).
             when('/job-details/:id', {
-                templateUrl: 'views/job-details.html'
-                /*resolve: {
+                templateUrl: 'views/job-details.html',
+                resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                'js/jquery.contact-buttons.js',
-                                'js/demo.js'
+                                   	'resources/scripts/services/jobServices.js',
+                                   	'resources/scripts/controllers/applyJobController.js',
                             ]
-                        })
+                        });
                     }]
-                }
-                controller:'CommonController'*/
+                },
+                controller:'JobDetailsController'
             }).
             when('/submit-resume/:id', {
                 templateUrl: 'views/submit.html',
