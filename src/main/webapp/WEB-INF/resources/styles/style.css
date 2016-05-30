@@ -623,9 +623,8 @@
 
 	a, a:hover, a:active, a:focus, button:focus {
 		outline: 0;
-		border: 0;
 		text-decoration: none;
-	}
+	} 
 
 	#st-preloader {
 		background: #FFF;
@@ -1522,12 +1521,14 @@
 		border: 1px solid #bbb;
 		padding: 8px 14px;
 		width: 100%;
+		line-height:23px;
 	}
 
     select{
         border: 1px solid #bbb;
         padding: 8px 14px;
         width: 100%;
+        line-height:30px;
     }
 
     .about-us-text{
@@ -2512,4 +2513,32 @@ padding-right:50px !important;
 .btn-xs.hint--top{
 	width:25px!important;
 	text-align:center;
+}
+
+
+.ellipsis{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -ms-text-overflow:ellipsis;
+    display:block;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    position:relative;
+    line-height:22px;
+    max-height:44px;
+}
+
+.ellipsis::after{
+    letter-spacing: .10em;
+    content:"...";
+    position:absolute;
+    bottom:-7px;
+    right:0;
+    padding:0 10px 5px 25px;   
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white), color-stop(45%, white));
+    background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 45%, white);
+    background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 45%, white);
+    background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 45%, white);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white 45%, white);
 }

@@ -7,7 +7,7 @@
 
                 <div class="col-sm-12">
                     <br/><br/><br/>
-                    <div class="text-white text-center">
+                    <div class="text-white text-center"><br/>
                         <h4>YOUR NEXT GREAT JOB IS WAITING FOR YOU.</h4>
                         <h6>Lorem ipsum dolor sit amet, consectetur adipisicing suscipit voluptate facilis cumconsectetur adipisicing elit.</h6>
                     </div>
@@ -27,17 +27,24 @@
                         <option>Category 4</option>
                         <option>Category 5</option>
                     </select>-->
-                    <h3 class="text-white text-center">SEARCH JOBS</h3>
-                    <div class="col-sm-4">
-                    <h5 class="text-white">Job</h5>
-                    <input type="text" ng-change="searchJob();" style="border-radius: 0" class="form-control" placeholder="Search Job" ng-model="jobSearchForm.jobKeyword"></div>
-                    <div class="col-sm-4 col-sm-offset-2">
-                    <h5 class="text-white">Category</h5>
-                    <Select ng-model="jobSearchForm.jobCategoryId" ng-change="searchJob();">
-                    	<option value="0">-- Choose Category --</option>
-                    	<option ng-repeat="jobCategory in jobCategoryList" value="{{jobCategory.jobCategoryId}}"ng-selected="{{jobCategory.jobCategoryId==jobSearchForm.jobCategoryId}}">{{jobCategory.categoryName}}</option>
-                    </Select>
-                     </div>
+                    <div class="col-sm-8 col-sm-offset-2 contact-form">
+                    	<h3 class="text-white text-center">SEARCH JOBS</h3>
+                    	<hr/>
+                    	<div class="col-sm-6">
+                    		<h5 class="text-white">Job Designation</h5>
+                    		<input type="text" placeholder="Job Designation" maxlength="50" ng-model="jobSearchForm.jobKeyword"/>
+                    	</div>
+                    	<div class="col-sm-6">
+                    		<h5 class="text-white">Job Category</h5>
+                    		<Select ng-model="jobSearchForm.jobCategoryId">
+		                    	<option value="0">All Category</option>
+		                    	<option ng-repeat="jobCategory in jobCategoryList" value="{{jobCategory.jobCategoryId}}" ng-selected="{{jobCategory.jobCategoryId==jobSearchForm.jobCategoryId}}">{{jobCategory.categoryName}}</option>
+		                    </Select>
+                    	</div>
+                    	<div class="col-sm-12 text-center"><br/>
+                    		<a href="" ng-click="searchJob()" class="btn btn-lg btn-default btn-block">SEARCH JOBS</a>
+                    	</div>
+                    </div>
                 </div>
 <!-- 
                 <div class="col-sm-12">
@@ -132,14 +139,18 @@
 						<span class="st-border"></span>
 					</div>
 				</div>
-		<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
+				<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
 				<div class="col-sm-12">
-				
-					<ul ng-show="jobSearchList.length">
-                        <li dir-paginate="searchJob in jobSearchList|itemsPerPage:10">
-                        <a href="#jobs-details/{{searchJob.jobId}}">{{searchJob.name}}</a>
-                        </li>
-                     </ul>
+					<div ng-show="jobSearchList.length">
+                        <div dir-paginate="searchJob in jobSearchList|itemsPerPage:8">
+                        	<h4>
+                        		<a href="#jobs-details/{{searchJob.jobId}}">{{searchJob.name}}</a>
+                        		<div><small><i>{{searchJob.addedDate}}</i></small></div>
+                        	</h4>
+                        	<p class="ellipsis">{{searchJob.description}}</p>
+                        	<hr/>
+                        </div>
+                     </div>
                      
                    <ul ng-show="!jobSearchList.length">
                    			<li> No Jobs Found !!!!</li>
