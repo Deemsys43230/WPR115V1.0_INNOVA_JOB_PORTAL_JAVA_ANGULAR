@@ -1,6 +1,6 @@
 var innovaApp=angular.module("innovaApp",['JobServiceModule','requestModule','flash']);
 
-innovaApp.controller('ApplyJobController',['$scope','$location','jobService','requestHandler','Flash',function($scope,$location,jobService,requestHandler,Flash){
+innovaApp.controller('ApplyJobController',['$scope','$location','$routeParams','jobService','requestHandler','Flash',function($scope,$location,$routeParams,jobService,requestHandler,Flash){
 		
 	$scope.init=function(){
 		$scope.saveData=false;
@@ -8,6 +8,14 @@ innovaApp.controller('ApplyJobController',['$scope','$location','jobService','re
 		$scope.jobSeekerForm={
 				"status":1
 		};
+		$scope.getJobDetails();
+	};
+	
+	$scope.getJobDetails=function(){
+		requestHandler.getRequest("/getJobDetailsForUser.json?jobId="+$routeParams.id,"").then(function(response){
+			$scope.jobDetails=response.data.jobForm;
+			$scope.jobSeekerForm.interestedIn=$scope.jobDetails.name;
+		});
 	};
 	
 	$scope.uploadResume=function(){

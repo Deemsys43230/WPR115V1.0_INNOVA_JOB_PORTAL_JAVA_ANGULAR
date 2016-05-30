@@ -8,7 +8,7 @@
 
                 <div class="col-sm-12">
                     <br/><br/><br/><br/>
-                    <a href="#job-details/1" ng-click="" class="btn btn-send pull-right"><i class="fa fa-backward"></i>&nbsp;Back To Search</a>
+                    <a href="#jobs" ng-click="" class="btn btn-send pull-right"><i class="fa fa-backward"></i>&nbsp;Back To Search</a>
                 </div>
 
                  <div class="col-sm-12">
@@ -53,7 +53,7 @@
                               	</div>
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" name="interestedIn" ng-model="jobSeekerForm.interestedIn" placeholder="Job Interested In*" required>
+                                <input type="text" name="interestedIn" ng-model="jobSeekerForm.interestedIn" placeholder="Job Interested In*" required readonly="readonly">
                                 <div class="error-container" >
                                  <div ng-show="submitted">
 	                          			<span ng-cloak ng-show="jobForm.interestedIn.$error.required">Please Enter Interested In</span>

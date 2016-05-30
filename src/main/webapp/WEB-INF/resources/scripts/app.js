@@ -104,7 +104,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'JobController'
             }).
-            when('/job-details/:id', {
+            when('/jobs-details/:id', {
                 templateUrl: 'views/job-details.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
@@ -119,7 +119,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'JobDetailsController'
             }).
-            when('/submit-resume/:id', {
+            when('/jobs-submit-resume/:id', {
                 templateUrl: 'views/submit.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
@@ -220,8 +220,8 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
             });
     }]);
 
-innovaApp.controller('SocialMediaController', ['$scope','$location','requestHandler',
-		function($scope, $location, requestHandler) {
+innovaApp.controller('SocialMediaController', ['$route','$routeParams','$rootScope','$scope','$location','requestHandler',
+		function($route,$routeParams,$rootScope,$scope, $location, requestHandler) {
 	
 	
 	//Get Contact Details
@@ -244,9 +244,18 @@ innovaApp.controller('SocialMediaController', ['$scope','$location','requestHand
 	        $scope.activeClass={};
 	        $scope.submenuActive={};
 	        var currentPage = $location.url().substr(1);
-	        $scope.activeClass[currentPage]='active';
+	        var activePage=currentPage.split('-');
+	        $scope.activeClass[activePage[0]]='active';
 	    });
-	
+	 
+	 $rootScope.$route=$route;
+	 $rootScope.$routeParams=$routeParams;
+	 $rootScope.$on('$routeChangeSuccess',function(event,current,previous){
+		 if(previous!=undefined){
+			 $rootScope.previousState=previous.$$route.originalPath;
+		 }
+	 });
+
 }]);
 
 innovaApp.directive(
