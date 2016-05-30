@@ -15,7 +15,7 @@ angular.module('innovaApp').directive('fileModel', ['$parse', function ($parse) 
     };
 }]);
 
-//File Validation Directive
+//File Required Validation Directive
 angular.module('innovaApp').directive('validFile',function(){
 	  return {
 	    require:'ngModel',
@@ -25,6 +25,29 @@ angular.module('innovaApp').directive('validFile',function(){
 	        	 ngModel.$setViewValue(el.val());
 		          ngModel.$render(); 
 	         });
+	       
+	      });
+	    }
+	  };
+});
+
+//File Type Validation Directive
+angular.module('innovaApp').directive('validateFileType',function(){
+	var validFormats=['pdf','docx','doc','rtf'];
+	  return {
+	    require:'ngModel',
+	    link:function(scope,el,attrs,ngModel){
+	      el.bind('change',function(){
+	    	 var fileSize=el[0].files[0].size;
+	    	  var value = el.val(),
+              ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();   
+	          ngModel.$validators.validateFileType = function() {
+	        	  return validFormats.indexOf(ext) !== -1;
+	          };
+	          
+	          ngModel.$validators.validateFileSize=function(){
+	        	  return fileSize<5000000;
+	          };
 	      });
 	    }
 	  };

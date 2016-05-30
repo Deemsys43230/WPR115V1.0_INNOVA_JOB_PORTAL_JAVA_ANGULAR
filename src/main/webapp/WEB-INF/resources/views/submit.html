@@ -10,10 +10,11 @@
                     <br/><br/><br/><br/>
                     <a href="#jobs" ng-click="" class="btn btn-send pull-right"><i class="fa fa-backward"></i>&nbsp;Back To Search</a>
                 </div>
-
+				 <div class="col-md-4 text-white">Job : {{jobDetails.name}}</div>
+				 <div class="col-md-4 text-white">Updated Date : {{jobDetails.addedDate}}</div>
                  <div class="col-sm-12">
                     <br/>
-                    <h4 class="text-white text-center">APPLY FOR JOB!</h4><br/>
+                   <h4 class="text-white text-center">APPLY FOR JOB!</h4><br/>
                     <form class="contact-form" name="jobForm" ng-submit="jobForm.$valid && uploadResume()" novalidate>
                         <div class="row">
                             <div class="col-sm-4">
@@ -63,14 +64,16 @@
                             <div class="col-sm-4" style="margin-top: 8px">
                             <div class="browse-wrap text-white">
                                <div class="title">Upload Resume</div>
-								<input type="file" file-model="jobresume" valid-file name="jobresume" ng-model="jobresume" class="upload" title="Upload Resume" required>
+								<input type="file" file-model="jobresume" valid-file validate-file-type name="jobresume" ng-model="jobresume" class="upload" title="Upload Resume" required>
 							</div>
 							<span class="upload-path text-white"></span>
-                                <div class="text-white"><small>Accepted file types: pdf, doc, docx, txt, ppt, pptx.</small><br/></div>
+                                <div class="text-white"><small>Accepted file types: pdf, doc, docx, rtf.</small><br/></div>
 							</div>
 							<div class="error-container" >
                                  <div ng-show="submitted">
 	                          			<span ng-cloak ng-show="jobForm.jobresume.$error.required">Please Upload Resume</span>
+	                          			<span ng-cloak ng-show="!jobForm.jobresume.$error.required&&jobForm.jobresume.$error.validateFileType">Please Choose Vaild File</span>
+	                          			<span ng-cloak ng-show="!jobForm.jobresume.$error.required&&!jobForm.jobresume.$error.validateFileType&&jobForm.jobresume.$error.validateFileSize">File should be less than 5 MB</span>
 	                              </div>
                               	</div>
                             

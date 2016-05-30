@@ -333,13 +333,15 @@
                             <div class="col-sm-6" style="margin-top: 8px">
                                  <div class="browse-wrap text-white">
                                <div class="title">Upload Resume</div>
-								<input type="file" file-model="indexresume" name="indexresume" ng-model="indexresume" class="upload" title="Upload Resume" required>
+								<input type="file" file-model="indexresume" validate-file-type name="indexresume" ng-model="indexresume" class="upload" title="Upload Resume" required>
 							</div>
 							<span class="upload-path text-white"></span>
-                                <div class="text-white"><small>Accepted file types: pdf, doc, docx, txt, ppt, pptx.</small><br/></div>
+                                <div class="text-white"><small>Accepted file types: pdf, doc, docx,rtf.</small><br/></div>
                                 <div class="error-container" >
                                  <div ng-show="submitted">
 	                          			<span ng-cloak ng-show="indexjobForm.indexresume.$error.required">Please Upload Resume</span>
+	                          			<span ng-cloak ng-show="!indexjobForm.indexresume.$error.required&&indexjobForm.indexresume.$error.validateFileType">Please Choose Vaild File</span>
+	                          			<span ng-cloak ng-show="!indexjobForm.indexresume.$error.required&&!indexjobForm.indexresume.$error.validateFileType&&indexjobForm.indexresume.$error.validateFileSize">File should be less than 5 MB</span>
 	                              </div>
                               	</div>
                             </div>

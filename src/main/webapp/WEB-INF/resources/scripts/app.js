@@ -144,14 +144,13 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                                  files:[
                                      'resources/scripts/services/employeeMessageService.js',
                                      'resources/scripts/controllers/aboutController.js',
-                                     
-                                   ]
-                             })
+                                    ]
+                             });
                          }]
                      },
                      controller:'AboutController'
             }).
-            when('/mbe', {
+            when('/solutions-mbe', {
                 templateUrl: 'views/mbe.html',
                 resolve: {
                     loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
@@ -162,7 +161,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                                    'resources/scripts/controllers/aboutController.js',
 
                             ]
-                        })
+                        });
                     }]
                 },
                 controller:'AboutController'
@@ -258,28 +257,25 @@ innovaApp.controller('SocialMediaController', ['$route','$routeParams','$rootSco
 
 }]);
 
-innovaApp.directive(
-		'validateEmail',
-		function() {
-			var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,5})$/;
-			return {
-				require : 'ngModel',
-				restrict : '',
-				link : function(scope, elm, attrs, ctrl) {
-					// only apply the validator if ngModel is present
-					// and Angular has added the email validator
-					if (ctrl && ctrl.$validators.email) {
+//Check For Email Validation
+innovaApp.directive('validateEmail', function() {
+    var EMAIL_REGEXP = /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,5})$/;
 
-						// this will overwrite the default Angular email
-						// validator
-						ctrl.$validators.email = function(modelValue) {
-							return ctrl.$isEmpty(modelValue)
-									|| EMAIL_REGEXP.test(modelValue);
-						};
-					}
-				}
-			};
-		});
+    return {
+        require: 'ngModel',
+        restrict: '',
+        link: function(scope, elm, attrs, ctrl) {
+            // only apply the validator if ngModel is present and Angular has added the email validator
+            if (ctrl && ctrl.$validators.email) {
+
+                // this will overwrite the default Angular email validator
+                ctrl.$validators.email = function(modelValue) {
+                    return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
+                };
+            }
+        }
+    };
+});
 
 innovaApp.directive('validateMobile', function() {
 var USA_MOB_EXPR = /^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
