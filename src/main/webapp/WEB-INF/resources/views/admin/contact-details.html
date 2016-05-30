@@ -2,17 +2,16 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<h5>Street name<span class="text-red"><sup>*</sup></span></h5>
-			<input type="text" name="street" ng-model="contactDetails.street" required validate-name placeholder="Enter Street Name"/>
+			<input type="text" name="street" ng-model="contactDetails.street" required placeholder="Enter Street Name" maxlength="30"/>
            	<div class="error-container">
             	<div  ng-show="contactForm.street.$dirty && contactForm.street.$invalid">
 	            	<span ng-cloak ng-show="contactForm.street.$error.required">Please Enter Street</span>
-	            	<span ng-cloak ng-show="!contactForm.street.$error.required&&contactForm.street.$error.validateName">Enter Valid Street</span>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
 			<h5>City<span class="text-red"><sup>*</sup></span></h5>
-			<input type="text" name="city" ng-model="contactDetails.city" required validate-name placeholder="Enter City"/>
+			<input type="text" name="city" ng-model="contactDetails.city" required validate-name placeholder="Enter City" maxlength="25"/>
             <div class="error-container">
 				<div ng-show="contactForm.city.$dirty && contactForm.city.$invalid">
 	            	<span ng-cloak ng-show="contactForm.city.$error.required">Please Enter City</span>
@@ -22,7 +21,7 @@
         </div>        
         <div class="col-sm-4">
         	<h5>State<span class="text-red"><sup>*</sup></span></h5>
-        	<input type="text" name="state" ng-model="contactDetails.state" required validate-name placeholder="Enter State">
+        	<input type="text" name="state" ng-model="contactDetails.state" required validate-name placeholder="Enter State" maxlength="25">
         	<div class="error-container">
             	<div ng-show="contactForm.state.$dirty && contactForm.state.$invalid">
 	            	<span ng-cloak ng-show="contactForm.state.$error.required">Please Enter State</span>
@@ -32,7 +31,7 @@
         </div>
         <div class="col-sm-4">
         	<h5>Country<span class="text-red"><sup>*</sup></span></h5>
-            <input type="text" name="country" ng-model="contactDetails.country" required validate-name placeholder="Enter Country">
+            <input type="text" name="country" ng-model="contactDetails.country" required validate-name placeholder="Enter Country" maxlength="25">
             <div class="error-container">
             	<div  ng-show="contactForm.country.$dirty && contactForm.country.$invalid">
 	            	<span ng-cloak ng-show="contactForm.country.$error.required">Please Enter Country</span>
@@ -42,7 +41,7 @@
         </div>
         <div class="col-sm-4">
         	<h5>Zipcode<span class="text-red"><sup>*</sup></span></h5>
-        	<input type="text" name="zipcode" ng-model="contactDetails.zipCode" required validate-zipcode placeholder="Enter Zipcode"/>
+        	<input type="text" name="zipcode" ng-model="contactDetails.zipCode" required validate-zipcode placeholder="Enter Zipcode" maxlength="5"/>
             <div class="error-container">
             	<div  ng-show="contactForm.zipcode.$dirty && contactForm.zipcode.$invalid">
 	            	<span ng-cloak ng-show="contactForm.zipcode.$error.required">Please Enter Zipcode</span>
@@ -52,7 +51,7 @@
         </div>
         <div class="col-sm-4">
         	<h5>Email id<span class="text-red"><sup>*</sup></span></h5>
-            <input type="email" name="email" ng-model="contactDetails.email" required validate-email placeholder="Enter Email Id">
+            <input type="email" name="email" ng-model="contactDetails.email" required validate-email placeholder="Enter Email Id" maxlength="50">
            	<div class="error-container">
             	<div  ng-show="contactForm.email.$dirty && contactForm.email.$invalid">
 	            	<span ng-cloak ng-show="contactForm.email.$error.required">Please Enter Email ID</span>
@@ -62,7 +61,7 @@
         </div>
 		<div class="col-sm-4">
 			<h5>Phone number<span class="text-red"><sup>*</sup></span></h5>
-       		<input type="text" name="phoneNumber" ng-model="contactDetails.phoneNumber" required validate-mobile placeholder="Enter Phone Number">
+       		<input type="text" name="phoneNumber" ng-model="contactDetails.phoneNumber" required validate-mobile placeholder="Enter Phone Number" maxlength="20">
           	<div class="error-container">
            		<div  ng-show="contactForm.phoneNumber.$dirty && contactForm.phoneNumber.$invalid">
 	          		<span ng-cloak style="color:red" ng-show="contactForm.phoneNumber.$error.required">Please Enter Phone Number</span>

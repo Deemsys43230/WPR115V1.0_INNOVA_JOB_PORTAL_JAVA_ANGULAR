@@ -88,6 +88,8 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             files:[
                                 'resources/js/easyResponsiveTabs.js',
                                 'resources/styles/easy-responsive-tabs.css',
+                                'resources/js/summernote.js',
+                                'resources/styles/summernote.css',
                                 'resources/scripts/controllers/adminJobListController.js'
                             ]
                         });
@@ -104,6 +106,8 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             files:[
                                 'resources/js/easyResponsiveTabs.js',
                                 'resources/styles/easy-responsive-tabs.css',
+                                'resources/js/summernote.js',
+                                'resources/styles/summernote.css',
                                 'resources/scripts/controllers/adminJobListController.js'
                             ]
                         });
@@ -198,7 +202,7 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             files:[
                                 'resources/scripts/controllers/adminCapabilitySheetController.js'
                             ]
-                        })
+                        });
                     }]
                 },
                 controller:'CapabilitySheetController'

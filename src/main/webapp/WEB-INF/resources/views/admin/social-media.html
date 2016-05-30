@@ -6,7 +6,7 @@
 			</h5>
 			<input type="text" name="facebookLink"
 				ng-model="socialMediaDetails.facebookLink" required validate-url
-				placeholder="Facebook URL">
+				placeholder="Facebook URL" maxlength="80">
 			<div class="error-container">
 				<div
 					ng-show="socialMediaForm.facebookLink.$dirty && socialMediaForm.facebookLink.$invalid">
@@ -24,7 +24,7 @@
 			</h5>
 			<input type="text" name="twitterLink"
 				ng-model="socialMediaDetails.twitterLink" required validate-url
-				placeholder="Twitter URL">
+				placeholder="Twitter URL" maxlength="80">
 			<div class="error-container">
 				<div
 					ng-show="socialMediaForm.twitterLink.$dirty && socialMediaForm.twitterLink.$invalid">
@@ -42,7 +42,7 @@
 			</h5>
 			<input type="text" name="googlePlusLink"
 				ng-model="socialMediaDetails.googlePlusLink" required validate-url
-				placeholder="Google Plus URL">
+				placeholder="Google Plus URL" maxlength="80">
 			<div class="error-container">
 				<div
 					ng-show="socialMediaForm.googlePlusLink.$dirty && socialMediaForm.googlePlusLink.$invalid">
@@ -60,7 +60,7 @@
 			</h5>
 			<input type="text" name="linkedInLink"
 				ng-model="socialMediaDetails.linkedInLink" required validate-url
-				placeholder="LinkedIn URL">
+				placeholder="LinkedIn URL" maxlength="80">
 			<div class="error-container">
 				<div
 					ng-show="socialMediaForm.linkedInLink.$dirty && socialMediaForm.linkedInLink.$invalid">

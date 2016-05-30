@@ -158,7 +158,7 @@ adminApp.controller('NewsUserController',['$scope','requestHandler','Flash','$sc
 
             //View the image in ng-src for view testimonials
             $scope.myImgSrc = $sce.trustAsResourceUrl(response.data.latestNewsForm.titleImageUrl);
- $scope.usernewsdetails=response.data.latestNewsForm;
+            $scope.usernewsdetails=response.data.latestNewsForm;
         });
 
         return false;

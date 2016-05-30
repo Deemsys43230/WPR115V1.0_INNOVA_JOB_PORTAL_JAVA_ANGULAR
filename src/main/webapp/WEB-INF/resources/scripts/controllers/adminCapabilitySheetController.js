@@ -16,7 +16,8 @@ adminApp.controller('CapabilitySheetController',['$scope','$location','requestHa
 	$scope.getCapabilitySheet();
 	
 	$scope.uploadSheet = function(){
-	     requestHandler.postFileUpload("Admin/uploadCapabilitySheet.json",$scope.sheet,"sheet").then(function(response){
+		console.log($scope.capabilityUploadSheet);
+	     requestHandler.postFileUpload("Admin/uploadCapabilitySheet.json",$scope.capabilityUploadSheet,"sheet").then(function(response){
 	    	   Flash.create('success', "Successfully Uploaded!!!");
 	       });
 	     
@@ -45,6 +46,7 @@ adminApp.directive('fileModel', ['$parse', function ($parse) {
 
 //File Validation Directive
 adminApp.directive('validFile',function(){
+	 var validFormats = ['pdf'];
 	  return {
 	    require:'ngModel',
 	    link:function(scope,el,attrs,ngModel){
@@ -52,6 +54,18 @@ adminApp.directive('validFile',function(){
 	        scope.$apply(function(){
 	        	 ngModel.$setViewValue(el.val());
 		          ngModel.$render(); 
+		          var fileSize=el[0].files[0].size;
+		          var value = el.val(),
+	              ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();  
+		          
+		    ngModel.$validators.validateFileType = function() {
+				return validFormats.indexOf(ext) !== -1;
+			};
+			
+			 ngModel.$validators.validateFileSize=function(){
+	        	  return fileSize<5000000;
+	          };
+		            
 	         });
 	      });
 	    }

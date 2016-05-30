@@ -18,9 +18,13 @@
 
                 <div class="col-md-4">
                     <h4>OTHER NEWS</h4>
+                    
+                    <div class="input-group">
+  					 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
+					 <input class="form-control" type="text" ng-model="search.title" placeholder="Title"></div>
                     <hr/>
-                    <div class="col-md-12 no-padding">
-                    <div ng-repeat="news in usernewslist">
+                    <div class="col-md-12 no-padding div-scroll" ng-show="usernewslist.length>0">
+                    <div ng-repeat="news in newsfilter=(usernewslist|filter:search)">
                         <div class="col-md-2 no-padding" >
                      
                             <img class="img-responsive" width="100%" ng-src="{{news.titleImageUrl | trusted}}" alt="">
@@ -31,6 +35,9 @@
                         </div>
                         <div class="col-md-12 no-padding"><hr/></div>
                      </div>   
+                    </div>
+                    <div class="col-md-12 no-padding" ng-show="usernewslist.length==0 || !newsfilter.length">
+                     <span>No Latest News Updated!!!</span>
                     </div>
                 </div>
                 </div>

@@ -5,12 +5,15 @@
     <div class="col-md-12 margin-top-20">
     <div class="col-md-4">
     	<div class="btn btn-readmore">
-			<div class="title">Choose a file to upload</div>
-			<input type="file" valid-file required  name="uploadsheet" file-model="capabilityUploadSheet" accept="application/pdf" ng-model="capabilityUploadSheet" class="upload" title="Choose a file to upload">
+			<div class="title">Choose File</div>
+			<input type="file" valid-file required  name="uploadsheet" file-model="capabilityUploadSheet" accept="application/pdf" ng-model="capabilityUploadSheet" class="upload" title="Choose a file to upload" >
 		</div>
 		<div class="error-container" >
            <div ng-show="submitted">
 	           <span ng-cloak ng-show="uploadForm.uploadsheet.$error.required">Please Upload Capability Sheet</span>
+	           <span ng-cloak ng-show="!uploadForm.uploadsheet.$error.required && uploadForm.uploadsheet.$error.validateFileType">Accept Only pdf files</span>
+	           <span ng-cloak ng-show="!uploadForm.uploadsheet.$error.required && uploadForm.uploadsheet.$error.validateFileType&&uploadForm.uploadsheet.$error.validateFileSize">File should be less than 5 MB</span>
+	          
 	       </div>
        </div>
 </div>                              	
@@ -19,7 +22,7 @@
 		</div>
 		
 		<div class="col-md-4 browse-wrap margin-top-15">
-			<div class="title">Upload File</div>
+			<div class="title">Click here to Upload</div>
 			<input type="submit" name="upload" class="upload" ng-click="submitted=true" title="Upload file">
 		</div>
     </div> 

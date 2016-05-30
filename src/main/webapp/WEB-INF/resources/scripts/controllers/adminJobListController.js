@@ -2,7 +2,7 @@
  * Created by user on 18/5/16.
  */
 
-var adminApp = angular.module('adminApp',['ngSanitize', 'ui.select','angularUtils.directives.dirPagination','requestModule','flash']);
+var adminApp = angular.module('adminApp',['ngSanitize', 'ui.select','angularUtils.directives.dirPagination','requestModule','flash','summernote']);
 
 adminApp.controller('AdminJobListController',['$scope','$location','$q','requestHandler','Flash',function($scope, $location, $q, requestHandler,Flash){
 	$scope.init=function(){
@@ -39,6 +39,12 @@ adminApp.controller('AdminJobListController',['$scope','$location','$q','request
 }]);
 
 adminApp.controller('AdminJobAddController',['$scope','$location','$q','requestHandler','Flash',function($scope, $location, $q, requestHandler,Flash){
+	
+	 //summer note
+    $scope.options = {
+        height: 250
+    };
+	
 	$scope.init=function(){
 		$scope.getJobCategoryList();
 		$scope.submitButtonText="Save Job";
@@ -130,6 +136,13 @@ adminApp.controller('AdminJobAddController',['$scope','$location','$q','requestH
 }]);
 
 adminApp.controller('AdminJobEditController',['$scope','$location','$q','$routeParams','requestHandler','Flash',function($scope, $location, $q, $routeParams, requestHandler,Flash){
+	
+	 //summer note
+    $scope.options = {
+        height: 250
+    };
+	
+	
 	$scope.init=function(){
 		$scope.submitButtonText="Update Job";
 		$scope.getJob();

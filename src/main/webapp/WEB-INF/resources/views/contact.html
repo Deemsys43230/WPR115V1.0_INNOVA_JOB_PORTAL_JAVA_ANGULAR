@@ -33,7 +33,7 @@
 						<div class="row">
 							<div class="col-sm-6">
 								<h5>First Name<span class="text-red"><sup>*</sup></span></h5>
-                                     <input type="text" name="firstName" ng-model="employersMessageForm.firstName" required validate-name placeholder="First Name">
+                                     <input type="text" name="firstName" ng-model="employersMessageForm.firstName" required validate-name placeholder="First Name" maxlength="25">
                                             <div class="error-container">
                                             <div ng-show="submitted">
 	                                   			 <span ng-cloak ng-show="messageForm.firstName.$error.required">Please Enter First Name</span>
@@ -43,7 +43,7 @@
 							</div>
 							<div class="col-sm-6">
 								<h5>Last Name<span class="text-red"><sup>*</sup></span></h5>
-                                            <input type="text" name="lastName" ng-model="employersMessageForm.lastName" required validate-name placeholder="Last Name">
+                                            <input type="text" name="lastName" ng-model="employersMessageForm.lastName" required validate-name placeholder="Last Name" maxlength="25">
                                             <div class="error-container">
                                             <div ng-show="submitted">
 	                                   			 <span ng-cloak ng-show="messageForm.lastName.$error.required">Please Enter Last Name</span>
@@ -53,7 +53,7 @@
 							</div>
 							<div class="col-sm-6">
 							 <h5>Email<span class="text-red"><sup>*</sup></span></h5>
-								 <input type="email" name="email" ng-model="employersMessageForm.email" required validate-email placeholder="Email">
+								 <input type="email" name="email" ng-model="employersMessageForm.email" required validate-email placeholder="Email" maxlength="50">
                                             <div class="error-container" >
                                             <div ng-show="submitted">
 	                                   			 <span ng-cloak ng-show="messageForm.email.$error.required">Please Enter Email ID</span>
@@ -63,7 +63,7 @@
 							</div>
 							<div class="col-sm-6">
 							 <h5>Subject<span class="text-red"><sup>*</sup></span></h5>
-								<input type="text" name="subject" ng-model="employersMessageForm.subject" required placeholder="Subject">
+								<input type="text" name="subject" ng-model="employersMessageForm.subject" required placeholder="Subject" maxlength="100">
                                              <div class="error-container">
                                              <div ng-show="submitted">
 	                                   			 <span ng-cloak ng-show="messageForm.subject.$error.required">Please Enter Subject</span>
@@ -71,18 +71,17 @@
 	                                    	</div>
 							</div>
 							<div class="col-sm-6">
-								<h5>Website<span class="text-red"><sup>*</sup></span></h5>
-                                            <input type="text" name="website" ng-model="employersMessageForm.website" required validate-url placeholder="Website - http://www.example.com">
+								<h5>Website<span class="text-red"></span></h5>
+                                            <input type="text" name="website" ng-model="employersMessageForm.website" validate-url placeholder="Website - http://www.example.com" maxlength="80">
                                             <div class="error-container" >
                                             <div ng-show="submitted">
-	                                   			 <span ng-cloak ng-show="messageForm.website.$error.required">Please Enter Website</span>
-	                                   			 <span ng-cloak ng-show="!messageForm.website.$error.required&&messageForm.website.$error.validateUrl">Enter Valid URL</span>
+	                                   			 <span ng-cloak ng-show="messageForm.website.$error.validateUrl">Enter Valid URL</span>
 	                                    	</div>
                                 			</div>
 							</div>
 							<div class="col-sm-12">
 							<h5>Message<span class="text-red"><sup>*</sup></span></h5>
-								<textarea name="message"  ng-model="employersMessageForm.message" required cols="30" rows="3" placeholder="Message"></textarea>
+								<textarea name="message"  ng-model="employersMessageForm.message" required cols="30" rows="3" placeholder="Message" maxlength="800"></textarea>
                                             <div class="error-container">
                                             <div ng-show="submitted">
 	                                   			 <span ng-cloak ng-show="messageForm.message.$error.required">Please Enter Message</span>

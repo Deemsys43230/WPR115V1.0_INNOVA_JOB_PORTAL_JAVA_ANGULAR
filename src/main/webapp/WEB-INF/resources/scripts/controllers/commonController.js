@@ -2,8 +2,8 @@
  * Created by user on 18/5/16.
  */
 
-var innovaApp = angular.module('innovaApp',['JobServiceModule','flash']);
-innovaApp.controller('CommonController',['$scope','$http','$document','$parse','jobService','Flash',function($scope,$http,$document,$parse,jobService,Flash){
+var innovaApp = angular.module('innovaApp',['JobServiceModule','flash','requestModule']);
+innovaApp.controller('CommonController',['$scope','$http','$document','$parse','jobService','Flash','requestHandler','$sce','$routeParams',function($scope,$http,$document,$parse,jobService,Flash,requestHandler,$sce,$routeParams){
  
 	$scope.init=function(){
 		$scope.saveData=false;
@@ -35,7 +35,42 @@ innovaApp.controller('CommonController',['$scope','$http','$document','$parse','
 	    });
     };
     
+    // To display News as user
+    $scope.doGetNewsByUser=function(){
+      requestHandler.getRequest("getAllLatestNewss.json", "").then(function(response){
+      $scope.usernewslist=response.data.latestNewsForms;
+      $scope.myImgSrc = $sce.trustAsResourceUrl(response.data.latestNewsForms.titleImageUrl);
+        });
+    };
     
+   
+    $scope.doGetNewsDetailsByUser= function () {
+        requestHandler.getRequest("getLatestNews.json?latestNewsId="+$routeParams.latestNewsId, "").then(function(response){
+
+            //View the image in ng-src for view testimonials
+            $scope.myImgSrc = $sce.trustAsResourceUrl(response.data.latestNewsForm.titleImageUrl);
+            $scope.usernewsdetails=response.data.latestNewsForm;
+        });
+    };
+    
+    if($routeParams.latestNewsId){
+   	 $scope.doGetNewsDetailsByUser();
+   }
+    
+    $scope.doGetNewsByUser();
     
     $scope.init();
+}]);
+
+innovaApp.filter('html', ['$sce', function ($sce) {
+    return function (text) {
+        return $sce.trustAsHtml(text);
+    };
+}]);
+
+//render image to view in list
+innovaApp.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
 }]);

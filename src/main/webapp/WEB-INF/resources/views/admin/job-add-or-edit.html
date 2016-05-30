@@ -3,7 +3,7 @@
 <form name="adminSideJobForm" novalidate>
 	<div class="col-md-6">
 		<h5>Job tile <span class="text-red"><sup>*</sup></span></h5>
-		<input type="text" name="title" ng-model="adminJobForm.name" required placeholder="Job title*">
+		<input type="text" name="title" ng-model="adminJobForm.name" required placeholder="Job title*" maxlength="25">
 		 <div class="error-container" ng-show="adminSideJobForm.title.$dirty && adminSideJobForm.title.$invalid">
 	      <span ng-cloak ng-show="adminSideJobForm.title.$error.required">Please Enter Title</span>
       </div>
@@ -35,7 +35,7 @@
 	
 	<div class="col-md-12">
 		<h5>Job Description <span class="text-red"><sup>*</sup></span></h5>
-		<textarea type="text" rows="4" name="description" ng-model="adminJobForm.description" required></textarea>
+		<div summernote config="options" name="description"  ng-model="news.description" required></div>
 	 <div class="error-container" ng-show="adminSideJobForm.description.$dirty && adminSideJobForm.description.$invalid">
 	      <span ng-cloak ng-show="adminSideJobForm.description.$error.required">Please Enter Description</span>
       </div>	

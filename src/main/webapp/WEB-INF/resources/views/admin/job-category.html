@@ -54,7 +54,7 @@
       <div class="modal-body">
        
         	<h5>Category name</h5>
-        	<input type="text" name="categoryName" ng-model="jobCategory.categoryName" placeholder="Enter Category Name" required validate-name>
+        	<input type="text" name="categoryName" ng-model="jobCategory.categoryName" placeholder="Enter Category Name" required validate-name maxlength="25">
         	<div class="error-container">
                 <div ng-show="submitted">
 	              <span ng-cloak ng-show="jobCategoryForm.categoryName.$error.required">Please Enter Category Name</span>
@@ -62,7 +62,7 @@
                 </div>
              </div>
         	<h5>Description</h5>
-        	<textarea name="description" ng-model="jobCategory.description" placeholder="Enter Description" required></textarea>
+        	<textarea name="description" ng-model="jobCategory.description" placeholder="Enter Description" required maxlength="300"></textarea>
         	<div class="error-container">
                 <div ng-show="submitted">
 	              <span ng-cloak ng-show="jobCategoryForm.description.$error.required">Please Enter Description</span>
