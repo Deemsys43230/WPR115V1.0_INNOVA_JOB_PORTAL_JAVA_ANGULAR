@@ -9,6 +9,8 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 				 };
 				 $scope.saveData=false;
 				 $scope.saveButtonText="SUBMIT YOUR RESUME";
+				 $scope.getTestimonial();
+				 $scope.getCapabilitySheet();
 			};
 	
 	
@@ -18,7 +20,7 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 				employeeMessageService.doSendMessage($scope.employersMessageForm);
 				Flash.create('success', "Thanks for contacting us!!!");
 				 $scope.employersMessageForm={};
-			     $scope.messageForm.$setPristine();
+				 $scope.messageForm={};
 			     $scope.submitted=false;
 					
 			};
@@ -44,7 +46,6 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 			    });
 			};
 			
-			$scope.init();
 			
 			// Clear JobSeeker Data
 			$scope.clearJobSeekerData=function(){
@@ -64,7 +65,7 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 				});
 			};
 			
-			$scope.getCapabilitySheet();
+			
 			
 			 $scope.getTestimonial = function(){
 			        requestHandler.getRequest("getAllTestimonials.json","").then(function(response){
@@ -72,7 +73,10 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 			       
 			  });
 			 };
-			 $scope.getTestimonial();
+			 
+
+				$scope.init();
+			
 			 
 }]).directive("owlCarousel", function() {
 	return {

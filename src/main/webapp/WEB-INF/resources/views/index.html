@@ -121,12 +121,13 @@
                         <div class="our-office">
                             <div id="office-carousel" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                    <div class="item active" >
-                                         <!-- <div  class="col-sm-4" ng-repeat="news in usernewslist">
+                                
+                                    <div class="item" ng-class="{'active': $index == 0}"  ng-repeat="news in usernewslist">
+                                         <div  class="col-sm-4">
                                             <div class="portfolio-content">
-                                                <img class="img-responsive" src="{{myImgSrc}}" alt="">
+                                                <img class="img-responsive" ng-src="{{news.titleImageUrl | trusted}}" alt="">
                                                 <div class="portfolio-overlay">
-                                                    <h5>Web Development</h5>
+                                                    <h5></h5>
                                                     <p>Design, Develop</p>
                                                 </div>
                                             </div>
@@ -134,8 +135,9 @@
                                             <h5>{{news.title}}</h5>
                                             <p>{{news.addedDate}}</p>
                                             <a href="#news-details/{{news.latestNewsId}}" class="btn btn-readmore-small">Read more</a>
-                                        </div> --> 
-                                          <div  class="col-sm-4" >
+                                        </div> 
+                                        </div>
+                                          <!-- <div  class="col-sm-4" >
                                             <div class="portfolio-content">
                                                 <img class="img-responsive" src="" alt="">
                                                 <div class="portfolio-overlay">
@@ -174,6 +176,8 @@
                                             <p>lkjjklj</p>
                                             <a href="#news-details" class="btn btn-readmore-small">Read more</a>
                                         </div>
+                                         </div>
+                                         <div class="item" >
                                          <div  class="col-sm-4">
                                             <div class="portfolio-content">
                                                 <img class="img-responsive" src="{{myImgSrc}}" alt="">
@@ -187,7 +191,33 @@
                                             <p>jkhkjh</p>
                                             <a href="#news-details" class="btn btn-readmore-small">Read more</a>
                                         </div>
-                                    </div>
+                                         <div  class="col-sm-4">
+                                            <div class="portfolio-content">
+                                                <img class="img-responsive" src="{{myImgSrc}}" alt="">
+                                                <div class="portfolio-overlay">
+                                                    <h5>Web Development</h5>
+                                                    <p>Design, Develop</p>
+                                                </div>
+                                            </div>
+                                            <p><small>Featured News, News</small></p>
+                                            <h5>lkjkl</h5>
+                                            <p>jkhkjh</p>
+                                            <a href="#news-details" class="btn btn-readmore-small">Read more</a>
+                                        </div>
+                                         <div  class="col-sm-4">
+                                            <div class="portfolio-content">
+                                                <img class="img-responsive" src="{{myImgSrc}}" alt="">
+                                                <div class="portfolio-overlay">
+                                                    <h5>Web Development</h5>
+                                                    <p>Design, Develop</p>
+                                                </div>
+                                            </div>
+                                            <p><small>Featured News, News</small></p>
+                                            <h5>lkjkl</h5>
+                                            <p>jkhkjh</p>
+                                            <a href="#news-details" class="btn btn-readmore-small">Read more</a>
+                                        </div>
+                                   </div> -->
 
                                     <a class="office-carousel-left" href="#office-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                                     <a class="office-carousel-right" href="#office-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>

@@ -50,6 +50,7 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
                                 	
                                 
  	$scope.saveUpdateNews=function(){ 
+ 		console.log($scope.news.titleImage);
  		requestHandler.postFileUpload("Admin/saveTitleImage.json",$scope.news.titleImage,"titleImage").then(function(response){
 	    	$scope.news.latestNewsId=response.data.newsId;
 	    	delete $scope.news.titleImage;

@@ -308,7 +308,9 @@
                                             <input type="text" name="website" ng-model="employersMessageForm.website" validate-url  placeholder="Website - http://www.example.com" maxlength="80">
                                             <div class="error-container" >
                                             <div ng-show="submitted">
-	                                   			 <span ng-cloak ng-show="messageForm.website.$error.validateUrl">Enter Valid URL</span>
+                                            
+	                                   			 <span ng-cloak ng-show="messageForm.website.$error.validateUrl">Invalid URL</span>
+	                                    	
 	                                    	</div>
                                 			</div>
                                         </div>

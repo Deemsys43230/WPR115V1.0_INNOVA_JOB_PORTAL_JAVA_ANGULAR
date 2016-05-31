@@ -363,10 +363,14 @@ innovaApp.directive('validateUrl', function () {
 	    require: 'ngModel',
 	    restrict: '',
 	    link: function (scope, elm, attrs, ngModel) {
-	      // only apply the validator if ngModel is present and Angular has added the email validator
-	      ngModel.$validators.validateUrl = function (modelValue) {
-	        return URL_REGEXP.test(modelValue);
-	      };
+	      // only apply the validator if ngModel is present and Angular has added the url validator
+	    	     ngModel.$validators.validateUrl = function (modelValue) {
+	    	    	 if(modelValue!=""&&modelValue!=undefined)
+	    	    	  		 return URL_REGEXP.test(modelValue);
+	    	    	 else
+	    	    		 return true;
+			      };
+	    	
 	    }
 	  };
 	});
