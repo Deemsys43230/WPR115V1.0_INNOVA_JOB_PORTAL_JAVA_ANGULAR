@@ -34,6 +34,18 @@ adminApp.controller('AdminJobListController',['$scope','$location','$q','request
  		});
     };
     
+    // Delete Job
+    $scope.deleteJobAlert=function(id){
+    	$("#jobDeleteModal").modal('show');
+    	$scope.deleteJob=function(){
+    		requestHandler.deletePostRequest("Admin/deleteJob.json?jobId=",id).then(function(response){
+    			$("#jobDeleteModal").modal('hide');
+    			Flash.create('success', "You have Successfully Deleted!");
+				$scope.init();
+			});
+    	};
+    };
+    
     $scope.init();
     
 }]);

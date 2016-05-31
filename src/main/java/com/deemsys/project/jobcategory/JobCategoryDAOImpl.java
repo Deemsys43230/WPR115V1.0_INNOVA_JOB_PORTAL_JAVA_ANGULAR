@@ -120,13 +120,24 @@ public class JobCategoryDAOImpl implements JobCategoryDAO{
 	@Override
 	public boolean checkName(String name) {
 		// TODO Auto-generated method stub
-		return false;
+		JobCategory jobCategory=(JobCategory) this.sessionFactory.getCurrentSession().createCriteria(JobCategory.class).add(Restrictions.eq("categoryName", name)).uniqueResult();
+		if(jobCategory!=null){
+			return false;
+		}else{
+			return true;
+		}
+		
 	}
 
 	@Override
 	public boolean checkName(Integer id, String name) {
 		// TODO Auto-generated method stub
-		return false;
+		JobCategory jobCategory=(JobCategory) this.sessionFactory.getCurrentSession().createCriteria(JobCategory.class).add(Restrictions.and(Restrictions.ne("jobCategoryId", id),Restrictions.eq("categoryName", name))).uniqueResult();
+		if(jobCategory!=null){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 	@Override

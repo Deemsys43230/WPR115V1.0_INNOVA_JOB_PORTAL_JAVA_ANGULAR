@@ -32,6 +32,7 @@
                         <a href="" class="btn-xs btn-warning hint--top" data-toggle="modal" data-target="#myModal" ng-click="editJobCategory(jobCategory.jobCategoryId)" data-hint="Edit"><i class="fa fa-pencil"></i></a>
                         <a href="" ng-cloak ng-show="jobCategory.status==1" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-success hint--top" data-hint="Disable"><i class="fa fa-unlock"></i></a>
                         <a href="" ng-cloak ng-show="jobCategory.status==0" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-danger hint--top" data-hint="Enable"><i class="fa fa-lock"></i></a>
+                    	 <a href="" ng-cloak ng-click="deleteJobCategoryAlert(jobCategory.jobCategoryId)" class="btn-xs btn-danger hint--top" data-hint="Delete"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                <tr ng-cloak ng-show="!jobCategoryList.length || !jobCategoryFilter.length">
@@ -75,6 +76,49 @@
         <a class="btn btn-danger" data-dismiss="modal">Cancel</a>
       </div>
        </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- Job Category Delete Confirmation -->
+<div id="jobCategoryDeleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+		Are you sure want to delete job category?
+	</div>
+	<div class="modal-footer">
+		<button type="button" ng-click="deleteJobCategory()" class="btn btn-success" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+         </div>
+    </div>
+
+  </div>
+</div>
+<!-- Job Category With Job Delete Confirmation -->
+<div id="jobCategoryWithJobDeleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+		Category having some job. Still you want to delete job category?
+	</div>
+	<div class="modal-footer">
+		<button type="button" ng-click="deleteJobCategoryWithJob()" class="btn btn-success" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+         </div>
     </div>
 
   </div>

@@ -50,7 +50,32 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
     $scope.dojobCatgeoryDetails_isClean=function(){
         return angular.equals(originalJobcategory, $scope.jobCategory);
     };
-                                   	
+         
+    // Delete Job Category
+    $scope.deleteJobCategoryAlert=function(id){
+		$("#jobCategoryDeleteModal").modal('show');
+		$scope.deleteJobCategory=function(){
+			requestHandler.deletePostRequest("Admin/deleteJobCategory.json?id=",id).then(function(response){
+				if(response.data.isDelete==0){
+					$("#jobCategoryDeleteModal").modal('hide');
+					$("#jobCategoryWithJobDeleteModal").modal('show');
+					$scope.deleteJobCategoryWithJob=function(){
+						requestHandler.deletePostRequest("Admin/deleteJobCategoryWithJob.json?id=",id).then(function(response){
+							$("#jobCategoryWithJobDeleteModal").modal('hide');
+							Flash.create('success', "You have Successfully Deleted!");
+							$scope.init();
+						});
+					};
+				}else if(response.data.isDelete==1){
+					$("#jobCategoryDeleteModal").modal('hide');
+					Flash.create('success', "You have Successfully Deleted!");
+					$scope.init();
+				}
+				
+			});
+		};
+	};
+    
     $scope.init=function(){
         $scope.jobCategory={};
         $scope.jobCategory.isJobAvailable = 1;

@@ -37,6 +37,7 @@
                     <td class="wrap">{{employer.messageDate}}</td>
                     <td>
                          <a href="" ng-cloak ng-click="getEmployerMessage(employer.id)" class="btn-xs btn-success hint--top" data-hint="View"><i class="fa fa-eye"></i></a>
+                         <a href="" ng-cloak ng-click="deleteEmployerMessageAlert(employer.id)" class="btn-xs btn-danger hint--top" data-hint="Delete"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!employersList.length || !employersFilter.length">
@@ -86,6 +87,28 @@
 	</div>
 	<div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+         </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Employer Messages Delete Confirmation -->
+<div id="employerMessageDeleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+		Are you sure want to delete employer?
+	</div>
+	<div class="modal-footer">
+		<button type="button" ng-click="deleteEmployerMessage()" class="btn btn-success" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
          </div>
     </div>
 

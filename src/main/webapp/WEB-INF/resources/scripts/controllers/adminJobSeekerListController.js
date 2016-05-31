@@ -6,10 +6,27 @@ var adminApp = angular.module('adminApp',['ngSanitize', 'ui.select','angularUtil
 
 adminApp.controller('AdminJobSeekerListController',['$scope','$location','requestHandler','Flash',function($scope, $location, requestHandler,Flash){
 	
-	$scope.jobSeekerListTemplate='resources/views/admin/jobseeker-list.html';
+	$scope.init=function(){
+		$scope.jobSeekerListTemplate='resources/views/admin/jobseeker-list.html';
+		$scope.getAllJobSeekers();
+	};
 	
-	requestHandler.getRequest("Admin/getAllJobSeekers.json","").then(function(response){
-		$scope.jobSeekerList=response.data.jobSeekerForms;
-	});
+	$scope.getAllJobSeekers=function(){
+		requestHandler.getRequest("Admin/getAllJobSeekers.json","").then(function(response){
+			$scope.jobSeekerList=response.data.jobSeekerForms;
+		});
+	};
     
+	$scope.deleteJobSeekerAlert=function(id){
+		$("#jobSeekerDeleteModal").modal('show');
+		$scope.deleteJobSeeker=function(){
+			requestHandler.deletePostRequest("Admin/deleteJobSeeker.json?id=",id).then(function(response){
+				$("#jobSeekerDeleteModal").modal('hide');
+				Flash.create('success', "You have Successfully Deleted!");
+				$scope.init();
+			});
+		};
+	};
+	
+	$scope.init();
 }]);

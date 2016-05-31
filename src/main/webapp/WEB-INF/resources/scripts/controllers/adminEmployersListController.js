@@ -6,12 +6,17 @@ var adminApp = angular.module('adminApp',['ngSanitize', 'ui.select','angularUtil
 
 adminApp.controller('AdminEmployersListController',['$scope','$location','requestHandler','Flash',function($scope, $location, requestHandler,Flash){
 	
-	$scope.employerListTemplate='resources/views/admin/employers-list.html';
+	$scope.init=function(){
+		$scope.employerListTemplate='resources/views/admin/employers-list.html';
+		$scope.getAllEmployerList();
+	};
 	
-	requestHandler.getRequest("Admin/getAllEmployerMessagess.json","").then(function(response){
-		$scope.employersList=response.data.employerMessagesForms;
-	});
-    
+	$scope.getAllEmployerList=function(){
+		requestHandler.getRequest("Admin/getAllEmployerMessagess.json","").then(function(response){
+			$scope.employersList=response.data.employerMessagesForms;
+		});
+	};
+	
 	$scope.getEmployerMessage=function(id){
 		requestHandler.getRequest("Admin/getEmployerMessages.json?id="+id,"").then(function(response){
 			$scope.employerDetails=response.data.employerMessagesForm;
@@ -19,4 +24,16 @@ adminApp.controller('AdminEmployersListController',['$scope','$location','reques
 		});
 	};
 	
+	$scope.deleteEmployerMessageAlert=function(id){
+		$("#employerMessageDeleteModal").modal('show');
+		$scope.deleteEmployerMessage=function(){
+			requestHandler.deletePostRequest("Admin/deleteEmployerMessages.json?id=",id).then(function(response){
+				$("#employerMessageDeleteModal").modal('hide');
+				Flash.create('success', "You have Successfully Deleted!");
+				$scope.init();
+			});
+		};
+	};
+	
+	$scope.init();
 }]);

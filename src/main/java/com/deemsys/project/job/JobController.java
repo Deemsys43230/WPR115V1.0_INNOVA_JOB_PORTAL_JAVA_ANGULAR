@@ -51,7 +51,7 @@ public class JobController {
    
     
     @RequestMapping(value="/Admin/deleteJob",method=RequestMethod.POST)
-   	public String deleteJob(@RequestParam("jobId") Integer jobId,ModelMap model)
+   	public String deleteJob(@RequestParam("jobId") Long jobId,ModelMap model)
    	{
     	
     	jobService.deleteJob(jobId);
@@ -101,4 +101,13 @@ public class JobController {
 		return "/returnPage";
 	}
 	
+
+    // Check Job Title Exist
+    @RequestMapping(value="Admin/checkJobTitleExist",method=RequestMethod.POST)
+   	public String getJobTitleExist(@RequestBody JobForm jobForm,ModelMap model)
+   	{
+    	model.addAttribute("isJobExist",jobService.checkJobTitle(jobForm));
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
 }

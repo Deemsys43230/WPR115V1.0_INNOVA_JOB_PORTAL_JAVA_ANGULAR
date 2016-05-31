@@ -33,6 +33,7 @@
                          <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success hint--top" data-hint="Disable"><i class="fa fa-unlock"></i></a>
                          <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger hint--top" data-hint="Enable"><i class="fa fa-lock"></i></a>
                          <a href="" ng-cloak ng-click="getJobDetails(job.jobId)" class="btn-xs btn-primary hint--top" data-hint="View"><i class="fa fa-eye"></i></a>
+                         <a href="" ng-cloak ng-click="deleteJobAlert(job.jobId)" class="btn-xs btn-danger hint--top" data-hint="Delete"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!jobsList.length || !jobFilter.length">
@@ -77,6 +78,28 @@
 	</div>
 	<div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+         </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Job Delete Confirmation -->
+<div id="jobDeleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+		Are you sure want to delete job?
+	</div>
+	<div class="modal-footer">
+		<button type="button" ng-click="deleteJob()" class="btn btn-success" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
          </div>
     </div>
 

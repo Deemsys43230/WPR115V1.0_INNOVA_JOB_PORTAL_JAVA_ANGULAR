@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.deemsys.project.entity.Job;
 import com.deemsys.project.entity.JobCategory;
+import com.deemsys.project.job.JobDAO;
+import com.deemsys.project.job.JobForm;
 /**
  * 
  * @author Deemsys
@@ -27,6 +30,9 @@ public class JobCategoryService {
 
 	@Autowired
 	JobCategoryDAO jobCategoryDAO;
+	
+	@Autowired
+	JobDAO jobDAO;
 	
 	//Get All Entries
 	public List<JobCategoryForm> getJobCategoryList()
@@ -111,6 +117,18 @@ public class JobCategoryService {
 	//Delete an Entry
 	public int deleteJobCategory(Integer id)
 	{
+		List<Job> jobs=jobDAO.getJobListByCategoryId(id);
+		if(jobs.size()>0){
+			return 0;
+		}else{
+			jobCategoryDAO.delete(id);
+			return 1;
+		}
+		
+	}
+	
+	// Delete Job Category After User Confirmation
+	public int deleteJobCategoryWithJob(Integer id){
 		jobCategoryDAO.delete(id);
 		return 1;
 	}
@@ -143,5 +161,15 @@ public class JobCategoryService {
 		}
 			
 		return jobCategoryForms;
+	}
+	
+	public boolean checkJobCategory(JobCategoryForm jobCategoryForm){
+		boolean status=false;
+		if(jobCategoryForm.getJobCategoryId()!=null){
+			status=jobCategoryDAO.checkName(jobCategoryForm.getCategoryName());
+		}else{
+			status=jobCategoryDAO.checkName(jobCategoryForm.getJobCategoryId(), jobCategoryForm.getCategoryName());
+		}
+		return status;
 	}
 }

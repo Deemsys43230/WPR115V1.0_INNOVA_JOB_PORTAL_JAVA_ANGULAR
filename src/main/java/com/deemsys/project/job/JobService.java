@@ -150,9 +150,9 @@ public class JobService {
 	}
 	
 	//Delete an Entry
-	public int deleteJob(Integer id)
+	public int deleteJob(Long id)
 	{
-		jobDAO.delete(id);
+		jobDAO.deleteJobById(id);
 		return 1;
 	}
 	
@@ -200,4 +200,13 @@ public class JobService {
 		return jobDAO.getAll().size();
 	}
 	
+	public boolean checkJobTitle(JobForm jobForm){
+		boolean status=false;
+		if(jobForm.getJobId()!=null){
+			status=jobDAO.checkName(jobForm.getName());
+		}else{
+			status=jobDAO.checkJobTitle(jobForm.getJobId(), jobForm.getName());
+		}
+		return status;
+	}
 }

@@ -34,6 +34,7 @@ adminApp.controller('AdminContactUsMessageController',['$scope','$location','req
 		$scope.deleteContactMessages=function(){
 			requestHandler.deletePostRequest("Admin/deleteContactMessages.json?id=",id).then(function(response){
 				$("#contactMessageDeleteModal").modal('hide');
+				Flash.create('success', "You have Successfully Deleted!");
 				$scope.init();
 			});
 		};

@@ -4,6 +4,8 @@ package com.deemsys.project.entity;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -86,7 +88,7 @@ public class JobCategory implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobCategory")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobCategory", cascade=CascadeType.REMOVE)
 	public Set<Job> getJobs() {
 		return this.jobs;
 	}

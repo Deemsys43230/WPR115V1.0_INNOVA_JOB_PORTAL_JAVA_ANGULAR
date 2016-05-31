@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.deemsys.project.job.JobForm;
+
 /**
  * 
  * @author Deemsys
@@ -52,7 +54,16 @@ public class JobCategoryController {
    	public String deleteJobCategory(@RequestParam("id") Integer id,ModelMap model)
    	{
     	
-    	jobCategoryService.deleteJobCategory(id);
+    	model.addAttribute("isDelete",jobCategoryService.deleteJobCategory(id));
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
+    
+    @RequestMapping(value="/Admin/deleteJobCategoryWithJob",method=RequestMethod.POST)
+   	public String deleteJobCategoryWithJob(@RequestParam("id") Integer id,ModelMap model)
+   	{
+    	
+    	jobCategoryService.deleteJobCategoryWithJob(id);
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
    	}
@@ -81,4 +92,12 @@ public class JobCategoryController {
    		return "/returnPage";
    	}	
     
+    // Check Job Category Exist
+    @RequestMapping(value="/Admin/checkJobCategoryExist",method=RequestMethod.POST)
+   	public String getJobCategoryExist(@RequestBody JobCategoryForm jobCategoryForm,ModelMap model)
+   	{
+    	model.addAttribute("isJobCategoryExist",jobCategoryService.checkJobCategory(jobCategoryForm));
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
 }

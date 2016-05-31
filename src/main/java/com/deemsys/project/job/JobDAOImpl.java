@@ -127,13 +127,23 @@ public class JobDAOImpl implements JobDAO{
 	@Override
 	public boolean checkName(String name) {
 		// TODO Auto-generated method stub
-		return false;
+		Job job=(Job) this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.eq("name", name)).uniqueResult();
+		if(job!=null){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	@Override
 	public boolean checkName(Integer id, String name) {
 		// TODO Auto-generated method stub
-		return false;
+		Job job=(Job) this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.and(Restrictions.ne("jobId", id),Restrictions.eq("name", name))).uniqueResult();
+		if(job!=null){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	@Override
@@ -192,6 +202,34 @@ public class JobDAOImpl implements JobDAO{
 		*/
 		@SuppressWarnings("unchecked")
 		List<Job> jobs=criteria.list();
+		return jobs;
+	}
+
+	@Override
+	public boolean checkJobTitle(Long jobId, String name) {
+		// TODO Auto-generated method stub
+		Job job=(Job) this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.and(Restrictions.ne("jobId", jobId),Restrictions.eq("name", name))).uniqueResult();
+		if(job!=null){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	@Override
+	public void deleteJobById(Long jobId) {
+		// TODO Auto-generated method stub
+		Job job=this.getJobById(jobId);
+		if(job!=null){
+			this.sessionFactory.getCurrentSession().delete(job);
+		}
+	}
+
+	@Override
+	public List<Job> getJobListByCategoryId(Integer categoryId) {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
+		List<Job> jobs=this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.eq("jobCategory.jobCategoryId", categoryId)).list();
 		return jobs;
 	}
 
