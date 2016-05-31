@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-
-	<title>Innova Consulting Group</title>
 	
+	<title>Innova Consulting Group</title>
+
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="resources/styles/bootstrap.css" />
 	<link rel="stylesheet" href="resources/styles/owl-carousel.css" />
@@ -137,12 +137,10 @@
 	<script type="text/javascript" src="resources/js/waypoints.min.js"></script><!-- CounterUp -->
 	<script type="text/javascript" src="resources/js/jquery.isotope.min.js"></script><!-- isotope -->
 	<script type="text/javascript" src="resources/js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script><!-- google map -->
 	<script type="text/javascript" src="resources/js/scripts.js"></script><!-- Scripts -->
 	
 	<!-- Directive -->
 	<script type="text/javascript" src="resources/scripts/directives/fileUpload.js"></script>
-    <script src="resources/js/jquery.contact-buttons.js"></script>
     <script src="resources/angular/angular-flash/angular-flash.min.js"></script>
     <link rel="stylesheet" href="resources/angular/angular-flash/angular-flash.css">
      <!-- dirPagination -->

@@ -1,19 +1,42 @@
 
+	<div id="share-wrapper">
+      <ul class="share-inner-wrp">
+          <!-- Facebook -->
+          <li class="facebook button-wrap"><a href="#">Facebook</a></li>
 
+          <!-- Twitter -->
+          <li class="twitter button-wrap"><a href="#">Tweet</a></li>
+
+          <!-- Linked In -->
+          <li class="linkedin button-wrap"><a href="#">Linked In</a></li>
+
+          <!-- whatsapp -->
+          <li class="whatsapp button-wrap hidden-lg hidden-sm hidden-md"><a href="#">Whatsapp</a></li>
+
+          <!-- Email -->
+          <li class="email button-wrap"><a href="#">Email</a></li>
+
+          <!-- Google -->
+          <li class="google button-wrap"><a href="#">Google+</a></li>
+
+      </ul>
+  </div>
+  
 	<!-- OUR TEAM -->
 	<section id="our-team"><br/><br/><br/><br/>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center">
-					 <a href="#jobs" ng-click="" class="btn btn-send pull-right"><i class="fa fa-backward"></i>&nbsp;Back To Search</a>
 						<h1><span>{{jobDetails.name}}</span></h1>
-                        <p>{{jobDetails.addedDate}}</p>
-                     </div>
+                        <p>Posted Date : {{jobDetails.addedDate}}</p>
+                    </div>
 					
 				</div>
 
-				<div class="col-sm-10 col-sm-offset-1">
+				<div class="col-sm-10 col-sm-offset-1" style="min-height:300px;">
+				<a href="#jobs" ng-click="" class="btn btn-warning pull-right"><i class="fa fa-backward"></i>&nbsp;Back To Search</a>
+					<h5>Job description : </h5>
                     <hr/>
                     {{jobDetails.description}}
                   <!--   <h4>About INNOVA Staffing</h4>
@@ -44,3 +67,7 @@
 		</div>
 	</section>
 	<!-- /OUR TEAM -->
+	
+	<!-- social -->
+    <script type="text/javascript" src="resources/js/jquery-social.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-socialmedia.js"></script>

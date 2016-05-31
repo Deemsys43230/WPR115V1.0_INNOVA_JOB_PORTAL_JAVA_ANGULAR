@@ -1,7 +1,7 @@
-var adminApp = angular.module('adminApp', [ 'requestModule','flash','summernote','angularUtils.directives.dirPagination','angular-media-preview']);
+var adminApp = angular.module('adminApp', [ 'requestModule','flash','summernote','angularUtils.directives.dirPagination']);
 
-adminApp.controller('NewsController', ['$scope','$location','requestHandler','Flash',
-		function($scope, $location, requestHandler,Flash) {
+adminApp.controller('NewsController', ['$scope','$location','requestHandler','Flash','$timeout',
+		function($scope, $location, requestHandler,Flash,$timeout) {
 	
 	$scope.isNews=true;
 
@@ -15,43 +15,46 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
     	$scope.siteTemplate='resources/views/admin/news-list.html';
     };
     
+    var originalNews="";
+    
     //summer note
     $scope.options = {
         height: 250
     };
     
-    //$scope.imageAdded=false;
-
-    $scope.fileNameChanged = function(element)
-   {
-       if(!$scope.imageAdded){
-           if(element.files.length > 0){
-               $scope.inputContainsFile = false;
-               $scope.imageAdded=true;
-           }
-           else{
-               $scope.inputContainsFile = true;
-               $scope.imageAdded=false;
-           }
-       }
-   };
-   
-    //For image upload
-    $('.image-editor').cropit();
+    $scope.thumbnail = {
+    	dataUrl: ''
+    };
     
-    var originalNews = "";
+    $scope.fileReaderSupported = window.FileReader != null;
     
+    $scope.photoChanged = function(files){
+    	if (files != null) {
+    		var file = files[0];
+            if ($scope.fileReaderSupported && file.type.indexOf('image') > -1) {
+                $timeout(function() {
+                    var fileReader = new FileReader();
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = function(e) {
+                        $timeout(function(){
+                        	$scope.thumbnail.dataUrl = e.target.result;
+                        });
+                    };
+                });
+            }
+        }
+    };
     
     $scope.getNewsList = function(){
         requestHandler.getRequest("Admin/getAllLatestNewssAdmin.json","").then(function(response){
-        $scope.newsList = response.data.latestNewsForms;
-  });
- };
+        	$scope.newsList = response.data.latestNewsForms;
+        });
+    };
                                 	
                                 
  	$scope.saveUpdateNews=function(){ 
- 		console.log($scope.news.titleImage);
- 		requestHandler.postFileUpload("Admin/saveTitleImage.json",$scope.news.titleImage,"titleImage").then(function(response){
+ 		console.log($scope.titleImageUrl);
+ 		requestHandler.postFileUpload("Admin/saveTitleImage.json",$scope.titleImageUrl,"titleImage").then(function(response){
 	    	$scope.news.latestNewsId=response.data.newsId;
 	    	delete $scope.news.titleImage;
 	    	 requestHandler.postRequest("Admin/saveUpdateLatestNews.json",$scope.news).then(function(response){
@@ -75,8 +78,11 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
  	$scope.editNews = function(latestNewsId){
  		$scope.siteTemplate='resources/views/admin/news-add-or-edit.html';
  		requestHandler.getRequest("getLatestNews.json?latestNewsId="+latestNewsId,"").then(function(response){
- 		  originalNews=angular.copy(response.data.latestNewsForm);
-           $scope.news=response.data.latestNewsForm;
+ 			originalNews=angular.copy(response.data.latestNewsForm);
+ 			$scope.news=response.data.latestNewsForm;
+ 			$scope.thumbnail = {
+ 			    	dataUrl: $scope.news.titleImageUrl
+ 			    };
        });
  	};
  
@@ -115,6 +121,7 @@ adminApp.directive('fileModel', ['$parse', function ($parse) {
           var modelSetter = model.assign;
           element.bind('change', function(){
               scope.$apply(function(){
+            	  console.log(scope);
                   modelSetter(scope, element[0].files[0]);
                  
               });
@@ -122,6 +129,7 @@ adminApp.directive('fileModel', ['$parse', function ($parse) {
       }
   };
 }]);
+
 
 //File Validation Directive
 adminApp.directive('validFile',function(){
@@ -139,9 +147,9 @@ adminApp.directive('validFile',function(){
 });
 
 
-var adminApp = angular.module('innovaApp', ['ngRoute','oc.lazyLoad','requestModule','flash','ngAnimate']);
+var userApp = angular.module('innovaApp', ['ngRoute','oc.lazyLoad','requestModule','flash','ngAnimate']);
 
-adminApp.controller('NewsUserController',['$scope','requestHandler','Flash','$sce','$routeParams',function($scope,requestHandler,Flash,$sce,$routeParams){
+userApp.controller('NewsUserController',['$scope','requestHandler','Flash','$sce','$routeParams',function($scope,requestHandler,Flash,$sce,$routeParams){
 
     // To display News as user
     $scope.doGetNewsByUser=function(){
@@ -172,14 +180,14 @@ adminApp.controller('NewsUserController',['$scope','requestHandler','Flash','$sc
 
 }]);
 
-adminApp.filter('html', ['$sce', function ($sce) {
+userApp.filter('html', ['$sce', function ($sce) {
     return function (text) {
         return $sce.trustAsHtml(text);
     };
 }]);
 
 //render image to view in list
-adminApp.filter('trusted', ['$sce', function ($sce) {
+userApp.filter('trusted', ['$sce', function ($sce) {
     return function(url) {
         return $sce.trustAsResourceUrl(url);
     };

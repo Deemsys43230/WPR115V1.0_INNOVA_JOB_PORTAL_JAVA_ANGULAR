@@ -189,7 +189,6 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                             name:'innovaApp',
                             files:[
                                 'js/jquery.contact-buttons.js',
-                                'js/demo.js',
                                 'resources/scripts/controllers/adminNewsController.js'
                             ]
                         })
@@ -220,9 +219,9 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                /*'http://maps.googleapis.com/maps/api/js',*/
                                 'resources/scripts/services/employeeMessageService.js',
-                                'resources/scripts/controllers/contactController.js'
+                                'resources/scripts/controllers/contactController.js',
+                                'https://maps.googleapis.com/maps/api/js'
                             ]
                         })
                     }]

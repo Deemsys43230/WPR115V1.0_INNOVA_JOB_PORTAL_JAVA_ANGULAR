@@ -1,4 +1,4 @@
-    <link rel="stylesheet" href="css/jquery.floating-social-share.css" />
+
 	<!-- OUR WORKS -->
 	<section id="our-team">
 		<div class="container">
@@ -44,17 +44,26 @@
 			</div>
 		</div>
 	</section>
-	<!-- /OUR WORKS -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="js/jquery.floating-social-share.js"></script>
-    <script>
-        $("body").floatingSocialShare({
-            buttons: ["facebook", "twitter", "google-plus", "linkedin"],
-            twitter_counter: true,
-            text: "share with: ",
-            url: "http://google.com"
-        });
-    </script>
+	
+	<script>
+			(function() {
+			  var wf = document.createElement('script');
+			  wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+			    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+			  wf.type = 'text/javascript';
+			  wf.async = 'true';
+			  var s = document.getElementsByTagName('script')[0];
+			  s.parentNode.insertBefore(wf, s);
+			})();
 
-
-<!-- <script src="js/demo.js"></script>-->
+			// Initialize Share-Buttons
+			$.contactButtons({
+			  effect  : 'slide-on-scroll',
+			  buttons : {
+			    'facebook':   { class: 'facebook', use: true, link: 'https://www.facebook.com/pages/mycompany', extras: 'target="_blank"' },
+			    'linkedin':   { class: 'linkedin', use: true, link: 'https://www.linkedin.com/company/mycompany', extras: 'target="_blank"' },
+			    'google':     { class: 'gplus',    use: true, link: 'https://plus.google.com/myidongoogle', extras: 'target="_blank"' },
+			    'twitter':   { class: 'twitter',   use: true, link: 'http://twitter.com', icon: 'twitter', extras: 'target="_blank"' }
+			  }
+			});
+	</script>
