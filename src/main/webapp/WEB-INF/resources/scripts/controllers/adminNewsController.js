@@ -53,8 +53,8 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
                                 	
                                 
  	$scope.saveUpdateNews=function(){ 
- 		console.log($scope.titleImageUrl);
- 		requestHandler.postFileUpload("Admin/saveTitleImage.json",$scope.titleImageUrl,"titleImage").then(function(response){
+ 		console.log($scope.news.titleImage);
+ 		requestHandler.postFileUpload("Admin/saveTitleImage.json",$scope.news.titleImage,"titleImage").then(function(response){
 	    	$scope.news.latestNewsId=response.data.newsId;
 	    	delete $scope.news.titleImage;
 	    	 requestHandler.postRequest("Admin/saveUpdateLatestNews.json",$scope.news).then(function(response){
@@ -62,6 +62,7 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
 	    			
 				     $scope.submitted=false;
 				     $scope.siteTemplate='resources/views/admin/news-list.html';
+				     $scope.getNewsList();
 				     Flash.create('success', "Saved Successfully!!!");
 		    			
 				 }
@@ -120,8 +121,7 @@ adminApp.directive('fileModel', ['$parse', function ($parse) {
           var model = $parse(attrs.fileModel);
           var modelSetter = model.assign;
           element.bind('change', function(){
-              scope.$apply(function(){
-            	  console.log(scope);
+              scope.$apply(function(){;
                   modelSetter(scope, element[0].files[0]);
                  
               });
@@ -133,6 +133,7 @@ adminApp.directive('fileModel', ['$parse', function ($parse) {
 
 //File Validation Directive
 adminApp.directive('validFile',function(){
+	var validFormats = ['png','jpg','jpeg'];
 	  return {
 	    require:'ngModel',
 	    link:function(scope,el,attrs,ngModel){
@@ -140,6 +141,33 @@ adminApp.directive('validFile',function(){
 	        scope.$apply(function(){
 	        	 ngModel.$setViewValue(el.val());
 		          ngModel.$render(); 
+		          var fileS=el[0].files[0];
+		          
+		              var img = new Image();
+
+		              img.src = window.URL.createObjectURL( fileS );
+
+		              img.onload = function() {
+		                  var width = img.naturalWidth,
+		                      height = img.naturalHeight;
+		                  if(width!=800 && height !=450){
+		                	 scope.sample=true;
+		                  }
+		                  else{
+		                	  scope.sample=false;
+		                  }
+		                 
+		                  window.URL.revokeObjectURL( img.src );
+		              };
+		          
+		          
+		          var value = el.val();
+	              ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();  
+		          
+		    ngModel.$validators.validateFileType = function() {
+				return validFormats.indexOf(ext) !== -1;
+			};
+			
 	         });
 	      });
 	    }

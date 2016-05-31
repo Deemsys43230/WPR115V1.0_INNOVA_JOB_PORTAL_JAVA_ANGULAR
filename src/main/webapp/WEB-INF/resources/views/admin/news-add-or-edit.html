@@ -1,21 +1,21 @@
 <div class="clearfix contact-form row">
-<form class="contact-form" name="newsForm" ng-submit="newsForm.$valid && saveUpdateNews()" no-validate>
+<form class="contact-form" name="newsForm" ng-submit="newsForm.$valid && saveUpdateNews()" novalidate>
 	
 	<div class="col-md-12 no-padding">
 	
 		<div class="col-md-12">
-			<h5>News title<span class="text-red"><sup>*</sup></span></h5>
+			<h5>Title<span class="text-red"><sup>*</sup></span></h5>
 			<input type="text" name="title" ng-model="news.title" required placeholder="News title" maxlength="150">
 			<div class="error-container">
 	                <div ng-show="submitted">
-		              <span ng-cloak ng-show="newsForm.title.$error.required">Please Enter News Title</span>
+		              <span ng-cloak ng-show="newsForm.title.$error.required">Please Enter Title</span>
 		             
 	                </div>
 	         </div>
 		</div>
 		
 		<div class="col-md-12 image-editor">
-			<h5>User Image</h5>
+			<h5>Banner Image</h5>
             <!-- <span ng-show="inputContainsFile">
         		<span class="error-message textarea-errormessage20" ng-show="testimonialForm.image.$error.required"><span>Required.</span></span>
           	</span>
@@ -30,17 +30,24 @@
                		<input type="file" name="titleImage"  file-model="titleImage" class="upload cropit-image-input" valid-file required  ng-model="titleImage" onblur="angular.element(this).scope().fileNameChanged(this)"/>
 				</div>
 			</div> -->
-			<input type="file" name="file" file-model="titleImageUrl" ng-model="titleImageUrl" onchange="angular.element(this).scope().photoChanged(this.files)" />
-        	<img ng-src="{{ thumbnail.dataUrl }}"/>
-		</div>   
-		
+			<input type="file" valid-file required  name="uploadsheet" file-model="news.titleImage" accept="image/jpg,image/png,image/jpeg,image/gif"  ng-model="news.titleImage"   onchange="angular.element(this).scope().photoChanged(this.files)" title="Choose a file to upload" >
+			<!-- <input type="file" required valid-file name="uploadimage" file-model="titleImage" ng-model="news.titleImage" onchange="angular.element(this).scope().photoChanged(this.files)" />-->
+        	<img ng-src="{{ thumbnail.dataUrl }}"/>{{titleImage}} 
+        	<div class="error-container" >
+           <div ng-show="submitted">
+	           <span ng-cloak ng-show="newsForm.uploadsheet.$error.required">Please Upload Image</span>
+	            <span ng-cloak ng-show="!newsForm.uploadsheet.$error.required && newsForm.uploadsheet.$error.validateFileType">Accept Only png and jpg files</span>
+	            <span ng-cloak ng-show="sample">Image Size must be 800 X 450</span>
+		</div>  
+		</div> 
+		</div>
 		<div class="col-md-12">
 		<br/>
-			<h5>News description</h5>
+			<h5>Description</h5>
 			<div summernote config="options" name="description"  ng-model="news.description" required></div>
 			<div class="error-container">
 	                <div ng-show="submitted">
-		              <span ng-cloak ng-show="newsForm.description.$error.required">Please Enter News Description</span>
+		              <span ng-cloak ng-show="newsForm.description.$error.required">Please Enter Description</span>
 		             
 	                </div>
 	         </div>
@@ -54,3 +61,20 @@
 	</div>
 </form>
 </div>
+
+<script>
+	//Span
+	var span = document.getElementsByClassName('upload-path');
+	// Button
+	var uploader = document.getElementsByName('uploadimage');
+	// On change
+	for( item in uploader ) {
+	  // Detect changes
+	  uploader[item].onchange = function() {
+	    // Echo filename in span
+	    span[0].innerHTML = this.files[0].name;
+	  }
+	}
+	
+	
+</script>
