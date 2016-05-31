@@ -17,5 +17,6 @@
           <mapping class="com.deemsys.project.entity.Testimonial" />
           <mapping class="com.deemsys.project.entity.LatestNews" />
           <mapping class="com.deemsys.project.entity.JobSeeker" />
+          <mapping class="com.deemsys.project.entity.ContactMessages" />
     </session-factory>
 </hibernate-configuration>
