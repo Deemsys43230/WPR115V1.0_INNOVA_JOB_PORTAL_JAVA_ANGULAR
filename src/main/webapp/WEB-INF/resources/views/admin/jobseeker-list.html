@@ -30,11 +30,11 @@
             </thead>
             <tbody>
            		 <tr ng-show="jobSeekerList.length>0"  dir-paginate="jobSeeker in jobFilter=(jobSeekerList|filter:search|itemsPerPage:10)">
-                	<td>{{jobSeeker.firstName}}</td>
-                    <td>{{jobSeeker.lastName}}</td>
-                    <td>{{jobSeeker.interestedIn}}</td>
-                    <td>{{jobSeeker.email}}</td>
-                    <td>{{jobSeeker.phoneNumber}}</td>
+                	<td class="wrap">{{jobSeeker.firstName}}</td>
+                    <td class="wrap">{{jobSeeker.lastName}}</td>
+                    <td class="wrap">{{jobSeeker.interestedIn}}</td>
+                    <td class="wrap">{{jobSeeker.email}}</td>
+                    <td class="wrap">{{jobSeeker.phoneNumber}}</td>
                     <td>
                          <a href="{{jobSeeker.resumeUrl}}" download ng-cloak ng-show="jobSeeker.status==1" ng-click="" class="btn-xs btn-info hint--top" data-hint="Download Resume"><i class="fa fa-download"></i></a>
                     </td>

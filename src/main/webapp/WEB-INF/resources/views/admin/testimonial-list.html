@@ -2,23 +2,21 @@
 <table class="table table-bordered table-striped">
             <thead class="high-light">
                 <tr>
-                    <td>ID</td>
                     <td>Said By</td>
-                    <td>Destination</td>
+                    <td>Designation</td>
                     <td>Description</td>
                     <td>Options</td>
                 </tr>
                 <tr>
-                <th></th>
                 <th>
                 <div class="input-group">
   				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
-				 <input class="form-control" type="text" ng-model="search.saidBy" placeholder="SaidBy"></div>
+				 <input class="form-control" type="text" ng-model="search.saidBy" placeholder="Said By"></div>
                 </th>
                 <th>
                 <div class="input-group">
   				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
-				 <input class="form-control" type="text" ng-model="search.destination" placeholder="Destination"></div>
+				 <input class="form-control" type="text" ng-model="search.destination" placeholder="Designation"></div>
                 </th>
                 <th></th>
                 <th></th>
@@ -26,14 +24,13 @@
             </thead>
             <tbody>
            		 <tr ng-show="jobTestimonialList.length>0"  dir-paginate="testimonial in testimonialFilter=(jobTestimonialList|filter:search|itemsPerPage:10)">
-                	<td>{{testimonial.testimonialId}}</td>
-                    <td>{{testimonial.saidBy}}</td>
-                    <td>{{testimonial.destination}}</td>
-                    <td>{{testimonial.description}}</td>
+                	<td class="col-md-3 wrap">{{testimonial.saidBy}}</td>
+                    <td class="col-md-3 wrap">{{testimonial.destination}}</td>
+                    <td class="col-md-6 wrap">{{testimonial.description}}</td>
                     <td>
-                        <a href="" class="btn-xs btn-warning"  ng-click="editTestimonial(testimonial.testimonialId)"><i class="fa fa-edit"></i></a>
-                        <a href="" ng-cloak ng-show="testimonial.status==1" ng-click="enableOrDisbaleTestimonial(testimonial.testimonialId)" class="btn-xs btn-success"><i class="fa fa-unlock"></i></a>
-                        <a href="" ng-cloak ng-show="testimonial.status==0" ng-click="enableOrDisbaleTestimonial(testimonial.testimonialId)" class="btn-xs btn-danger"><i class="fa fa-lock"></i></a>
+                        <a href="" class="btn-xs btn-warning hint--top"  ng-click="editTestimonial(testimonial.testimonialId)" data-hint="Edit"><i class="fa fa-pencil"></i></a>
+                        <a href="" ng-cloak ng-show="testimonial.status==1" ng-click="enableOrDisbaleTestimonial(testimonial.testimonialId)" class="btn-xs btn-success hint--top" data-hint="Disable"><i class="fa fa-unlock"></i></a>
+                        <a href="" ng-cloak ng-show="testimonial.status==0" ng-click="enableOrDisbaleTestimonial(testimonial.testimonialId)" class="btn-xs btn-danger hint--top" data-hint="Enable"><i class="fa fa-lock"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!jobTestimonialList.length || !testimonialFilter.length">

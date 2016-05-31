@@ -30,11 +30,11 @@
             </thead>
             <tbody>
            		 <tr ng-show="contactMessageList.length>0" ng-class="{'unread':contactMessage.status==1}" dir-paginate="contactMessage in contactMessageFilter=(contactMessageList|filter:search|itemsPerPage:10)">
-                	<td>{{contactMessage.firstName}}</td>
-                    <td>{{contactMessage.lastName}}</td>
-                    <td>{{contactMessage.email}}</td>
-                    <td>{{contactMessage.subject}}</td>
-                    <td>{{contactMessage.messageDate}}</td>
+                	<td class="wrap">{{contactMessage.firstName}}</td>
+                    <td class="wrap">{{contactMessage.lastName}}</td>
+                    <td class="wrap">{{contactMessage.email}}</td>
+                    <td class="wrap">{{contactMessage.subject}}</td>
+                    <td class="wrap">{{contactMessage.messageDate}}</td>
                     <td>
                          <a href="" ng-cloak ng-click="getContactMessages(contactMessage.id)" class="btn-xs btn-success hint--top" data-hint="View"><i class="fa fa-eye"></i></a>
                          <a href="" ng-cloak ng-click="deleteContactMessagesAlert(contactMessage.id)" class="btn-xs btn-danger hint--top" data-hint="Delete"><i class="fa fa-trash"></i></a>
@@ -61,22 +61,22 @@
       <div class="modal-body">
 	<table class="table table-striped table-bordered" >
 			<tr>
-				<td class="col-md-3" ><b>First Name</b></td>
-				<td class="col-md-3">{{contactMessageDetails.firstName}}</td>
+				<td class="col-md-3"><b>First Name</b></td>
+				<td class="col-md-3 wrap">{{contactMessageDetails.firstName}}</td>
 				<td class="col-md-3"><b>Last Name</b></td>
-				<td class="col-md-3">{{contactMessageDetails.lastName}}</td>
+				<td class="col-md-3 wrap">{{contactMessageDetails.lastName}}</td>
 			</tr>
 			<tr>
-				<td class="col-md-3" ><b>Email</b></td>
+				<td class="col-md-3"><b>Email</b></td>
 				<td class="col-md-3 wrap">{{contactMessageDetails.email}}</td>
 				<td class="col-md-3"><b>Website</b></td>
 				<td class="col-md-3 wrap">{{contactMessageDetails.website}}</td>
 			</tr>
 			<tr>
-				<td class="col-md-3" ><b>Subject</b></td>
+				<td class="col-md-3"><b>Subject</b></td>
 				<td class="col-md-3 wrap">{{contactMessageDetails.subject}}</td>
 				<td class="col-md-3"><b>Message Date</b></td>
-				<td class="col-md-3">{{contactMessageDetails.messageDate}}</td>
+				<td class="col-md-3 wrap">{{contactMessageDetails.messageDate}}</td>
 			</tr>
 			<tr>
 				<td class="col-md-3"><b>Message</b></td>

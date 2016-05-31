@@ -26,12 +26,12 @@
             <tbody>
            		 <tr ng-show="jobCategoryList.length>0"  dir-paginate="jobCategory in jobCategoryFilter=(jobCategoryList|filter:search|itemsPerPage:10)">
                 	<td>{{$index+1}}</td>
-                    <td>{{jobCategory.categoryName}}</td>
-                    <td>{{jobCategory.description}}</td>
+                    <td class="wrap">{{jobCategory.categoryName}}</td>
+                    <td class="wrap">{{jobCategory.description}}</td>
                     <td>
-                        <a href="" class="btn-xs btn-warning" data-toggle="modal" data-target="#myModal" ng-click="editJobCategory(jobCategory.jobCategoryId)"><i class="fa fa-edit"></i></a>
-                        <a href="" ng-cloak ng-show="jobCategory.status==1" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-success"><i class="fa fa-unlock"></i></a>
-                        <a href="" ng-cloak ng-show="jobCategory.status==0" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-danger"><i class="fa fa-lock"></i></a>
+                        <a href="" class="btn-xs btn-warning hint--top" data-toggle="modal" data-target="#myModal" ng-click="editJobCategory(jobCategory.jobCategoryId)" data-hint="Edit"><i class="fa fa-pencil"></i></a>
+                        <a href="" ng-cloak ng-show="jobCategory.status==1" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-success hint--top" data-hint="Disable"><i class="fa fa-unlock"></i></a>
+                        <a href="" ng-cloak ng-show="jobCategory.status==0" ng-click="enableOrDisbaleJobCategory(jobCategory.jobCategoryId)" class="btn-xs btn-danger hint--top" data-hint="Enable"><i class="fa fa-lock"></i></a>
                     </td>
                 </tr>
                <tr ng-cloak ng-show="!jobCategoryList.length || !jobCategoryFilter.length">

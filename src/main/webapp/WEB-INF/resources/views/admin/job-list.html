@@ -25,14 +25,14 @@
             </thead>
             <tbody>
                <tr ng-show="jobsList.length>0"  dir-paginate="job in jobFilter=(jobsList|filter:search|itemsPerPage:10)">
-                	<td>{{job.name}}</td>
-                    <td>{{job.jobCategoryName}}</td>
-                    <td class="col-md-2">{{job.addedDate}}</td>
+                	<td class="wrap">{{job.name}}</td>
+                    <td class="wrap">{{job.jobCategoryName}}</td>
+                    <td class="col-md-2 wrap">{{job.addedDate}}</td>
                     <td class="col-md-2">
-                         <a href="#jobManagement-jobList-editJob/{{job.jobId}}" ng-cloak ng-click="" class="btn-xs btn-warning hint--top" data-hint="Edit Job"><i class="fa fa-pencil"></i></a>
-                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success hint--top" data-hint="Disable Job"><i class="fa fa-unlock"></i></a>
-                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger hint--top" data-hint="Enable Job"><i class="fa fa-lock"></i></a>
-                         <a href="" ng-cloak ng-click="getJobDetails(job.jobId)" class="btn-xs btn-primary hint--top" data-hint="View Job"><i class="fa fa-eye"></i></a>
+                         <a href="#jobManagement-jobList-editJob/{{job.jobId}}" ng-cloak ng-click="" class="btn-xs btn-warning hint--top" data-hint="Edit"><i class="fa fa-pencil"></i></a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==1" class="btn-xs btn-success hint--top" data-hint="Disable"><i class="fa fa-unlock"></i></a>
+                         <a href="" ng-cloak ng-click="enableOrDisable(job.jobId)" ng-show="job.isEnable==0" class="btn-xs btn-danger hint--top" data-hint="Enable"><i class="fa fa-lock"></i></a>
+                         <a href="" ng-cloak ng-click="getJobDetails(job.jobId)" class="btn-xs btn-primary hint--top" data-hint="View"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!jobsList.length || !jobFilter.length">
@@ -55,22 +55,22 @@
       <div class="modal-body">
 	<table class="table table-striped table-bordered" >
 			<tr>
-				<td class="col-md-3" ><b>Job Title</b></td>
-				<td class="col-md-6">{{jobDetails.name}}</td>
+				<td class="col-md-3"><b>Job Title</b></td>
+				<td class="col-md-6 wrap">{{jobDetails.name}}</td>
 			</tr>
 			<tr>
-				<td class="col-md-3" ><b>Category Name</b></td>
-				<td class="col-md-6">{{jobDetails.jobCategoryName}}</td>
+				<td class="col-md-3"><b>Category Name</b></td>
+				<td class="col-md-6 wrap">{{jobDetails.jobCategoryName}}</td>
 			</tr>
 			<tr>
-				<td class="col-md-3" ><b>Updated Date</b></td>
-				<td class="col-md-6">{{jobDetails.addedDate}}</td>
+				<td class="col-md-3"><b>Updated Date</b></td>
+				<td class="col-md-6 wrap">{{jobDetails.addedDate}}</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="col-md-3"><b>Description</b></td>
 			</tr>
 			<tr>
-				<td colspan="2">{{jobDetails.description}}</td>
+				<td colspan="2 wrap">{{jobDetails.description}}</td>
 			</tr>
 			
 		</table>

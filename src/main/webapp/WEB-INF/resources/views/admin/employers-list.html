@@ -30,13 +30,13 @@
             </thead>
             <tbody>
            		 <tr ng-show="employersList.length>0"  dir-paginate="employer in employersFilter=(employersList|filter:search|itemsPerPage:10)">
-                	<td>{{employer.firstName}}</td>
-                    <td>{{employer.lastName}}</td>
-                    <td>{{employer.email}}</td>
-                    <td>{{employer.subject}}</td>
-                    <td>{{employer.messageDate}}</td>
+                	<td class="wrap">{{employer.firstName}}</td>
+                    <td class="wrap">{{employer.lastName}}</td>
+                    <td class="wrap">{{employer.email}}</td>
+                    <td class="wrap">{{employer.subject}}</td>
+                    <td class="wrap">{{employer.messageDate}}</td>
                     <td>
-                         <a href="" ng-cloak ng-click="getEmployerMessage(employer.id)" class="btn-xs btn-success hint--top" data-hint="View Employer"><i class="fa fa-eye"></i></a>
+                         <a href="" ng-cloak ng-click="getEmployerMessage(employer.id)" class="btn-xs btn-success hint--top" data-hint="View"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
                <tr ng-show="!employersList.length || !employersFilter.length">
@@ -60,22 +60,22 @@
       <div class="modal-body">
 	<table class="table table-striped table-bordered" >
 			<tr>
-				<td class="col-md-3" ><b>First Name</b></td>
-				<td class="col-md-3">{{employerDetails.firstName}}</td>
+				<td class="col-md-3"><b>First Name</b></td>
+				<td class="col-md-3 wrap">{{employerDetails.firstName}}</td>
 				<td class="col-md-3"><b>Last Name</b></td>
-				<td class="col-md-3">{{employerDetails.lastName}}</td>
+				<td class="col-md-3 wrap">{{employerDetails.lastName}}</td>
 			</tr>
 			<tr>
-				<td class="col-md-3" ><b>Email</b></td>
+				<td class="col-md-3"><b>Email</b></td>
 				<td class="col-md-3 wrap">{{employerDetails.email}}</td>
 				<td class="col-md-3"><b>Website</b></td>
 				<td class="col-md-3 wrap">{{employerDetails.website}}</td>
 			</tr>
 			<tr>
-				<td class="col-md-3" ><b>Subject</b></td>
+				<td class="col-md-3"><b>Subject</b></td>
 				<td class="col-md-3 wrap">{{employerDetails.subject}}</td>
 				<td class="col-md-3"><b>Message Date</b></td>
-				<td class="col-md-3">{{employerDetails.messageDate}}</td>
+				<td class="col-md-3 wrap">{{employerDetails.messageDate}}</td>
 			</tr>
 			<tr>
 				<td class="col-md-3"><b>Message</b></td>
