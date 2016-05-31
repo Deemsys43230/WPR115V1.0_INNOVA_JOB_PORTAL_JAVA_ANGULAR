@@ -6,24 +6,40 @@ var adminApp = angular.module('adminApp',['requestModule','flash']);
 
 adminApp.controller('CapabilitySheetController',['$scope','$location','requestHandler','Flash','$sce','$window',function($scope, $location, requestHandler,Flash,$sce,$window){
 
+	$scope.init=function(){
+		$scope.saveData=false;
+		$scope.saveButtonText="Click Here to Upload";
+		$scope.getCapabilitySheet();
+	};
+	
+	
 	//Get Capability sheet
 	$scope.getCapabilitySheet = function(){
 		requestHandler.getRequest("getCapabilitySheetLink.json","").then(function(response){
 			$scope.capabilitySheet = response.data.sheetLink;
 			$scope.content = $sce.trustAsResourceUrl($scope.capabilitySheet);
+			 $scope.saveData=false;
+			 $scope.saveButtonText="Click Here to Upload";
 		});
 	};
-	$scope.getCapabilitySheet();
+	
 	
 	$scope.uploadSheet = function(){
-		console.log($scope.capabilityUploadSheet);
+		 $scope.saveData=true;
+	 	$scope.saveButtonText="Uploading...";
+
 	     requestHandler.postFileUpload("Admin/uploadCapabilitySheet.json",$scope.capabilityUploadSheet,"sheet").then(function(response){
+	    	if(response.data.requestSuccess== true){
 	    	   Flash.create('success', "Successfully Uploaded!!!");
+	    	   }
+	    	$scope.getCapabilitySheet();
+	    	 $scope.saveData=false;
+		   	 	$scope.saveButtonText="Click Here to Upload";
 	       });
-	     
+	    
 	    };
 	
-    
+    $scope.init();
 }]);
 
 

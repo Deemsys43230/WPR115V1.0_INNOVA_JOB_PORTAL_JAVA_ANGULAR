@@ -185,6 +185,7 @@
                                 <form  class="contact-form" name="jobseekerForm" ng-submit="jobseekerForm.$valid && uploadResume()" novalidate>
                                     <div class="row">
                                         <div class="col-sm-4">
+                                        <h5>First Name<span class="text-red"><sup>*</sup></span></h5>
                                             <input type="text" name="firstName" ng-model="jobSeekerForm.firstName" required validate-name placeholder="First Name" maxlength="25">
                                          <div class="error-container" >
                                  <div ng-show="jobSeekerSubmitted">
@@ -194,6 +195,7 @@
                               	</div>
                                         </div>
                                         <div class="col-sm-4">
+                                        <h5>Last Name<span class="text-red"><sup>*</sup></span></h5>
                                             <input type="text" name="lastName" ng-model="jobSeekerForm.lastName" required validate-name placeholder="Last Name" maxlength="25">
                                        <div class="error-container" >
                                         <div ng-show="jobSeekerSubmitted">
@@ -203,6 +205,7 @@
 	                             		 </div>
                                         </div>
                                         <div class="col-sm-4">
+                                        <h5>Email<span class="text-red"><sup>*</sup></span></h5>
                                             <input type="email" name="email" ng-model="jobSeekerForm.email" required validate-email placeholder="Email" maxlength="50">
                                         <div class="error-container" >
                                  		<div ng-show="jobSeekerSubmitted">
@@ -212,17 +215,19 @@
                                         </div>
                                         </div>
                                         <div class="col-sm-4">
+                                        <h5>Phone Number<span class="text-red"><sup>*</sup></span></h5>
                                             <input type="text" name="contactNumber" ng-model="jobSeekerForm.phoneNumber" placeholder="Phone Number" maxlength="20" required validate-mobile>
                                             <div class="error-container" >
                                  <div ng-show="jobSeekerSubmitted">
-	                          			<span ng-cloak ng-show="jobseekerForm.contactNumber.$error.required">Please Enter Contact Number</span>
+	                          			<span ng-cloak ng-show="jobseekerForm.contactNumber.$error.required">Please Enter Phone Number</span>
 	                          			<span ng-cloak ng-show="!jobseekerForm.contactNumber.$error.required&&jobseekerForm.contactNumber.$error.validateMobile">Enter Valid Number</span>
 	                              </div>
                               	</div>
                                             
                                         </div>
                                         <div class="col-sm-4">
-                                        <input type="text" name="interestedIn" ng-model="jobSeekerForm.interestedIn" required placeholder="Job Interested In" maxlength="100">
+                                        <h5>Job Interested In<span class="text-red"><sup>*</sup></span></h5>
+                                        <input type="text" name="interestedIn" ng-model="jobSeekerForm.interestedIn" required placeholder="Job Interested In" maxlength="25">
                                 <div class="error-container" >
                                  <div ng-show="jobSeekerSubmitted">
 	                          			<span ng-cloak ng-show="jobseekerForm.interestedIn.$error.required">Please Enter Interested In</span>
@@ -230,7 +235,8 @@
                               	</div>
                                         </div>
                                         <div class="col-sm-4">
-                                             <div class="browse-wrap">
+                                        <br/>
+                                             <div class="browse-wrap margin-top-10">
                                <div class="title">Upload Resume</div>
 								<input type="file" file-model="resume" valid-file validate-file-type name="resume" ng-model="resume" class="upload" title="Upload Resume" required>
 							</div>
@@ -289,8 +295,8 @@
                                             <input type="email" name="email" ng-model="employersMessageForm.email" required validate-email placeholder="Email" maxlength="50">
                                             <div class="error-container" >
                                             <div ng-show="submitted">
-	                                   			 <span ng-cloak ng-show="messageForm.email.$error.required">Please Enter Email ID</span>
-	                                    		 <span ng-cloak ng-show="!messageForm.email.$error.required&&messageForm.email.$error.email">Enter Valid Email ID</span>
+	                                   			 <span ng-cloak ng-show="messageForm.email.$error.required">Please Enter Email</span>
+	                                    		 <span ng-cloak ng-show="!messageForm.email.$error.required&&messageForm.email.$error.email">Enter Valid Email</span>
                                 			</div>
                                 			</div>
                                         </div>

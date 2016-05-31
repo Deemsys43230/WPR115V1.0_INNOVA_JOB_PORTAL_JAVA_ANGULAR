@@ -252,6 +252,7 @@
                     <form class="contact-form" name="indexjobForm" ng-submit="indexjobForm.$valid && saveJobSeeker()" novalidate>
                         <div class="row">
                             <div class="col-sm-6">
+                            <h5><span class="text-white">First Name</span><span class="text-red"><sup>*</sup></span></h5>
                                 <input type="text" name="firstName" ng-model="indexJobSeekerForm.firstName" required validate-name placeholder="First Name" maxlength="25">
                                 <div class="error-container" >
                                  <div ng-show="submitted">
@@ -261,6 +262,7 @@
                               	</div>
                             </div>
                             <div class="col-sm-6">
+                            <h5><span class="text-white">Last Name</span><span class="text-red"><sup>*</sup></span></h5>
                                 <input type="text" name="lastName" ng-model="indexJobSeekerForm.lastName" required validate-name placeholder="Last Name" maxlength="25">
                                 <div class="error-container" >
                                  <div ng-show="submitted">
@@ -270,15 +272,17 @@
                               	</div>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" name="contactNumber" ng-model="indexJobSeekerForm.phoneNumber" required validate-mobile  placeholder="Contact Number" maxlength="20">
+                            <h5><span class="text-white">Phone Number</span><span class="text-red"><sup>*</sup></span></h5>
+                                <input type="text" name="contactNumber" ng-model="indexJobSeekerForm.phoneNumber" required validate-mobile  placeholder="Phone Number" maxlength="20">
                                 <div class="error-container" >
                                  <div ng-show="submitted">
-	                          			<span ng-cloak ng-show="indexjobForm.contactNumber.$error.required">Please Enter Conatct Number</span>
+	                          			<span ng-cloak ng-show="indexjobForm.contactNumber.$error.required">Please Enter Phone Number</span>
 	                          			<span ng-cloak ng-show="!indexjobForm.contactNumber.$error.required&&indexjobForm.contactNumber.$error.validateMobile">Please Enter Valid Number</span>
 	                              </div>
                               	</div>
                             </div>
                             <div class="col-sm-6">
+                            <h5><span class="text-white">Email</span><span class="text-red"><sup>*</sup></span></h5>
                                 <input type="email" name="email" ng-model="indexJobSeekerForm.email" required validate-email placeholder="Email" maxlength="50">
                                 <div class="error-container" >
                                  <div ng-show="submitted">
@@ -288,7 +292,8 @@
                               	</div>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" name="interestedIn" ng-model="indexJobSeekerForm.interestedIn" required placeholder="Job Interested In" maxlength="100">
+                            <h5><span class="text-white">Job Interested In</span><span class="text-red"><sup>*</sup></span></h5>
+                                <input type="text" name="interestedIn" ng-model="indexJobSeekerForm.interestedIn" required placeholder="Job Interested In" maxlength="25">
                                 <div class="error-container" >
                                  <div ng-show="submitted">
 	                          			<span ng-cloak ng-show="indexjobForm.interestedIn.$error.required">Please Enter Interested In</span>
@@ -296,6 +301,7 @@
                               	</div>
                             </div>
                             <div class="col-sm-6" style="margin-top: 8px">
+                            <br/>
                                  <div class="browse-wrap text-white">
                                <div class="title">Upload Resume</div>
 								<input type="file" file-model="indexresume" validate-file-type name="indexresume" ng-model="indexresume" class="upload" title="Upload Resume" required>
