@@ -275,7 +275,8 @@ innovaApp.controller('SocialMediaController', ['$route','$routeParams','$rootSco
 
 //Check For Email Validation
 innovaApp.directive('validateEmail', function() {
-    var EMAIL_REGEXP = /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,5})$/;
+  // var EMAIL_REGEXP = /^(?!-)(?!.*--)[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,5})$/;
+    var EMAIL_REGEXP = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     return {
         require: 'ngModel',

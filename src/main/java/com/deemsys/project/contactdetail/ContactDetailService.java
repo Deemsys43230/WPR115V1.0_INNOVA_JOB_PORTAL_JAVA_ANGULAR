@@ -69,7 +69,7 @@ public class ContactDetailService {
 		
 		//Logic Starts
 		
-		ContactDetail contactDetail=new ContactDetail(contactDetailForm.getStreet(), contactDetailForm.getCity(), contactDetailForm.getStreet(), contactDetailForm.getCountry(), contactDetailForm.getZipCode(), contactDetailForm.getEmail(), contactDetailForm.getPhoneNumber(), contactDetailForm.getStatus());
+		ContactDetail contactDetail=new ContactDetail(contactDetailForm.getStreet(), contactDetailForm.getCity(), contactDetailForm.getState(), contactDetailForm.getCountry(), contactDetailForm.getZipCode(), contactDetailForm.getEmail(), contactDetailForm.getPhoneNumber(), contactDetailForm.getStatus());
 		contactDetail.setContactId(1);
 		//Logic Ends
 		

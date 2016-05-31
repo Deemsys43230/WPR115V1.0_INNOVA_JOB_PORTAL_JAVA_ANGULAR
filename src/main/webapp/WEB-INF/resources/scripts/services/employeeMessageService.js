@@ -13,6 +13,16 @@ adminApp.factory("employeeMessageService",['requestHandler',function(requestHand
         });
     };
     
+  //Get Categories
+    employeeMessageServiceObj.doSendContactUsMessage= function (employersMessageForm) {
+    	console.log(employersMessageForm);
+       return requestHandler.postRequest("mergeContactMessages.json",employersMessageForm).then(function(response){
+    	  console.log(response);
+          return response.data.requestSuccess;
+        });
+    };
+    
+    
     return employeeMessageServiceObj;
     
 }]);

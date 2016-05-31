@@ -44,6 +44,7 @@
                 <li><a href="#jobSeekers-List"  class="{{activeClass.jobSeekers}}"><i class="fa fa-users"></i> Job Seekers</a></li>
                	<li><a href="#siteManagement-contactDetails" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
                 <li><a href="#capabilitySheet" class="{{activeClass.capabilitySheet}}"><i class="fa fa-files-o"></i> Capability Sheet</a></li>
+                <li><a href="#contactUs-Messages" class="{{activeClass.contactUs}}"><i class="fa fa-inbox"></i> Contact Us Messages &nbsp;({{unreadMessageCount}})</a></li>
              </ul>
         </div>
 

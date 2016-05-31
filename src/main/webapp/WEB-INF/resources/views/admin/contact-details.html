@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<h5>Street name<span class="text-red"><sup>*</sup></span></h5>
-			<input type="text" name="street" ng-model="contactDetails.street" required placeholder="Enter Street Name" maxlength="30"/>
+			<input type="text" name="street" ng-model="contactDetails.street" required placeholder="Enter Street Name" maxlength="50"/>
            	<div class="error-container">
             	<div  ng-show="contactForm.street.$dirty && contactForm.street.$invalid">
 	            	<span ng-cloak ng-show="contactForm.street.$error.required">Please Enter Street</span>

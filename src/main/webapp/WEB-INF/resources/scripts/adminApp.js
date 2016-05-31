@@ -235,14 +235,32 @@ adminApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                 },
                 controller:'AdminEmployersListController'
             }).
+            when('/contactUs-Messages', {
+                templateUrl: 'admin/contactus-messages.html',
+                resolve: {
+                    loadMyFiles:['$ocLazyLoad',function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                            files:[
+                                'resources/scripts/controllers/adminContactUsMessageController.js'
+                            ]
+                        });
+                    }]
+                },
+                controller:'AdminContactUsMessageController'
+            }).
             otherwise({
                 redirectTo: '/dashboard'
             });
     }]);
 
 //Initial Controller for Username
-adminApp.controller("InitialController",['$scope','$location',function($scope,$location){
+adminApp.controller("InitialController",['$scope','$location','requestHandler',function($scope,$location,requestHandler){
 
+	requestHandler.getRequest("Admin/getMessagesCountUnread.json","").then(function(response){
+		$scope.unreadMessageCount=response.data.contactMessageCount;
+	});
+	
     $scope.$on('$routeChangeStart', function(next, current) {
         $scope.activeClass={};
         $scope.submenuActive={};

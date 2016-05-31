@@ -16,7 +16,7 @@ adminApp.controller('ContactController', ['$scope','$location','requestHandler',
 	//Save Update Method
 	$scope.saveEmployersMessage = function() {
 		
-		employeeMessageService.doSendMessage($scope.employersMessageForm);
+		employeeMessageService.doSendContactUsMessage($scope.employersMessageForm);
 		Flash.create('success', "Thanks for contacting us!!!");
 		 $scope.employersMessageForm={};
 	     $scope.messageForm.$setPristine();

@@ -2547,3 +2547,7 @@ padding-right:50px !important;
     width: 100%;
     height: 400px;
 }
+
+.unread{
+	background-color: lightgrey !important;
+}
