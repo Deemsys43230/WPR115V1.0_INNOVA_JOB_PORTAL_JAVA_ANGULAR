@@ -6,6 +6,9 @@ var innovaApp = angular.module('innovaApp',['JobServiceModule','flash','requestM
 innovaApp.controller('CommonController',['$scope','$http','$document','$parse','jobService','Flash','requestHandler','$sce','$routeParams',function($scope,$http,$document,$parse,jobService,Flash,requestHandler,$sce,$routeParams){
  
 	$scope.init=function(){
+		$(function(){
+			$("html,body").scrollTop(0);
+		});
 		$scope.saveData=false;
 		$scope.saveButtonText="Submit Resume";
 		$scope.indexJobSeekerForm={

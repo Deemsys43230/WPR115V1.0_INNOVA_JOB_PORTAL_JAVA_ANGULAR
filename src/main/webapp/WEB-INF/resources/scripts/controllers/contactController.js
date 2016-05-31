@@ -25,6 +25,9 @@ adminApp.controller('ContactController', ['$scope','$location','requestHandler',
 	};
 
 	$scope.init=function(){
+		 $(function(){
+				$("html,body").scrollTop(0);
+		});
 		$scope.contactid = 1;
 		$scope.getContactDetails();
 	};

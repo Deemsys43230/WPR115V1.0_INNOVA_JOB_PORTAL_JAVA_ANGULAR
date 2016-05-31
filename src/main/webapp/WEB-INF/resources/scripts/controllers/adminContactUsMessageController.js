@@ -18,6 +18,7 @@ adminApp.controller('AdminContactUsMessageController',['$scope','$location','req
 		$scope.getContactUsMessagesList();
 	};
 	
+	// Get Contact Us message Details
 	$scope.getContactMessages=function(id){
 		requestHandler.getRequest("Admin/getContactMessages.json?id="+id,"").then(function(response){
 			$scope.contactMessageDetails=response.data.contactMessagesForm;
@@ -26,6 +27,16 @@ adminApp.controller('AdminContactUsMessageController',['$scope','$location','req
 				$scope.init();
 			});
 		});
+	};
+	
+	$scope.deleteContactMessagesAlert=function(id){
+		$("#contactMessageDeleteModal").modal('show');
+		$scope.deleteContactMessages=function(){
+			requestHandler.deletePostRequest("Admin/deleteContactMessages.json?id=",id).then(function(response){
+				$("#contactMessageDeleteModal").modal('hide');
+				$scope.init();
+			});
+		};
 	};
 	
 	$scope.init();

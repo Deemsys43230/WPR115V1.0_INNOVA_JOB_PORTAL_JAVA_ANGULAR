@@ -4,6 +4,9 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 		function($scope, $location, requestHandler,Flash,employeeMessageService,jobService) {
 	
 			$scope.init=function(){
+				 $(function(){
+						$("html,body").scrollTop(0);
+					});
 				 $scope.jobSeekerForm={
 						 "status":1
 				 };

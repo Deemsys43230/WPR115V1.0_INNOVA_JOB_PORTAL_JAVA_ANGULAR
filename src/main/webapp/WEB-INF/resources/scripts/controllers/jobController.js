@@ -3,6 +3,9 @@ var innovaApp=angular.module('innovaApp',['JobServiceModule','flash','requestMod
 innovaApp.controller('JobController',['$rootScope','$scope','jobService','Flash','requestHandler', function($rootScope,$scope,jobService,Flash,requestHandler){
 	
 	$scope.init=function(){
+		 $(function(){
+				$("html,body").scrollTop(0);
+		});
 		// Reset Search Data Based on State
 		if($rootScope.previousState!="/jobs-details/:id" && $rootScope.previousState!="/jobs-submit-resume/:id"){
 			$scope.jobSearchForm={
@@ -15,7 +18,7 @@ innovaApp.controller('JobController',['$rootScope','$scope','jobService','Flash'
 		
 		$scope.getJobCategoryList();
 		$scope.searchJob();
-	
+		
 	};
 	
 	$scope.searchJob=function(){

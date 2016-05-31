@@ -35,7 +35,7 @@
 </head>
 <body ng-app="adminApp">
     <div ng-controller="InitialController">
-        <div class="admin-side-bar">
+        <div class="admin-side-bar" ng-cloak>
             <div class="admin-logo"><img src="resources/images/logo-slogan-white.png"/></div>
             <ul class="admin-side-menu">
                 <li><a href="#dashboard" class="{{activeClass.dashboard}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -44,11 +44,11 @@
                 <li><a href="#jobSeekers-List"  class="{{activeClass.jobSeekers}}"><i class="fa fa-users"></i> Job Seekers</a></li>
                	<li><a href="#siteManagement-contactDetails" class="{{activeClass.siteManagement}}"><i class="fa fa-cogs"></i> Site Management</a></li>
                 <li><a href="#capabilitySheet" class="{{activeClass.capabilitySheet}}"><i class="fa fa-files-o"></i> Capability Sheet</a></li>
-                <li><a href="#contactUs-Messages" class="{{activeClass.contactUs}}"><i class="fa fa-inbox"></i> Contact Us Messages &nbsp;({{unreadMessageCount}})</a></li>
+                <li ng-cloak><a href="#contactUs-Messages" class="{{activeClass.contactUs}}"><i class="fa fa-inbox"></i> Contact Us Messages &nbsp;({{unreadMessageCount}})</a></li>
              </ul>
         </div>
 
-        <div class="admin-content-box clearfix">
+        <div class="admin-content-box clearfix" ng-cloak>
             <div class="message-bar">
                 <div class="user-name">Hi, admin <a href="j_spring_security_logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></div>
                 <h3 class="admin-title" ng-bind="header"></h3>

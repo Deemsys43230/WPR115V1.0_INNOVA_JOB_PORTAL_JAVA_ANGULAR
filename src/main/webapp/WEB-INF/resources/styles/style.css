@@ -2651,5 +2651,9 @@ padding-right:50px !important;
 }
 
 .unread{
-	background-color: lightgrey !important;
+	background-color: #D8D8D8 !important;
+}
+
+.wrap{
+	word-break: break-all!important;
 }
