@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
@@ -66,7 +67,7 @@ public class JobDAOImpl implements JobDAO{
 	@Override
 	public List<Job> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(Job.class).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(Job.class).addOrder(Order.desc("jobId")).list();
 	}
 
 	@Override

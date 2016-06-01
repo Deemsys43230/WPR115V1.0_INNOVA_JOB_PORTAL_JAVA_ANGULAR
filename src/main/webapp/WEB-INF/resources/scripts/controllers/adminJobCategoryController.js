@@ -28,7 +28,6 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
 			   $scope.isAlreadyExist=false;
 		         requestHandler.postRequest("Admin/saveUpdateJobCategory.json",$scope.jobCategory).then(function(response){
 		          $("#myModal").modal('hide');
-		          $(".modal-dialog").hide();
 		          Flash.create('success', "Saved Successfully!");
 		          $scope.getJobCategory();
 		      });
@@ -85,14 +84,16 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
     
 	$scope.clearModalData=function(){
 		$scope.isAlreadyExist=false;
+		$scope.submitted=false;
 		$scope.jobCategory={};
         $scope.jobCategory.isJobAvailable = 1;
         $scope.jobCategory.status =1;
-        $scope.submitted=false;
+        
 	};
 	
     $scope.init=function(){
     	$scope.isAlreadyExist=false;
+    	$scope.submitted=false;
         $scope.jobCategory={};
         $scope.jobCategory.isJobAvailable = 1;
         $scope.jobCategory.status =1;

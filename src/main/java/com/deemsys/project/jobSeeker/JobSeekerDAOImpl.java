@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -72,7 +73,7 @@ public class JobSeekerDAOImpl implements JobSeekerDAO{
 	@Override
 	public List<JobSeeker> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(JobSeeker.class).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(JobSeeker.class).addOrder(Order.desc("jobSeekerId")).list();
 	}
 
 	@Override
