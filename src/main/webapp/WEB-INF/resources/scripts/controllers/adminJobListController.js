@@ -58,6 +58,7 @@ adminApp.controller('AdminJobAddController',['$scope','$location','$q','requestH
     };
 	
 	$scope.init=function(){
+		$scope.isAlreadyExist=false;
 		$scope.getJobCategoryList();
 		$scope.submitButtonText="Save Job";
 		$scope.adminTagForm={};
@@ -116,9 +117,16 @@ adminApp.controller('AdminJobAddController',['$scope','$location','$q','requestH
     	});
     	$scope.adminJobForm.jobTagId=tagId;
     	$q.all([tagPromise]).then(function(){
-    		requestHandler.postRequest("Admin/saveUpdateJob.json",$scope.adminJobForm).then(function(response){
-    			Flash.create('success',"Saved Successfully !!!");
-    			$location.path("jobManagement-jobList");
+    		requestHandler.postRequest("Admin/checkJobTitleExist.json",$scope.adminJobForm).then(function(response){
+    			if(response.data.isJobExist){
+    				$scope.isAlreadyExist=true;
+    			}else{
+    				$scope.isAlreadyExist=false;
+		    		requestHandler.postRequest("Admin/saveUpdateJob.json",$scope.adminJobForm).then(function(response){
+		    			Flash.create('success',"Saved Successfully !!!");
+		    			$location.path("jobManagement-jobList");
+		    		});
+    			}
     		});
     	},function(error){
     		
@@ -156,6 +164,7 @@ adminApp.controller('AdminJobEditController',['$scope','$location','$q','$routeP
 	
 	
 	$scope.init=function(){
+		$scope.isAlreadyExist=false;
 		$scope.submitButtonText="Update Job";
 		$scope.getJob();
 		$scope.getJobCategoryList();
@@ -238,10 +247,17 @@ adminApp.controller('AdminJobEditController',['$scope','$location','$q','$routeP
 	   	});
 	   	$scope.adminJobForm.jobTagId=tagId;
 	   	$q.all([tagPromise]).then(function(){
-	   		requestHandler.postRequest("Admin/saveUpdateJob.json",$scope.adminJobForm).then(function(response){
-	   			Flash.create('success',"Updated Successfully !!!");
-	   			$location.path("jobManagement-jobList");
-	   		});
+	   		requestHandler.postRequest("Admin/checkJobTitleExist.json",$scope.adminJobForm).then(function(response){
+    			if(response.data.isJobExist){
+    				$scope.isAlreadyExist=true;
+    			}else{
+    				$scope.isAlreadyExist=false;
+			   		requestHandler.postRequest("Admin/saveUpdateJob.json",$scope.adminJobForm).then(function(response){
+			   			Flash.create('success',"Updated Successfully !!!");
+			   			$location.path("jobManagement-jobList");
+			   		});
+    			}	
+    		});
 	   	},function(error){
 	   		
 	   	});

@@ -19,14 +19,21 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
     };
                                    	
                                    
-   $scope.saveUpdateJobCategory=function(){                		
-         requestHandler.postRequest("Admin/saveUpdateJobCategory.json",$scope.jobCategory).then(function(response){
-          $(".modal-dialog").hide();
-          $("#myModal").hide();
-          $(".modal-backdrop").hide();
-          Flash.create('success', "Saved Successfully!");
-          $scope.getJobCategory();
-      });
+   $scope.saveUpdateJobCategory=function(){
+	   requestHandler.postRequest("Admin/checkJobCategoryExist.json",$scope.jobCategory).then(function(response){
+		   if(response.data.isJobCategoryExist){
+			   $scope.isAlreadyExist=true;
+		   }
+		   else{
+			   $scope.isAlreadyExist=false;
+		         requestHandler.postRequest("Admin/saveUpdateJobCategory.json",$scope.jobCategory).then(function(response){
+		          $("#myModal").modal('hide');
+		          $(".modal-dialog").hide();
+		          Flash.create('success', "Saved Successfully!");
+		          $scope.getJobCategory();
+		      });
+		   }
+	   });
     };
     
     $scope.editJobCategory = function(jobCategoryId){
@@ -76,7 +83,16 @@ adminApp.controller('AdminJobCategoryController',['$scope','$location','requestH
 		};
 	};
     
+	$scope.clearModalData=function(){
+		$scope.isAlreadyExist=false;
+		$scope.jobCategory={};
+        $scope.jobCategory.isJobAvailable = 1;
+        $scope.jobCategory.status =1;
+        $scope.submitted=false;
+	};
+	
     $scope.init=function(){
+    	$scope.isAlreadyExist=false;
         $scope.jobCategory={};
         $scope.jobCategory.isJobAvailable = 1;
         $scope.jobCategory.status =1;

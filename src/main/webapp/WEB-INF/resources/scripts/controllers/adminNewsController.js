@@ -208,6 +208,37 @@ userApp.controller('NewsUserController',['$scope','requestHandler','Flash','$sce
 
 }]);
 
+userApp.controller('NewsDetailsUserController',['$scope','requestHandler','Flash','$sce','$routeParams',function($scope,requestHandler,Flash,$sce,$routeParams){
+
+    // To display News as user
+    $scope.doGetNewsByUser=function(){
+        requestHandler.getRequest("getAllLatestNewss.json", "").then(function(response){
+        	$scope.usernewslist=response.data.latestNewsForms;
+      
+        });
+    };
+
+    $scope.doGetNewsDetailsByUser= function (latestNewsId) {
+        requestHandler.getRequest("getLatestNews.json?latestNewsId="+latestNewsId, "").then(function(response){
+
+            //View the image in ng-src for view testimonials
+        	$scope.myImgSrc = $sce.trustAsResourceUrl(response.data.latestNewsForm.titleImageUrl);
+            $scope.usernewsdetails = response.data.latestNewsForm;
+            $scope.id = response.data.latestNewsForm.latestNewsId;
+            $scope.doGetNewsByUser();
+        });
+
+        return false;
+
+    };
+
+    // To display the user Testimonial list on load
+    $scope.doGetNewsDetailsByUser($routeParams.latestNewsId);
+
+
+}]);
+
+
 userApp.filter('html', ['$sce', function ($sce) {
     return function (text) {
         return $sce.trustAsHtml(text);

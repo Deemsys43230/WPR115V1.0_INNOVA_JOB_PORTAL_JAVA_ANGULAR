@@ -2,14 +2,6 @@
 <div class="clearfix contact-form row">
 <form name="adminSideJobForm" novalidate>
 	<div class="col-md-6">
-		<h5>Job tile <span class="text-red"><sup>*</sup></span></h5>
-		<input type="text" name="title" ng-model="adminJobForm.name" required placeholder="Job title*" maxlength="25">
-		 <div class="error-container" ng-show="adminSideJobForm.title.$dirty && adminSideJobForm.title.$invalid">
-	      <span ng-cloak ng-show="adminSideJobForm.title.$error.required">Please Enter Title</span>
-      </div>
-	</div>
-	
-	<div class="col-md-6">
 		<h5>Job Category <span class="text-red"><sup>*</sup></span></h5>
 		<select type="text" name="category" ng-model="adminJobForm.jobCategoryId" required placeholder="Job category*">
 			<option value="">-- Select --</option>
@@ -18,6 +10,15 @@
 		<div class="error-container" ng-show="adminSideJobForm.category.$dirty && adminSideJobForm.category.$invalid">
 	      <span ng-cloak ng-show="adminSideJobForm.category.$error.required">Please Select Category</span>
       </div>
+	</div>
+	
+	<div class="col-md-6">
+		<h5>Job tile <span class="text-red"><sup>*</sup></span></h5>
+		<input type="text" name="title" ng-model="adminJobForm.name" required placeholder="Job title*" maxlength="25">
+		 <div class="error-container" ng-show="adminSideJobForm.title.$dirty && adminSideJobForm.title.$invalid">
+	      <span ng-cloak ng-show="adminSideJobForm.title.$error.required">Please Enter Title</span>
+	    </div>
+	    <div><span ng-cloak ng-show="isAlreadyExist" class="error-container">Job Title Already Exist</span></div>
 	</div>
 	
 	<div class="col-md-12">

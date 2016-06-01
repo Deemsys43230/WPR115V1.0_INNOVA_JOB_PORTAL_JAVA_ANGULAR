@@ -15,5 +15,6 @@ public interface JobDAO extends IGenericDAO<Job>{
   public List<Job> searchJobs(JobSearchForm jobSearchForm);
   public void deleteJobById(Long jobId);
   public List<Job> getJobListByCategoryId(Integer categoryId);
-  public boolean checkJobTitle(Long jobId,String name);
+  public boolean checkJobTitle(Integer categoryId,String name);
+  public boolean checkJobTitleWithJobId(Long jobId,String name,Integer categoryId);
 }

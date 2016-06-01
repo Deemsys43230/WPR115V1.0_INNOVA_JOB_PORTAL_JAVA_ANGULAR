@@ -203,14 +203,12 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                'js/jquery.contact-buttons.js',
-                                'js/demo.js',
-                                'resources/scripts/controllers/commonController.js'
+                                   	'resources/scripts/controllers/adminNewsController.js'
                             ]
                         });
                     }]
                 },
-                controller:'CommonController'
+                controller:'NewsDetailsUserController'
             }).
             when('/contact', {
                 templateUrl: 'views/contact.html',
@@ -223,7 +221,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                                 'resources/scripts/controllers/contactController.js',
                                 'https://maps.googleapis.com/maps/api/js'
                             ]
-                        })
+                        });
                     }]
                 },
               controller:'ContactController'

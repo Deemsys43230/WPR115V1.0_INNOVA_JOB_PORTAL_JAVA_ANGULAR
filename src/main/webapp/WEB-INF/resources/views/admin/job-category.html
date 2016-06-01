@@ -3,13 +3,11 @@
 <table class="table table-bordered table-striped">
             <thead class="high-light">
                 <tr>
-                    <td width="10%">S.No</td>
                     <td width="30%">Category Name</td>
                     <td width="40%">Description</td>
                     <td width="20%">Actions</td>
                 </tr>
                 <tr>
-                <th></th>
                 <th>
                 <div class="input-group">
   				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -25,8 +23,7 @@
             </thead>
             <tbody>
            		 <tr ng-show="jobCategoryList.length>0"  dir-paginate="jobCategory in jobCategoryFilter=(jobCategoryList|filter:search|itemsPerPage:10)">
-                	<td>{{$index+1}}</td>
-                    <td class="wrap">{{jobCategory.categoryName}}</td>
+                	<td class="wrap">{{jobCategory.categoryName}}</td>
                     <td class="wrap">{{jobCategory.description}}</td>
                     <td>
                         <a href="" class="btn-xs btn-warning hint--top" data-toggle="modal" data-target="#myModal" ng-click="editJobCategory(jobCategory.jobCategoryId)" data-hint="Edit"><i class="fa fa-pencil"></i></a>
@@ -36,7 +33,7 @@
                     </td>
                 </tr>
                <tr ng-cloak ng-show="!jobCategoryList.length || !jobCategoryFilter.length">
-				<td colspan="4" align="center">No Records Found</td>
+				<td colspan="3" align="center">No Records Found</td>
 				</tr>
             </tbody>
         </table>    
@@ -60,6 +57,7 @@
                 <div ng-show="submitted">
 	              <span ng-cloak ng-show="jobCategoryForm.categoryName.$error.required">Please Enter Category Name</span>
 	              <span ng-cloak ng-show="!jobCategoryForm.categoryName.$error.required&&jobCategoryForm.categoryName.$error.validateName">Enter Valid Category Name</span>
+	              <span ng-cloak ng-show="isAlreadyExist">Category Already Exist</span>
                 </div>
              </div>
         	<h5>Description</h5>

@@ -203,9 +203,9 @@ public class JobService {
 	public boolean checkJobTitle(JobForm jobForm){
 		boolean status=false;
 		if(jobForm.getJobId()==null){
-			status=jobDAO.checkName(jobForm.getName());
+			status=jobDAO.checkJobTitle(jobForm.getJobCategoryId(), jobForm.getName());
 		}else{
-			status=jobDAO.checkJobTitle(jobForm.getJobId(), jobForm.getName());
+			status=jobDAO.checkJobTitleWithJobId(jobForm.getJobId(), jobForm.getName(), jobForm.getJobCategoryId());
 		}
 		return status;
 	}

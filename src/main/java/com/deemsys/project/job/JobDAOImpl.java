@@ -212,9 +212,9 @@ public class JobDAOImpl implements JobDAO{
 	}
 
 	@Override
-	public boolean checkJobTitle(Long jobId, String name) {
+	public boolean checkJobTitle(Integer categoryId, String name) {
 		// TODO Auto-generated method stub
-		Job job=(Job) this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.and(Restrictions.ne("jobId", jobId),Restrictions.eq("name", name))).uniqueResult();
+		Job job=(Job) this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.and(Restrictions.eq("jobCategory.jobCategoryId", categoryId),Restrictions.eq("name", name))).uniqueResult();
 		if(job!=null){
 			return true;
 		}else{
@@ -237,6 +237,19 @@ public class JobDAOImpl implements JobDAO{
 		@SuppressWarnings("unchecked")
 		List<Job> jobs=this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.eq("jobCategory.jobCategoryId", categoryId)).list();
 		return jobs;
+	}
+
+	@Override
+	public boolean checkJobTitleWithJobId(Long jobId, String name,
+			Integer categoryId) {
+		// TODO Auto-generated method stub
+		Criterion criterion=Restrictions.and(Restrictions.eq("jobCategory.jobCategoryId", categoryId),Restrictions.eq("name", name));
+		Job job=(Job) this.sessionFactory.getCurrentSession().createCriteria(Job.class).add(Restrictions.and(Restrictions.ne("jobId", jobId),criterion)).uniqueResult();
+		if(job!=null){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	
