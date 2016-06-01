@@ -147,7 +147,7 @@
                         		<a href="#jobs-details/{{searchJob.jobId}}">{{searchJob.name}}</a>
                         		<div><small><i>{{searchJob.addedDate}}</i></small></div>
                         	</h4>
-                        	<p class="ellipsis">{{searchJob.description}}</p>
+                        	<p class="ellipsis" ng-bind-html="searchJob.description|html"></p>
                         	<hr/>
                         </div>
                      </div>

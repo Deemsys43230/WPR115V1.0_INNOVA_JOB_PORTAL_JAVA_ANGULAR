@@ -36,9 +36,9 @@
 
 				<div class="col-sm-10 col-sm-offset-1" style="min-height:300px;">
 				<a href="#jobs" ng-click="" class="btn btn-warning pull-right"><i class="fa fa-backward"></i>&nbsp;Back To Search</a>
-					<h5>Job description : </h5>
+					<h5>Job details : </h5>
                     <hr/>
-                    {{jobDetails.description}}
+                    <p ng-bind-html="jobDetails.description|html"></p>
                   <!--   <h4>About INNOVA Staffing</h4>
                     Innova Consulting Group, LLC is a privately held organization established on the foundation of SERVICE, RESULTS, INNOVATION AND ETHICS. Our specialty is fulfilling the unique sourcing needs of our individual clients by providing WORLD CLASS WORKFORCE SOLUTIONS.
                     <hr/>
@@ -60,7 +60,6 @@
                         <li>General Laborers needed (must be able to lift 50lbs or more on a regular basis)</li>
                     </ul>
                     Please submit resumes for consideration.<br/><br/> -->
-                    <br/><br/>
                     <a class="btn btn-send" href="#jobs-submit-resume/{{jobDetails.jobId}}">Submit Resume</a>
                 </div>
 			</div>

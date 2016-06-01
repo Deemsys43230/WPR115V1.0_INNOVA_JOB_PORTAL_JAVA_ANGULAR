@@ -66,3 +66,9 @@ innovaApp.controller('JobDetailsController', ['$scope','$location','$routeParams
 	
 	$scope.init();
 }]);
+
+innovaApp.filter('html', ['$sce', function ($sce) {
+    return function (text) {
+        return $sce.trustAsHtml(text);
+    };
+}]);
