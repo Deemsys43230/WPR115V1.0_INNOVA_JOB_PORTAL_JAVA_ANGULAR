@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 	<meta charset="UTF-8">
 	
 	<title>Innova Consulting Group</title>
 	
-	<meta property="og:image" content=""/>
-	<meta property="og:title" content=""/>
-	<meta property="og:description" content="" />
-	<meta property="og:url" content=""/>
+	<meta property="og:image" content="http://182.75.114.194:8082/jobs/resources/images/jobs-1.png"/>
+	<meta property="og:title" content="<c:out value="${title}"/>"/>
+	<meta property="og:description" content="<c:out value="${description}"/>" />
+	<meta property="og:url" content="http://182.75.114.194:8082/jobs/<c:out value="${url}"/>"/>
 	<meta property="og:site_name" content="Innova Consulting Group"/>
 	<meta property="og:type" content="website"/>
+	<meta name="author" content="Innova Consulting Group"/>
 	<meta property="fb:app_id" content="2054449691447123">
-
+	
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="resources/styles/bootstrap.css" />
 	<link rel="stylesheet" href="resources/styles/owl-carousel.css" />

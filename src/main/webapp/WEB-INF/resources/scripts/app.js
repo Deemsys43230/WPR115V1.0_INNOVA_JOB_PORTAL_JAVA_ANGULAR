@@ -356,7 +356,7 @@ innovaApp.directive('validateZipcode', function() {
 });
 
 innovaApp.directive('validateUrl', function () {
-	  var URL_REGEXP = /^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+	  var URL_REGEXP = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 	  return {
 	    require: 'ngModel',
 	    restrict: '',

@@ -5,6 +5,7 @@ package com.deemsys.project.job;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -109,5 +110,16 @@ public class JobController {
     	model.addAttribute("isJobExist",jobService.checkJobTitle(jobForm));
     	model.addAttribute("requestSuccess",true);
    		return "/returnPage";
+   	}
+    
+    //For Sharing
+    @RequestMapping(value="/{id}",method=RequestMethod.GET)
+   	public String get(@PathVariable Long id,ModelMap model)
+   	{
+    	JobForm jobForm=jobService.getJob(id);
+    	model.addAttribute("title",jobForm.getName()+" - Innova Consultancy Group");
+       	model.addAttribute("description",jobForm.getDescription().replaceAll("\\<.*?\\>", ""));
+       	model.addAttribute("url",id+"#/jobs-details/"+id);
+   		return "/index";
    	}
 }

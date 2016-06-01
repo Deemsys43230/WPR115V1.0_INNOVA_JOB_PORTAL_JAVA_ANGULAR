@@ -24,19 +24,19 @@ $(document).ready(function() {
         switch (shareName) //switch to different links based on different social name
         {
             case 'facebook':
-                var openLink = 'https://www.facebook.com/sharer/sharer.php?u=' + "http://192.168.1.39:8090/jobs/#/jobs-details/2";
+                var openLink = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent($("meta[property='og\\:url']").attr("content"));
                 break;
             case 'twitter':
-                var openLink = 'http://twitter.com/home?status=' + encodeURIComponent(pageTitle + ' ' + pageUrl);
+                var openLink = 'http://twitter.com/home?status=' + encodeURIComponent($("meta[property='og\\:title']").attr("content") + ' ' + pageUrl);
                 break;
             case 'linkedin':
-                var openLink = 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(pageUrl) + '&amp;title=' + encodeURIComponent(pageTitle);
+                var openLink = 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent($("meta[property='og\\:url']").attr("content")) + '&title=' + encodeURIComponent($("meta[property='og\\:title']").attr("content"))+"&summary="+encodeURIComponent($("meta[property='og\\:description']").attr("content"));
                 break;
             case 'whatsapp':
                 var openLink = 'whatsapp://send?text=Found this useful link for you -'+'\xa0' + encodeURIComponent(pageUrl) + '&amp;title=' + encodeURIComponent(pageTitle);
                 break;
             case 'google':
-                var openLink = 'https://plus.google.com/share?url=' + encodeURIComponent(pageUrl) + '&amp;title=' + encodeURIComponent(pageTitle);
+                var openLink = 'https://plus.google.com/share?url=' + encodeURIComponent(pageUrl) + '&title=' + encodeURIComponent(pageTitle);
                 break;
             case 'email':
                 var openLink = 'mailto:?subject=' + pageTitle + '&body=Found this useful link for you : ' + pageUrl;

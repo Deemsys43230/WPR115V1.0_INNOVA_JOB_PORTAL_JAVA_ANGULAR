@@ -144,7 +144,8 @@
 					<div ng-show="jobSearchList.length">
                         <div dir-paginate="searchJob in jobSearchList|itemsPerPage:8">
                         	<h4>
-                        		<a href="#jobs-details/{{searchJob.jobId}}">{{searchJob.name}}</a>
+                        		<a href="{{searchJob.jobId}}#jobs-details/{{searchJob.jobId}}">{{searchJob.name}}</a>
+                        		<small><span class="label label-success">{{searchJob.jobCategoryName}}</span></small>
                         		<div><small><i>{{searchJob.addedDate}}</i></small></div>
                         	</h4>
                         	<p class="ellipsis" ng-bind-html="searchJob.description|html"></p>
