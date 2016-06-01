@@ -208,7 +208,7 @@ public class JobDAOImpl implements JobDAO{
 		
 		*/
 		@SuppressWarnings("unchecked")
-		List<Job> jobs=criteria.list();
+		List<Job> jobs=criteria.addOrder(Order.desc("jobId")).list();
 		return jobs;
 	}
 

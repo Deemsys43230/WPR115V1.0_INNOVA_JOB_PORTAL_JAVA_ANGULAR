@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -61,7 +62,7 @@ public class LatestNewsDAOImpl implements LatestNewsDAO{
 	@Override
 	public List<LatestNews> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).addOrder(Order.desc("latestNewsId")).list();
 	}
 
 	@Override
@@ -148,7 +149,7 @@ public class LatestNewsDAOImpl implements LatestNewsDAO{
 	@Override
 	public List<LatestNews> getAllLatestNewsForUser() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).add(Restrictions.eq("status", 1)).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(LatestNews.class).add(Restrictions.eq("status", 1)).addOrder(Order.desc("latestNewsId")).list();
 	
 	}
 

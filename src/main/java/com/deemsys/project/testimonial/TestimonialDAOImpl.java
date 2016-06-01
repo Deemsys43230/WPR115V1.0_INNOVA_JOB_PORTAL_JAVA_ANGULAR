@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -59,7 +60,7 @@ public class TestimonialDAOImpl implements TestimonialDAO{
 	@Override
 	public List<Testimonial> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).addOrder(Order.desc("testimonialId")).list();
 	}
 
 	@Override
@@ -146,7 +147,7 @@ public class TestimonialDAOImpl implements TestimonialDAO{
 	@Override
 	public List<Testimonial> getAllTestimonialForUser() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).add(Restrictions.eq("status", 1)).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(Testimonial.class).add(Restrictions.eq("status", 1)).addOrder(Order.desc("testimonialId")).list();
 	}
 
 	
