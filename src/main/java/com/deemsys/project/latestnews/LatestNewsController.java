@@ -58,7 +58,7 @@ public class LatestNewsController {
    		return "/returnPage";
    	}
     
-    @RequestMapping(value="/Admin/saveTitleImage",method=RequestMethod.POST)
+    @RequestMapping(value="/Admin/updateTitleImage",method=RequestMethod.POST)
    	public String updateTitleImage(@RequestParam MultipartFile titleImage,@RequestParam Long latestNewsId,ModelMap model)
    	{
     	model.addAttribute("newsId",latestNewsService.updateLatestNewsImage(titleImage, latestNewsId));
