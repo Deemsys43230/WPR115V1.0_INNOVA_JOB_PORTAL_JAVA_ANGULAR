@@ -143,7 +143,8 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                                  name:'innovaApp',
                                  files:[
                                      'resources/scripts/services/employeeMessageService.js',
-                                     'resources/scripts/controllers/aboutController.js',
+                                     'resources/scripts/services/jobServices.js',
+                                     'resources/scripts/controllers/aboutController.js'
                                     ]
                              });
                          }]
@@ -188,10 +189,9 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                         return $ocLazyLoad.load({
                             name:'innovaApp',
                             files:[
-                                'js/jquery.contact-buttons.js',
                                 'resources/scripts/controllers/adminNewsController.js'
                             ]
-                        })
+                        });
                     }]
                 },
                 controller:'NewsUserController'
@@ -207,7 +207,7 @@ innovaApp.config(['$routeProvider','$ocLazyLoadProvider','$httpProvider',
                                 'js/demo.js',
                                 'resources/scripts/controllers/commonController.js'
                             ]
-                        })
+                        });
                     }]
                 },
                 controller:'CommonController'

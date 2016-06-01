@@ -4,6 +4,14 @@
 	<meta charset="UTF-8">
 	
 	<title>Innova Consulting Group</title>
+	
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content="" />
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content="Innova Consulting Group"/>
+	<meta property="og:type" content="website"/>
+	<meta property="fb:app_id" content="2054449691447123">
 
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="resources/styles/bootstrap.css" />
@@ -12,7 +20,6 @@
 	<link rel="stylesheet" href="resources/styles/font-awesome.css" />
 	<link rel="stylesheet" href="resources/styles/style.css" />
 	<link rel="stylesheet" href="resources/styles/responsive.css" />
-	
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="resources/images/icon/favicon.png">
@@ -145,14 +152,5 @@
     <link rel="stylesheet" href="resources/angular/angular-flash/angular-flash.css">
      <!-- dirPagination -->
     <script src="resources/angular/angular-utils-pagination/dirPagination.js"></script> 
-    
-     <script>document.write('<base href="' + document.location + '" />');</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" />
-    <script data-require="angular.js@1.3.x" src="https://code.angularjs.org/1.3.15/angular.js" data-semver="1.3.15"></script>
-    <script data-require="jquery@2.1.3" data-semver="2.1.3" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 </body>
 </html>

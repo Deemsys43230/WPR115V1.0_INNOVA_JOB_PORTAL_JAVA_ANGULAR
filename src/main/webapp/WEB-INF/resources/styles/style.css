@@ -1931,7 +1931,6 @@
     margin-top: 25px!important;
 }
 
-
 .padding-top-10{
     padding-top: 10px!important;
 }
@@ -2656,4 +2655,9 @@ padding-right:50px !important;
 
 .wrap{
 	word-break: break-all!important;
+}
+
+.div-scroll{
+	max-height:450px;
+	overflow-y:scroll;
 }

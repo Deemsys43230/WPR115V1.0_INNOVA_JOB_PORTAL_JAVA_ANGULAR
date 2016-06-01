@@ -158,7 +158,17 @@
     // ----------------------------------------------
     // Owl Carousel
     // ----------------------------------------------
+    (function () {
 
+		$(".st-testimonials").owlCarousel({
+		singleItem:true,
+		lazyLoad : true,
+		pagination:false,
+		navigation : false,
+		autoPlay: true,
+		});
+
+	}());
 
 
     // -------------------------------------------------------------

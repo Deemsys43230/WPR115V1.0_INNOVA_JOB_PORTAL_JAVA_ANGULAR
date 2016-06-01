@@ -20,11 +20,11 @@ $(document).ready(function() {
     //user clicks on a share button
     $('.button-wrap').click(function(event) {
         var shareName = $(this).attr('class').split(' ')[0]; //get the first class name of clicked element
-        console.log(encodeURIComponent(pageUrl));
+        console.log(pageUrl);
         switch (shareName) //switch to different links based on different social name
         {
             case 'facebook':
-                var openLink = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl) + '&amp;title=' + encodeURIComponent(pageTitle);
+                var openLink = 'https://www.facebook.com/sharer/sharer.php?u=' + $("meta[property='og\\:url']").attr("content");
                 break;
             case 'twitter':
                 var openLink = 'http://twitter.com/home?status=' + encodeURIComponent(pageTitle + ' ' + pageUrl);

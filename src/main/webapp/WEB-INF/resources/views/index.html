@@ -47,8 +47,8 @@
 						</div>
 					</div>
 				</div>
-				<a class="home-carousel-left" href="#home-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-				<a class="home-carousel-right" href="#home-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+				<a onclick="return false;" class="home-carousel-left" href="#home-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+				<a onclick="return false;" class="home-carousel-right" href="#home-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
 			</div>
 		</div> <!--/#home-carousel-->
     </section>
@@ -61,7 +61,7 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-6 st-service text-justify">
 					<h2><i class="fa fa-street-view"></i> WE THINK DIFFERENTLY</h2>
-					<p>We have a collaborative approach that employs a vast global network of sourcing agents that we utilize to fit your needs.  Our delivery team is technically inclined and highly experienced which gives us the upper hand when searching for your future resources.  We believe that there is no way to really understand your needs without fully understanding your project environment and because of this, we are dedicated to gaining a FULL understanding of your requirements, beyond the surface and only then will we lend our services.  Solving staffing dilemmas through innovative thought and flexible delivery methods is what we do.  When the job boards, your internal recruiting team and the other vendors have failed you, you can rely on us to get it right! <a href="solutions.html" class="read-more-red">Read More</a></p>
+					<p>We have a collaborative approach that employs a vast global network of sourcing agents that we utilize to fit your needs.  Our delivery team is technically inclined and highly experienced which gives us the upper hand when searching for your future resources.  We believe that there is no way to really understand your needs without fully understanding your project environment and because of this, we are dedicated to gaining a FULL understanding of your requirements, beyond the surface and only then will we lend our services.  Solving staffing dilemmas through innovative thought and flexible delivery methods is what we do.  When the job boards, your internal recruiting team and the other vendors have failed you, you can rely on us to get it right! <a href="#solutions" class="read-more-red">Read More</a></p>
 				</div>
 <!-- 
 				<div class="col-md-4 col-sm-6 st-service">
@@ -88,12 +88,12 @@
 
 				<div class="col-md-4 col-sm-6 st-service text-justify">
 					<h2><i class="fa fa-users"></i> OUR TEAM</h2>
-					<p>Our team will create a strong relationship with our partner companies and provide the apt resources to fit their requirement to maximize their potential and help grow their business.<br/> <a href="about.html" class="read-more-red">Read More</a></p>
+					<p>Our team will create a strong relationship with our partner companies and provide the apt resources to fit their requirement to maximize their potential and help grow their business.<br/> <a href="#about" class="read-more-red">Read More</a></p>
 				</div>
 
 				<div class="col-md-4 col-sm-6 st-service text-justify">
 					<h2><i class="fa fa-weixin"></i> FRIENDLY SUPPORT</h2>
-					<p>Job Seekers and Employers are welcome to contact our Innova Consulting Group professionals to answer all their requirements. Feel free to contact us via phone or email.<br/> <a href="contact.html" class="read-more-red">Read More</a></p>
+					<p>Job Seekers and Employers are welcome to contact our Innova Consulting Group professionals to answer all their requirements. Feel free to contact us via phone or email.<br/> <a href="#contact" class="read-more-red">Read More</a></p>
 				</div>
 			</div>
 		</div>
@@ -112,115 +112,54 @@
 					</div>
 				</div>
 
-				<div class="col-md-12 portfolio-wrapper" >
-					
-					
+				<div class="col-md-12 portfolio-wrapper">
 					<div class="">
-
-
                         <div class="our-office">
                             <div id="office-carousel" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                
-                                    <div class="item" ng-class="{'active': $index == 0}"  ng-repeat="news in usernewslist">
-                                         <div  class="col-sm-4">
+                                	<div ng-repeat="news in usernewslist" ng-if="$index % 3 == 0" class="item" ng-class="{'active':$index == 0}">
+								        <div  class="col-sm-4" ng-if="usernewslist[$index].title">
                                             <div class="portfolio-content">
-                                                <img class="img-responsive" ng-src="{{news.titleImageUrl | trusted}}" alt="">
-                                                <div class="portfolio-overlay">
-                                                    <h5></h5>
-                                                    <p>Design, Develop</p>
-                                                </div>
-                                            </div>
-                                            <p><small>Featured News, News</small></p>
-                                            <h5>{{news.title}}</h5>
-                                            <p>{{news.addedDate}}</p>
-                                            <a href="#news-details/{{news.latestNewsId}}" class="btn btn-readmore-small">Read more</a>
-                                        </div> 
-                                        </div>
-                                          <!-- <div  class="col-sm-4" >
-                                            <div class="portfolio-content">
-                                                <img class="img-responsive" src="" alt="">
-                                                <div class="portfolio-overlay">
+                                                <img class="img-responsive" ng-src="{{usernewslist[$index].titleImageUrl}}" alt="">
+                                                <!-- <div class="portfolio-overlay">
                                                     <h5>Web Development</h5>
                                                     <p>Design, Develop</p>
-                                                </div>
+                                                </div> -->
                                             </div>
-                                            <p><small>Featured News, News</small></p>
-                                            <h5>lkj</h5>
-                                            <p>lkjjklj</p>
+                                            <h5>{{usernewslist[$index].title}}</h5>
+                                            <p><small>{{usernewslist[$index].addedDate}}</small></p>
+                                            <p class="ellipsis">
+                                            {{usernewslist[$index].description}}
+                                            </p>
                                             <a href="#news-details" class="btn btn-readmore-small">Read more</a>
                                         </div>
-                                         <div  class="col-sm-4">
+								        <div  class="col-sm-4" ng-if="usernewslist[$index+1].title">
                                             <div class="portfolio-content">
-                                                <img class="img-responsive" src="{{myImgSrc}}" alt="">
-                                                <div class="portfolio-overlay">
+                                                <img class="img-responsive" ng-src="{{usernewslist[$index+1].titleImageUrl}}" alt="">
+                                                <!-- <div class="portfolio-overlay">
                                                     <h5>Web Development</h5>
                                                     <p>Design, Develop</p>
-                                                </div>
+                                                </div> -->
                                             </div>
-                                            <p><small>Featured News, News</small></p>
-                                            <h5>lkjkl</h5>
-                                            <p>jkhkjh</p>
-                                            <a href="#news-details" class="btn btn-readmore-small">Read more</a>
-                                        </div> 
-                                        <div  class="col-sm-4" >
-                                            <div class="portfolio-content">
-                                                <img class="img-responsive" src="" alt="">
-                                                <div class="portfolio-overlay">
-                                                    <h5>Web Development</h5>
-                                                    <p>Design, Develop</p>
-                                                </div>
-                                            </div>
-                                            <p><small>Featured News, News</small></p>
-                                            <h5>lkj</h5>
-                                            <p>lkjjklj</p>
+                                            <h5>{{usernewslist[$index+1].title}}</h5>
+                                            <p>{{usernewslist[$index+1].addedDate}}</p>
                                             <a href="#news-details" class="btn btn-readmore-small">Read more</a>
                                         </div>
-                                         </div>
-                                         <div class="item" >
-                                         <div  class="col-sm-4">
+								        <div  class="col-sm-4" ng-if="usernewslist[$index+2].title">
                                             <div class="portfolio-content">
-                                                <img class="img-responsive" src="{{myImgSrc}}" alt="">
-                                                <div class="portfolio-overlay">
+                                                <img class="img-responsive" ng-src="{{usernewslist[$index+2].titleImageUrl}}" alt="">
+                                                <!-- <div class="portfolio-overlay">
                                                     <h5>Web Development</h5>
                                                     <p>Design, Develop</p>
-                                                </div>
+                                                </div> -->
                                             </div>
-                                            <p><small>Featured News, News</small></p>
-                                            <h5>lkjkl</h5>
-                                            <p>jkhkjh</p>
+                                            <h5>{{usernewslist[$index+2].title}}</h5>
+                                            <p>{{usernewslist[$index+2].addedDate}}</p>
                                             <a href="#news-details" class="btn btn-readmore-small">Read more</a>
                                         </div>
-                                         <div  class="col-sm-4">
-                                            <div class="portfolio-content">
-                                                <img class="img-responsive" src="{{myImgSrc}}" alt="">
-                                                <div class="portfolio-overlay">
-                                                    <h5>Web Development</h5>
-                                                    <p>Design, Develop</p>
-                                                </div>
-                                            </div>
-                                            <p><small>Featured News, News</small></p>
-                                            <h5>lkjkl</h5>
-                                            <p>jkhkjh</p>
-                                            <a href="#news-details" class="btn btn-readmore-small">Read more</a>
-                                        </div>
-                                         <div  class="col-sm-4">
-                                            <div class="portfolio-content">
-                                                <img class="img-responsive" src="{{myImgSrc}}" alt="">
-                                                <div class="portfolio-overlay">
-                                                    <h5>Web Development</h5>
-                                                    <p>Design, Develop</p>
-                                                </div>
-                                            </div>
-                                            <p><small>Featured News, News</small></p>
-                                            <h5>lkjkl</h5>
-                                            <p>jkhkjh</p>
-                                            <a href="#news-details" class="btn btn-readmore-small">Read more</a>
-                                        </div>
-                                   </div> -->
-
-                                    <a class="office-carousel-left" href="#office-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                                    <a class="office-carousel-right" href="#office-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+								    </div>
+                                    <a onclick="return false;" class="office-carousel-left" href="#office-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                                    <a onclick="return false;" class="office-carousel-right" href="#office-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div> <!--/#office-carousel-->
                         </div>
@@ -232,7 +171,6 @@
 		</div>
 	</section>
 	<!-- /OUR WORKS -->
-
 	
 	<!-- PRICING -->
 	<section id="pricing">
