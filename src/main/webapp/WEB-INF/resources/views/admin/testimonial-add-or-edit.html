@@ -1,6 +1,6 @@
 <div class="clearfix contact-form row">
  <form class="contact-form" name="testimonialForm" ng-submit="testimonialForm.$valid && saveUpdateTestimonial()" novalidate>
-	<div class="col-md-9 no-padding">
+	<div class="col-md-12 no-padding">
 	
 		<div class="col-md-12">
 			<h5>Said By</h5>
@@ -23,7 +23,7 @@
 		</div>
 		<div class="col-md-12">
 			<h5>Testimonial</h5>
-			<textarea type="text" row="4" name="description" ng-model="testimonial.description" placeholder="Enter Testimonial" required maxlength="800"></textarea>
+			<textarea type="text" rows="4" name="description" ng-model="testimonial.description" placeholder="Enter Testimonial" required maxlength="800"></textarea>
 			<div class="error-container">
                 <div ng-show="submitted">
 	              <span ng-cloak ng-show="testimonialForm.description.$error.required">Please Enter Testimonial</span>

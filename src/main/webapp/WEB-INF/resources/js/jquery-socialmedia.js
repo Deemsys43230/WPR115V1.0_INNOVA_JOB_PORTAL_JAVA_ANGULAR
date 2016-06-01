@@ -24,7 +24,7 @@ $(document).ready(function() {
         switch (shareName) //switch to different links based on different social name
         {
             case 'facebook':
-                var openLink = 'https://www.facebook.com/sharer/sharer.php?u=' + $("meta[property='og\\:url']").attr("content");
+                var openLink = 'https://www.facebook.com/sharer/sharer.php?u=' + "http://192.168.1.39:8090/jobs/#/jobs-details/2";
                 break;
             case 'twitter':
                 var openLink = 'http://twitter.com/home?status=' + encodeURIComponent(pageTitle + ' ' + pageUrl);

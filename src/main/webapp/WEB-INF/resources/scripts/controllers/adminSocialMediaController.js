@@ -15,9 +15,9 @@ adminApp.controller('SocialMediaController', ['$scope','$location','requestHandl
 	};
 	
 	$scope.saveUpdateSocialMediaDetails=function(){
-		
 		requestHandler.postRequest("Admin/saveUpdateSocialMedia.json",$scope.socialMediaDetails).then(function(response){
-		Flash.create('success', "Saved Successfully!");		
+			Flash.create('success', "Saved Successfully!");	
+			originalsocialMediaDetails = angular.copy($scope.socialMediaDetails);
 		});
 	};
 	

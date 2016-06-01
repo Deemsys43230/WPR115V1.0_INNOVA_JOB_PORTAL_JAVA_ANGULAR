@@ -55,10 +55,10 @@ innovaApp.controller('JobDetailsController', ['$scope','$location','$routeParams
 			$("meta[property='og\\:title']").attr("content","Job Openings for "+$scope.jobDetails.name);
 			$("meta[property='og\\:description']").attr("content",$scope.jobDetails.description.substring(0, 300)+"...");
 			$("meta[property='og\\:image']").attr("content","https://www.google.co.in/imgres?imgurl=http%3A%2F%2Fdatadrivendetroit.org%2Fwp-content%2Fuploads%2F2015%2F03%2FJobs-Graphic.jpg&imgrefurl=http%3A%2F%2Fdatadrivendetroit.org%2Feconomy%2Fuphill-both-ways-where-are-the-jobs-in-metro-detroit%2F&docid=Tv0DEQ6JbIIu5M&tbnid=uA5QBYV-0tC-pM%3A&w=800&h=600&bih=667&biw=1366&ved=0ahUKEwiwosq_uYTNAhVHs48KHekVBOsQMwgzKAIwAg&iact=mrc&uact=8#h=600&imgdii=uA5QBYV-0tC-pM%3A%3BuA5QBYV-0tC-pM%3A%3B3Dw6Lo5n80qaPM%3A&w=800");
-			$("meta[property='og\\:url']").attr("content","http://52.73.180.41/facebook/index.html");
+			$("meta[property='og\\:url']").attr("content",$location.$$absUrl);
 			
-			/*var meta = $("meta[property='og\\:url']").attr("content");
-			console.log(meta);*/
+			var meta = $("meta[property='og\\:url']").attr("content");
+			console.log(meta);
 		});
 	};
 	

@@ -4,11 +4,14 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
 		function($scope, $location, requestHandler,Flash,$timeout) {
 	
 	$scope.isNews=true;
+	$scope.disableButton=false;
 
     $scope.siteTemplate='resources/views/admin/news-list.html';
     
     $scope.addNews=function(){
     	$scope.siteTemplate='resources/views/admin/news-add-or-edit.html';
+    	$scope.news={};
+    	$scope.newNews=true;
     };
     
     $scope.cancelAddNews=function(){
@@ -50,30 +53,46 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
         	$scope.newsList = response.data.latestNewsForms;
         });
     };
-                                	
+    
+    $scope.saveOrUpdateNewsDetails=function(NewsData){
+    	requestHandler.postRequest("Admin/saveUpdateLatestNews.json",NewsData).then(function(response){
+    		if(response.data.requestSuccess){
+			     $scope.submitted=false;
+			     $scope.siteTemplate='resources/views/admin/news-list.html';
+			     $scope.getNewsList();
+			     $("input:submit").val("Save");
+			     $scope.disableButton=false;
+			     Flash.create('success', "Saved Successfully!!!");
+			 }
+    	});
+    };                       	
                                 
- 	$scope.saveUpdateNews=function(){ 
- 		console.log($scope.news.titleImage);
- 		requestHandler.postFileUpload("Admin/saveTitleImage.json",$scope.news.titleImage,"titleImage").then(function(response){
-	    	$scope.news.latestNewsId=response.data.newsId;
-	    	delete $scope.news.titleImage;
-	    	 requestHandler.postRequest("Admin/saveUpdateLatestNews.json",$scope.news).then(function(response){
-	    		if(response.data.requestSuccess){
-	    			
-				     $scope.submitted=false;
-				     $scope.siteTemplate='resources/views/admin/news-list.html';
-				     $scope.getNewsList();
-				     Flash.create('success', "Saved Successfully!!!");
-		    			
-				 }
-	    		
-	    	});
-	    });
-	
-    /*  requestHandler.postRequest("Admin/saveUpdateJobCategory.json",$scope.news).then(function(response){
-       Flash.create('success', "Saved Successfully!");
-       $scope.getNewsList();
-      	});*/
+ 	$scope.saveUpdateNews=function(){
+ 		if(!$scope.news.latestNewsId){
+ 			$("input:submit").val("Saving...");
+ 			$scope.disableButton=true;
+ 			requestHandler.postFileUpload("Admin/saveTitleImage.json",$scope.news.titleImage,"titleImage").then(function(response){
+ 		    	$scope.news.latestNewsId=response.data.newsId;
+ 		    	delete $scope.news.titleImage;
+ 		    	$scope.saveOrUpdateNewsDetails($scope.news);
+ 		    });
+ 		}
+ 		else{
+ 			if($scope.news.titleImage=="no-file"){
+ 				$("input:submit").val("Saving...");
+ 				$scope.disableButton=true;
+ 				delete $scope.news.titleImage;
+ 				$scope.saveOrUpdateNewsDetails($scope.news);
+ 			}
+ 			else{
+ 				$("input:submit").val("Saving...");
+ 				$scope.disableButton=true;
+ 				requestHandler.postFileUpdate("Admin/updateTitleImage.json",$scope.news.titleImage,"titleImage",$scope.news.latestNewsId,"latestNewsId").then(function(response){
+ 					delete $scope.news.titleImage;
+ 					$scope.saveOrUpdateNewsDetails($scope.news);
+ 		 		});
+ 			}
+ 		}
  	};
  
  	$scope.editNews = function(latestNewsId){
@@ -81,8 +100,11 @@ adminApp.controller('NewsController', ['$scope','$location','requestHandler','Fl
  		requestHandler.getRequest("getLatestNews.json?latestNewsId="+latestNewsId,"").then(function(response){
  			originalNews=angular.copy(response.data.latestNewsForm);
  			$scope.news=response.data.latestNewsForm;
+ 			$scope.newNews=false;
+ 			console.log($scope.news);
+ 			$scope.news.titleImage="no-file";
  			$scope.thumbnail = {
- 			    	dataUrl: $scope.news.titleImageUrl
+ 			    	dataUrl: $scope.news.titleImageUrl+"?decache="+Math.random()
  			    };
        });
  	};
@@ -140,39 +162,43 @@ adminApp.directive('validFile',function(){
 	      el.bind('change',function(){
 	        scope.$apply(function(){
 	        	 ngModel.$setViewValue(el.val());
-		          ngModel.$render(); 
-		          var fileS=el[0].files[0];
+		         ngModel.$render(); 
+		         var fileS=el[0].files[0];
+		         var img = new Image();
+		         var value = el.val();
+		       	 ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
+		       	 img.src = window.URL.createObjectURL( fileS );
+		       	 scope.isOutSize=false;
+		       	 
+	              img.onload = function() {
+	                  var width = img.naturalWidth,
+	                      height = img.naturalHeight;
+	                  if(width!=800 && height !=450 && validFormats.indexOf(ext) !== -1){
+	                	  scope.isOutSize=true;
+	                	  scope.newNews=true;
+	                  }
+	                  else{
+	                	  scope.isOutSize=false;
+	                	  scope.newNews=false;
+	                  }
+	                  window.URL.revokeObjectURL( img.src );
+	              };
 		          
-		              var img = new Image();
-
-		              img.src = window.URL.createObjectURL( fileS );
-
-		              img.onload = function() {
-		                  var width = img.naturalWidth,
-		                      height = img.naturalHeight;
-		                  if(width!=800 && height !=450){
-		                	 scope.sample=true;
-		                  }
-		                  else{
-		                	  scope.sample=false;
-		                  }
-		                 
-		                  window.URL.revokeObjectURL( img.src );
-		              };
-		          
-		          
-		          var value = el.val();
-	              ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();  
-		          
-		    ngModel.$validators.validateFileType = function() {
-				return validFormats.indexOf(ext) !== -1;
-			};
+			    ngModel.$validators.validateFileType = function() {
+					return validFormats.indexOf(ext) !== -1;
+				};
 			
 	         });
 	      });
 	    }
 	  };
 });
+
+adminApp.filter('html', ['$sce', function ($sce) {
+    return function (text) {
+        return $sce.trustAsHtml(text);
+    };
+}]);
 
 
 var userApp = angular.module('innovaApp', ['ngRoute','oc.lazyLoad','requestModule','flash','ngAnimate']);

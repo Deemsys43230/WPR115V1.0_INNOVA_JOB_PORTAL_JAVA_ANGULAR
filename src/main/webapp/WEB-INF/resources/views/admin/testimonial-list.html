@@ -2,10 +2,10 @@
 <table class="table table-bordered table-striped">
             <thead class="high-light">
                 <tr>
-                    <td width="20%">Said By</td>
-                    <td width="30%">Designation</td>
-                    <td width="40%">Description</td>
-                    <td width="10%">Options</td>
+                    <td width="25%">Said By</td>
+                    <td width="25%">Designation</td>
+                    <td width="35%">Description</td>
+                    <td width="15%">Options</td>
                 </tr>
                 <tr>
                 <th>
@@ -16,15 +16,9 @@
                 <th>
                 <div class="input-group">
   				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
-				 <input class="form-control" type="text" ng-model="search.destination" placeholder="Designation">
-				 </div>
+				 <input class="form-control" type="text" ng-model="search.destination" placeholder="Designation"></div>
                 </th>
-                <th>
-                <div class="input-group">
-  				 <span class="input-group-addon search" id="basic-addon1"><i class="fa fa-search"></i></span>
-				 <input class="form-control" type="text" ng-model="search.description" placeholder="Description">
-				 </div>
-				 </th>
+                <th></th>
                 <th></th>
                 </tr>
             </thead>
@@ -32,7 +26,7 @@
            		 <tr ng-show="jobTestimonialList.length>0"  dir-paginate="testimonial in testimonialFilter=(jobTestimonialList|filter:search|itemsPerPage:10)">
                 	<td class="wrap">{{testimonial.saidBy}}</td>
                     <td class="wrap">{{testimonial.destination}}</td>
-                    <td class="wrap">{{testimonial.description}}</td>
+                    <td class="wrap"><div class="ellipsis-simple">{{testimonial.description}}</div></td>
                     <td>
                         <a href="" class="btn-xs btn-warning hint--top"  ng-click="editTestimonial(testimonial.testimonialId)" data-hint="Edit"><i class="fa fa-pencil"></i></a>
                         <a href="" ng-cloak ng-show="testimonial.status==1" ng-click="enableOrDisbaleTestimonial(testimonial.testimonialId)" class="btn-xs btn-success hint--top" data-hint="Disable"><i class="fa fa-unlock"></i></a>

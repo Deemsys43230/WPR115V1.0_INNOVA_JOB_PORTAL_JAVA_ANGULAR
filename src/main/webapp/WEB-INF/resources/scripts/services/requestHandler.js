@@ -3,7 +3,7 @@ var myApp=angular.module("requestModule",[]);
 myApp.factory("requestHandler",['$http',function($http){
     
     var requestObj={};
-    var appURL="http://localhost:8086";
+    var appURL="http://192.168.1.39:8090";
     
     
     requestObj.getURL=function(){
@@ -32,6 +32,20 @@ myApp.factory("requestHandler",['$http',function($http){
                 return results;
          });
     };
+    
+	requestObj.postFileUpdate=function(requestURL,data,params,data1,params1){      
+	        
+	        var fd = new FormData();
+	        fd.append(params, data);
+	        fd.append(params1, data1);
+	        
+	         return $http.post(requestURL,fd,{
+	             transformRequest: angular.identity,
+	             headers: {'Content-Type': undefined}
+	         }).then(function (results) {
+	                return results;
+	         });
+	    };
     
     requestObj.postRequest=function(requestURL,params){      
        

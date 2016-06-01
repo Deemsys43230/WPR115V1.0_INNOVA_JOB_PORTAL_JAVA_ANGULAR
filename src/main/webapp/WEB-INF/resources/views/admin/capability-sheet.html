@@ -3,32 +3,38 @@
 <div class="admin-main-content">
 <form name="uploadForm" ng-submit="uploadForm.$valid && uploadSheet()" novalidate>
     <div class="col-md-12 margin-top-20">
-    <div class="col-md-12"><div flash-message="2000" class="col-md-5 pull-right"></div></div> 
-    <div class="col-md-4">
-    	<div class="btn btn-readmore">
-			<div class="title">Choose File</div>
-			<input type="file" valid-file required  name="uploadsheet" file-model="capabilityUploadSheet" accept="application/pdf" ng-model="capabilityUploadSheet" class="upload" title="Choose a file to upload" >
+	    <div class="row">
+	    	<div flash-message="2000" class="col-md-5 pull-right"></div>
+	    </div> 
+	   	<div class="row">
+	    	<div class="col-md-4">
+	    		<div class="browse-wrap">
+					<div class="title">Choose File</div>
+					<input type="file" valid-file required name="uploadsheet" file-model="capabilityUploadSheet" accept="application/pdf" ng-model="capabilityUploadSheet" class="upload" title="Choose a file to upload" >
+				</div>
+				<div class="error-container" >
+	           		<div ng-show="submitted">
+		           		<span ng-cloak ng-show="uploadForm.uploadsheet.$error.required">Please Upload Capability Sheet</span>
+		           		<span ng-cloak ng-show="!uploadForm.uploadsheet.$error.required && uploadForm.uploadsheet.$error.validateFileType">Accept only pdf files</span>
+		           		<span ng-cloak ng-show="!uploadForm.uploadsheet.$error.required && uploadForm.uploadsheet.$error.validateFileType&&uploadForm.uploadsheet.$error.validateFileSize">File should be less than 5 MB</span>
+		         	</div>
+	       		</div>
+			</div>
+			                            	
+			<div class="col-md-4  margin-top-10">
+				<span class="upload-path"></span>
+			</div>
+			
+			<div class="col-md-4">
+				<div class="browse-wrap">
+					<div class="title">{{saveButtonText}}</div>
+					<input type="submit" name="upload" class="upload" ng-disabled="saveData" ng-click="submitted=true" title="Upload file">
+				</div>
+			</div>
 		</div>
-		<div class="error-container" >
-           <div ng-show="submitted">
-	           <span ng-cloak ng-show="uploadForm.uploadsheet.$error.required">Please Upload Capability Sheet</span>
-	           <span ng-cloak ng-show="!uploadForm.uploadsheet.$error.required && uploadForm.uploadsheet.$error.validateFileType">Accept Only pdf files</span>
-	           <span ng-cloak ng-show="!uploadForm.uploadsheet.$error.required && uploadForm.uploadsheet.$error.validateFileType&&uploadForm.uploadsheet.$error.validateFileSize">File should be less than 5 MB</span>
-	          
-	       </div>
-       </div>
-</div>                              	
-		<div class="col-md-4  margin-top-15">
-			<span class="upload-path"></span>
-		</div>
-		
-		<div class="col-md-4 browse-wrap margin-top-15">
-			<div class="title">{{saveButtonText}}</div>
-			<input type="submit" name="upload" class="upload" ng-disabled="saveData" ng-click="submitted=true" title="Upload file">
-		</div>
-    </div> 
-    </form>
-    <div class="col-md-12 margin-top-20">
+	</div>
+</form>
+    <div class="col-md-12 margin-top-10">
 		<iframe class="doc" ng-src="{{content}}"></iframe>
 		<br/><br/>
     </div>

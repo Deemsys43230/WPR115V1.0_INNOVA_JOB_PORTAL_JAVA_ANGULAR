@@ -3,8 +3,8 @@
             <thead class="high-light">
                 <tr>
                     <td width="25%">News Title</td>
-                    <td width="35%">News Description</td>
-                    <td width="25%">Date</td>
+                    <td width="45%">News Description</td>
+                    <td width="15%">Date</td>
                     <td width="15%">Actions</td>
                 </tr>
                 <tr>
@@ -26,9 +26,9 @@
             <tbody>
                 <tr ng-show="newsList.length>0"  dir-paginate="news in newsFilter=(newsList|filter:search|itemsPerPage:10)">
                     <td class="wrap">{{news.title}}</td>
-                    <td class="wrap">{{news.description}}</td>
-                    <td class="col-md-2 wrap">{{news.addedDate}}</td>
-                    <td class="col-md-2">
+                    <td class="wrap"><div class="ellipsis-simple" ng-bind-html="news.description | html"></div></td>
+                    <td class="wrap">{{news.addedDate}}</td>
+                    <td>
                          <a href="" ng-cloak class="btn-xs btn-warning hint--top" ng-click="editNews(news.latestNewsId)" data-hint="Edit"><i class="fa fa-pencil"></i></a>
                         <a href="" ng-cloak ng-show="news.status==1" ng-click="enableOrDisbaleNews(news.latestNewsId)" class="btn-xs btn-success hint--top" data-hint="Disable"><i class="fa fa-unlock"></i></a>
                         <a href="" ng-cloak ng-show="news.status==0" ng-click="enableOrDisbaleNews(news.latestNewsId)" class="btn-xs btn-danger hint--top" data-hint="Enable"><i class="fa fa-lock"></i></a>

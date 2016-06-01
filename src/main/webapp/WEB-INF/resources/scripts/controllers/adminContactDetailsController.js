@@ -14,11 +14,10 @@ adminApp.controller('ContactDetailsController', ['$scope','$location','requestHa
 	};
 	
 	$scope.saveUpdateContactDetails=function(){
-		
 		requestHandler.postRequest("Admin/saveUpdateContactDetail.json",$scope.contactDetails).then(function(response){
-		Flash.create('success', "Saved Successfully!");	
+			Flash.create('success', "Saved Successfully!");
+			originalContactDetails = angular.copy($scope.contactDetails);
 		});
-		
 	};
 	
 	$scope.doContactDetails_isClean=function(){
