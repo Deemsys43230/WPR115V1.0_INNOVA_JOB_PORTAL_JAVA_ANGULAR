@@ -120,7 +120,7 @@
                                 	<div ng-repeat="news in usernewslist" ng-if="$index % 3 == 0" class="item" ng-class="{'active':$index == 0}">
 								        <div  class="col-sm-4" ng-if="usernewslist[$index].title">
                                             <div class="portfolio-content">
-                                                <img class="img-responsive" ng-src="{{usernewslist[$index].titleImageUrl}}" alt="">
+                                                <img class="img-responsive" ng-src="{{usernewslist[$index].titleImageUrl+'?decache=2343456'}}" alt="">
                                                 <!-- <div class="portfolio-overlay">
                                                     <h5>Web Development</h5>
                                                     <p>Design, Develop</p>
@@ -128,33 +128,33 @@
                                             </div>
                                             <h5>{{usernewslist[$index].title}}</h5>
                                             <p><small>{{usernewslist[$index].addedDate}}</small></p>
-                                            <p class="ellipsis">
-                                            {{usernewslist[$index].description}}
-                                            </p>
+                                            <p class="ellipsis" ng-bind-html="usernewslist[$index].description|html"></p>
                                             <a href="#news-details/{{usernewslist[$index].latestNewsId}}" class="btn btn-readmore-small">Read more</a>
                                         </div>
 								        <div  class="col-sm-4" ng-if="usernewslist[$index+1].title">
                                             <div class="portfolio-content">
-                                                <img class="img-responsive" ng-src="{{usernewslist[$index+1].titleImageUrl}}" alt="">
+                                                <img class="img-responsive" ng-src="{{usernewslist[$index+1].titleImageUrl+'?decache=2343456'}}" alt="">
                                                 <!-- <div class="portfolio-overlay">
                                                     <h5>Web Development</h5>
                                                     <p>Design, Develop</p>
                                                 </div> -->
                                             </div>
                                             <h5>{{usernewslist[$index+1].title}}</h5>
-                                            <p>{{usernewslist[$index+1].addedDate}}</p>
+                                            <p><small>{{usernewslist[$index+1].addedDate}}</small></p>
+                                            <p class="ellipsis" ng-bind-html="usernewslist[$index+1].description|html"></p>
                                             <a href="#news-details/{{usernewslist[$index+1].latestNewsId}}" class="btn btn-readmore-small">Read more</a>
                                         </div>
 								        <div  class="col-sm-4" ng-if="usernewslist[$index+2].title">
                                             <div class="portfolio-content">
-                                                <img class="img-responsive" ng-src="{{usernewslist[$index+2].titleImageUrl}}" alt="">
+                                                <img class="img-responsive" ng-src="{{usernewslist[$index+2].titleImageUrl+'?decache=2343456'}}" alt="">
                                                 <!-- <div class="portfolio-overlay">
                                                     <h5>Web Development</h5>
                                                     <p>Design, Develop</p>
                                                 </div> -->
                                             </div>
                                             <h5>{{usernewslist[$index+2].title}}</h5>
-                                            <p>{{usernewslist[$index+2].addedDate}}</p>
+                                            <p><small>{{usernewslist[$index+2].addedDate}}</small></p>
+                                            <p class="ellipsis" ng-bind-html="usernewslist[$index+2].description|html"></p>
                                             <a href="#news-details/{{usernewslist[$index+2].latestNewsId}}" class="btn btn-readmore-small">Read more</a>
                                         </div>
 								    </div>
