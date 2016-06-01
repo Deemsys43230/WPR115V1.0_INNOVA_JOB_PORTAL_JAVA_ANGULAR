@@ -122,6 +122,24 @@ public class LatestNewsService {
 		return latestNews.getLatestNewsId();
 	}
 	
+	
+	//Save an Entry
+		public Long updateLatestNewsImage(MultipartFile titleImage,Long latestNewsId)
+		{
+			//TODO: Convert Form to Entity Here	
+			LatestNews latestNews=latestNewsDAO.getLatestNewsById(latestNewsId);
+			String newsFileName=latestNews.getFileReferenceName();
+			try {
+				File file=awsFileUpload.saveTemporaryFile(titleImage);			
+				awsFileUpload.uploadFileToAWSS3(file, appProperties.getProperty("newsFolder"),newsFileName);
+				file.delete();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+			
+			return latestNews.getLatestNewsId();
+		}
 	//Update an Entry
 	public int updateLatestNews(LatestNewsForm latestNewsForm)
 	{

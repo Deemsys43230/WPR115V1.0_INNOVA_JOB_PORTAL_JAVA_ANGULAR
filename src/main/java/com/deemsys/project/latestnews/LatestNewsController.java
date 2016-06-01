@@ -58,6 +58,14 @@ public class LatestNewsController {
    		return "/returnPage";
    	}
     
+    @RequestMapping(value="/Admin/saveTitleImage",method=RequestMethod.POST)
+   	public String updateTitleImage(@RequestParam MultipartFile titleImage,@RequestParam Long latestNewsId,ModelMap model)
+   	{
+    	model.addAttribute("newsId",latestNewsService.updateLatestNewsImage(titleImage, latestNewsId));
+    	model.addAttribute("requestSuccess",true);
+   		return "/returnPage";
+   	}
+    
     @RequestMapping(value="/Admin/deleteLatestNews",method=RequestMethod.POST)
    	public String deleteLatestNews(@RequestParam("id") Integer id,ModelMap model)
    	{
