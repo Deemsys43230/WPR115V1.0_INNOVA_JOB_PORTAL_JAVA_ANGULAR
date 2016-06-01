@@ -337,6 +337,8 @@
                 
                 scope.pagination.startRecord = (scope.pagination.current-1)* itemsPerPage+1;
                 scope.pagination.endRecord=scope.pagination.current*itemsPerPage;
+                if(totalItems==0)
+                	scope.pagination.startRecord=0;
                 if(scope.pagination.endRecord>totalItems)
                 	scope.pagination.endRecord =  totalItems;
                 	                
