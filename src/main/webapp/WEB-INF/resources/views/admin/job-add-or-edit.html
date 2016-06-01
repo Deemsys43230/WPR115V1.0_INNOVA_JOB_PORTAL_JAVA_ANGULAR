@@ -35,10 +35,11 @@
 	
 	<div class="col-md-12">
 		<h5>Job Description <span class="text-red"><sup>*</sup></span></h5>
-		<div summernote config="options" name="description"  ng-model="news.description" required></div>
+		<div summernote config="options" name="description"  ng-model="adminJobForm.description" required></div>
 	 <div class="error-container" ng-show="adminSideJobForm.description.$dirty && adminSideJobForm.description.$invalid">
 	      <span ng-cloak ng-show="adminSideJobForm.description.$error.required">Please Enter Description</span>
-      </div>	
+      </div>
+      <br/>	
 	</div>
 	
 	<div class="col-md-12">

@@ -177,13 +177,19 @@ public class JobDAOImpl implements JobDAO{
 		criteria.createAlias("jobTagMaps", "jt1");
 		criteria.createAlias("jt1.jobTags", "t1");
 		
+		// Check job Is Enable 
+		criteria.add(Restrictions.eq("j1.isEnable", 1));
+		
+		// Check Job Category Is Enable
+		criteria.add(Restrictions.eq("jc1.status", 1));
+		
 		//Check With Job Keyword
 		Criterion tagNameLikeCriterion=Restrictions.like("t1.tagName",jobSearchForm.getJobKeyword(),MatchMode.ANYWHERE);
 		
 		//Check with Job title
 		Criterion jobTitleLikeCriterion=Restrictions.like("j1.name",jobSearchForm.getJobKeyword(),MatchMode.ANYWHERE);
 				
-		criteria.add(Restrictions.or(tagNameLikeCriterion, jobTitleLikeCriterion));
+		criteria.add(Restrictions.or(Restrictions.like("j1.description", jobSearchForm.getJobKeyword(), MatchMode.ANYWHERE),Restrictions.or(tagNameLikeCriterion, jobTitleLikeCriterion)));
 		
 		
 		if(jobSearchForm.getJobCategoryId()!=0){

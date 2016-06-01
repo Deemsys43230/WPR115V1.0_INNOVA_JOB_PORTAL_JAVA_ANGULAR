@@ -122,9 +122,9 @@ public class JobCategoryDAOImpl implements JobCategoryDAO{
 		// TODO Auto-generated method stub
 		JobCategory jobCategory=(JobCategory) this.sessionFactory.getCurrentSession().createCriteria(JobCategory.class).add(Restrictions.eq("categoryName", name)).uniqueResult();
 		if(jobCategory!=null){
-			return false;
-		}else{
 			return true;
+		}else{
+			return false;
 		}
 		
 	}
@@ -134,9 +134,9 @@ public class JobCategoryDAOImpl implements JobCategoryDAO{
 		// TODO Auto-generated method stub
 		JobCategory jobCategory=(JobCategory) this.sessionFactory.getCurrentSession().createCriteria(JobCategory.class).add(Restrictions.and(Restrictions.ne("jobCategoryId", id),Restrictions.eq("categoryName", name))).uniqueResult();
 		if(jobCategory!=null){
-			return false;
-		}else{
 			return true;
+		}else{
+			return false;
 		}
 	}
 

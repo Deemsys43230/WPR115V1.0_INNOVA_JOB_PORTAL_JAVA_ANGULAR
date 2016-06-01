@@ -165,7 +165,7 @@ public class JobCategoryService {
 	
 	public boolean checkJobCategory(JobCategoryForm jobCategoryForm){
 		boolean status=false;
-		if(jobCategoryForm.getJobCategoryId()!=null){
+		if(jobCategoryForm.getJobCategoryId()==null){
 			status=jobCategoryDAO.checkName(jobCategoryForm.getCategoryName());
 		}else{
 			status=jobCategoryDAO.checkName(jobCategoryForm.getJobCategoryId(), jobCategoryForm.getCategoryName());
