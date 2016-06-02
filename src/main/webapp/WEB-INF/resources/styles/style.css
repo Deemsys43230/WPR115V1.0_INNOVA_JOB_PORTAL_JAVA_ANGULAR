@@ -2676,5 +2676,5 @@ padding-right:50px !important;
 
 .div-scroll{
 	max-height:450px;
-	overflow-y:scroll;
+	overflow:auto;
 }
