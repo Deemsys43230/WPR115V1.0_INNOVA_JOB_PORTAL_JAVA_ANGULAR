@@ -19,13 +19,10 @@ adminApp.controller('AboutController', ['$scope','$location','requestHandler','F
 	
 			//Save Update Method
 			$scope.saveEmployersMessage = function() {
-				
 				employeeMessageService.doSendMessage($scope.employersMessageForm);
 				Flash.create('success', "Thanks for contacting us!!!");
 				 $scope.employersMessageForm={};
-				 $scope.messageForm={};
 			     $scope.submitted=false;
-					
 			};
 			
 			$scope.uploadResume=function(){

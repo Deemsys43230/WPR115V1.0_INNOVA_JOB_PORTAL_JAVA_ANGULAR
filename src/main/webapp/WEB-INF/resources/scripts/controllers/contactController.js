@@ -107,7 +107,7 @@ adminApp.directive('myMap', function() {
                             // show the map and place some markers
                             initMap();
 
-                            setMarker(map, new google.maps.LatLng(scope.latitudeValue, scope.longitudeValue), 'Deemsys Inc', scope.address);
+                            setMarker(map, new google.maps.LatLng(scope.latitudeValue, scope.longitudeValue), 'Innova Consulting Group', scope.address);
 
                         }
                     });
