@@ -22,6 +22,9 @@ adminApp.controller('CapabilitySheetController',['$scope','$location','requestHa
 			$scope.content = $sce.trustAsResourceUrl($scope.capabilitySheet);
 			 $scope.saveData=false;
 			 $scope.saveButtonText="Click Here to Upload";
+			 $timeout(function(){
+				 $scope.tab.refresh = true;
+			 },1000);
 		});
 	};
 	
@@ -32,7 +35,6 @@ adminApp.controller('CapabilitySheetController',['$scope','$location','requestHa
 	     requestHandler.postFileUpload("Admin/uploadCapabilitySheet.json",$scope.capabilityUploadSheet,"sheet").then(function(response){
 	    	if(response.data.requestSuccess== true){
 	    	   Flash.create('success', "Successfully Uploaded!!!");
-	    	   $scope.content ="";
 	    	   $scope.getCapabilitySheet();
 	    	   $scope.saveButtonText="Click Here to Upload";
 	    	}
@@ -89,3 +91,25 @@ adminApp.directive('validFile',function(){
 	    }
 	  };
 });
+
+
+adminApp.directive('refreshable', [function () {
+    return {
+        restrict: 'A',
+        scope: {
+            refresh: "=refreshable"
+        },
+        link: function (scope, element, attr) {
+            var refreshMe = function () {
+                element.attr('src', element.attr('src'));
+            };
+
+            scope.$watch('refresh', function (newVal, oldVal) {
+                if (scope.refresh) {
+                    scope.refresh = false;
+                    refreshMe();
+                }
+            });
+        }
+    };
+}]);

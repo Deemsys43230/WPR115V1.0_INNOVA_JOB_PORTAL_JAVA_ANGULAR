@@ -26,16 +26,16 @@
 			</div>
 			
 			<div class="col-md-4">
-				<div class="browse-wrap" ng-disabled="saveData">
+				<div class="browse-wrap">
 					<div class="title">{{saveButtonText}}</div>
-					<input type="submit" name="upload" class="upload" ng-click="submitted=true" title="Upload file">
+					<input type="submit" name="upload" class="upload" ng-disabled="saveData" ng-click="submitted=true" title="Upload file">
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
     <div class="col-md-12 margin-top-10">
-		<iframe class="doc" ng-src="{{content}}"></iframe>
+		<iframe refreshable="tab.refresh" class="doc" ng-src="{{content}}"></iframe>
 		<br/><br/>
     </div>
 </div>
