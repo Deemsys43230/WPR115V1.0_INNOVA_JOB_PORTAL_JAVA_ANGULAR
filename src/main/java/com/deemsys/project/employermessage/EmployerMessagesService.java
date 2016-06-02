@@ -72,7 +72,7 @@ public class EmployerMessagesService {
 		//Logic Starts
 		if(employerMessagesForm.getMessageDate()==null)
 			employerMessagesForm.setMessageDate(new Date().toString());
-		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(),employerMessagesForm.getWebsite(), employerMessagesForm.getMessage(), JobPortalConstants.convertYearFormat(employerMessagesForm.getMessageDate()), 1);
+		EmployerMessages employerMessages=new EmployerMessages(employerMessagesForm.getFirstName(), employerMessagesForm.getLastName(), employerMessagesForm.getEmail(), employerMessagesForm.getSubject(),employerMessagesForm.getWebsite(), employerMessagesForm.getMessage(), new Date(), 1);
 		employerMessages.setId(employerMessagesForm.getId());
 		
 		//Logic Ends

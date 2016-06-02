@@ -73,7 +73,7 @@ public class JobSeekerDAOImpl implements JobSeekerDAO{
 	@Override
 	public List<JobSeeker> getAll() {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createCriteria(JobSeeker.class).addOrder(Order.desc("jobSeekerId")).list();
+		return this.sessionFactory.getCurrentSession().createCriteria(JobSeeker.class).addOrder(Order.desc("dateTime")).list();
 	}
 
 	@Override

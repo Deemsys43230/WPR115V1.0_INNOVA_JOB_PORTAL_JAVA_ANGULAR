@@ -109,7 +109,7 @@ public class JobSeekerService {
 			e.printStackTrace();
 		}
 		
-		JobSeeker jobSeeker=new JobSeeker(uuidString, null, null, null, null, null, resume.getOriginalFilename(), resume.getContentType(), null);
+		JobSeeker jobSeeker=new JobSeeker(uuidString, null, null, null, null, null, resume.getOriginalFilename(), resume.getContentType(), null, null);
 		
 		//Logic Ends
 		
@@ -132,6 +132,7 @@ public class JobSeekerService {
 		jobSeeker.setPhoneNumber(jobSeekerForm.getPhoneNumber());
 		jobSeeker.setInterestedIn(jobSeekerForm.getInterestedIn());
 		jobSeeker.setStatus(jobSeekerForm.getStatus());
+		jobSeeker.setDateTime(new Date());
 		//Logic Ends
 		
 		jobSeekerDAO.update(jobSeeker);
