@@ -4,7 +4,7 @@
 
 var adminApp = angular.module('adminApp',['requestModule','flash']);
 
-adminApp.controller('CapabilitySheetController',['$scope','$location','requestHandler','Flash','$sce','$window',function($scope, $location, requestHandler,Flash,$sce,$window){
+adminApp.controller('CapabilitySheetController',['$scope','$location','requestHandler','Flash','$sce','$window','$timeout',function($scope, $location, requestHandler,Flash,$sce,$window,$timeout){
 
 	$scope.init=function(){
 		$scope.saveData=false;
@@ -22,7 +22,6 @@ adminApp.controller('CapabilitySheetController',['$scope','$location','requestHa
 			$scope.content = $sce.trustAsResourceUrl($scope.capabilitySheet);
 			 $scope.saveData=false;
 			 $scope.saveButtonText="Click Here to Upload";
-			 $scope.tab.refresh = true;
 		});
 	};
 	
@@ -33,9 +32,11 @@ adminApp.controller('CapabilitySheetController',['$scope','$location','requestHa
 	     requestHandler.postFileUpload("Admin/uploadCapabilitySheet.json",$scope.capabilityUploadSheet,"sheet").then(function(response){
 	    	if(response.data.requestSuccess== true){
 	    	   Flash.create('success', "Successfully Uploaded!!!");
-	    	   }
-	    	$scope.getCapabilitySheet();
-		   	 	$scope.saveButtonText="Click Here to Upload";
+	    	   $scope.content ="";
+	    	   $scope.getCapabilitySheet();
+	    	   $scope.saveButtonText="Click Here to Upload";
+	    	}
+	    	
 	       });
 	    
 	    };
@@ -88,25 +89,3 @@ adminApp.directive('validFile',function(){
 	    }
 	  };
 });
-
-
-adminApp.directive('refreshable', [function () {
-    return {
-        restrict: 'A',
-        scope: {
-            refresh: "=refreshable"
-        },
-        link: function (scope, element, attr) {
-            var refreshMe = function () {
-                element.attr('src', element.attr('src'));
-            };
-
-            scope.$watch('refresh', function (newVal, oldVal) {
-                if (scope.refresh) {
-                    scope.refresh = false;
-                    refreshMe();
-                }
-            });
-        }
-    };
-}]);
