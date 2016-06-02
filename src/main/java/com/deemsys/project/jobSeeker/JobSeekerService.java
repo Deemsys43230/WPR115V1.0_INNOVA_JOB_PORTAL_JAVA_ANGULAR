@@ -131,7 +131,7 @@ public class JobSeekerService {
 		jobSeeker.setEmail(jobSeekerForm.getEmail());
 		jobSeeker.setPhoneNumber(jobSeekerForm.getPhoneNumber());
 		jobSeeker.setInterestedIn(jobSeekerForm.getInterestedIn());
-		jobSeeker.setStatus(jobSeekerForm.getStatus());
+		jobSeeker.setStatus(1);
 		jobSeeker.setDateTime(new Date());
 		//Logic Ends
 		
