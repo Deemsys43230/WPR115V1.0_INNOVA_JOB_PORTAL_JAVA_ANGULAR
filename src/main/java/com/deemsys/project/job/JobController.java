@@ -2,6 +2,10 @@
 package com.deemsys.project.job;
 
 
+import java.util.Properties;
+
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +25,9 @@ public class JobController {
 	
 	@Autowired
 	JobService jobService;
+	
+	@Resource(name="appProperties")
+	private Properties appProperties;
 
     @RequestMapping(value="/Admin/getJob",method=RequestMethod.GET)
 	public String getJob(@RequestParam("jobId") Long jobId,ModelMap model)
@@ -119,7 +126,8 @@ public class JobController {
     	JobForm jobForm=jobService.getJob(id);
     	model.addAttribute("title",jobForm.getName()+" - Innova Consultancy Group");
        	model.addAttribute("description",jobForm.getDescription().replaceAll("\\<.*?\\>", ""));
-       	model.addAttribute("url",id+"#/jobs-details/"+id);
+       	model.addAttribute("url",appProperties.getProperty("appLink")+id+"#/jobs-details/"+id);
+       	model.addAttribute("image",appProperties.getProperty("appLink")+"resources/images/jobs-openings.jpg");
    		return "/index";
    	}
 }

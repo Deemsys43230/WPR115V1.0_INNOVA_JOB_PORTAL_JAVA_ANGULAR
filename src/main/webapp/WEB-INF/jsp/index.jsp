@@ -6,10 +6,10 @@
 	
 	<title>Innova Consulting Group</title>
 	
-	<meta property="og:image" content="http://182.75.114.194:8082/jobs/resources/images/jobs-1.png"/>
+	<meta property="og:image" content="<c:out value="${image}"/>"/>
 	<meta property="og:title" content="<c:out value="${title}"/>"/>
 	<meta property="og:description" content="<c:out value="${description}"/>" />
-	<meta property="og:url" content="http://182.75.114.194:8082/jobs/<c:out value="${url}"/>"/>
+	<meta property="og:url" content="<c:out value="${url}"/>"/>
 	<meta property="og:site_name" content="Innova Consulting Group"/>
 	<meta property="og:type" content="website"/>
 	<meta name="author" content="Innova Consulting Group"/>
